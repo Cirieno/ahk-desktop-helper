@@ -30,6 +30,7 @@
 :*:ocming::coming
 :*:oslid::solid
 :*:peroprty::property
+:*:preropty::property
 :*:quesystring::querystring
 :*:retrun::return
 :*:satrted::started

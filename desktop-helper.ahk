@@ -1,11 +1,11 @@
 ;// Compile-time settings for "File Properties > Details" panel:
 ;@Ahk2Exe-SetName Desktop Helper
 ;@Ahk2Exe-SetDescription Desktop Helper
-;@Ahk2Exe-SetFileVersion 1.4.8.2
+;@Ahk2Exe-SetFileVersion 1.4.8
 ;@Ahk2Exe-SetCopyright Rob McInnes <rob.mcinnes@cirieno.co.uk>
 ;@Ahk2Exe-SetLanguage 0x0809
 ;@Ahk2Exe-SetOrigFilename desktop-helper.ahk
-; @Ahk2Exe-ExeName C:\Program Files (user)\Desktop Helper\Desktop Helper.exe
+;// @Ahk2Exe-ExeName C:\Program Files (user)\Desktop Helper\Desktop Helper.exe
 ;@Ahk2Exe-SetMainIcon icons\cog_1.ico
 
 
@@ -57,7 +57,7 @@
 	_objSettings.app := {0:0
 		, name: "Desktop Helper"
 		, author: { name: "Rob McInnes" , email: "rob.mcinnes@cirieno.co.uk" , company: "Cirieno Ltd" }
-		, build: { version: "1.4.8.2" , date: "2021-08" }}
+		, build: { version: "1.4.8" , date: "2022-06" }}
 
 	_objSettings.app.tray := {0:0
 		, title: _objSettings.app.name
@@ -89,12 +89,12 @@
 	global __D := _objSettings.app.debugging
 	appDebugging_set((__D.enabled && __D.active), false)
 
-	#Include modules\DisableProxy.module.ahk
-	#Include modules\EnableProxyOverrides.module.ahk
-	#Include modules\PreventSleep.module.ahk
-	#Include modules\SetVolume.module.ahk
-	#Include modules\SetVolumeWithMouseWheel.module.ahk
-	#Include modules\SwapMouseButtons.module.ahk
+	#Include modules\disable-proxy.module.ahk
+	#Include modules\enable-proxy-overrides.module.ahk
+	#Include modules\prevent-sleep.module.ahk
+	#Include modules\set-volume.module.ahk
+	#Include modules\set-volume-mouse-wheel.module.ahk
+	#Include modules\swap-mouse-buttons.module.ahk
 	_modules.DisableProxy := new Module__DisableProxy
 	_modules.EnableProxyOverrides := new Module__EnableProxyOverrides
 	_modules.PreventSleep := new Module__PreventSleep
