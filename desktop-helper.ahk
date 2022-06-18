@@ -1,12 +1,12 @@
 ;// Compile-time settings for "File Properties > Details" panel:
 ;@Ahk2Exe-SetName Desktop Helper
 ;@Ahk2Exe-SetDescription Desktop Helper
-;@Ahk2Exe-SetFileVersion 1.4.8
+;@Ahk2Exe-SetFileVersion 1.4
 ;@Ahk2Exe-SetCopyright Rob McInnes <rob.mcinnes@cirieno.co.uk>
 ;@Ahk2Exe-SetLanguage 0x0809
 ;@Ahk2Exe-SetOrigFilename desktop-helper.ahk
-;// @Ahk2Exe-ExeName C:\Program Files (user)\Desktop Helper\Desktop Helper.exe
-;@Ahk2Exe-SetMainIcon icons\cog_1.ico
+;@Ahk2Exe-ExeName Desktop Helper.exe
+;@Ahk2Exe-SetMainIcon icons\cog-wheel-4.ico
 
 
 ;#region AUTO_EXECUTE
@@ -57,12 +57,12 @@
 	_objSettings.app := {0:0
 		, name: "Desktop Helper"
 		, author: { name: "Rob McInnes" , email: "rob.mcinnes@cirieno.co.uk" , company: "Cirieno Ltd" }
-		, build: { version: "1.4.8" , date: "2022-06" }}
+		, build: { version: "1.4" , date: "2022-06" }}
 
 	_objSettings.app.tray := {0:0
 		, title: _objSettings.app.name
 		, tooltip: (A_IsCompiled ? _objSettings.app.name : A_ScriptName)
-		, icon: { location: (A_IsCompiled ? A_ScriptName : "icons\cog_2.ico"), index: -0 }
+		, icon: { location: (A_IsCompiled ? A_ScriptName : "icons\cog-wheel-3.ico"), index: -0 }
 		, useToast: getIniVal("Tray\useToast", true)
 		, msgTimeout: 2000 }
 
@@ -128,11 +128,6 @@ drawMenu() {
 }
 doMenuItem__null:
 	return
-doMenuItem__exit:
-	exitApp
-	return
-doMenuItem__reload:
-	return
 doMenuItem__about:
 	_S := _objSettings.app
 	msgBox 4160, % _S.tray.title, % ""
@@ -140,7 +135,14 @@ doMenuItem__about:
 		. "v" . _S.build.version . " (" . _S.build.date . ")" . "`n"
 		. (!A_IsCompiled ? "un" : "") . "compiled AutoHotkey script" . "`n"
 		. "`n"
-		. "AutoCorrect from <https://github.com/cdelahousse>"
+		. "AutoCorrect @ github.com/cdelahousse`n"
+		. "Icons @ flaticon.com/authors/juicy-fish"
+	return
+doMenuItem__reload:
+	reload
+	return
+doMenuItem__exit:
+	exitApp
 	return
 ;#endregion DRAW_MENU
 
@@ -163,6 +165,8 @@ drawMenuItem__appDebugging(_S) {
 drawMenuItem__exit(_S) {
 	menu tray, add
 	menu tray, add, % "About...", doMenuItem__about
+	menu tray, add
+	menu tray, add, % "Reload", doMenuItem__reload
 	if (_S.enabled) {
 		drawMenuItem__appDebugging(_S)
 		menu tray, add

@@ -110,7 +110,7 @@ Return
 ::assign::
 ::benign::
 ::campaign::
-; ::champaign::
+::champaign::
 ::codesign::
 ::coign::
 ::condign::
@@ -199,7 +199,7 @@ return  ; This makes the above hotstrings do nothing so that they override the i
 :*:critiz::criticiz
 :*:desicant::desiccant
 :*:desicat::desiccat
-; :*:develope::develop
+:*:develope::develop
 :*:dissapoint::disappoint
 :*:divsion::division
 :*:dcument::document

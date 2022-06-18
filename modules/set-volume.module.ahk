@@ -24,8 +24,6 @@ class Module__SetVolume {
 
 		if (_S.enabled){
 			setVolume := ObjBindMethod(this, "setVolume")
-			menu volumeSubmenu, add, % "MUTE", % setVolume
-			menu volumeSubmenu, add
 			menu volumeSubmenu, add, % "0", % setVolume
 			menu volumeSubmenu, add, % "20", % setVolume
 			menu volumeSubmenu, add, % "40", % setVolume
@@ -38,6 +36,8 @@ class Module__SetVolume {
 			menu volumeSubmenu, add, % "50", % setVolume
 			menu volumeSubmenu, add, % "66", % setVolume
 			menu volumeSubmenu, add, % "75", % setVolume
+			menu volumeSubmenu, add
+			menu volumeSubmenu, add, % "MUTE", % setVolume
 			; menu volumeSubmenu, add
 			; menu volumeSubmenu, add, % "+5%", % setVolume
 			; menu volumeSubmenu, add, % "-5%", % setVolume
