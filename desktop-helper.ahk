@@ -1,7 +1,7 @@
 ;// Compile-time settings for "File Properties > Details" panel:
 ;@Ahk2Exe-SetName Desktop Helper
 ;@Ahk2Exe-SetDescription Desktop Helper
-;@Ahk2Exe-SetFileVersion 1.4
+;@Ahk2Exe-SetFileVersion 1.5
 ;@Ahk2Exe-SetCopyright Rob McInnes <rob.mcinnes@cirieno.co.uk>
 ;@Ahk2Exe-SetLanguage 0x0809
 ;@Ahk2Exe-SetOrigFilename desktop-helper.ahk
@@ -57,7 +57,7 @@
 	_objSettings.app := {0:0
 		, name: "Desktop Helper"
 		, author: { name: "Rob McInnes" , email: "rob.mcinnes@cirieno.co.uk" , company: "Cirieno Ltd" }
-		, build: { version: "1.4" , date: "2022-06" }}
+		, build: { version: "1.5" , date: "2022-06", repo: "github.com/cirieno/desktop-helper" }}
 
 	_objSettings.app.tray := {0:0
 		, title: _objSettings.app.name
@@ -131,10 +131,11 @@ doMenuItem__null:
 doMenuItem__about:
 	_S := _objSettings.app
 	msgBox 4160, % _S.tray.title, % ""
-		. "" . _S.author.name . " <" . _S.author.email . ">" . "`n"
+		. "" . _objSettings.app.name . "`n"
 		. "v" . _S.build.version . " (" . _S.build.date . ")" . "`n"
-		. (!A_IsCompiled ? "un" : "") . "compiled AutoHotkey script" . "`n"
 		. "`n"
+		; . (!A_IsCompiled ? "un" : "") . "compiled AutoHotkey script" . "`n"
+		. "Repo @ " . _S.build.repo . "`n"
 		. "AutoCorrect @ github.com/cdelahousse`n"
 		. "Icons @ flaticon.com/authors/juicy-fish"
 	return
