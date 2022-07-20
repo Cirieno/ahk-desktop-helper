@@ -1,10 +1,10 @@
 class Module__PreventSleep {
-	__New() {
+	__New(){
 		this.moduleName := "PreventSleep"
-		this.settings := {0:0
+		this.settings := {_:_
 			, moduleName: this.moduleName
 			, enabled: getIniVal(this.moduleName . "\enabled", false)
-			, activeFirstRun: getIniVal(this.moduleName . "\active", false)
+			, activeOnInit: getIniVal(this.moduleName . "\active", false)
 			, active: false
 			, notify: getIniVal(this.moduleName . "\notify", false)
 			, menuLabel: "Prevent sleep"
@@ -13,15 +13,15 @@ class Module__PreventSleep {
 			, moveCount: 0 }
 		_S := this.settings
 
-		_S.enabled := (_S.activeFirstRun ? true : _S.enabled)
+		_S.enabled := (_S.activeOnInit ? true : _S.enabled)
 		this.enabled := _S.enabled
 
 		; _S.active := this.checkIsActive()
-		this.setActive(((_S.enabled && _S.activeFirstRun) || _S.active),  false)
+		this.setActive(((_S.enabled && _S.activeOnInit) || _S.active),  false)
 	}
 
 
-	toggleActive() {
+	toggleActive(){
 		_S := this.settings
 		if (!_S.enabled) {
 			return
@@ -50,16 +50,16 @@ class Module__PreventSleep {
 	}
 
 
-	checkBackgroundChange() {
+	checkBackgroundChange(){
 		_S := this.settings
 		if (!_S.enabled) {
 			return
 		}
 
-		; __sendMsg(A_Now, _S.moduleName, , ahkMsgFormatTooltip)
+		; __sendMsg(A_Now, _S.moduleName,, ahkMsgFormatTooltip)
 
 		if (!_S.active) {
-			setTimer , , delete
+			setTimer ,, delete
 		} else {
 			if (A_TimeIdle >= _S.checkTimeout) {
 				send {RShift}
@@ -77,12 +77,12 @@ class Module__PreventSleep {
 		}
 
 		if (__D.enabled && __D.active){
-			__sendMsg(text, _S.moduleName, , ahkMsgFormatTooltip)
+			__sendMsg(text, _S.moduleName,, ahkMsgFormatTooltip)
 		}
 	}
 
 
-	drawMenuItems() {
+	drawMenuItems(){
 		_S := this.settings
 		if (!_S.enabled) {
 			return

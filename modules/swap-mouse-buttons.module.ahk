@@ -1,108 +1,105 @@
+__Modules.loaded.SwapMouseButtons := true
+
 class Module__SwapMouseButtons {
-	__New() {
-		this.moduleName := "SwapMouseButtons"
-		this.settings := {0:0
-			, moduleName: this.moduleName
-			, enabled: getIniVal(this.moduleName . "\enabled", false)
-			, activeFirstRun: getIniVal(this.moduleName . "\active", false)
-			, active: false
-			, notify: getIniVal(this.moduleName . "\notify", true)
+	__New(){
+		moduleName := "SwapMouseButtons"
+		this._S := {0:0
+			, moduleName: moduleName
+            , enabledOnInit: getIniVal(moduleName . "\enabled", false)
+            , activeOnInit: getIniVal(moduleName . "\active", false)
+            , notifyUser: getIniVal(moduleName . "\notify", false)
 			, menuLabel: "Swap mouse buttons"
-			, checkInterval: 1000
-			, keyName: "HKEY_CURRENT_USER\Control Panel\Mouse"
-			, valueName: "SwapMouseButtons"
-			, valueType: "REG_SZ" }
-		_S := this.settings
+			, checkInterval: 1000 }
+		this._S.enabled := (this._S.activeOnInit ? true : this._S.enabledOnInit)
+		this._S.active := (this._S.enabled && this._S.activeOnInit)
 
-		_S.enabled := (_S.activeFirstRun ? true : _S.enabled)
-		this.enabled := _S.enabled
-
-		_S.active := this.checkIsActive()
-		this.setActive(((_S.enabled && _S.activeFirstRun) || _S.active),  false)
-	}
-
-
-	checkIsActive() {
-		_S := this.settings
-		if (!_S.enabled) {
+		if (!this._S.enabled) {
 			return
 		}
 
-		regRead regVal, % _S.keyName, % _S.valueName
-		return (regVal == "1")
+		; _S.active := this.checkIsActive()
+		; this.setActive(((_S.enabled && _S.activeOnInit) || _S.active),  false)
 	}
 
 
-	toggleActive() {
-		_S := this.settings
-		if (!_S.enabled) {
-			return
-		}
+	checkIsActive(){
+		; _S := this._Settings
 
-		this.setActive(!_S.active, _S.notify)
+		; if (!_S.enabled) {
+		; 	return
+		; }
+
+		; regKey := "HKEY_CURRENT_USER\Control Panel\Mouse"
+		; regValue := "SwapMouseButtons"
+		; regType := "REG_SZ"
+
+		; regRead val, % regKey, % regValue
+		; return (val == "1")
+	}
+
+
+	toggleActive(){
+		; _S := this._Settings
+
+		; this.setActive(!_S.active, _S.notify)
 	}
 
 
 	setActive(action := false, notify := false) {
-		_S := this.settings
-		if (!_S.enabled) {
-			return
-		}
+		; _S := this._Settings
 
-		_S.active := action
-		regWrite % _S.valueType, % _S.keyName, % _S.valueName, % (_S.active ? 1 : 0)
-		dllCall("SwapMouseButton", int, (_S.active ? 1 : 0))
+		; _S.active := action
+		; regKey := "HKEY_CURRENT_USER\Control Panel\Mouse"
+		; regValue := "SwapMouseButtons"
+		; regType := "REG_SZ"
 
-		if (action){
-			checkBackgroundChange := ObjBindMethod(this, "checkBackgroundChange")
-			setTimer % checkBackgroundChange, % _S.checkInterval
-		}
+		; regWrite % regType, % regKey, % regValue, % (_S.active ? 1 : 0)
+		; dllCall("SwapMouseButton", int, (_S.active ? 1 : 0))
 
-		__tickMenuItem("tray", (_S.active ? "check" : "uncheck"), _S.menuLabel)
-		__notify(_S.moduleName, notify, _S.active)
-		; sendMsg("SwapMouseButtons is now " . (_S.active ? "ON" : "OFF") . "`n" . "PRIMARY => " . (_S.active ? "RIGHT" : "LEFT"), "", _objSettings.app.tray.msgTimeout)
+		; if (action){
+		; 	checkBackgroundChange := ObjBindMethod(this, "checkBackgroundChange")
+		; 	setTimer % checkBackgroundChange, % _S.checkInterval
+		; }
+
+		; __tickMenuItem("tray", (_S.active ? "check" : "uncheck"), _S.menuLabel)
+		; __notify(_S.moduleName, notify, _S.active)
+		; ; sendMsg("SwapMouseButtons is now " . (_S.active ? "ON" : "OFF") . "`n" . "PRIMARY => " . (_S.active ? "RIGHT" : "LEFT"), "", _objSettings.app.tray.msgTimeout)
 	}
 
 
-	checkBackgroundChange() {
-		_S := this.settings
-		if (!_S.enabled) {
-			return
-		}
+	checkBackgroundChange(){
+		; _S := this._Settings
 
-		; __sendMsg(A_Now, _S.moduleName, , ahkMsgFormatTooltip)
+		; ; __sendMsg(A_Now, _S.moduleName,, ahkMsgFormatTooltip)
 
-		if (!_S.active) {
-			setTimer , , delete
-		} else {
-			if (!this.checkIsActive()) {
-				this.setActive(true, false)
-				this.sendDebugMsg("buttons changed in the background")
-			}
-		}
+		; if (!_S.active) {
+		; 	setTimer ,, delete
+		; } else {
+		; 	if (!this.checkIsActive()) {
+		; 		this.setActive(true, false)
+		; 		; this.sendDebugMsg("buttons changed in the background")
+		; 	}
+		; }
 	}
 
 
-	sendDebugMsg(text := ""){
-		_S := this.settings
-		if (!_S.enabled) {
-			return
-		}
+	; sendDebugMsg(text := ""){
+	; 	_S := this.settings
+	; 	if (!_S.enabled) {
+	; 		return
+	; 	}
 
-		if (__D.enabled && __D.active){
-			__sendMsg(text, _S.moduleName, , ahkMsgFormatMsgbox)
-		}
-	}
+	; 	if (__D.enabled && __D.active){
+	; 		__sendMsg(text, _S.moduleName,, ahkMsgFormatMsgbox)
+	; 	}
+	; }
 
 
-	drawMenuItems() {
-		_S := this.settings
-		if (!_S.enabled) {
-			return
-		}
+	drawMenuItems(){
+		_S := this._Settings
 
-		toggleActive := ObjBindMethod(this, "toggleActive")
-		menu tray, add, % _S.menuLabel, % toggleActive
-		__tickMenuItem("tray", (_S.active ? "check" : "uncheck"), _S.menuLabel)
+		; toggleActive := ObjBindMethod(this, "toggleActive")
+		; menu tray, add, % _S.menuLabel, % toggleActive
+		; __tickMenuItem("tray", (_S.active ? "check" : "uncheck"), _S.menuLabel)
 	}
 }

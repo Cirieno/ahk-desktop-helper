@@ -1,5 +1,5 @@
 ;#region
-getIniVal(nodeName, defaultVal := "") {
+getIniVal(nodeName := "", defaultVal := "") {
 	arr := strSplit(nodeName, "\")
 	IniRead nodeVal, % A_WorkingDir . "\user_settings.ini", % arr[1], % arr[2]
 	if (nodeVal == "ERROR") {
@@ -15,9 +15,9 @@ getIniVal(nodeName, defaultVal := "") {
 			return defaultVal
 		}
 	}
-	if ((defaultVal is number) && (nodeVal is not number)) {
-		return defaultVal
-	}
+	; if ((defaultVal is number) && (nodeVal is not number)) {
+	; 	return defaultVal
+	; }
 	return nodeVal
 }
 ;#endregion
@@ -36,7 +36,14 @@ isFalsy(val) {
 	StringUpper val, val
 	return (val == 0 || val == "0" || val = "" || val == "F" || val == "FALSE" || val == "DISABLED" || val == "DEACTIVE" || val == "INACTIVE" || val == "OFF")
 }
-;#endregion
+isInArray(haystack, needle) {
+	for ii, val in haystack {
+		if (val == needle) {
+			return true
+		}
+	}
+	return false
+}
 
 
 
@@ -47,55 +54,60 @@ isFalsy(val) {
  * @param {string} [timeout=5000] - Timeout
  */
 sendMsg(text := "", title := "", timeout := 5000, ahkMsgFormat := 0) {
-	switch ahkMsgFormat {
-		case ahkMsgFormatTooltip: {
-				tooltipMsg(text, title, timeout)
-			}
-		case ahkMsgFormatMsgbox: {
-				msgboxMsg(text, title, timeout)
-			}
-		case ahkMsgFormatToast: {
-				toastMsg(text, title)
-			}
-	}
+	; switch ahkMsgFormat {
+	; 	case ahkMsgFormatTooltip: {
+	; 			tooltipMsg(text, title, timeout)
+	; 		}
+	; 	case ahkMsgFormatMsgbox: {
+	; 			msgboxMsg(text, title, timeout)
+	; 		}
+	; 	case ahkMsgFormatToast: {
+	; 			toastMsg(text, title)
+	; 		}
+	; }
 }
 __sendMsg(text := "", title := "", timeout := 5000, ahkMsgFormat := 0){
-	sendMsg(text, title, timeout, ahkMsgFormat)
+	; sendMsg(text, title, timeout, ahkMsgFormat)
 }
 tooltipMsg(text := "", title := "", timeout := 5000, id := 1) {
-	tooltip % "=[" . _objSettings.app.name . "]" . "`n" . (strLen(title) > 0 ? title . "`n" : "") . text, , , % id
+	local _A := __Settings.app
+	local _T := __Settings.app.tray
+
+	tooltip % _T.traytip . "`n" . (strLen(title) > 0 ? title . "`n" : "") . text,,, % id
 	setTimer clearTooltip, % (timeout * -1)
 }
-clearTooltip() {
+clearTooltip(){
 	tooltip
 }
 msgboxMsg(text := "", title := "", timeout := 5000) {
-	title := (strlen(title) > 0 ? title : _objSettings.app.title)
-	msgBox 8192, % title, % text, % timeout
+	; title := (strlen(title) > 0 ? title : _objSettings.app.title)
+	; msgBox 8192, % title, % text, % timeout
 }
 toastMsg(text := "", title := "", timeout := 5000) {
-	traytip % (strLen(title) ? title : null), % text
+	; traytip % (strLen(title) ? title : null), % text
 }
 ;#endregion CUSTOM TOOLTIP + MSGBOX + TOAST
 
 
 
 ;//
-isInArray(haystack, needle) {
-	for ii, val in haystack {
-		if (val == needle) {
-			return true
-		}
-	}
-	return false
-}
+
 ; //
 
 
 
 ; //
-getAppEnvironmentDomain() {
+getAppEnvironmentDomain(){
 	envGet val, USERDOMAIN
 	return val
 }
 ; //
+
+
+; SetTimer, % WatchCursor, 100
+WatchCursor(){
+	MouseGetPos,,, id, control
+	WinGetTitle, title, ahk_id %id%
+	WinGetClass, class, ahk_id %id%
+	ToolTip, ahk_id %id%`nahk_class %class%`n%title%`nControl: %control%
+}

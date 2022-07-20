@@ -101,7 +101,7 @@ Return
 ;------------------------------------------------------------------------------
 ; Fix for -ign instead of -ing.
 ; Words to exclude: (could probably do this by return without rewrite)
-; From: http://www.morewords.com/e nds-with/gn/
+; From: http://www.morewords.com/ends-with/gn/
 ;------------------------------------------------------------------------------
 #Hotstring B0  ; Turns off automatic backspacing for the following hotstrings.
 ::align::
