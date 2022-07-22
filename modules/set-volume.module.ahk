@@ -1,58 +1,32 @@
-__Modules.loaded.SetVolume := true
-
 class Module__SetVolume {
-    __New(){
-        moduleName := "SetVolume"
-        this._S := {0:0
-            , moduleName: moduleName
-            , enabledOnInit: getIniVal(moduleName . "\enabled", false)
-            , activeOnInit: getIniVal(moduleName . "\active", false)
-            , notifyUser: getIniVal(moduleName . "\notify", false)
-            , menuLabel: "Volume" }
+	__New(){
+		moduleName := "SetVolume"
+		this._S := {0:0
+			, moduleName: moduleName
+			, enabledOnInit: getIniVal(moduleName . "\enabled", false)
+			, activeOnInit: getIniVal(moduleName . "\active", false)
+			, notifyUser: getIniVal(moduleName . "\notify", false)
+			, menuLabel: "Volume" }
 		this._S.enabled := (this._S.activeOnInit ? true : this._S.enabledOnInit)
+		this._S.active := (this._S.enabled && this._S.activeOnInit)
 
-		if (!this._S.enabled) {
+		if (!this._S.enabled){
 			return
 		}
 
 		this.drawMenuItems()
-        }
+	}
 
 
-	/**
-	 * @function setVolume
-	 * @param {integer|string} vol
-	*/
-	setVolume(vol) {
-        if (vol == "MUTE") {
-            soundSet 1, MASTER, MUTE
-        } else {
-            soundSet vol, MASTER, VOLUME
-            soundSet 0, MASTER, MUTE
-        }
-    }
 
-
-	/**
-	 * @function getVolume
-	*/
-    getVolume(){
-        soundGet vol, MASTER, VOLUME
-        return % round(vol)
-    }
-
-
-	/**
-	 * @function drawMenuItems
-    */
-    drawMenuItems(){
+	drawMenuItems(){
 		useTens := isTruthy(getIniVal(this._S.moduleName . "\includeTens", false))
 		useQuarters := isTruthy(getIniVal(this._S.moduleName . "\includeQuarters", false))
 		useThirds = isTruthy(getIniVal(this._S.moduleName . "\includeThirds", false))
 		setVolume := ObjBindMethod(this, "setVolume")
 
-        menu volumeSub, add, % "MUTE", % setVolume
-        menu volumeSub, add
+		menu volumeSub, add, % "MUTE", % setVolume
+		menu volumeSub, add
 		if (useTens){
 			menu volumeSub, add, % "10", % setVolume
 			menu volumeSub, add, % "20", % setVolume
@@ -66,7 +40,7 @@ class Module__SetVolume {
 		}
 		if (useQuarters or useThirds){
 			if (useTens){
-        		menu volumeSub, add
+				menu volumeSub, add
 			}
 			if (useQuarters){
 				menu volumeSub, add, % "25", % setVolume
@@ -86,13 +60,36 @@ class Module__SetVolume {
 		}
 		; if (useThirds){
 		; 	if (useQuarters or useTens){
-        ; 		menu volumeSub, add
+		; 		menu volumeSub, add
 		; 	}
 		; 	menu volumeSub, add, % "33", % setVolume
 		; 	menu volumeSub, add, % "66", % setVolume
 		; }
-        menu volumeSub, add
+		menu volumeSub, add
 		menu volumeSub, add, % "100", % setVolume
-        menu tray, add, % this._S.menuLabel, :volumeSub
-    }
+		menu volumeSub, add
+		menu tray, add, % this._S.menuLabel, :volumeSub
+	}
+
+
+
+	/**
+	 * @function setVolume
+	 * @param {integer|string} vol
+	 */
+	setVolume(vol){
+		if (vol == "MUTE"){
+			soundSet 1, MASTER, MUTE
+		} else {
+			soundSet vol, MASTER, VOLUME
+			soundSet 0, MASTER, MUTE
+		}
+	}
+
+
+
+	getVolume(){
+		soundGet vol, MASTER, VOLUME
+		return % round(vol)
+	}
 }
