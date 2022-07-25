@@ -30,10 +30,10 @@ class Module__UserHotkeys {
 		toggleActive := ObjBindMethod(this, "toggleActive")
 		editHotkeys := ObjBindMethod(this, "editHotkeys")
 
-		menu hotkeysSub, add, % _S.menuLabel, % toggleActive
-		menu hotkeysSub, add
-		menu hotkeysSub, add, % "Edit " . _S.menuLabel . "...", % editHotkeys
-		menu tray, add, % _S.parentMenuLabel, :hotkeysSub
+		menu hotkeyMenu, add, % _S.menuLabel, % toggleActive
+		menu hotkeyMenu, add
+		menu hotkeyMenu, add, % "Edit " . _S.menuLabel . "...", % editHotkeys
+		menu tray, add, % _S.parentMenuLabel, :hotkeyMenu
 
 		this.checkMenuItems()
 	}
@@ -43,7 +43,7 @@ class Module__UserHotkeys {
 	checkMenuItems(){
 		_S := this._Settings
 
-		menu hotkeysSub, % (_S.active ? "check" : "uncheck"), % _S.menuLabel
+		menu hotkeyMenu, % (_S.active ? "check" : "uncheck"), % _S.menuLabel
 	}
 
 

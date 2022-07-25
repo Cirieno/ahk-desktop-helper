@@ -35,11 +35,11 @@ class Module__VolumeMouseWheel {
 		menu, tray, UseErrorLevel
 		menu tray, rename, % _S.parentMenuLabel, % _S.parentMenuLabel
 		if (ErrorLevel){
-			menu volumeSub, add, % _S.menuLabel, % toggleActive
-			menu tray, add, % _S.parentMenuLabel, :volumeSub
+			menu volumeMenu, add, % _S.menuLabel, % toggleActive
+			menu tray, add, % _S.parentMenuLabel, :volumeMenu
 			}
 		else {
-			menu volumeSub, add, % _S.menuLabel, % toggleActive
+			menu volumeMenu, add, % _S.menuLabel, % toggleActive
 			}
 		menu, tray, UseErrorLevel, "off"
 
@@ -51,7 +51,7 @@ class Module__VolumeMouseWheel {
 	checkMenuItems(){
 		_S := this._Settings
 
-		menu volumeSub, % (_S.active ? "check" : "uncheck"), % _S.menuLabel
+		menu volumeMenu, % (_S.active ? "check" : "uncheck"), % _S.menuLabel
 	}
 
 

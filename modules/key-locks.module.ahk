@@ -30,10 +30,10 @@ class Module__KeyLocks {
 
 		setKeyLock := ObjBindMethod(this, "setKeyLock")
 
-		menu keylocksSub, add, % "Caps Lock", % setKeyLock
-		menu keylocksSub, add, % "Num Lock", % setKeyLock
-		menu keylocksSub, add, % "Scroll Lock", % setKeyLock
-		menu tray, add, % _S.parentMenuLabel, :keylocksSub
+		menu keylockMenu, add, % "Caps Lock", % setKeyLock
+		menu keylockMenu, add, % "Num Lock", % setKeyLock
+		menu keylockMenu, add, % "Scroll Lock", % setKeyLock
+		menu tray, add, % _S.parentMenuLabel, :keylockMenu
 
 		this.checkMenuItems()
 	}
@@ -43,9 +43,9 @@ class Module__KeyLocks {
 	checkMenuItems(){
 		_S := this._Settings
 
-		menu, keylocksSub, % (GetKeyState("CapsLock", "T") ? "check" : "uncheck"), % "Caps Lock"
-		menu, keylocksSub, % (GetKeyState("NumLock", "T") ? "check" : "uncheck"), % "Num Lock"
-		menu, keylocksSub, % (GetKeyState("ScrollLock", "T") ? "check" : "uncheck"), % "Scroll Lock"
+		menu, keylockMenu, % (GetKeyState("CapsLock", "T") ? "check" : "uncheck"), % "Caps Lock"
+		menu, keylockMenu, % (GetKeyState("NumLock", "T") ? "check" : "uncheck"), % "Num Lock"
+		menu, keylockMenu, % (GetKeyState("ScrollLock", "T") ? "check" : "uncheck"), % "Scroll Lock"
 	}
 
 

@@ -99,10 +99,10 @@ populateGlobalVars(){
 ; #include *i .\modules\enable-proxy-overrides.module.ahk
 #include *i .\modules\key-locks.module.ahk
 ; #include *i .\modules\prevent-sleep.module.ahk
-#include *i .\modules\volume.module.ahk
-#include *i .\modules\volume-mouse-wheel.module.ahk
-; #include *i .\modules\swap-mouse-buttons.module.ahk
+#include *i .\modules\swap-mouse-buttons.module.ahk
 #include *i .\modules\user-hotkeys.module.ahk
+#include *i .\modules\volume-mouse-wheel.module.ahk
+#include *i .\modules\volume.module.ahk
 loadModules(){
 	local e
 	local _M = {}
@@ -110,9 +110,9 @@ loadModules(){
 	try {
 		_M.KeyLocks := new Module__KeyLocks
 		_M.UserHotkeys := new Module__UserHotkeys
+		_M.SwapMouseButtons := new Module__SwapMouseButtons
 		_M.Volume := new Module__Volume
 		_M.VolumeMouseWheel := new Module__VolumeMouseWheel
-		; _M.SwapMouseButtons := new Module__SwapMouseButtons
 		; _M.DisableProxy := new Module__DisableProxy
 		; _M.EnableProxyOverrides := new Module__EnableProxyOverrides
 		; _M.PreventSleep := new Module__PreventSleep
