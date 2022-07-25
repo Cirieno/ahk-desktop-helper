@@ -97,10 +97,10 @@ populateGlobalVars(){
 
 ; #include *i .\modules\disable-proxy.module.ahk
 ; #include *i .\modules\enable-proxy-overrides.module.ahk
-#include *i .\modules\set-key-locks.module.ahk
+#include *i .\modules\key-locks.module.ahk
 ; #include *i .\modules\prevent-sleep.module.ahk
-#include *i .\modules\set-volume.module.ahk
-#include *i .\modules\set-volume-mouse-wheel.module.ahk
+#include *i .\modules\volume.module.ahk
+#include *i .\modules\volume-mouse-wheel.module.ahk
 ; #include *i .\modules\swap-mouse-buttons.module.ahk
 #include *i .\modules\user-hotkeys.module.ahk
 loadModules(){
@@ -108,11 +108,11 @@ loadModules(){
 	local _M = {}
 
 	try {
-		_M.SetKeyLocks := new Module__SetKeyLocks
-		_M.SetVolume := new Module__SetVolume
-		_M.SetVolumeMouseWheel := new Module__SetVolumeMouseWheel
-		; _M.SwapMouseButtons := new Module__SwapMouseButtons
+		_M.KeyLocks := new Module__KeyLocks
 		_M.UserHotkeys := new Module__UserHotkeys
+		_M.Volume := new Module__Volume
+		_M.VolumeMouseWheel := new Module__VolumeMouseWheel
+		; _M.SwapMouseButtons := new Module__SwapMouseButtons
 		; _M.DisableProxy := new Module__DisableProxy
 		; _M.EnableProxyOverrides := new Module__EnableProxyOverrides
 		; _M.PreventSleep := new Module__PreventSleep

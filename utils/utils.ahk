@@ -105,9 +105,59 @@ getAppEnvironmentDomain(){
 
 
 ; SetTimer, % WatchCursor, 100
-WatchCursor(){
-	MouseGetPos,,, id, control
-	WinGetTitle, title, ahk_id %id%
-	WinGetClass, class, ahk_id %id%
-	ToolTip, ahk_id %id%`nahk_class %class%`n%title%`nControl: %control%
-}
+; WatchCursor(){
+; 	MouseGetPos,,, id, control
+; 	WinGetTitle, title, ahk_id %id%
+; 	WinGetClass, class, ahk_id %id%
+; 	ToolTip, ahk_id %id%`nahk_class %class%`n%title%`nControl: %control%
+; }
+
+
+
+
+
+
+; OLD OLD OLD (but not necessarily wrong)
+; -------------------------------------
+
+
+
+;#region CUSTOM TOOLTIP / MSGBOX / TOAST
+/**
+ * @param {string} text - Body text
+ * @param {string} [title] - Headline text
+ * @param {string} [timeout=5000] - Timeout
+ */
+; tooltipMsg(text := "", title := "", timeout := 5000, id := "") {
+; 	tooltip % "" . "=[" . _objSettings.app.title . "]" . "`n" . (strLen(title) > 0 ? title . "`n" : "") . text,,,
+; 		setTimer clearTooltip, % (timeout * -1)
+; }
+; msgboxMsg(text := "", title := "", timeout := 5000) {
+; 	title := (strlen(title) > 0 ? title : _objSettings.app.title)
+; 	msgBox 8192, % title, % text, % timeout
+; }
+; toastMsg(text := "", title := "", timeout := 5000) {
+; 	TrayTip % (strLen(title) ? title : null), % text, % (timeout / 1000)
+; }
+; sendMsg(text := "", title := "", timeout := 5000, forceTooltip := false) {
+; 	if (forceTooltip || !_objSettings.app.tray.useToast) {
+; 		tooltipMsg(text, title, timeout)
+; 	} else {
+; 		toastMsg(text, title)
+; 	}
+; }
+;#endregion CUSTOM TOOLTIP + MSGBOX + TOAST
+
+
+
+; ;//
+; tickMenuItem(menuName, action, labelName) {
+; 	menu % menuName, useErrorLevel
+; 	menu % menuName, % action, % labelName
+; 	menu % menuName, useErrorLevel, off
+; }
+; ;//
+; getAppEnvironmentDomain() {
+; 	envGet val, USERDOMAIN
+; 	return val
+; }

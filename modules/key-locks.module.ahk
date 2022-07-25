@@ -1,48 +1,48 @@
-class Module__SetKeyLocks {
+class Module__KeyLocks {
 	__New(){
-		moduleName := "SetKeyLocks"
-		this._S := {0:0
+		moduleName := "KeyLocks"
+		_S := this._Settings := {0:0
 			, moduleName: moduleName
 			, enabledOnInit: getIniVal(moduleName . "\enabled", false)
 			, activeOnInit: getIniVal(moduleName . "\active", false)
 			, notifyUser: getIniVal(moduleName . "\notify", false)
+			, parentMenuLabel: "Keyboard"
+			, menuLabel: "Key Locks"
 			, capsOnLoad: getIniVal(moduleName . "\capsOnLoad", false)
 			, numOnLoad: getIniVal(moduleName . "\numOnLoad", true)
-			, scrollOnLoad: getIniVal(moduleName . "\scrollOnLoad", true)
-			, menuLabel: "Key Locks" }
-		this._S.enabled := (this._S.activeOnInit ? true : this._S.enabledOnInit)
-		this._S.active := (this._S.enabled && this._S.activeOnInit)
+			, scrollOnLoad: getIniVal(moduleName . "\scrollOnLoad", true) }
+		_S.enabled := (_S.activeOnInit ? true : _S.enabledOnInit)
+		_S.active := (_S.enabled && _S.activeOnInit)
 
-		if (!this._S.enabled){
+		if (!_S.enabled){
 			return
 		}
 
 		this.drawMenuItems()
 
-		menuTickKeys := ObjBindMethod(this, "menuTickKeys")
-		Hotkey, ~CapsLock, % menuTickKeys, On
-		Hotkey, ~NumLock, % menuTickKeys, On
-		Hotkey, ~ScrollLock, % menuTickKeys, On
-
-		; TODO: notifications
+		this.setHotkeys()
 	}
 
 
 
 	drawMenuItems(){
+		_S := this._Settings
+
 		setKeyLock := ObjBindMethod(this, "setKeyLock")
 
 		menu keylocksSub, add, % "Caps Lock", % setKeyLock
 		menu keylocksSub, add, % "Num Lock", % setKeyLock
 		menu keylocksSub, add, % "Scroll Lock", % setKeyLock
-		menu tray, add, % this._S.menuLabel, :keylocksSub
+		menu tray, add, % _S.parentMenuLabel, :keylocksSub
 
-		this.menuTickKeys()
+		this.checkMenuItems()
 	}
 
 
 
-	menuTickKeys(){
+	checkMenuItems(){
+		_S := this._Settings
+
 		menu, keylocksSub, % (GetKeyState("CapsLock", "T") ? "check" : "uncheck"), % "Caps Lock"
 		menu, keylocksSub, % (GetKeyState("NumLock", "T") ? "check" : "uncheck"), % "Num Lock"
 		menu, keylocksSub, % (GetKeyState("ScrollLock", "T") ? "check" : "uncheck"), % "Scroll Lock"
@@ -50,7 +50,21 @@ class Module__SetKeyLocks {
 
 
 
+	setHotkeys(){
+		_S := this._Settings
+
+		checkMenuItems := ObjBindMethod(this, "checkMenuItems")
+
+		Hotkey, ~CapsLock, % checkMenuItems, % "on"
+		Hotkey, ~NumLock, % checkMenuItems, % "on"
+		Hotkey, ~ScrollLock, % checkMenuItems, % "on"
+	}
+
+
+
 	setKeyLock(key := ""){
+		_S := this._Settings
+
 		key := StrReplace((StrLen(key) > 0 ? key : A_ThisHotkey), " ", "")
 
 		switch key {
@@ -62,6 +76,6 @@ class Module__SetKeyLocks {
 				SetScrollLockState % !GetKeyState("ScrollLock", "T")
 		}
 
-		this.menuTickKeys()
+		this.checkMenuItems()
 	}
 }
