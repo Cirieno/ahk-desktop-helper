@@ -78,12 +78,12 @@ populateGlobalVars(){
 		, domain: getAppEnvironmentDomain() }
 
 	_S.app.debugging := {0:0
-		, enabledOnInit: getIniVal("AppDebugging\enabled", !A_IsCompiled)
-		, activeOnInit: getIniVal("AppDebugging\active", !A_IsCompiled)
+		, enabled: getIniVal("AppDebugging\enabled", !A_IsCompiled)
+		, activateOnLoad: getIniVal("AppDebugging\active", !A_IsCompiled)
 		, notifyUser: getIniVal("AppDebugging\notify", true)
 		, menuLabel: "Debugging mode" }
-	_S.app.debugging.enabled := (_S.app.debugging.activeOnInit ? true : _S.app.debugging.enabledOnInit)
-	_S.app.debugging.active := (_S.app.debugging.enabled && _S.app.debugging.activeOnInit)
+	_S.app.debugging.enabled := (_S.app.debugging.activateOnLoad ? true : _S.app.debugging.enabled)
+	_S.app.debugging.active := (_S.app.debugging.enabled && _S.app.debugging.activateOnLoad)
 	; appDebugging_set((__D.enabled && __D.active), false)
 
 	_S.apps := {0:0

@@ -3,13 +3,13 @@ class Module__UserHotkeys {
 		moduleName := "UserHotkeys"
 		_S := this._Settings := {0:0
 			, moduleName: moduleName
-			, enabledOnInit: getIniVal(moduleName . "\enabled", false)
-			, activeOnInit: getIniVal(moduleName . "\active", false)
+			, enabled: getIniVal(moduleName . "\enabled", false)
+			, activateOnLoad: getIniVal(moduleName . "\active", false)
 			, notifyUser: getIniVal(moduleName . "\notify", false)
 			, parentMenuLabel: "Hotkeys"
 			, menuLabel: "User hotkeys" }
-		_S.enabled := (_S.activeOnInit ? true : _S.enabledOnInit)
-		_S.active := (_S.enabled && _S.activeOnInit)
+		_S.enabled := (_S.activateOnLoad ? true : _S.enabled)
+		_S.active := (_S.enabled && _S.activateOnLoad)
 
 		if (!_S.enabled){
 			return
