@@ -1,5 +1,5 @@
 ;// Compile-time settings for "File Properties > Details" panel:
-;@Ahk2Exe-Let PName = Desktop Helper, PVersion = 1.7.0, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
+;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 1.7.1, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
 ;@Ahk2Exe-SetName %U_PName%
 ;@Ahk2Exe-SetDescription %U_PName%
 ;@Ahk2Exe-SetProductName %U_PName%
@@ -7,18 +7,18 @@
 ;@Ahk2Exe-SetProductVersion %U_PVersion%
 ;@Ahk2Exe-SetCopyright %U_PCompany%
 ;@Ahk2Exe-SetLanguage 0x0809
-;@Ahk2Exe-SetOrigFilename desktop-helper.ahk
+;@Ahk2Exe-SetOrigFilename ahk-desktop-helper.ahk
 ;@Ahk2Exe-ExeName C:\Program Files (user)\%U_PName%\%U_PName%.exe
 ;@Ahk2Exe-SetMainIcon icons\cog-wheel-4.ico
 
 
 
 ;#region [AUTORUN]
-	#clipboardTimeout 1500 ;// how long the script keeps trying to access the clipboard
+	#clipboardTimeout 1500    ;// how long the script keeps trying to access the clipboard
 	; #keyHistory 20     ;// keyboard and mouse events displayed by the KeyHistory window
 	; #hotstring NoMouse
 	#maxHotkeysPerInterval 200
-	#noEnv ;// prevents empty variables from being looked up
+	#noEnv    ;// prevents empty variables from being looked up
 	#persistent
 	#singleInstance force
 	#winActivateForce
@@ -29,7 +29,7 @@
 	; detectHiddenText on
 	; detectHiddenWindows off
 	process priority,, low
-	; sendMode Input
+	sendMode input
 	; setBatchLines -1
 	; setControlDelay 0
 	; setKeyDelay 0
@@ -38,7 +38,7 @@
 	setTitleMatchMode 2
 	setTitleMatchMode slow
 	; stringCaseSense off
-	setWorkingDir %A_ScriptDir%
+	setWorkingDir % A_ScriptDir
 
 	global ahkMsgFormatTooltip := 1
 	global ahkMsgFormatMsgbox := 2
@@ -60,15 +60,15 @@ populateGlobalVars(){
 	local _S := {}
 
 	_S.app := {0:0
-		, name: "Desktop Helper"
+		, name: "AHK Desktop Helper"
 		, author: { name: "Rob McInnes", email: "rob.mcinnes@cirieno.co.uk", company: "Cirieno Ltd" }
-		, build: { version: "1.7.0", date: "2022-07", repo: "github.com/cirieno/desktop-helper" } }
+		, build: { version: "1.7.1", date: "2022-07", repo: "github.com/cirieno/ahk-desktop-helper" } }
 
 	_S.app.tray := {0:0
 		, title: _S.app.name
 		, traytip: "[=" . _S.app.name . "]"
 		, icon: { location: (A_IsCompiled ? A_ScriptName : "icons\cog-wheel-3.ico"), index: -0 }
-		, useToast: getIniVal("Tray\useToast", true)
+		, useToast: getIniVal("Environment\useToast", true)
 		, msgTimeout: 2000 }
 
 	_S.app.environment := {0:0
@@ -265,9 +265,11 @@ return
 ; groupAdd _grpExplorerWindows, ahk_class CabinetWClass
 ; groupAdd _grpExplorerWindows, ahk_class Progman
 
-; global ahkBoolean := 11
-; global ahkInteger := 3
-; global ahkString := 8
+	; ahkFalse := 0
+	; ahkTrue := 1
+	; ahkInteger := 3
+	; ahkString := 8
+	; ahkBoolean := 11
 
 ; drawMenuItem__appDebugging(_S){
 ; 	if (_S.enabled){

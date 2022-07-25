@@ -1,0 +1,42 @@
+;// * = an ending character is not required to trigger
+;// O = remove the trigger character
+;// C = case sensitive
+;// R = send raw
+;// B0 = turn off backspacing
+; https://www.autohotkey.com/docs/hotstrings.htm
+
+; // some simple corrections
+; ::baords::boards
+; ::boolaen::boolean
+; ::broswer::browser
+; ::chatchup::catch-up
+; ::corect::correct
+; ::deisgn::design
+; ::deisng::design
+; ::dekstop::desktop
+; ::en dif::end if
+; ::fasle::false
+; ::flase::false
+; ::fro m::from
+; ::haedline::headline
+; ::helpdeks::helpdesk
+; ::herlper::helper
+; ::in stall::install
+; ::itneger::integer
+; ::javascrtip::javascript
+; ::jquesy::jquery
+; ::maring::margin
+; ::ocming::coming
+; ::oslid::solid
+; ::peroprty::property
+; ::preropty::property
+; ::quesystring::querystring
+; ::retrun::return
+; ::satrted::started
+; ::statsu::status
+; :C:THankyou::Thankyou
+; :C:WHat::What
+; :C:YEah::Yeah
+
+; // more interesting hotkeys
+; :://shrug::{U+02DC}\_({U+30C4})_/{U+02DC}
