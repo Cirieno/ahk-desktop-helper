@@ -4,7 +4,6 @@ class Module__KeyLocks {
 		_S := this._Settings := {0:0
 			, moduleName: moduleName
 			, enabled: getIniVal(moduleName . "\enabled", false)
-			, activateOnLoad: getIniVal(moduleName . "\active", false)
 			, notifyUser: getIniVal(moduleName . "\notify", false)
 			, parentMenuLabel: "Keyboard"
 			, menuLabel: "Key Locks"
@@ -12,7 +11,6 @@ class Module__KeyLocks {
 			, numOnLoad: getIniVal(moduleName . "\numOnLoad", true)
 			, scrollOnLoad: getIniVal(moduleName . "\scrollOnLoad", true) }
 		_S.enabled := (_S.activateOnLoad ? true : _S.enabled)
-		_S.active := (_S.enabled && _S.activateOnLoad)
 
 		if (!_S.enabled){
 			return

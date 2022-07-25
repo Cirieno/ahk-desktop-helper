@@ -4,14 +4,12 @@ class Module__Volume {
 		_S := this._Settings := {0:0
 			, moduleName: moduleName
 			, enabled: getIniVal(moduleName . "\enabled", false)
-			, activateOnLoad: getIniVal(moduleName . "\active", false)
 			, notifyUser: getIniVal(moduleName . "\notify", false)
 			, parentMenuLabel: "Volume"
 			, useTens: isTruthy(getIniVal(moduleName . "\includeTens", false))
 			, useQuarters: isTruthy(getIniVal(moduleName . "\includeQuarters", false))
 			, useThirds: isTruthy(getIniVal(moduleName . "\includeThirds", false)) }
 		_S.enabled := (_S.activateOnLoad ? true : _S.enabled)
-		_S.active := (_S.enabled && _S.activateOnLoad)
 
 		if (!_S.enabled){
 			return
