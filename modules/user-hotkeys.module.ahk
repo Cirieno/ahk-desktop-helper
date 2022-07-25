@@ -8,23 +8,24 @@ class Module__UserHotkeys {
 			, notifyUser: getIniVal(moduleName . "\notify", false)
 			, parentMenuLabel: "Hotkeys"
 			, menuLabel: "User hotkeys" }
-		_S.enabled := (_S.activateOnLoad ? true : _S.enabled)
-		_S.active := (_S.enabled && _S.activateOnLoad)
+		_S.active := false
 
 		if (!_S.enabled){
 			return
 		}
 
-		this.drawMenuItems()
+		this.drawMenu()
 
-		if (_S.active){
+		if (_S.activateOnLoad){
+			_S.active := true
 			this.setHotkeys(_S.active, false)
+			this.checkMenuItems()
 		}
 	}
 
 
 
-	drawMenuItems(){
+	drawMenu(){
 		_S := this._Settings
 
 		toggleActive := ObjBindMethod(this, "toggleActive")
@@ -52,9 +53,7 @@ class Module__UserHotkeys {
 		_S := this._Settings
 
 		_S.active := !_S.active
-
-		this.setHotkeys(_S.active)
-
+		this.setHotkeys(_S.active, true)
 		this.checkMenuItems()
 	}
 
@@ -62,13 +61,15 @@ class Module__UserHotkeys {
 
 	setHotkeys(state, notify := false){
 		_S := this._Settings
+		state := isTruthy(state)
+		notify := isTruthy(notify)
 
 		Loop, read, .\user_hotkeys.txt
 		{
 			pos := RegExMatch(A_LoopReadLine, "^(?:\s*;)?(.*)::(.*)$", matches)
 			if (pos > 0){
 				try {
-					hotstring(matches1, matches2, (isTruthy(state) ? "on" : "off"))
+					hotstring(matches1, matches2, (state ? "on" : "off"))
 				} catch e {
 				}
 			}

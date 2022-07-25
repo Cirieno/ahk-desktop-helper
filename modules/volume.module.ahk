@@ -9,18 +9,17 @@ class Module__Volume {
 			, useTens: isTruthy(getIniVal(moduleName . "\includeTens", false))
 			, useQuarters: isTruthy(getIniVal(moduleName . "\includeQuarters", false))
 			, useThirds: isTruthy(getIniVal(moduleName . "\includeThirds", false)) }
-		_S.enabled := (_S.activateOnLoad ? true : _S.enabled)
 
 		if (!_S.enabled){
 			return
 		}
 
-		this.drawMenuItems()
+		this.drawMenu()
 	}
 
 
 
-	drawMenuItems(){
+	drawMenu(){
 		_S := this._Settings
 
 		setVolume := ObjBindMethod(this, "setVolume")
@@ -67,7 +66,6 @@ class Module__Volume {
 		; }
 		menu volumeMenu, add
 		menu volumeMenu, add, % "100", % setVolume
-		menu volumeMenu, add
 		menu tray, add, % _S.parentMenuLabel, :volumeMenu
 	}
 

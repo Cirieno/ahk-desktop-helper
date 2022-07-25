@@ -11,23 +11,24 @@ class Module__VolumeMouseWheel {
 			, checkInterval: 200
 			, step: getIniVal(moduleName . "\step", 3)
 			, tooltipLabel: "Volume: " }
-		_S.enabled := (_S.activateOnLoad ? true : _S.enabled)
-		_S.active := (_S.enabled && _S.activateOnLoad)
+		_S.active := false
 
 		if (!_S.enabled){
 			return
 		}
 
-		this.drawMenuItems()
+		this.drawMenu()
 
-		if (_S.active){
+		if (_S.activateOnLoad){
+			_S.active := true
 			this.setHotkeys(_S.active, false)
+			this.checkMenuItems()
 		}
 	}
 
 
 
-	drawMenuItems(){
+	drawMenu(){
 		_S := this._Settings
 
 		toggleActive := ObjBindMethod(this, "toggleActive")
@@ -39,6 +40,7 @@ class Module__VolumeMouseWheel {
 			menu tray, add, % _S.parentMenuLabel, :volumeMenu
 			}
 		else {
+			menu volumeMenu, add
 			menu volumeMenu, add, % _S.menuLabel, % toggleActive
 			}
 		menu, tray, UseErrorLevel, "off"
@@ -60,9 +62,7 @@ class Module__VolumeMouseWheel {
 		_S := this._Settings
 
 		_S.active := !_S.active
-
-		this.setHotkeys(_S.active)
-
+		this.setHotkeys(_S.active, true)
 		this.checkMenuItems()
 	}
 
@@ -70,11 +70,13 @@ class Module__VolumeMouseWheel {
 
 	setHotkeys(state, notify := false){
 		_S := this._Settings
+		state := isTruthy(state)
+		notify := isTruthy(notify)
 
 		checkMouseLocation := ObjBindMethod(this, "checkMouseLocation")
 
-		hotkey ~WheelUp, % checkMouseLocation, % (isTruthy(state) ? "on" : "off")
-		hotkey ~WheelDown, % checkMouseLocation, % (isTruthy(state) ? "on" : "off")
+		hotkey ~WheelUp, % checkMouseLocation, % (state ? "on" : "off")
+		hotkey ~WheelDown, % checkMouseLocation, % (state ? "on" : "off")
 	}
 
 

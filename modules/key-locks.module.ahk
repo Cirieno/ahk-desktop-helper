@@ -10,20 +10,21 @@ class Module__KeyLocks {
 			, capsOnLoad: getIniVal(moduleName . "\capsOnLoad", false)
 			, numOnLoad: getIniVal(moduleName . "\numOnLoad", true)
 			, scrollOnLoad: getIniVal(moduleName . "\scrollOnLoad", true) }
-		_S.enabled := (_S.activateOnLoad ? true : _S.enabled)
 
 		if (!_S.enabled){
 			return
 		}
 
-		this.drawMenuItems()
+		this.getKeyStates()
 
-		this.setHotkeys()
+		this.drawMenu()
+
+		this.setHotkeys("on")
 	}
 
 
 
-	drawMenuItems(){
+	drawMenu(){
 		_S := this._Settings
 
 		setKeyLock := ObjBindMethod(this, "setKeyLock")
@@ -41,21 +42,32 @@ class Module__KeyLocks {
 	checkMenuItems(){
 		_S := this._Settings
 
-		menu, keylockMenu, % (GetKeyState("CapsLock", "T") ? "check" : "uncheck"), % "Caps Lock"
-		menu, keylockMenu, % (GetKeyState("NumLock", "T") ? "check" : "uncheck"), % "Num Lock"
-		menu, keylockMenu, % (GetKeyState("ScrollLock", "T") ? "check" : "uncheck"), % "Scroll Lock"
+		menu, keylockMenu, % (_S.capsState ? "check" : "uncheck"), % "Caps Lock"
+		menu, keylockMenu, % (_S.numState ? "check" : "uncheck"), % "Num Lock"
+		menu, keylockMenu, % (_S.scrollState ? "check" : "uncheck"), % "Scroll Lock"
 	}
 
 
 
-	setHotkeys(){
+	getKeyStates(){
 		_S := this._Settings
 
-		checkMenuItems := ObjBindMethod(this, "checkMenuItems")
+		_S.capsState := GetKeyState("CapsLock", "T")
+		_S.numState := GetKeyState("NumLock", "T")
+		_S.scrollState := GetKeyState("ScrollLock", "T")
+	}
 
-		Hotkey, ~CapsLock, % checkMenuItems, % "on"
-		Hotkey, ~NumLock, % checkMenuItems, % "on"
-		Hotkey, ~ScrollLock, % checkMenuItems, % "on"
+
+
+	setHotkeys(state){
+		_S := this._Settings
+		state := isTruthy(state)
+
+		setKeyLock := ObjBindMethod(this, "setKeyLock")
+
+		Hotkey, ~CapsLock, % setKeyLock, % (state ? "on" : "off")
+		Hotkey, ~NumLock, % setKeyLock, % (state ? "on" : "off")
+		Hotkey, ~ScrollLock, % setKeyLock, % (state ? "on" : "off")
 	}
 
 
@@ -74,6 +86,7 @@ class Module__KeyLocks {
 				SetScrollLockState % !GetKeyState("ScrollLock", "T")
 		}
 
+		this.getKeyStates()
 		this.checkMenuItems()
 	}
 }

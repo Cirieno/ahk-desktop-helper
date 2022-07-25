@@ -105,7 +105,7 @@ populateGlobalVars(){
 #include *i .\modules\volume.module.ahk
 loadModules(){
 	local e
-	local _M = {}
+	local _M := {}
 
 	try {
 		_M.KeyLocks := new Module__KeyLocks
@@ -179,7 +179,7 @@ doMenuItem__about(){
 
 
 doMenuItem__editIni(){
-	local _A = __Settings.apps
+	local _A := __Settings.apps
 
 	runwait % _A["Notepad"].location . " user_settings.ini"
 	if (errorLevel == 0){
