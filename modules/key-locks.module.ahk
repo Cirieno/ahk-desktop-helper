@@ -19,7 +19,7 @@ class Module__KeyLocks {
 
 		this.drawMenu()
 
-		this.setHotkeys("on")
+		this.setHotkeys("on", false)
 	}
 
 
@@ -42,9 +42,9 @@ class Module__KeyLocks {
 	checkMenuItems(){
 		_S := this._Settings
 
-		menu, keylockMenu, % (_S.capsState ? "check" : "uncheck"), % "Caps Lock"
-		menu, keylockMenu, % (_S.numState ? "check" : "uncheck"), % "Num Lock"
-		menu, keylockMenu, % (_S.scrollState ? "check" : "uncheck"), % "Scroll Lock"
+		menu, keylockMenu, % (_S.capsActive ? "check" : "uncheck"), % "Caps Lock"
+		menu, keylockMenu, % (_S.numActive ? "check" : "uncheck"), % "Num Lock"
+		menu, keylockMenu, % (_S.scrollActive ? "check" : "uncheck"), % "Scroll Lock"
 	}
 
 
@@ -52,14 +52,14 @@ class Module__KeyLocks {
 	getKeyStates(){
 		_S := this._Settings
 
-		_S.capsState := GetKeyState("CapsLock", "T")
-		_S.numState := GetKeyState("NumLock", "T")
-		_S.scrollState := GetKeyState("ScrollLock", "T")
+		_S.capsActive := isTruthy(GetKeyState("CapsLock", "T"))
+		_S.numActive := isTruthy(GetKeyState("NumLock", "T"))
+		_S.scrollActive := isTruthy(GetKeyState("ScrollLock", "T"))
 	}
 
 
 
-	setHotkeys(state){
+	setHotkeys(state, notify := false){
 		_S := this._Settings
 		state := isTruthy(state)
 
@@ -89,4 +89,7 @@ class Module__KeyLocks {
 		this.getKeyStates()
 		this.checkMenuItems()
 	}
+
+; //
+; TODO: might need a background check as states might be changed by other apps
 }
