@@ -1,1 +1,1 @@
-# desktop-helper
+# ahk-desktop-helper
