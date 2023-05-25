@@ -10,88 +10,70 @@ class Module__SwapMouseButtons {
 			, menuLabel: "Swap mouse buttons"
 			, checkInterval: 10000 }
 		_S.active := this.getMouseButtonState()
-
 		if (!_S.enabled){
 			return
 		}
-
 		this.drawMenu()
-
-		; TODO: run checkBackgroundChange timer
-
 		if (_S.activateOnLoad){
 			_S.active := true
 			this.setMouseButtonState(_S.active, false)
-			this.checkMenuItems()
+			this.tickMenuItems()
 		}
 	}
-
-
-
 	drawMenu(){
 		_S := this._Settings
-
 		toggleActive := ObjBindMethod(this, "toggleActive")
-
 		menu mouseMenu, add, % _S.menuLabel, % toggleActive
 		menu tray, add, % _S.parentMenuLabel, :mouseMenu
-
-		this.checkMenuItems()
+		this.tickMenuItems()
 	}
-
-
-
-	checkMenuItems(){
+	tickMenuItems(){
 		_S := this._Settings
-
 		menu mouseMenu, % (_S.active ? "check" : "uncheck"), % _S.menuLabel
 	}
-
-
-
 	toggleActive(){
 		_S := this._Settings
-
 		_S.active := !_S.active
 		this.setMouseButtonState(_S.active, false)
-		this.checkMenuItems()
+		this.tickMenuItems()
 	}
-
-
-
 	getMouseButtonState(){
 		regKey := "HKEY_CURRENT_USER\Control Panel\Mouse"
 		regValue := "SwapMouseButtons"
 		regType := "REG_SZ"
-
 		regRead val, % regKey, % regValue
 		return isTruthy(val)
 	}
-
-
-
 	setMouseButtonState(state, notify := false){
 		_S := this._Settings
 		state := isTruthy(state)
 		notify := isTruthy(notify)
-
 		regKey := "HKEY_CURRENT_USER\Control Panel\Mouse"
 		regValue := "SwapMouseButtons"
 		regType := "REG_SZ"
-
 		regWrite % regType, % regKey, % regValue, % (state ? 1 : 0)
 		dllCall("SwapMouseButton", int, (state ? 1 : 0))
-
-		; if (state){
-		; 	checkBackgroundChange := ObjBindMethod(this, "checkBackgroundChange")
-		; 	setTimer % checkBackgroundChange, % _S.checkInterval
-		; }
-
-		; ; sendMsg("SwapMouseButtons is now " . (_S.active ? "ON" : "OFF") . "`n" . "PRIMARY => " . (_S.active ? "RIGHT" : "LEFT"), "", _objSettings.app.tray.msgTimeout)
 	}
+}
 
 
 
+
+
+
+
+
+
+
+
+
+
+; if (state){
+; 	checkBackgroundChange := ObjBindMethod(this, "checkBackgroundChange")
+; 	setTimer % checkBackgroundChange, % _S.checkInterval
+; }
+
+; ; sendMsg("SwapMouseButtons is now " . (_S.active ? "ON" : "OFF") . "`n" . "PRIMARY => " . (_S.active ? "RIGHT" : "LEFT"), "", _objSettings.app.tray.msgTimeout)
 	; checkBackgroundChange(){
 	; 	_S := this._Settings
 
@@ -104,4 +86,3 @@ class Module__SwapMouseButtons {
 	; 		}
 	; 	}
 	; }
-}

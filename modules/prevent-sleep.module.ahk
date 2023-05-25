@@ -1,103 +1,64 @@
 class Module__PreventSleep {
 	__New(){
-		this.moduleName := "PreventSleep"
-		this.settings := {_:_
-			, moduleName: this.moduleName
-			, enabled: getIniVal(this.moduleName . "\enabled", false)
-			, activeOnInit: getIniVal(this.moduleName . "\active", false)
-			, active: false
-			, notify: getIniVal(this.moduleName . "\notify", false)
-			, menuLabel: "Prevent sleep"
+		moduleName := "PreventSleep"
+		_S := this._Settings := {0:0
+			, moduleName: moduleName
+			, enabled: getIniVal(moduleName . "\enabled", false)
+			, activateOnLoad: getIniVal(moduleName . "\active", false)
+			, notifyUser: getIniVal(moduleName . "\notify", false)
+			, menuLabelParent: "Timers"
+			, menuLabel: "Prevent Sleep"
 			, checkInterval: 1000
-			, checkTimeout: (1000 * 60 * 5)     ;// every 5 minutes
-			, moveCount: 0 }
-		_S := this.settings
-
-		_S.enabled := (_S.activeOnInit ? true : _S.enabled)
-		this.enabled := _S.enabled
-
-		; _S.active := this.checkIsActive()
-		this.setActive(((_S.enabled && _S.activeOnInit) || _S.active),  false)
-	}
-
-
-	toggleActive(){
-		_S := this.settings
-		if (!_S.enabled) {
+			, moveTimeout: getIniVal(moduleName . "\timeoutMins", 5) * 60000
+			, moveCounter: 0 }
+		_S.active := false
+		if (!_S.enabled){
 			return
 		}
-
-		this.setActive(!_S.active, _S.notify)
+		this.drawMenu()
+		this.SPST := ObjBindMethod(this, "setPreventSleep__timer")
+		this.setPreventSleep(_S.activateOnLoad, false)
 	}
-
-
-	setActive(action := false, notify := false) {
-		_S := this.settings
-		if (!_S.enabled) {
-			return
-		}
-
-		_S.active := action
-		_S.moveCount := 0
-
-		if (action) {
-			checkBackgroundChange := ObjBindMethod(this, "checkBackgroundChange")
-			setTimer % checkBackgroundChange, % _S.checkInterval
-		}
-
-		__tickMenuItem("tray", (_S.active ? "check" : "uncheck"), _S.menuLabel)
-		__notify(_S.moduleName, notify, _S.active)
-	}
-
-
-	checkBackgroundChange(){
-		_S := this.settings
-		if (!_S.enabled) {
-			return
-		}
-
-		; __sendMsg(A_Now, _S.moduleName,, ahkMsgFormatTooltip)
-
-		if (!_S.active) {
-			setTimer ,, delete
-		} else {
-			if (A_TimeIdle >= _S.checkTimeout) {
-				send {RShift}
-				_S.moveCount += 1
-			}
-			this.sendDebugMsg("timeIdle = " . A_TimeIdle . " / " . _S.checkTimeout . "`nmoveCount = " . _S.moveCount)
-		}
-	}
-
-
-	sendDebugMsg(text := ""){
-		_S := this.settings
-		if (!_S.enabled) {
-			return
-		}
-
-		if (__D.enabled && __D.active){
-			__sendMsg(text, _S.moduleName,, ahkMsgFormatTooltip)
-		}
-	}
-
-
-	drawMenuItems(){
-		_S := this.settings
-		if (!_S.enabled) {
-			return
-		}
-
+	drawMenu(){
+		_S := this._Settings
 		toggleActive := ObjBindMethod(this, "toggleActive")
-		menu tray, add, % _S.menuLabel, % toggleActive
-		__tickMenuItem("tray", (_S.active ? "check" : "uncheck"), _S.menuLabel)
+		menu, tray, UseErrorLevel
+		menu tray, rename, % _S.menuLabelParent, % _S.menuLabelParent
+		if (ErrorLevel){
+			menu timersMenu, add, % _S.menuLabel, % toggleActive
+			menu tray, add, % _S.menuLabelParent, :timersMenu
+		}
+		else {
+			menu timersMenu, add
+			menu timersMenu, add, % _S.menuLabel, % toggleActive
+		}
+		menu, tray, UseErrorLevel, "off"
+		this.tickMenuItems()
+	}
+	tickMenuItems(){
+		_S := this._Settings
+		menu timersMenu, % (_S.active ? "check" : "uncheck"), % _S.menuLabel
+	}
+	toggleActive(){
+		_S := this._Settings
+		this.setPreventSleep(!_S.active, false)
+	}
+	setPreventSleep(action := false, notify := false) {
+		_S := this._Settings
+		_S.active := action
+		_S.moveCounter := 0
+		if (_S.active){
+			this.SPST()
+		}
+		SPST := this.SPST
+		setTimer % SPST, % (_S.active ? _S.checkInterval : "delete")
+		this.tickMenuItems()
+	}
+	setPreventSleep__timer() {
+		_S := this._Settings
+		if (A_TimeIdle >= _S.moveTimeout) {
+			send {PrintScreen}
+			_S.moveCounter += 1
+		}
 	}
 }
-
-
-
-
-; this.timer := ObjBindMethod(this, "checkBackgroundChange")
-; timer := this.timer
-; wibble := this.checkBackgroundChange.bind(this)
-; wibble := ObjBindMethod(this, "checkBackgroundChange")

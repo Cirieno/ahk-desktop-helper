@@ -5,25 +5,18 @@ class Module__Volume {
 			, moduleName: moduleName
 			, enabled: getIniVal(moduleName . "\enabled", false)
 			, notifyUser: getIniVal(moduleName . "\notify", false)
-			, parentMenuLabel: "Volume"
+			, menuLabel: "Volume"
 			, useTens: isTruthy(getIniVal(moduleName . "\includeTens", false))
 			, useQuarters: isTruthy(getIniVal(moduleName . "\includeQuarters", false))
 			, useThirds: isTruthy(getIniVal(moduleName . "\includeThirds", false)) }
-
 		if (!_S.enabled){
 			return
 		}
-
 		this.drawMenu()
 	}
-
-
-
 	drawMenu(){
 		_S := this._Settings
-
 		setVolume := ObjBindMethod(this, "setVolume")
-
 		menu volumeMenu, add, % "MUTE", % setVolume
 		menu volumeMenu, add
 		if (_S.useTens){
@@ -57,20 +50,10 @@ class Module__Volume {
 				menu volumeMenu, add, % "75", % setVolume
 			}
 		}
-		; if (_S.useThirds){
-		; 	if (_S.useQuarters or _S.useTens){
-		; 		menu volumeMenu, add
-		; 	}
-		; 	menu volumeMenu, add, % "33", % setVolume
-		; 	menu volumeMenu, add, % "66", % setVolume
-		; }
 		menu volumeMenu, add
 		menu volumeMenu, add, % "100", % setVolume
-		menu tray, add, % _S.parentMenuLabel, :volumeMenu
+		menu tray, add, % _S.menuLabel, :volumeMenu
 	}
-
-
-
 	setVolume(vol){
 		if (vol == "MUTE"){
 			soundSet 1, MASTER, MUTE
@@ -79,9 +62,6 @@ class Module__Volume {
 			soundSet 0, MASTER, MUTE
 		}
 	}
-
-
-
 	getVolume(){
 		soundGet vol, MASTER, VOLUME
 		return % round(vol)

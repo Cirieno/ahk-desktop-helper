@@ -1,3 +1,9 @@
+; ? = triggered even when the character typed immediately before it is alphanumeric
+; * = immediate change (no need for space, period, or enter)
+; C = case sensitive
+; C1 = ignore the case that was typed, always use the same case for output
+; R = raw output
+;
 ;------------------------------------------------------------------------------
 ; Changes by CHRISTIAN and ALEX
 ; Original by biancolo.com found here http://www.autohotkey.com/download/OtherDownloads.htm
@@ -68,6 +74,7 @@
 ;Added by Christian April 2010
 ; #NoTrayIcon
 
+; msgbox % "autocorrect loaded"
 
 ;------------------------------------------------------------------------------
 ; Settings
@@ -101,7 +108,7 @@ Return
 ;------------------------------------------------------------------------------
 ; Fix for -ign instead of -ing.
 ; Words to exclude: (could probably do this by return without rewrite)
-; From: http://www.morewords.com/ends-with/gn/
+; From: http://www.morewords.com/e nds-with/gn/
 ;------------------------------------------------------------------------------
 #Hotstring B0  ; Turns off automatic backspacing for the following hotstrings.
 ::align::
@@ -5235,26 +5242,26 @@ return  ; This makes the above hotstrings do nothing so that they override the i
 ;-------------------------------------------------------------------------------
 ;  Capitalise dates
 ;-------------------------------------------------------------------------------
-::monday::Monday
-::tuesday::Tuesday
-::wednesday::Wednesday
-::thursday::Thursday
-::friday::Friday
-::saturday::Saturday
-::sunday::Sunday
+:C:monday::Monday
+:C:tuesday::Tuesday
+:C:wednesday::Wednesday
+:C:thursday::Thursday
+:C:friday::Friday
+:C:saturday::Saturday
+:C:sunday::Sunday
 
-::january::January
-::february::February
-; ::march::March  ; Commented out because it matches the common word "march".
-::april::April
-; ::may::May  ; Commented out because it matches the common word "may".
-::june::June
-::july::July
-::august::August
-::september::September
-::october::October
-::november::November
-::december::December
+:C:january::January
+:C:february::February
+; :C:march::March  ; Commented out because it matches the common word "march".
+:C:april::April
+; :C:may::May  ; Commented out because it matches the common word "may".
+:C:june::June
+:C:july::July
+:C:august::August
+:C:september::September
+:C:october::October
+:C:november::November
+:C:december::December
 
 ;-------------------------------------------------------------------------------
 ; New misspellings from https://gist.github.com/876629
@@ -5283,7 +5290,7 @@ return  ; This makes the above hotstrings do nothing so that they override the i
 ::htan::than
 ::htme::them
 ::hz::Hz
-; ::i::I ;Breaks insertion key (i) in Vim
+; ::I::I ;Breaks insertion key (i) in Vim
 ::imaginig::imagining
 ::ipmedance::impedance
 ::ive::I've
@@ -5316,3 +5323,34 @@ return  ; This makes the above hotstrings do nothing so that they override the i
 ;-------------------------------------------------------------------------------
 ; Anything below this point was added to the script by the user via the Win+H hotkey.
 ;-------------------------------------------------------------------------------
+
+::adevtnure::adventure
+::alwsy::always
+::aparently::apparently
+::baords::boards
+::boolaen::boolean
+::broswer::browser
+::champaign::champagne
+::clipbaord::clipboard
+::corect::correct
+::corrceted::corrected
+::dekstop::desktop
+::haedline::headline
+::helpdeks::helpdesk
+::herlper::helper;
+::itneger::integer
+::javascrtip::javascript
+::ocming::coming
+::oslid::solid
+::peroprty::property
+::preropty::property
+::quesystring::querystring
+::resposne::response
+::retrun::return
+::satrted::started
+::statsu::status
+::you'r e::you're
+
+:C:THankyou::Thankyou
+:C:WHat::What
+:C:YEah::Yeah

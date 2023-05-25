@@ -9,61 +9,40 @@ class Module__UserHotkeys {
 			, parentMenuLabel: "Hotkeys"
 			, menuLabel: "User hotkeys" }
 		_S.active := false
-
 		if (!_S.enabled){
 			return
 		}
-
 		this.drawMenu()
-
 		if (_S.activateOnLoad){
 			_S.active := true
 			this.setHotkeys(_S.active, false)
-			this.checkMenuItems()
+			this.tickMenuItems()
 		}
 	}
-
-
-
 	drawMenu(){
 		_S := this._Settings
-
 		toggleActive := ObjBindMethod(this, "toggleActive")
 		editHotkeys := ObjBindMethod(this, "editHotkeys")
-
 		menu hotkeyMenu, add, % _S.menuLabel, % toggleActive
 		menu hotkeyMenu, add
 		menu hotkeyMenu, add, % "Edit " . _S.menuLabel . "...", % editHotkeys
 		menu tray, add, % _S.parentMenuLabel, :hotkeyMenu
-
-		this.checkMenuItems()
+		this.tickMenuItems()
 	}
-
-
-
-	checkMenuItems(){
+	tickMenuItems(){
 		_S := this._Settings
-
 		menu hotkeyMenu, % (_S.active ? "check" : "uncheck"), % _S.menuLabel
 	}
-
-
-
 	toggleActive(){
 		_S := this._Settings
-
 		_S.active := !_S.active
 		this.setHotkeys(_S.active, true)
-		this.checkMenuItems()
+		this.tickMenuItems()
 	}
-
-
-
 	setHotkeys(state, notify := false){
 		_S := this._Settings
 		state := isTruthy(state)
 		notify := isTruthy(notify)
-
 		Loop, read, .\user_hotkeys.txt
 		{
 			pos := RegExMatch(A_LoopReadLine, "^(?:\s*;)?(.*)::(.*)$", matches)
@@ -75,12 +54,8 @@ class Module__UserHotkeys {
 			}
 		}
 	}
-
-
-
 	editHotkeys(){
 		_S := this._Settings
-
 		runwait % __Settings.apps["Notepad"].location . " user_hotkeys.txt"
 		if (errorLevel == 0){
 			reload

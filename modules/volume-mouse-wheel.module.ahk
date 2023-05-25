@@ -6,84 +6,52 @@ class Module__VolumeMouseWheel {
 			, enabled: getIniVal(moduleName . "\enabled", false)
 			, activateOnLoad: getIniVal(moduleName . "\active", false)
 			, notifyUser: getIniVal(moduleName . "\notify", false)
-			, parentMenuLabel: "Volume"
+			, menuLabelParent: "Volume"
 			, menuLabel: "Wheel over Systray"
-			, checkInterval: 200
 			, step: getIniVal(moduleName . "\step", 3)
 			, tooltipLabel: "Volume: " }
 		_S.active := false
-
 		if (!_S.enabled){
 			return
 		}
-
 		this.drawMenu()
-
-		if (_S.activateOnLoad){
-			_S.active := true
-			this.setHotkeys(_S.active, false)
-			this.checkMenuItems()
-		}
+		this.CML := ObjBindMethod(this, "checkMouseLocation")
+		this.setHotkeys(_S.activateOnLoad, false)
 	}
-
-
-
 	drawMenu(){
 		_S := this._Settings
-
 		toggleActive := ObjBindMethod(this, "toggleActive")
-
 		menu, tray, UseErrorLevel
-		menu tray, rename, % _S.parentMenuLabel, % _S.parentMenuLabel
+		menu tray, rename, % _S.menuLabelParent, % _S.menuLabelParent
 		if (ErrorLevel){
 			menu volumeMenu, add, % _S.menuLabel, % toggleActive
-			menu tray, add, % _S.parentMenuLabel, :volumeMenu
-			}
+			menu tray, add, % _S.menuLabelParent, :volumeMenu
+		}
 		else {
 			menu volumeMenu, add
 			menu volumeMenu, add, % _S.menuLabel, % toggleActive
-			}
+		}
 		menu, tray, UseErrorLevel, "off"
-
-		this.checkMenuItems()
+		this.tickMenuItems()
 	}
-
-
-
-	checkMenuItems(){
+	tickMenuItems(){
 		_S := this._Settings
-
 		menu volumeMenu, % (_S.active ? "check" : "uncheck"), % _S.menuLabel
 	}
-
-
-
 	toggleActive(){
 		_S := this._Settings
-
-		_S.active := !_S.active
-		this.setHotkeys(_S.active, true)
-		this.checkMenuItems()
+		this.setHotkeys(!_S.active, true)
 	}
-
-
-
-	setHotkeys(state, notify := false){
+	setHotkeys(action, notify := false){
 		_S := this._Settings
-		state := isTruthy(state)
-		notify := isTruthy(notify)
-
-		checkMouseLocation := ObjBindMethod(this, "checkMouseLocation")
-
-		hotkey ~WheelUp, % checkMouseLocation, % (state ? "on" : "off")
-		hotkey ~WheelDown, % checkMouseLocation, % (state ? "on" : "off")
+		_S.active := action
+		CML := this.CML
+		hotkey ~WheelUp, % CML, % (action ? "on" : "off")
+		hotkey ~WheelDown, % CML, % (action ? "on" : "off")
+		this.tickMenuItems()
 	}
-
-
-
 	checkMouseLocation(){
 		_S := this._Settings
-
 		grpSysTrayControlNames := ["Button2", "ToolbarWindow323", "TrayButton1", "TrayClockWClass1", "TrayNotifyWnd1", "TrayShowDesktopButtonWClass1"]
 		MouseGetPos x, y, winUID, winControl
 		if isInArray(grpSysTrayControlNames, winControl){
@@ -91,16 +59,10 @@ class Module__VolumeMouseWheel {
 			tooltipMsg(_S.tooltipLabel . this.getVolume(),, 1000)
 		}
 	}
-
-
-
 	setVolume(vol){
 		soundSet vol, MASTER, VOLUME
 		soundSet 0, MASTER, MUTE
 	}
-
-
-
 	getVolume(){
 		soundGet vol, MASTER, VOLUME
 		return % round(vol)

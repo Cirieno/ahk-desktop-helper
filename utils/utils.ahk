@@ -1,4 +1,4 @@
-;#region
+;#region []
 getIniVal(nodeName := "", defaultVal := "") {
 	arr := strSplit(nodeName, "\")
 	IniRead nodeVal, % A_WorkingDir . "\user_settings.ini", % arr[1], % arr[2]
@@ -20,22 +20,27 @@ getIniVal(nodeName := "", defaultVal := "") {
 	; }
 	return nodeVal
 }
-;#endregion
+;#endregion []
 
 
-
-;#region
+;#region []
 isBoolean(val) {
 	return (val == 1 || val == 0)
 }
+
+
 isTruthy(val) {
 	StringUpper val, val
 	return (val == 1 || val == "1" || val == "T" || val == "TRUE" || val == "ENABLED" || val == "ACTIVE" || val == "ON")
 }
+
+
 isFalsy(val) {
 	StringUpper val, val
 	return (val == 0 || val == "0" || val = "" || val == "F" || val == "FALSE" || val == "DISABLED" || val == "DEACTIVE" || val == "INACTIVE" || val == "OFF")
 }
+
+
 isInArray(haystack, needle) {
 	for ii, val in haystack {
 		if (val == needle) {
@@ -44,10 +49,10 @@ isInArray(haystack, needle) {
 	}
 	return false
 }
+;#endregion []
 
 
-
-;#region CUSTOM TOOLTIP / MSGBOX / TOAST
+;#region [CUSTOM TOOLTIP / MSGBOX / TOAST]
 /**
  * @param {string} text - Body text
  * @param {string} [title] - Headline text
@@ -66,9 +71,13 @@ sendMsg(text := "", title := "", timeout := 5000, ahkMsgFormat := 0) {
 	; 		}
 	; }
 }
+
+
 __sendMsg(text := "", title := "", timeout := 5000, ahkMsgFormat := 0){
 	; sendMsg(text, title, timeout, ahkMsgFormat)
 }
+
+
 tooltipMsg(text := "", title := "", timeout := 5000, id := 1) {
 	local _A := __Settings.app
 	local _T := __Settings.app.tray
@@ -76,32 +85,32 @@ tooltipMsg(text := "", title := "", timeout := 5000, id := 1) {
 	tooltip % _T.traytip . "`n" . (strLen(title) > 0 ? title . "`n" : "") . text,,, % id
 	setTimer clearTooltip, % (timeout * -1)
 }
+
+
 clearTooltip(){
 	tooltip
 }
+
+
 msgboxMsg(text := "", title := "", timeout := 5000) {
 	; title := (strlen(title) > 0 ? title : _objSettings.app.title)
 	; msgBox 8192, % title, % text, % timeout
 }
+
+
 toastMsg(text := "", title := "", timeout := 5000) {
 	; traytip % (strLen(title) ? title : null), % text
 }
-;#endregion CUSTOM TOOLTIP + MSGBOX + TOAST
+;#endregion [CUSTOM TOOLTIP + MSGBOX + TOAST]
 
 
-
-;//
-
-; //
-
-
-
-; //
+;#region []
 getAppEnvironmentDomain(){
 	envGet val, USERDOMAIN
 	return val
 }
-; //
+;#endregion []
+
 
 
 ; SetTimer, % WatchCursor, 100
@@ -115,11 +124,8 @@ getAppEnvironmentDomain(){
 
 
 
-
-
 ; OLD OLD OLD (but not necessarily wrong)
 ; -------------------------------------
-
 
 
 ;#region CUSTOM TOOLTIP / MSGBOX / TOAST
@@ -147,7 +153,6 @@ getAppEnvironmentDomain(){
 ; 	}
 ; }
 ;#endregion CUSTOM TOOLTIP + MSGBOX + TOAST
-
 
 
 ; ;//
