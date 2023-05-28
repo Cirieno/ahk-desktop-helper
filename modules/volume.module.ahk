@@ -1,69 +1,112 @@
 class Module__Volume {
-	__New(){
-		moduleName := "Volume"
-		_S := this._Settings := {0:0
-			, moduleName: moduleName
-			, enabled: getIniVal(moduleName . "\enabled", false)
-			, notifyUser: getIniVal(moduleName . "\notify", false)
-			, menuLabel: "Volume"
-			, useTens: isTruthy(getIniVal(moduleName . "\includeTens", false))
-			, useQuarters: isTruthy(getIniVal(moduleName . "\includeQuarters", false))
-			, useThirds: isTruthy(getIniVal(moduleName . "\includeThirds", false)) }
-		if (!_S.enabled){
+	__Init() {
+		this.moduleName := moduleName := "Volume"
+
+		_Settings.modules[moduleName] := this.M_Settings := {
+			moduleName: moduleName,
+			enabled: getIniVal(moduleName . "\enabled", false),
+			; notifyUser: getIniVal(moduleName . "\notify", false)
+			parentMenuLabel: "[root]",
+			menuLabel: "Volume",
+			useTens: getIniVal(moduleName . "\includeTens", false),
+			useQuarters: getIniVal(moduleName . "\includeQuarters", false),
+			useThirds: getIniVal(moduleName . "\includeThirds", false)
+		}
+	}
+
+
+	__New() {
+		if (this.M_Settings.enabled == false) {
 			return
 		}
+
+		local tickMenuItems := ObjBindMethod(this, "tickMenuItems")
+		SetTimer(tickMenuItems, 1000)
+
 		this.drawMenu()
 	}
-	drawMenu(){
-		_S := this._Settings
-		setVolume := ObjBindMethod(this, "setVolume")
-		menu volumeMenu, add, % "MUTE", % setVolume
-		menu volumeMenu, add
-		if (_S.useTens){
-			menu volumeMenu, add, % "10", % setVolume
-			menu volumeMenu, add, % "20", % setVolume
-			menu volumeMenu, add, % "30", % setVolume
-			menu volumeMenu, add, % "40", % setVolume
-			menu volumeMenu, add, % "50", % setVolume
-			menu volumeMenu, add, % "60", % setVolume
-			menu volumeMenu, add, % "70", % setVolume
-			menu volumeMenu, add, % "80", % setVolume
-			menu volumeMenu, add, % "90", % setVolume
+
+
+	drawMenu() {
+		local _MS := this.M_Settings
+		local doMenuItem := ObjBindMethod(this, "doMenuItem")
+
+		this.moduleMenu := moduleMenu := Menu()
+		moduleMenu.Add("MUTE", doMenuItem)
+		moduleMenu.Add()
+		if (_MS.useTens) {
+			moduleMenu.Add("10", doMenuItem)
+			moduleMenu.Add("20", doMenuItem)
+			moduleMenu.Add("30", doMenuItem)
+			moduleMenu.Add("40", doMenuItem)
+			moduleMenu.Add("50", doMenuItem)
+			moduleMenu.Add("60", doMenuItem)
+			moduleMenu.Add("70", doMenuItem)
+			moduleMenu.Add("80", doMenuItem)
+			moduleMenu.Add("90", doMenuItem)
 		}
-		if (_S.useQuarters or _S.useThirds){
-			if (_S.useTens){
-				menu volumeMenu, add
-			}
-			if (_S.useQuarters){
-				menu volumeMenu, add, % "25", % setVolume
-			}
-			if (_S.useThirds){
-				menu volumeMenu, add, % "33", % setVolume
-			}
-			if (_S.useQuarters){
-				menu volumeMenu, add, % "50", % setVolume
-			}
-			if (_S.useThirds){
-				menu volumeMenu, add, % "66", % setVolume
-			}
-			if (_S.useQuarters){
-				menu volumeMenu, add, % "75", % setVolume
-			}
+		if (_MS.useQuarters) {
+			; moduleMenu.Add(" ", doMenuItem, "+Break +BarBreak")
+			moduleMenu.Add()
+			moduleMenu.Add("25", doMenuItem)
+			moduleMenu.Add("50", doMenuItem)
+			moduleMenu.Add("75", doMenuItem)
 		}
-		menu volumeMenu, add
-		menu volumeMenu, add, % "100", % setVolume
-		menu tray, add, % _S.menuLabel, :volumeMenu
+		if (_MS.useThirds) {
+			; moduleMenu.Add(" ", doMenuItem, "+Break +BarBreak")
+			moduleMenu.Add()
+			moduleMenu.Add("33", doMenuItem)
+			moduleMenu.Add("66", doMenuItem)
+		}
+		moduleMenu.Add("100", doMenuItem)
+
+		local trayMenu := A_TrayMenu
+		trayMenu.Add(_MS.menuLabel, moduleMenu)
+
+		this.tickMenuItems()
 	}
-	setVolume(vol){
-		if (vol == "MUTE"){
-			soundSet 1, MASTER, MUTE
+
+
+	tickMenuItems() {
+		local moduleMenu := this.moduleMenu
+
+		mute := isTruthy(SoundGetMute())
+		vol := integer(SoundGetVolume())
+
+		if (mute == true) {
+			moduleMenu.Check("MUTE")
 		} else {
-			soundSet vol, MASTER, VOLUME
-			soundSet 0, MASTER, MUTE
+			moduleMenu.Uncheck("MUTE")
+			(vol == 10 ? moduleMenu.Check("10") : moduleMenu.Uncheck("10"))
+			(vol == 20 ? moduleMenu.Check("20") : moduleMenu.Uncheck("20"))
+			(vol == 25 ? moduleMenu.Check("25") : moduleMenu.Uncheck("25"))
+			(vol == 30 ? moduleMenu.Check("30") : moduleMenu.Uncheck("30"))
+			(vol == 33 ? moduleMenu.Check("33") : moduleMenu.Uncheck("33"))
+			(vol == 40 ? moduleMenu.Check("40") : moduleMenu.Uncheck("40"))
+			(vol == 50 ? moduleMenu.Check("50") : moduleMenu.Uncheck("50"))
+			(vol == 60 ? moduleMenu.Check("60") : moduleMenu.Uncheck("60"))
+			(vol == 66 ? moduleMenu.Check("66") : moduleMenu.Uncheck("66"))
+			(vol == 70 ? moduleMenu.Check("70") : moduleMenu.Uncheck("70"))
+			(vol == 75 ? moduleMenu.Check("75") : moduleMenu.Uncheck("75"))
+			(vol == 80 ? moduleMenu.Check("80") : moduleMenu.Uncheck("80"))
+			(vol == 90 ? moduleMenu.Check("90") : moduleMenu.Uncheck("90"))
+			(vol == 100 ? moduleMenu.Check("100") : moduleMenu.Uncheck("100"))
 		}
 	}
-	getVolume(){
-		soundGet vol, MASTER, VOLUME
-		return % round(vol)
+
+
+	doMenuItem(name, position, menu) {
+		this.setVolume(name)
+		this.tickMenuItems()
+	}
+
+
+	setVolume(vol) {
+		if (vol == "MUTE") {
+			SoundSetMute(!SoundGetMute())
+		} else {
+			SoundSetVolume(vol)
+			SoundSetMute(false)
+		}
 	}
 }

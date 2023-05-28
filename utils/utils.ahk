@@ -1,7 +1,11 @@
 ;#region []
+; TODO: check if file exists, if not, create it
 getIniVal(nodeName := "", defaultVal := "") {
 	arr := strSplit(nodeName, "\")
-	IniRead nodeVal, % A_WorkingDir . "\user_settings.ini", % arr[1], % arr[2]
+	; TODO: check section and attr exists
+	; MsgBox(A_WorkingDir . "\user_settings.ini" . arr[1] . arr[2])
+	nodeVal := IniRead(A_WorkingDir . "\user_settings.ini", arr[1], arr[2])
+	;IniRead nodeVal, % A_WorkingDir . "\user_settings.ini", % arr[1], % arr[2]
 	if (nodeVal == "ERROR") {
 		return defaultVal
 	}
@@ -30,13 +34,13 @@ isBoolean(val) {
 
 
 isTruthy(val) {
-	StringUpper val, val
+	val := StrUpper(val)
 	return (val == 1 || val == "1" || val == "T" || val == "TRUE" || val == "ENABLED" || val == "ACTIVE" || val == "ON")
 }
 
 
 isFalsy(val) {
-	StringUpper val, val
+	val := StrUpper(val)
 	return (val == 0 || val == "0" || val = "" || val == "F" || val == "FALSE" || val == "DISABLED" || val == "DEACTIVE" || val == "INACTIVE" || val == "OFF")
 }
 
@@ -48,6 +52,14 @@ isInArray(haystack, needle) {
 		}
 	}
 	return false
+}
+
+
+join(params, sep) {
+	for index, param in params {
+		str .= param . sep
+	}
+	return SubStr(str, 1, -StrLen(sep))
 }
 ;#endregion []
 
@@ -64,7 +76,7 @@ sendMsg(text := "", title := "", timeout := 5000, ahkMsgFormat := 0) {
 	; 			tooltipMsg(text, title, timeout)
 	; 		}
 	; 	case ahkMsgFormatMsgbox: {
-	; 			msgboxMsg(text, title, timeout)
+	; 			customMsgBox(text, title, timeout)
 	; 		}
 	; 	case ahkMsgFormatToast: {
 	; 			toastMsg(text, title)
@@ -73,26 +85,29 @@ sendMsg(text := "", title := "", timeout := 5000, ahkMsgFormat := 0) {
 }
 
 
-__sendMsg(text := "", title := "", timeout := 5000, ahkMsgFormat := 0){
+__sendMsg(text := "", title := "", timeout := 5000, ahkMsgFormat := 0) {
 	; sendMsg(text, title, timeout, ahkMsgFormat)
 }
 
 
 tooltipMsg(text := "", title := "", timeout := 5000, id := 1) {
-	local _A := __Settings.app
-	local _T := __Settings.app.tray
+	local _A := _Settings.app
+	local _T := _Settings.app.tray
 
-	tooltip % _T.traytip . "`n" . (strLen(title) > 0 ? title . "`n" : "") . text,,, % id
-	setTimer clearTooltip, % (timeout * -1)
+	ToolTip(_T.traytip . "`n" . (strLen(title) > 0 ? title . "`n" : "") . text, , , id)
+	SetTimer(clearTooltip, (timeout * -1))
+
+	;tooltip % _T.traytip . "`n" . (strLen(title) > 0 ? title . "`n" : "") . text,,, % id
+	;setTimer clearTooltip, % (timeout * -1)
 }
 
 
-clearTooltip(){
-	tooltip
+clearTooltip() {
+	ToolTip()
 }
 
 
-msgboxMsg(text := "", title := "", timeout := 5000) {
+customMsgBox(text := "", title := "", timeout := 5000) {
 	; title := (strlen(title) > 0 ? title : _objSettings.app.title)
 	; msgBox 8192, % title, % text, % timeout
 }
@@ -105,12 +120,11 @@ toastMsg(text := "", title := "", timeout := 5000) {
 
 
 ;#region []
-getAppEnvironmentDomain(){
-	envGet val, USERDOMAIN
+getAppEnvironmentDomain() {
+	val := EnvGet("USERDOMAIN")
 	return val
 }
 ;#endregion []
-
 
 
 ; SetTimer, % WatchCursor, 100
@@ -120,8 +134,6 @@ getAppEnvironmentDomain(){
 ; 	WinGetClass, class, ahk_id %id%
 ; 	ToolTip, ahk_id %id%`nahk_class %class%`n%title%`nControl: %control%
 ; }
-
-
 
 
 ; OLD OLD OLD (but not necessarily wrong)
@@ -138,7 +150,7 @@ getAppEnvironmentDomain(){
 ; 	tooltip % "" . "=[" . _objSettings.app.title . "]" . "`n" . (strLen(title) > 0 ? title . "`n" : "") . text,,,
 ; 		setTimer clearTooltip, % (timeout * -1)
 ; }
-; msgboxMsg(text := "", title := "", timeout := 5000) {
+; customMsgBox(text := "", title := "", timeout := 5000) {
 ; 	title := (strlen(title) > 0 ? title : _objSettings.app.title)
 ; 	msgBox 8192, % title, % text, % timeout
 ; }
