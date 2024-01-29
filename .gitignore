@@ -1,4 +1,5 @@
 resources/
-AHK Desktop Helper.exe - Shortcut.lnk
 user_settings.ini
-user_hotkeys.txt
+user_autocorrect.txt
+
+.vscode/settings.json
