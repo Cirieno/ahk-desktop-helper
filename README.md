@@ -66,7 +66,7 @@ Turn on or off the Caps Lock, Num Lock, Scroll Lock keys on load.
 
 ### `MouseSwapButtons`
 
-Swap left and right mouse buttons.  Hnady for left-handed people or those like me with intermittent RSI.
+Swap left and right mouse buttons.  Handy for left-handed people or those like me with intermittent RSI.
 
 ### `VolumeMouseWheel`
 
