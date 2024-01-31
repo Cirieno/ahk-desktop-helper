@@ -3,15 +3,20 @@ class module__DesktopFileDialogs {
 		this.moduleName := "DesktopFileDialogs"
 		this.settings := {
 			moduleName: this.moduleName,
-			enabled: getIniVal(this.moduleName, "enabled", false),
+			enabled: getIniVal(this.moduleName, "enabled", true),
 			activateOnLoad: getIniVal(this.moduleName, "on", false),
-			activeStates: { slashes: null },
+			states: {
+				slashes: null
+			},
 			menuLabels: {
 				rootMenu: "Desktop",
 				btns: "Replace fwd slashes in File dialogs"
 			},
 		}
+
+		this.doSettingsFileCheck()
 	}
+
 
 
 	__New() {
@@ -23,6 +28,12 @@ class module__DesktopFileDialogs {
 
 		this.drawMenu()
 	}
+
+
+
+	__Delete() {
+	}
+
 
 
 	drawMenu() {
@@ -46,25 +57,30 @@ class module__DesktopFileDialogs {
 	}
 
 
+
 	tickMenuItems() {
 		try {
 			rootMenu := this.rootMenu
 
-			(this.settings.activeStates.slashes == true ? rootMenu.check(this.settings.menuLabels.btns) : rootMenu.uncheck(this.settings.menuLabels.btns))
+			(this.settings.states.slashes == true ? rootMenu.check(this.settings.menuLabels.btns) : rootMenu.uncheck(this.settings.menuLabels.btns))
+		} catch Error as e {
+			; do nothing
 		}
 	}
+
 
 
 	doMenuItem(name, position, menu) {
 		switch (name) {
-			case this.settings.menuLabels.btns: this.setState("slashes", !this.settings.activeStates.slashes)
+			case this.settings.menuLabels.btns: this.setState("slashes", !this.settings.states.slashes)
 		}
 	}
 
 
+
 	setState(key, state) {
 		switch (key) {
-			case "slashes": this.settings.activeStates.slashes := state
+			case "slashes": this.settings.states.slashes := state
 		}
 
 		this.setHotkeys(state)
@@ -73,18 +89,35 @@ class module__DesktopFileDialogs {
 	}
 
 
+
 	setHotkeys(state) {
 		local doPaste := ObjBindMethod(this, "doPaste")
 
 		HotIfWinactive("ahk_class #32770")
-		Hotstring(":*:/", "\", state)
-		Hotkey("^v", doPaste, state)
+		Hotstring(":*:/", "\", (state ? "on" : "off"))
+		Hotkey("^v", doPaste, (state ? "on" : "off"))
 		HotIfWinactive()
 	}
+
 
 
 	doPaste(text) {
 		clipboardSaved := StrReplace(A_Clipboard, "/", "\")
 		EditPaste(clipboardSaved, ControlGetFocus("A"))
+	}
+
+
+
+	doSettingsFileCheck() {
+		try {
+			IniRead("user_settings.ini", this.moduleName)
+		} catch Error as e {
+			section := join([
+				"[" . this.moduleName . "]",
+				"enabled = " . (this.settings.enabled ? "true" : "false"),
+				"on = " . (this.settings.activateOnLoad ? "true" : "false"),
+			], "`n")
+			FileAppend("`n" . section . "`n", "user_settings.ini")
+		}
 	}
 }

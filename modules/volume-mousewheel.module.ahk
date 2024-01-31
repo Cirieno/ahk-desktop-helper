@@ -1,11 +1,11 @@
 class module__VolumeMouseWheel {
 	__Init() {
 		this.moduleName := "VolumeMouseWheel"
-		this.enabled := getIniVal(this.moduleName, "enabled", false)
+		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
 			moduleName: this.moduleName,
 			enabled: this.enabled,
-			activateOnLoad: getIniVal(this.moduleName, "on", true),
+			activateOnLoad: getIniVal(this.moduleName, "on", false),
 			states: {
 				wheelEnabled: null
 			},
@@ -15,7 +15,10 @@ class module__VolumeMouseWheel {
 			},
 			step: getIniVal(this.moduleName, "step", 3)
 		}
+
+		this.doSettingsFileCheck()
 	}
+
 
 
 	__New() {
@@ -28,6 +31,12 @@ class module__VolumeMouseWheel {
 
 		this.drawMenu()
 	}
+
+
+
+	__Delete() {
+	}
+
 
 
 	drawMenu() {
@@ -52,6 +61,7 @@ class module__VolumeMouseWheel {
 	}
 
 
+
 	tickMenuItems() {
 		try {
 			wheelEnabled := this.settings.states.wheelEnabled
@@ -59,8 +69,11 @@ class module__VolumeMouseWheel {
 			rootMenu := this.rootMenu
 
 			(wheelEnabled == true ? rootMenu.check(menuLabels.btns) : rootMenu.uncheck(menuLabels.btns))
+		} catch Error as e {
+			; do nothing
 		}
 	}
+
 
 
 	doMenuItem(name, position, menu) {
@@ -71,6 +84,7 @@ class module__VolumeMouseWheel {
 			case menuLabels.btns: this.setWheelState(!wheelEnabled)
 		}
 	}
+
 
 
 	setWheelState(state) {
@@ -84,6 +98,7 @@ class module__VolumeMouseWheel {
 	}
 
 
+
 	doWheelChange(name) {
 		trayControls := ["Button2", "ToolbarWindow323", "TrayButton1", "TrayClockWClass1", "TrayNotifyWnd1", "TrayShowDesktopButtonWClass1"]
 		MouseGetPos(&x, &y, &winUID, &winControl)
@@ -95,6 +110,22 @@ class module__VolumeMouseWheel {
 				case "~WheelDown": newVol := Max((vol - this.settings.step), 0)
 			}
 			SoundSetVolume(newVol)
+		}
+	}
+
+
+
+	doSettingsFileCheck() {
+		try {
+			IniRead("user_settings.ini", this.moduleName)
+		} catch Error as e {
+			section := join([
+				"[" . this.moduleName . "]",
+				"enabled = " . (this.settings.enabled ? "true" : "false"),
+				"on = " . (this.settings.activateOnLoad ? "true" : "false"),
+				"step = " . this.settings.step,
+			], "`n")
+			FileAppend("`n" . section . "`n", "user_settings.ini")
 		}
 	}
 }

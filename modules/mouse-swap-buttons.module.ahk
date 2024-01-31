@@ -1,20 +1,24 @@
 class module__MouseSwapButtons {
 	__Init() {
 		this.moduleName := "MouseSwapButtons"
-		this.enabled := getIniVal(this.moduleName, "enabled", false)
+		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
 			moduleName: this.moduleName,
 			enabled: this.enabled,
 			activateOnLoad: getIniVal(this.moduleName, "on", false),
 			states: {
-				buttonsSwapped: null
+				buttonsSwapped: null,
+				onInit: null
 			},
 			menuLabels: {
 				rootMenu: "Mouse",
 				btns: "Swap mouse buttons"
 			}
 		}
+
+		this.doSettingsFileCheck()
 	}
+
 
 
 	__New() {
@@ -23,6 +27,7 @@ class module__MouseSwapButtons {
 		}
 
 		this.settings.states.buttonsSwapped := buttonsSwapped := this.getButtonsState()
+		this.settings.states.onInit := this.getButtonsState()
 		activateOnLoad := this.settings.activateOnLoad
 
 		if (activateOnLoad && !buttonsSwapped) {
@@ -35,6 +40,13 @@ class module__MouseSwapButtons {
 
 		SetTimer(ObjBindMethod(this, "setObservers"), 2000)
 	}
+
+
+
+	__Delete() {
+		this.setButtonsState(this.settings.states.onInit)
+		}
+
 
 
 	drawMenu() {
@@ -59,6 +71,7 @@ class module__MouseSwapButtons {
 	}
 
 
+
 	tickMenuItems() {
 		try {
 			buttonsSwapped := this.settings.states.buttonsSwapped
@@ -66,8 +79,11 @@ class module__MouseSwapButtons {
 			rootMenu := this.rootMenu
 
 			(buttonsSwapped == true ? rootMenu.check(menuLabels.btns) : rootMenu.uncheck(menuLabels.btns))
+		} catch Error as e {
+			; do nothing
 		}
 	}
+
 
 
 	doMenuItem(name, position, menu) {
@@ -80,9 +96,11 @@ class module__MouseSwapButtons {
 	}
 
 
+
 	getButtonsState() {
 		return isTruthy(RegRead("HKEY_CURRENT_USER\Control Panel\Mouse", "SwapMouseButtons"))
 	}
+
 
 
 	setButtonsState(state) {
@@ -95,6 +113,7 @@ class module__MouseSwapButtons {
 	}
 
 
+
 	setObservers() {
 		stateThen := this.settings.states.buttonsSwapped
 		stateNow := this.getButtonsState()
@@ -102,6 +121,21 @@ class module__MouseSwapButtons {
 		if (stateNow !== stateThen) {
 			this.settings.states.buttonsSwapped := stateNow
 			this.tickMenuItems()
+		}
+	}
+
+
+
+	doSettingsFileCheck() {
+		try {
+			IniRead("user_settings.ini", this.moduleName)
+		} catch Error as e {
+			section := join([
+				"[" . this.moduleName . "]",
+				"enabled = " . (this.settings.enabled ? "true" : "false"),
+				"on = " . (this.settings.activateOnLoad ? "true" : "false"),
+			], "`n")
+			FileAppend("`n" . section . "`n", "user_settings.ini")
 		}
 	}
 }

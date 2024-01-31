@@ -1,12 +1,12 @@
 class module__KeyboardKeylocks {
 	__Init() {
 		this.moduleName := "KeyboardKeylocks"
-		this.enabled := getIniVal(this.moduleName, "enabled", false)
+		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
 			moduleName: this.moduleName,
 			enabled: this.enabled,
-			activateOnLoad: getIniVal(this.moduleName, "on", []),
-			deactivateOnLoad: getIniVal(this.moduleName, "off", []),
+			activateOnLoad: getIniVal(this.moduleName, "on", ["num"]),
+			deactivateOnLoad: getIniVal(this.moduleName, "off", ["caps", "scroll"]),
 			states: {
 				caps: null,
 				num: null,
@@ -20,7 +20,10 @@ class module__KeyboardKeylocks {
 				scroll: "Scroll Lock"
 			},
 		}
+
+		this.doSettingsFileCheck()
 	}
+
 
 
 	__New() {
@@ -33,16 +36,23 @@ class module__KeyboardKeylocks {
 		this.settings.states.scrollEnabled := this.getButtonState("scroll")
 
 		for each, key in ["caps", "num", "scroll"] {
-			if isInArray(this.settings.activateOnLoad, key)
+			if isInArray(this.settings.activateOnLoad, key) {
 				this.setButtonState(key, true)
-			else if isInArray(this.settings.deactivateOnLoad, key)
+			} else if isInArray(this.settings.deactivateOnLoad, key) {
 				this.setButtonState(key, false)
+			}
 		}
 
 		this.drawMenu()
 
 		SetTimer(ObjBindMethod(this, "setObservers"), 2000)
 	}
+
+
+
+	__Delete() {
+	}
+
 
 
 	drawMenu() {
@@ -72,6 +82,7 @@ class module__KeyboardKeylocks {
 	}
 
 
+
 	tickMenuItems() {
 		try {
 			capsEnabled := this.settings.states.capsEnabled
@@ -83,8 +94,11 @@ class module__KeyboardKeylocks {
 			(capsEnabled == true ? moduleMenu.check(menuLabels.caps) : moduleMenu.uncheck(menuLabels.caps))
 			(numEnabled == true ? moduleMenu.check(menuLabels.num) : moduleMenu.uncheck(menuLabels.num))
 			(scrollEnabled == true ? moduleMenu.check(menuLabels.scroll) : moduleMenu.uncheck(menuLabels.scroll))
+		} catch Error as e {
+			; do nothing
 		}
 	}
+
 
 
 	doMenuItem(name, position, menu) {
@@ -101,6 +115,7 @@ class module__KeyboardKeylocks {
 	}
 
 
+
 	getButtonState(key) {
 		switch (key) {
 			case "caps": return GetKeyState("CapsLock", "T")
@@ -108,6 +123,7 @@ class module__KeyboardKeylocks {
 			case "scroll": return GetKeyState("ScrollLock", "T")
 		}
 	}
+
 
 
 	setButtonState(key, state) {
@@ -125,6 +141,7 @@ class module__KeyboardKeylocks {
 
 		this.tickMenuItems()
 	}
+
 
 
 	setObservers() {
@@ -147,6 +164,22 @@ class module__KeyboardKeylocks {
 		if (stateNow !== stateThen) {
 			this.settings.states.scrollEnabled := stateNow
 			this.tickMenuItems()
+		}
+	}
+
+
+
+	doSettingsFileCheck() {
+		try {
+			IniRead("user_settings.ini", this.moduleName)
+		} catch Error as e {
+			section := join([
+				"[" . this.moduleName . "]",
+				"enabled = " . (this.settings.enabled ? "true" : "false"),
+				"on = [" . join(this.settings.activateOnLoad, ",") . "]",
+				"off = [" . join(this.settings.deactivateOnLoad, ",") . "]",
+			], "`n")
+			FileAppend("`n" . section . "`n", "user_settings.ini")
 		}
 	}
 }

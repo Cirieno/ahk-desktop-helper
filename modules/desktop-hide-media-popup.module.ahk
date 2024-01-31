@@ -1,21 +1,25 @@
 class module__DesktopHideMediaPopup {
 	__Init() {
 		this.moduleName := "DesktopHideMediaPopup"
-		this.enabled := getIniVal(this.moduleName, "enabled", false)
+		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
 			moduleName: this.moduleName,
 			enabled: this.enabled,
 			activateOnLoad: getIniVal(this.moduleName, "on", false),
 			states: {
 				popupFound: null,
-				popupHidden: null
+				popupHidden: null,
+				onInit: null
 			},
 			menuLabels: {
 				rootMenu: "Desktop",
 				btns: "Hide Volume popup"
 			}
 		}
+
+		this.doSettingsFileCheck()
 	}
+
 
 
 	__New() {
@@ -25,6 +29,7 @@ class module__DesktopHideMediaPopup {
 
 		this.settings.hWnd := hWnd := this.getPopupHwnd()
 		this.settings.states.popupFound := popupFound := (hWnd !== null)
+		this.settings.states.onInit := this.getPopupState()
 		activateOnLoad := this.settings.activateOnLoad
 
 		if (popupFound) {
@@ -41,6 +46,13 @@ class module__DesktopHideMediaPopup {
 
 		SetTimer(ObjBindMethod(this, "setObservers"), 2000)
 	}
+
+
+
+	__Delete() {
+		this.setPopupState(this.settings.states.onInit)
+	}
+
 
 
 	drawMenu() {
@@ -65,6 +77,7 @@ class module__DesktopHideMediaPopup {
 	}
 
 
+
 	tickMenuItems() {
 		try {
 			popupHidden := this.settings.states.popupHidden
@@ -72,8 +85,11 @@ class module__DesktopHideMediaPopup {
 			rootMenu := this.rootMenu
 
 			(popupHidden == true ? rootMenu.check(menuLabels.btns) : rootMenu.uncheck(menuLabels.btns))
+		} catch Error as e {
+			; do nothing
 		}
 	}
+
 
 
 	doMenuItem(name, position, menu) {
@@ -86,9 +102,11 @@ class module__DesktopHideMediaPopup {
 	}
 
 
+
 	getPopupState() {
 		return (WinGetStyle(this.settings.hWnd) & WS_MINIMIZE ? false : true)
 	}
+
 
 
 	setPopupState(state) {
@@ -104,6 +122,7 @@ class module__DesktopHideMediaPopup {
 
 		this.tickMenuItems()
 	}
+
 
 
 	getPopupHwnd() {
@@ -125,6 +144,7 @@ class module__DesktopHideMediaPopup {
 	}
 
 
+
 	setObservers() {
 		stateThen := this.settings.states.popupHidden
 		stateNow := !this.getPopupState()
@@ -134,11 +154,28 @@ class module__DesktopHideMediaPopup {
 			this.tickMenuItems()
 		}
 	}
+
+
+
+	doSettingsFileCheck() {
+		try {
+			IniRead("user_settings.ini", this.moduleName)
+		} catch Error as e {
+			section := join([
+				"[" . this.moduleName . "]",
+				"enabled = " . (this.settings.enabled ? "true" : "false"),
+				"on = " . (this.settings.activateOnLoad ? "true" : "false"),
+			], "`n")
+			FileAppend("`n" . section . "`n", "user_settings.ini")
+		}
+	}
 }
 
 
 
 
+
+; TODO: this also hides the brightness popup...
 
 
 

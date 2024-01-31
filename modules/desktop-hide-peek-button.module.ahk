@@ -1,21 +1,25 @@
 class module__DesktopHidePeekButton {
 	__Init() {
 		this.moduleName := "DesktopHidePeekButton"
-		this.enabled := getIniVal(this.moduleName, "enabled", false)
+		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
 			moduleName: this.moduleName,
 			enabled: this.enabled,
 			activateOnLoad: getIniVal(this.moduleName, "on", false),
 			states: {
 				buttonFound: null,
-				buttonHidden: null
+				buttonHidden: null,
+				onInit: null
 			},
 			menuLabels: {
 				rootMenu: "Desktop",
 				btns: "Hide Peek button"
 			}
 		}
+
+		this.doSettingsFileCheck()
 	}
+
 
 
 	__New() {
@@ -25,6 +29,7 @@ class module__DesktopHidePeekButton {
 
 		this.settings.hWnd := hWnd := this.getPeekButtonHwnd()
 		this.settings.states.buttonFound := buttonFound := (hWnd !== null)
+		this.settings.states.onInit := this.getPeekButtonState()
 		activateOnLoad := this.settings.activateOnLoad
 
 		if (buttonFound) {
@@ -39,6 +44,13 @@ class module__DesktopHidePeekButton {
 
 		this.drawMenu()
 	}
+
+
+
+	__Delete() {
+		this.setPeekButtonState(this.settings.states.onInit)
+	}
+
 
 
 	drawMenu() {
@@ -63,6 +75,7 @@ class module__DesktopHidePeekButton {
 	}
 
 
+
 	tickMenuItems() {
 		try {
 			buttonHidden := this.settings.states.buttonHidden
@@ -70,8 +83,11 @@ class module__DesktopHidePeekButton {
 			rootMenu := this.rootMenu
 
 			(buttonHidden == true ? rootMenu.check(menuLabels.btns) : rootMenu.uncheck(menuLabels.btns))
+		} catch Error as e {
+			; do nothing
 		}
 	}
+
 
 
 	doMenuItem(name, position, menu) {
@@ -84,9 +100,11 @@ class module__DesktopHidePeekButton {
 	}
 
 
+
 	getPeekButtonState() {
 		return (ControlGetVisible(this.settings.hWnd) ? false : true)
 	}
+
 
 
 	setPeekButtonState(state) {
@@ -104,8 +122,24 @@ class module__DesktopHidePeekButton {
 	}
 
 
+
 	getPeekButtonHwnd() {
 		hWnd := ControlGetHwnd("TrayShowDesktopButtonWClass1", "ahk_class Shell_TrayWnd")
 		return (hWnd !== null ? hWnd : null)
+	}
+
+
+
+	doSettingsFileCheck() {
+		try {
+			IniRead("user_settings.ini", this.moduleName)
+		} catch Error as e {
+			section := join([
+				"[" . this.moduleName . "]",
+				"enabled = " . (this.settings.enabled ? "true" : "false"),
+				"on = " . (this.settings.activateOnLoad ? "true" : "false"),
+			], "`n")
+			FileAppend("`n" . section . "`n", "user_settings.ini")
+		}
 	}
 }

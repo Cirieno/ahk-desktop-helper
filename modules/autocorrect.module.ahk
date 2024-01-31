@@ -1,11 +1,12 @@
 class module__AutoCorrect {
 	__Init() {
 		this.moduleName := "AutoCorrect"
-		this.enabled := getIniVal(this.moduleName, "enabled", false)
+		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
 			moduleName: this.moduleName,
 			enabled: this.enabled,
-			activateOnLoad: getIniVal(this.moduleName, "on", ["default", "user"]),
+			activateOnLoad: getIniVal(this.moduleName, "on", []),
+			deactivateOnLoad: getIniVal(this.moduleName, "off", ["default", "user"]),
 			states: {
 				defaultListEnabled: null,
 				defaultListLoaded: null,
@@ -21,7 +22,11 @@ class module__AutoCorrect {
 			},
 			hotstrings: []
 		}
+
+		this.doSettingsFileCheck()
+		this.doUserAutoCorrectFileCheck()
 	}
+
 
 
 	__New() {
@@ -42,6 +47,12 @@ class module__AutoCorrect {
 
 		this.drawMenu()
 	}
+
+
+
+	__Delete() {
+	}
+
 
 
 	drawMenu() {
@@ -72,6 +83,7 @@ class module__AutoCorrect {
 	}
 
 
+
 	tickMenuItems() {
 		try {
 			defaultListEnabled := this.settings.states.defaultListEnabled
@@ -81,8 +93,11 @@ class module__AutoCorrect {
 
 			(defaultListEnabled == true ? rootMenu.check(menuLabels.defaultList) : rootMenu.uncheck(menuLabels.defaultList))
 			(userListEnabled == true ? rootMenu.check(menuLabels.userList) : rootMenu.uncheck(menuLabels.userList))
+		} catch Error as e {
+			; do nothing
 		}
 	}
+
 
 
 	doMenuItem(name, position, menu) {
@@ -100,6 +115,7 @@ class module__AutoCorrect {
 	}
 
 
+
 	setListState(key, state) {
 		switch (key) {
 			case "default": this.settings.states.defaultListEnabled := state
@@ -110,6 +126,7 @@ class module__AutoCorrect {
 
 		this.tickMenuItems()
 	}
+
 
 
 	readHotstrings(key, state) {
@@ -140,10 +157,11 @@ class module__AutoCorrect {
 				}
 			}
 			for each, trigger in this.settings.hotstrings {
-				Hotstring(":" . trigger[3] . ":" . trigger[1], trigger[2], state)
+				Hotstring(":" . trigger[3] . ":" . trigger[1], trigger[2], (state ? "on" : "off"))
 			}
 		}
 	}
+
 
 
 	makeTriggers(trigger, replacement, triggers := []) {
@@ -201,6 +219,7 @@ class module__AutoCorrect {
 	}
 
 
+
 	; https://www.autohotkey.com/boards/viewtopic.php?p=158444#p158444
 	getCharCombos(str) {
 		if ((len := StrLen(str)) = 1) {
@@ -219,6 +238,7 @@ class module__AutoCorrect {
 	}
 
 
+
 	editFile(key) {
 		switch (key) {
 			case "default": filePath := "default_autocorrect.txt"
@@ -232,6 +252,7 @@ class module__AutoCorrect {
 			}
 		}
 	}
+
 
 
 	showHotstringsInfo() {
@@ -250,6 +271,51 @@ class module__AutoCorrect {
 			. "`nDefault count: " . defaultCount
 			. "`nUser count: " . userCount
 			, _Settings.app.name, 4160)
+	}
+
+
+
+	doSettingsFileCheck() {
+		sectionExists := IniRead("user_settings.ini", this.moduleName, , false)
+		if (!sectionExists) {
+			section := join([
+				"[" . this.moduleName . "]",
+				"enabled = " . (this.enabled ? "true" : "false"),
+				"on = [" . join(this.settings.activateOnLoad, ",") . "]",
+				"off = [" . join(this.settings.deactivateOnLoad, ",") . "]"
+			], "`n")
+			FileAppend("`n" . section . "`n", "user_settings.ini")
+		}
+	}
+
+
+
+	doUserAutoCorrectFileCheck() {
+		if (!FileExist("user_autocorrect.txt")) {
+			content := join([
+				"; https://www.autohotkey.com/docs/v2/Hotstrings.htm",
+				";",
+				"; USAGE",
+				";   replacement | trigger | modifiers",
+				";",
+				"; CHARACTER COMBINATIONS",
+				";   [abc] = one of these characters must be present at this position",
+				";   [abc]? = one (or none) of these characters must be present at this position",
+				";   [abc]+ = all of these characters must be present in any order",
+				";",
+				"; MODIFIERS (optional 3rd parameter)",
+				";   ? = The hotstring will be triggered even when it is inside another word",
+				";   * = an ending character is not required to trigger",
+				";   B0 = turn off backspacing",
+				";   C = case sensitive",
+				";   C1 = ignore the case that was typed, always use the same case for output",
+				";   O = remove the trigger character",
+				";   R = send raw output",
+				";------------------------------------------------------------------------------",
+				"`n`n"
+			], "`n")
+			FileAppend(content, "user_autocorrect.txt")
+		}
 	}
 }
 

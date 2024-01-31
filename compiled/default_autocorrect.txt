@@ -10966,7 +10966,6 @@ cul-de-sac|coldasac
 curly|culry
 ell|e;;|?*
 executable|exeutable
-function|fuction|*
 general|geberal
 handy|hnady
 hotstring|hotsring|*
