@@ -10961,10 +10961,10 @@ younger than|younger then
 .co.uk|[,.]?co[,.]?uk|?
 .com|,com|?
 additional|additioal
-all|a;;|?*
+all|a;;|?
 cul-de-sac|coldasac
 curly|culry
-ell|e;;|?*
+ell|e;;|?
 executable|exeutable
 function|fuction|*
 general|geberal
@@ -10980,3 +10980,4 @@ ull|u;;|?*
 upper|uppser|*
 Windows|WIndows|C
 Wonka|wonka|C
+

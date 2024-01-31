@@ -1,5 +1,5 @@
 ; Compile-time settings for "File Properties > Details" panel
-;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.1.0, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
+;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.1.0.1, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
 ;@ Ahk2Exe-ExeName C:\Program Files (portable)\%U_PName%\%U_PName%.exe
 ;@Ahk2Exe-ExeName %A_ScriptDir%\compiled\%U_PName%.exe
 ;@Ahk2Exe-SetCompanyName %U_PCompany%
@@ -38,7 +38,7 @@ populateGlobalVars() {
 	_S.app := {
 		name: "AHK Desktop Helper",
 		author: { name: "Rob McInnes", email: "rob.mcinnes@cirieno.co.uk", company: "Cirieno Ltd" },
-		build: { version: "2.1.0", date: "2024-02", repo: "github.com/cirieno/ahk-desktop-helper" }
+		build: { version: "2.1.0.1", date: "2024-02", repo: "github.com/cirieno/ahk-desktop-helper" }
 	}
 
 	_S.app.tray := {
