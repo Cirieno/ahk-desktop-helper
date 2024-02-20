@@ -1,28 +1,44 @@
-ellipsis := "…"
-null := ""
+U_ellipsis := "…"
 
 
 
-; follows the constants from VBScript.VarType()
-ahkEmpty := 0
-ahkNull := 1
-ahkInteger := 2
-; ahkLong := 3
-; ahkSingle := 4
-ahkDouble := 5
-ahkDate := 7
-ahkString := 8
-ahkObject := 9
-; ahkError := 10
-ahkBoolean := 11
-ahkArray := 12
-ahkDecimal := 14
-; ahkByte := 17
-ahkHex := 18
+U_msSecond := 1000
+U_msMinute := 60000
+U_msHour := 3600000
+U_msDay := 86400000
 
 
 
+; in the style of VBScript constants
+; https://ss64.com/vb/syntax-constants.html
+U_array := 8192
+U_boolean := 11
+U_byte := 17
+U_date := 7
+U_decimal := 14
+U_double := 5
+U_empty := ""
+U_error := 10
+U_hex := 18
+U_integer := 2
+U_long := 3
+U_null := null := -1
+U_object := 9
+U_single := 4
+U_string := 8
 
+
+
+GroupAdd("explorerWindows", "ahk_class CabinetWClass")
+GroupAdd("explorerWindows", "ahk_class ExploreWClass")
+GroupAdd("explorerWindows", "ahk_class Progman")
+GroupAdd("explorerWindows", "ahk_class WorkerW")
+GroupAdd("explorerWindows", "ahk_class #32770")
+GroupAdd("explorerWindows", "ahk_exe explorer.exe")
+
+
+
+; windows decoration styles
 WS_BORDER := 0x00800000
 WS_CAPTION := 0x00C00000
 WS_CHILD := 0x40000000

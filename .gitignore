@@ -3,3 +3,7 @@ user_settings.ini
 user_autocorrect.txt
 
 .vscode/settings.json
+temp_test.ahk
+modules/TODO - disable-proxy.module.ahk
+modules/TODO - enable-proxy-overrides.module.ahk
+modules/TODO - prevent-sleep.module.ahk
