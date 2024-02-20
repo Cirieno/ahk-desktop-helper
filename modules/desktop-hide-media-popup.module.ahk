@@ -1,132 +1,140 @@
+/************************************************************************
+ * @description DesktopHideMediaPopup
+ * @author Rob McInnes
+ * @date 2024-02
+ * @file desktop-hide-media-popup.module.ahk
+ ***********************************************************************/
+; Checks for external changes every seconds
+; Can be forced to override external changes
+; TODO: this also hides the brightness popup...
+
+
+
 class module__DesktopHideMediaPopup {
 	__Init() {
 		this.moduleName := "DesktopHideMediaPopup"
 		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
-			moduleName: this.moduleName,
-			enabled: this.enabled,
-			activateOnLoad: getIniVal(this.moduleName, "on", false),
-			states: {
-				popupFound: null,
-				popupHidden: null,
-				onInit: null
+			activateOnLoad: getIniVal(this.moduleName, "active", false),
+			overrideExternalChanges: getIniVal(this.moduleName, "overrideExternalChanges", true),
+			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false),
+			fileName: _Settings.app.environment.settingsFile,
+			menu: {
+				path: "TRAY\Desktop",
+				items: [{
+					type: "item",
+					label: "Hide Media Volume / Brightness popup"
+				}]
 			},
-			menuLabels: {
-				rootMenu: "Desktop",
-				btns: "Hide Volume popup"
-			}
+			hWnd: null
+		}
+		this.states := {
+			active: this.settings.activateOnLoad,
+			popupFound: null,
+			popupEnabled: null,
+			popupEnabledOnInit: null
 		}
 
-		this.doSettingsFileCheck()
+		this.checkSettingsFile()
 	}
 
 
 
+	/** */
 	__New() {
 		if (!this.enabled) {
 			return
 		}
 
-		this.settings.hWnd := hWnd := this.getPopupHwnd()
-		this.settings.states.popupFound := popupFound := (hWnd !== null)
-		this.settings.states.onInit := this.getPopupState()
-		activateOnLoad := this.settings.activateOnLoad
+		thisMenu := this.drawMenu()
 
-		if (popupFound) {
-			this.settings.states.popupHidden := popupHidden := !this.getPopupState()
+		this.runObserver(true)
+		SetTimer(ObjBindMethod(this, "runObserver"), 5 * U_msSecond)
 
-			if (activateOnLoad && !popupHidden) {
-				this.setPopupState(false)
-			} else if (!activateOnLoad && popupHidden) {
-				this.setPopupState(true)
-			}
-		}
-
-		this.drawMenu()
-
-		SetTimer(ObjBindMethod(this, "setObservers"), 2000)
+		; SetTimer(ObjBindMethod(this, "showDebugTooltip"), U_msSecond)
 	}
 
 
 
+	/** */
 	__Delete() {
-		this.setPopupState(this.settings.states.onInit)
+		if (this.settings.resetOnExit) {
+			this.setPopupState(this.states.popupEnabledOnInit)
+		}
 	}
 
 
 
+	/** */
 	drawMenu() {
-		menuLabels := this.settings.menuLabels
-		_ST := _Settings.app.tray
-		_SM := _Settings.app.tray.menuHandles
-		local doMenuItem := ObjBindMethod(this, "doMenuItem")
-
-		if (_SM.has(menuLabels.rootMenu)) {
-			this.rootMenu := rootMenu := _SM[menuLabels.rootMenu]
-		} else {
-			this.rootMenu := rootMenu := Menu()
-			_SM.set(menuLabels.rootMenu, rootMenu)
-			A_TrayMenu.add(menuLabels.rootMenu, rootMenu)
-			if (_ST.includeSubmenuIcons) {
-				A_TrayMenu.setIcon(menuLabels.rootMenu, "icons\" . StrLower(menuLabels.rootMenu) . ".ico", -0)
+		thisMenu := getMenu(this.settings.menu.path)
+		if (!isMenu(thisMenu)) {
+			parentMenu := getMenu("TRAY")
+			if (!isMenu(parentMenu)) {
+				throw Error("ParentMenu not found")
+			}
+			thisMenu := setMenu(this.settings.menu.path, parentMenu)
+			arrMenuPath := StrSplit(this.settings.menu.path, "\")
+			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
+		}
+		for ii, item in this.settings.menu.items {
+			if (item.type == "item") {
+				local doMenuItem := ObjBindMethod(this, "doMenuItem")
+				menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
 			}
 		}
-		rootMenu.add(menuLabels.btns, doMenuItem)
 
-		this.tickMenuItems()
+		return (isMenu(thisMenu) ? thisMenu : null)
 	}
 
 
 
-	tickMenuItems() {
-		try {
-			popupHidden := this.settings.states.popupHidden
-			menuLabels := this.settings.menuLabels
-			rootMenu := this.rootMenu
-
-			(popupHidden == true ? rootMenu.check(menuLabels.btns) : rootMenu.uncheck(menuLabels.btns))
-		} catch Error as e {
-			; do nothing
-		}
-	}
-
-
-
+	/** */
 	doMenuItem(name, position, menu) {
-		popupHidden := this.settings.states.popupHidden
-		menuLabels := this.settings.menuLabels
-
 		switch (name) {
-			case menuLabels.btns: this.setPopupState(!!popupHidden)
+			case this.settings.menu.items[1].label:
+				this.states.active := !this.states.active
+				setMenuItemProps(name, menu, { checked: this.states.active, clickCount: +1 })
+				this.setPopupState(!this.states.active)
 		}
 	}
 
 
 
+	/** */
 	getPopupState() {
-		return (WinGetStyle(this.settings.hWnd) & WS_MINIMIZE ? false : true)
-	}
-
-
-
-	setPopupState(state) {
-		hWnd := this.settings.hWnd
-
-		if (state) {
-			WinRestore(hWnd)
-			this.settings.states.popupHidden := false
-		} else {
-			WinMinimize(hWnd)
-			this.settings.states.popupHidden := true
+		if (!isNull(this.settings.hWnd)) {
+			try {
+				return (WinGetStyle(this.settings.hWnd) & WS_MINIMIZE ? false : true)
+			} catch Error as e {
+				throw ("Couldn't get popup state")
+			}
 		}
-
-		this.tickMenuItems()
+		return null
 	}
 
 
 
+	/** */
+	setPopupState(state) {
+		if (!isNull(this.settings.hWnd)) {
+			try {
+				if (state) {
+					WinRestore(this.settings.hWnd)
+				} else {
+					WinMinimize(this.settings.hWnd)
+				}
+				this.states.popupEnabled := state
+			} catch Error as e {
+				throw ("Couldn't set popup state")
+			}
+		}
+	}
+
+
+
+	/** */
 	getPopupHwnd() {
-		; loop through all windows with a class of "NativeHWNDHost"and child "DirectUIHWND"
 		hWnd := DllCall("FindWindowEx", "Ptr", 0, "Ptr", 0, "Str", "NativeHWNDHost", "Ptr", 0)
 		while (hWnd) {
 			hWndChild := DllCall("FindWindowEx", "Ptr", hWnd, "Ptr", 0, "Str", "DirectUIHWND", "Ptr", 0)
@@ -134,7 +142,6 @@ class module__DesktopHideMediaPopup {
 				wsStyles := WinGetStyle(hWnd)
 				wsExStyles := WinGetExStyle(hWnd)
 				hasWasExStyles := ((wsExStyles & WS_EX_LAYERED) && (wsExStyles & WS_EX_NOACTIVATE) && (wsExStyles & WS_EX_TOPMOST) ? true : false)
-
 				if (hasWasExStyles) {
 					return hWnd
 				}
@@ -145,49 +152,110 @@ class module__DesktopHideMediaPopup {
 
 
 
-	setObservers() {
-		stateThen := this.settings.states.popupHidden
-		stateNow := !this.getPopupState()
+	/** */
+	runObserver(forced := false) {
+		handleThen := this.settings.hWnd
+		handleNow := this.getPopupHwnd()
+		foundThen := this.states.popupFound
+		foundNow := !isNull(handleNow)
+		enabledThen := this.states.popupEnabled
+		enabledNow := this.getPopupState()
 
-		if (stateNow !== stateThen) {
-			this.settings.states.popupHidden := stateNow
-			this.tickMenuItems()
+		if ((handleNow != handleThen) || (foundNow != foundThen) || (enabledNow != enabledThen)) {
+			this.settings.hWnd := handleNow
+			this.states.popupFound := foundNow
+			this.states.popupEnabled := enabledNow
+			this.states.popupEnabledOnInit := (isNull(this.states.popupEnabledOnInit) ? enabledNow : null)
+
+			if (forced || this.settings.overrideExternalChanges) {
+				if (this.states.active && enabledNow) {
+					this.setPopupState(false)
+				} else if (!(this.states.active && enabledNow)) {
+					this.setPopupState(true)
+				}
+			} else {
+				this.states.active := !enabledNow
+			}
+
+			_TSM := this.settings.menu
+			setMenuItemProps(_TSM.items[1].label, getMenu(_TSM.path), {
+				checked: this.states.active,
+				enabled: this.states.popupFound
+			})
 		}
 	}
 
 
 
-	doSettingsFileCheck() {
+	/** */
+	updateSettingsFile() {
 		try {
-			IniRead("user_settings.ini", this.moduleName)
+			IniWrite((this.enabled ? "true" : "false"), this.settings.fileName, this.moduleName, "enabled")
+			IniWrite((this.states.active ? "true" : "false"), this.settings.fileName, this.moduleName, "active")
+			IniWrite((this.settings.overrideExternalChanges ? "true" : "false"), this.settings.fileName, this.moduleName, "overrideExternalChanges")
+			IniWrite((this.settings.resetOnExit ? "true" : "false"), this.settings.fileName, this.moduleName, "resetOnExit")
+		} catch Error as e {
+			throw ("Error updating settings file: " . e.Message)
+		}
+	}
+
+
+
+	/** */
+	checkSettingsFile() {
+		try {
+			IniRead(this.settings.fileName, this.moduleName)
 		} catch Error as e {
 			section := join([
 				"[" . this.moduleName . "]",
-				"enabled = " . (this.settings.enabled ? "true" : "false"),
-				"on = " . (this.settings.activateOnLoad ? "true" : "false"),
+				"enabled=true",
+				"active=false",
+				"overrideExternalChanges=true"
+				"resetOnExit=false",
 			], "`n")
-			FileAppend("`n" . section . "`n", "user_settings.ini")
+			FileAppend("`n" . section . "`n", this.settings.fileName)
 		}
+	}
+
+
+
+	/** */
+	showDebugTooltip() {
+		debugMsg(join([
+			"MODULE = " . this.moduleName . "`n",
+			"states.active = " . this.states.active,
+			"settings.hWnd = " . this.settings.hWnd . " (hWnd: " . Format("{:#x}", this.settings.hWnd) . ")",
+			"states.popupFound = " . this.states.popupFound,
+			"states.popupEnabled = " . this.states.popupEnabled . " (init: " . this.states.popupEnabledOnInit . ")",
+			"settings.overrideExternalChanges = " . this.settings.overrideExternalChanges,
+			"settings.resetOnExit = " . this.settings.resetOnExit
+		], "`n"), 1, 1)
 	}
 }
 
 
 
-
-
-; TODO: this also hides the brightness popup...
-
-
-
-
-; -----------------------------------------------------------------
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
 ; checkMediaPopup() {
 ; 	_MS := this.settings
 
 ; 	hWnd := DllCall("User32\FindWindow", "Str","NativeHWNDHost", "Ptr",0)
 ; 	isPopupVisible := DllCall("IsWindowVisible", "Ptr",hWnd)
 
-; 	if (this.settings.states.popup == true) {
+; 	if (this.states.popup == true) {
 ; 		; hasChild := DllCall("User32\getPopupHwnd", "Ptr",hWnd, "UInt",0x0005)
 ; 		; hasChild := DllCall("User32\FindWindow", "Str","DirectUIHWND", "Ptr",0)
 ; 		; WinHide(hwnd)
@@ -199,7 +267,6 @@ class module__DesktopHideMediaPopup {
 ; 	; 	. "`nhasChild = " . hasChild
 ; 	; 	, 0, 0, 12)
 
-; 	; ToolTip("hWnd = " . hWnd, , , 12)
 ; 	; WinShow(hWnd)
 ; 	; PostMessage(0xC028, 0x0C, 0xA0000,, "ahk_id" hWnd)
 ; 	; sleep(100)
@@ -207,7 +274,6 @@ class module__DesktopHideMediaPopup {
 ; 	; }
 ; }
 
-; SetTimer(ObjBindMethod(this, "getPopupHwnd"), 1000)
 ; this.settings.hWnd := DllCall("User32\FindWindow", "Str", "NativeHWNDHost", "Ptr", 0)
 
 ; MsgBox(""
@@ -220,7 +286,15 @@ class module__DesktopHideMediaPopup {
 ; 	. "`nhas WS_EX_NOACTIVATE = " . (wsExStyles & WS_EX_NOACTIVATE ? "Yes" : "No")
 ; 	. "`nhas WS_EX_TOPMOST = " . (wsExStyles & WS_EX_TOPMOST ? "Yes" : "No")
 ; )
-
+;
+;
+;
+;
+;
+;
+;
+;
+;
 ; https://github.com/malensek/3RVX/blob/master/3RVX/HideWin10VolumeOSD.cpp
 ; https://www.reddit.com/r/AutoHotkey/comments/sgglqo/trying_to_find_a_script_that_closes_the_on_screen/
 ; https://gist.github.com/krrr/3c3f1747480189dbb71f

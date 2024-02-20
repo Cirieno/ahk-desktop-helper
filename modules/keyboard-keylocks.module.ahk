@@ -1,185 +1,263 @@
+/************************************************************************
+ * @description KeyboardKeylocks
+ * @author Rob McInnes
+ * @date 2024-01
+ * @file keyboard-keylocks.module.ahk
+ ***********************************************************************/
+; Just a handy-dandy way to keep track of the state of the keyboard keylocks
+; and to be able to toggle them from the tray menu
+;
+; Checks for external changes every 5 seconds
+
+
+
 class module__KeyboardKeylocks {
 	__Init() {
 		this.moduleName := "KeyboardKeylocks"
 		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
-			moduleName: this.moduleName,
-			enabled: this.enabled,
-			activateOnLoad: getIniVal(this.moduleName, "on", ["num"]),
-			deactivateOnLoad: getIniVal(this.moduleName, "off", ["caps", "scroll"]),
-			states: {
-				caps: null,
-				num: null,
-				scroll: null
-			},
-			menuLabels: {
-				rootMenu: "Keyboard",
-				subMenu: "Key Locks",
-				caps: "Caps Lock",
-				num: "Num Lock",
-				scroll: "Scroll Lock"
-			},
+			activateOnLoad: getIniVal(this.moduleName, "active", "[num]"),
+			overrideExternalChanges: getIniVal(this.moduleName, "overrideExternalChanges", false),
+			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false),
+			fileName: _Settings.app.environment.settingsFile,
+			menu: {
+				path: "TRAY\Keyboard",
+				items: [{
+					type: "item",
+					label: "Caps Lock"
+				}, {
+					type: "item",
+					label: "Num Lock"
+				}, {
+					type: "item",
+					label: "Scroll Lock"
+				}]
+			}
+		}
+		this.states := {
+			capsActive: isInArray(this.settings.activateOnLoad, "caps"),
+			capsEnabled: null,
+			capsEnabledOnInit: null,
+			numActive: isInArray(this.settings.activateOnLoad, "num"),
+			numEnabled: null,
+			numEnabledOnInit: null,
+			scrollActive: isInArray(this.settings.activateOnLoad, "scroll"),
+			scrollEnabled: null,
+			scrollEnabledOnInit: null
 		}
 
-		this.doSettingsFileCheck()
+		this.checkSettingsFile()
 	}
 
 
 
+	/** */
 	__New() {
 		if (!this.enabled) {
 			return
 		}
 
-		this.settings.states.capsEnabled := this.getButtonState("caps")
-		this.settings.states.numEnabled := this.getButtonState("num")
-		this.settings.states.scrollEnabled := this.getButtonState("scroll")
+		this.states.capsEnabled := this.states.capsEnabledOnInit := this.getButtonState("caps")
+		this.states.numEnabled := this.states.numEnabledOnInit := this.getButtonState("num")
+		this.states.scrollEnabled := this.states.scrollEnabledOnInit := this.getButtonState("scroll")
 
-		for each, key in ["caps", "num", "scroll"] {
-			if isInArray(this.settings.activateOnLoad, key) {
-				this.setButtonState(key, true)
-			} else if isInArray(this.settings.deactivateOnLoad, key) {
-				this.setButtonState(key, false)
-			}
+		if (this.states.capsActive && !this.states.capsEnabled) {
+			this.setButtonState("caps", true)
+		} else if (!this.states.capsActive && this.states.capsEnabled) {
+			this.setButtonState("caps", false)
 		}
 
-		this.drawMenu()
+		if (this.states.numActive && !this.states.numEnabled) {
+			this.setButtonState("num", true)
+		} else if (!this.states.numActive && this.states.numEnabled) {
+			this.setButtonState("num", false)
+		}
 
-		SetTimer(ObjBindMethod(this, "setObservers"), 2000)
+		if (this.states.scrollActive && !this.states.scrollEnabled) {
+			this.setButtonState("scroll", true)
+		} else if (!this.states.scrollActive && this.states.scrollEnabled) {
+			this.setButtonState("scroll", false)
+		}
+
+
+		thisMenu := this.drawMenu()
+		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.capsActive })
+		setMenuItemProps(this.settings.menu.items[2].label, thisMenu, { checked: this.states.numActive })
+		setMenuItemProps(this.settings.menu.items[3].label, thisMenu, { checked: this.states.scrollActive })
+
+		; SetTimer(ObjBindMethod(this, "showDebugTooltip"), U_msSecond)
+
+		this.runObserver(true)
+		SetTimer(ObjBindMethod(this, "runObserver"), 5 * U_msSecond)
 	}
 
 
 
+	/** */
 	__Delete() {
+		if (this.settings.resetOnExit) {
+			this.setButtonState("caps", this.states.capsEnabledOnInit)
+			this.setButtonState("num", this.states.numEnabledOnInit)
+			this.setButtonState("scroll", this.states.scrollEnabledOnInit)
+		}
 	}
 
 
 
+	/** */
 	drawMenu() {
-		menuLabels := this.settings.menuLabels
-		_ST := _Settings.app.tray
-		_SM := _Settings.app.tray.menuHandles
-		local doMenuItem := ObjBindMethod(this, "doMenuItem")
-
-		this.moduleMenu := moduleMenu := Menu()
-		moduleMenu.add(this.settings.menuLabels.caps, doMenuItem)
-		moduleMenu.add(this.settings.menuLabels.num, doMenuItem)
-		moduleMenu.add(this.settings.menuLabels.scroll, doMenuItem)
-
-		if (_SM.has(this.settings.menuLabels.rootMenu) == true) {
-			this.rootMenu := rootMenu := _SM[this.settings.menuLabels.rootMenu]
-		} else {
-			this.rootMenu := rootMenu := Menu()
-			_SM.set(this.settings.menuLabels.rootMenu, rootMenu)
-			A_TrayMenu.add(this.settings.menuLabels.rootMenu, rootMenu)
-			if (_ST.includeSubmenuIcons) {
-				A_TrayMenu.setIcon(this.settings.menuLabels.rootMenu, "icons\" . StrLower(this.settings.menuLabels.rootMenu) . ".ico", -0)
+		thisMenu := getMenu(this.settings.menu.path)
+		if (!isMenu(thisMenu)) {
+			parentMenu := getMenu("TRAY")
+			if (!isMenu(parentMenu)) {
+				throw Error("ParentMenu not found")
+			}
+			thisMenu := setMenu(this.settings.menu.path, parentMenu)
+			arrMenuPath := StrSplit(this.settings.menu.path, "\")
+			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
+		}
+		for ii, item in this.settings.menu.items {
+			if (item.type == "item") {
+				local doMenuItem := ObjBindMethod(this, "doMenuItem")
+				menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
 			}
 		}
-		rootMenu.add(menuLabels.subMenu, moduleMenu)
 
-		this.tickMenuItems()
+		return (isMenu(thisMenu) ? thisMenu : null)
 	}
 
 
 
-	tickMenuItems() {
-		try {
-			capsEnabled := this.settings.states.capsEnabled
-			numEnabled := this.settings.states.numEnabled
-			scrollEnabled := this.settings.states.scrollEnabled
-			menuLabels := this.settings.menuLabels
-			moduleMenu := this.moduleMenu
-
-			(capsEnabled == true ? moduleMenu.check(menuLabels.caps) : moduleMenu.uncheck(menuLabels.caps))
-			(numEnabled == true ? moduleMenu.check(menuLabels.num) : moduleMenu.uncheck(menuLabels.num))
-			(scrollEnabled == true ? moduleMenu.check(menuLabels.scroll) : moduleMenu.uncheck(menuLabels.scroll))
-		} catch Error as e {
-			; do nothing
-		}
-	}
-
-
-
+	/** */
 	doMenuItem(name, position, menu) {
-		capsEnabled := this.settings.states.capsEnabled
-		numEnabled := this.settings.states.numEnabled
-		scrollEnabled := this.settings.states.scrollEnabled
-		menuLabels := this.settings.menuLabels
-
 		switch (name) {
-			case menuLabels.caps: this.setButtonState("caps", !capsEnabled)
-			case menuLabels.num: this.setButtonState("num", !numEnabled)
-			case menuLabels.scroll: this.setButtonState("scroll", !scrollEnabled)
+			case this.settings.menu.items[1].label:
+				this.states.capsEnabled := !this.states.capsEnabled
+				setMenuItemProps(name, menu, { checked: this.states.capsEnabled, clickCount: +1 })
+				this.setButtonState("caps", this.states.capsEnabled)
+			case this.settings.menu.items[2].label:
+				this.states.numEnabled := !this.states.numEnabled
+				setMenuItemProps(name, menu, { checked: this.states.numEnabled, clickCount: +1 })
+				this.setButtonState("num", this.states.numEnabled)
+			case this.settings.menu.items[3].label:
+				this.states.scrollEnabled := !this.states.scrollEnabled
+				setMenuItemProps(name, menu, { checked: this.states.scrollEnabled, clickCount: +1 })
+				this.setButtonState("scroll", this.states.scrollEnabled)
 		}
 	}
 
 
 
+	/** */
 	getButtonState(key) {
 		switch (key) {
-			case "caps": return GetKeyState("CapsLock", "T")
-			case "num": return GetKeyState("NumLock", "T")
-			case "scroll": return GetKeyState("ScrollLock", "T")
+			case "caps":
+				return GetKeyState("CapsLock", "T")
+			case "num":
+				return GetKeyState("NumLock", "T")
+			case "scroll":
+				return GetKeyState("ScrollLock", "T")
 		}
 	}
 
 
 
+	/** */
 	setButtonState(key, state) {
 		switch (key) {
 			case "caps":
 				SetCapsLockState(state)
-				this.settings.states.capsEnabled := state
+				this.states.capsEnabled := state
 			case "num":
 				SetNumLockState(state)
-				this.settings.states.numEnabled := state
+				this.states.numEnabled := state
 			case "scroll":
 				SetScrollLockState(state)
-				this.settings.states.scrollEnabled := state
+				this.states.scrollEnabled := state
 		}
-
-		this.tickMenuItems()
 	}
 
 
 
-	setObservers() {
-		stateThen := this.settings.states.capsEnabled
+	/** */
+	runObserver(forced := false) {
+		stateThen := this.states.capsEnabled
 		stateNow := this.getButtonState("caps")
 		if (stateNow !== stateThen) {
-			this.settings.states.capsEnabled := stateNow
-			this.tickMenuItems()
+			this.states.capsEnabled := stateNow
+			setMenuItemProps(this.settings.menu.items[1].label, this.settings.menu.path, { checked: this.states.capsEnabled })
 		}
 
-		stateThen := this.settings.states.numEnabled
+		stateThen := this.states.numEnabled
 		stateNow := this.getButtonState("num")
 		if (stateNow !== stateThen) {
-			this.settings.states.numEnabled := stateNow
-			this.tickMenuItems()
+			this.states.numEnabled := stateNow
+			setMenuItemProps(this.settings.menu.items[2].label, this.settings.menu.path, { checked: this.states.numEnabled })
 		}
 
-		stateThen := this.settings.states.scrollEnabled
+		stateThen := this.states.scrollEnabled
 		stateNow := this.getButtonState("scroll")
 		if (stateNow !== stateThen) {
-			this.settings.states.scrollEnabled := stateNow
-			this.tickMenuItems()
+			this.states.scrollEnabled := stateNow
+			setMenuItemProps(this.settings.menu.items[3].label, this.settings.menu.path, { checked: this.states.scrollEnabled })
 		}
 	}
 
 
 
-	doSettingsFileCheck() {
+	/** */
+	updateSettingsFile() {
 		try {
-			IniRead("user_settings.ini", this.moduleName)
+			state := join([
+				(this.states.capsEnabled ? "caps" : ""),
+				(this.states.numEnabled ? "num" : ""),
+				(this.states.scrollEnabled ? "scroll" : "")
+			], ",")
+			state := RegExReplace(state, ",+", ",")
+			state := RegExReplace(state, ",$", "")
+			state := RegExReplace(state, "^,", "")
+
+			IniWrite((this.enabled ? "true" : "false"), this.settings.fileName, this.moduleName, "enabled")
+			IniWrite("[" . state . "]", this.settings.fileName, this.moduleName, "active")
+			IniWrite((this.settings.overrideExternalChanges ? "true" : "false"), this.settings.fileName, this.moduleName, "overrideExternalChanges")
+			IniWrite((this.settings.resetOnExit ? "true" : "false"), this.settings.fileName, this.moduleName, "resetOnExit")
+		} catch Error as e {
+			throw ("Error updating settings file: " . e.Message)
+		}
+	}
+
+
+
+	/** */
+	checkSettingsFile() {
+		try {
+			IniRead(this.settings.fileName, this.moduleName)
 		} catch Error as e {
 			section := join([
 				"[" . this.moduleName . "]",
-				"enabled = " . (this.settings.enabled ? "true" : "false"),
-				"on = [" . join(this.settings.activateOnLoad, ",") . "]",
-				"off = [" . join(this.settings.deactivateOnLoad, ",") . "]",
+				"enabled=true",
+				"active=[num]",
+				"overrideExternalChanges=false"
+				"resetOnExit=false"
 			], "`n")
-			FileAppend("`n" . section . "`n", "user_settings.ini")
+			FileAppend("`n" . section . "`n", this.settings.fileName)
 		}
+	}
+
+
+
+	/** */
+	showDebugTooltip() {
+		debugMsg(join([
+			"MODULE = " . this.moduleName . "`n",
+			"states.capsActive = " . this.states.capsActive,
+			"states.numActive = " . this.states.numActive,
+			"states.scrollActive = " . this.states.scrollActive,
+			"states.capsEnabled = " . this.states.capsEnabled . " (init: " . this.states.capsEnabledOnInit . ")",
+			"states.numEnabled = " . this.states.numEnabled . " (init: " . this.states.numEnabledOnInit . ")",
+			"states.scrollEnabled = " . this.states.scrollEnabled . " (init: " . this.states.scrollEnabledOnInit . ")",
+			"settings.resetOnExit = " . this.settings.resetOnExit
+			"settings.activateOnLoad = [" . join(this.settings.activateOnLoad, ",") . "]",
+		], "`n"), 1, 1)
 	}
 }

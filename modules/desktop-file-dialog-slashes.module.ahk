@@ -1,35 +1,34 @@
 /************************************************************************
- * @description MouseSwapButtons
+ * @description DesktopFileDialogSlashes
  * @author Rob McInnes
  * @date 2024-01
- * @file mouse-swap-buttons.module.ahk
+ * @file desktop-file-dialog-slashes.module.ahk
  ***********************************************************************/
-; Handy for if you're left-handed, or maybe just those RSI days
-; Checks for external changes every second
+; Replaces forward-slashes with back-slashes in Explorer-based windows
+; and File dialogs, useful when working with LAMP paths in VSCode
+;
+; `ahk_group explorerWindows` is defined in constants.utils.ahk
 
 
 
-class module__MouseSwapButtons {
+class module__DesktopFileDialogSlashes {
 	__Init() {
-		this.moduleName := "MouseSwapButtons"
+		this.moduleName := "DesktopFileDialogSlashes"
 		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
 			activateOnLoad: getIniVal(this.moduleName, "active", false),
-			overrideExternalChanges: getIniVal(this.moduleName, "overrideExternalChanges", false),
-			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false),
+			resetOnExit: null,
 			fileName: _Settings.app.environment.settingsFile,
 			menu: {
-				path: "TRAY\Mouse",
+				path: "TRAY\Desktop",
 				items: [{
 					type: "item",
-					label: "Swap mouse buttons"
+					label: "Replace fwd slashes in File dialogs"
 				}]
 			}
 		}
 		this.states := {
-			active: this.settings.activateOnLoad,
-			buttonsSwapped: null,
-			buttonsSwappedOnInit: null
+			active: this.settings.activateOnLoad
 		}
 
 		this.checkSettingsFile()
@@ -43,19 +42,8 @@ class module__MouseSwapButtons {
 			return
 		}
 
-		this.states.buttonsSwapped := this.states.buttonsSwappedOnInit := this.getButtonsState()
-
-		if (this.states.active && !this.states.buttonsSwapped) {
-			this.setButtonsState(true)
-		} else if (!this.states.active && this.states.buttonsSwapped) {
-			this.setButtonsState(false)
-		}
-
 		thisMenu := this.drawMenu()
 		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.active })
-
-		this.runObserver(true)
-		SetTimer(ObjBindMethod(this, "runObserver"), 5 * U_msSecond)
 
 		; SetTimer(ObjBindMethod(this, "showDebugTooltip"), U_msSecond)
 	}
@@ -64,9 +52,6 @@ class module__MouseSwapButtons {
 
 	/** */
 	__Delete() {
-		if (this.settings.resetOnExit) {
-			this.setButtonsState(this.states.buttonsSwappedOnInit)
-		}
 	}
 
 
@@ -101,44 +86,31 @@ class module__MouseSwapButtons {
 			case this.settings.menu.items[1].label:
 				this.states.active := !this.states.active
 				setMenuItemProps(name, menu, { checked: this.states.active, clickCount: +1 })
-				this.setButtonsState(this.states.active)
+				this.setHotkeys(this.states.active)
 		}
 	}
 
 
 
 	/** */
-	getButtonsState() {
+	setHotkeys(state) {
+		local doPaste := ObjBindMethod(this, "doPaste")
+		; HotIfWinactive("ahk_class #32770")
+		HotIfWinactive("ahk_group explorerWindows")
+		Hotstring(":*:/", "\", (state ? "on" : "off"))
+		Hotkey("^v", doPaste, (state ? "on" : "off"))
+		HotIfWinactive()
+	}
+
+
+
+	/** */
+	doPaste(*) {
 		try {
-			return isTruthy(RegRead("HKEY_CURRENT_USER\Control Panel\Mouse", "SwapMouseButtons", 0))
+			clipboardSaved := StrReplace(A_Clipboard, "/", "\")
+			EditPaste(clipboardSaved, ControlGetFocus("A"))
 		} catch Error as e {
-			throw ("Error reading registry key")
-		}
-	}
-
-
-
-	/** */
-	setButtonsState(state) {
-		try {
-			RegWrite((state == true ? 1 : 0), "REG_SZ", "HKEY_CURRENT_USER\Control Panel\Mouse", "SwapMouseButtons")
-			DllCall("SwapMouseButton", "int", (state == true ? 1 : 0))
-			this.states.buttonsSwapped := state
-		} catch Error as e {
-			throw ("Error writing registry key")
-		}
-	}
-
-
-
-	/** */
-	runObserver(forced := false) {
-		stateThen := this.states.buttonsSwapped
-		stateNow := this.getButtonsState()
-		if (stateNow !== stateThen) {
-			this.states.buttonsSwapped := stateNow
-			this.states.active := !this.states.active
-			setMenuItemProps(this.settings.menu.items[1].label, this.settings.menu.path, { checked: this.states.active })
+			throw ("Couldn't paste content to control")
 		}
 	}
 
@@ -149,8 +121,6 @@ class module__MouseSwapButtons {
 		try {
 			IniWrite((this.enabled ? "true" : "false"), this.settings.fileName, this.moduleName, "enabled")
 			IniWrite((this.states.active ? "true" : "false"), this.settings.fileName, this.moduleName, "active")
-			IniWrite((this.settings.overrideExternalChanges ? "true" : "false"), this.settings.fileName, this.moduleName, "overrideExternalChanges")
-			IniWrite((this.settings.resetOnExit ? "true" : "false"), this.settings.fileName, this.moduleName, "resetOnExit")
 		} catch Error as e {
 			throw ("Error updating settings file: " . e.Message)
 		}
@@ -167,8 +137,6 @@ class module__MouseSwapButtons {
 				"[" . this.moduleName . "]",
 				"enabled=true",
 				"active=false",
-				"overrideExternalChanges=false"
-				"resetOnExit=false",
 			], "`n")
 			FileAppend("`n" . section . "`n", this.settings.fileName)
 		}
@@ -181,8 +149,6 @@ class module__MouseSwapButtons {
 		debugMsg(join([
 			"MODULE = " . this.moduleName . "`n",
 			"states.active = " . this.states.active,
-			"states.buttonsSwapped = " . this.states.buttonsSwapped . " (init: " . this.states.buttonsSwappedOnInit . ")",
-			"settings.resetOnExit = " . this.settings.resetOnExit
 		], "`n"), 1, 1)
 	}
 }
