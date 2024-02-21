@@ -19,13 +19,6 @@ class module__DesktopHideMediaPopup {
 			overrideExternalChanges: getIniVal(this.moduleName, "overrideExternalChanges", true),
 			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false),
 			fileName: _Settings.app.environment.settingsFile,
-			menu: {
-				path: "TRAY\Desktop",
-				items: [{
-					type: "item",
-					label: "Hide Volume / Brightness popup"
-				}]
-			},
 			hWnd: null
 		}
 		this.states := {
@@ -33,6 +26,13 @@ class module__DesktopHideMediaPopup {
 			popupFound: null,
 			popupEnabled: null,
 			popupEnabledOnInit: null
+		}
+		this.settings.menu := {
+			path: "TRAY\Desktop",
+			items: [{
+				type: "item",
+				label: "Hide Volume / Brightness popup"
+			}]
 		}
 
 		this.checkSettingsFile()
@@ -211,7 +211,7 @@ class module__DesktopHideMediaPopup {
 				"enabled=true",
 				"active=false",
 				"overrideExternalChanges=true"
-				"resetOnExit=false",
+				"resetOnExit=false"
 			], "`n")
 			FileAppend("`n" . section . "`n", this.settings.fileName)
 		}

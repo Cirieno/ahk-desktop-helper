@@ -17,19 +17,19 @@ class module__MouseSwapButtons {
 			activateOnLoad: getIniVal(this.moduleName, "active", false),
 			overrideExternalChanges: getIniVal(this.moduleName, "overrideExternalChanges", false),
 			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false),
-			fileName: _Settings.app.environment.settingsFile,
-			menu: {
-				path: "TRAY\Mouse",
-				items: [{
-					type: "item",
-					label: "Swap mouse buttons"
-				}]
-			}
+			fileName: _Settings.app.environment.settingsFile
 		}
 		this.states := {
 			active: this.settings.activateOnLoad,
 			buttonsSwapped: null,
 			buttonsSwappedOnInit: null
+		}
+		this.settings.menu := {
+			path: "TRAY\Mouse",
+			items: [{
+				type: "item",
+				label: "Swap mouse buttons"
+			}]
 		}
 
 		this.checkSettingsFile()
@@ -168,7 +168,7 @@ class module__MouseSwapButtons {
 				"enabled=true",
 				"active=false",
 				"overrideExternalChanges=false"
-				"resetOnExit=false",
+				"resetOnExit=false"
 			], "`n")
 			FileAppend("`n" . section . "`n", this.settings.fileName)
 		}

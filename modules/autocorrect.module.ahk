@@ -1,137 +1,133 @@
+/************************************************************************
+ * @description AutoCorrect
+ * @author Rob McInnes
+ * @date 2024-01
+ * @file autocorrect.module.ahk
+ ***********************************************************************/
+
+
+
 class module__AutoCorrect {
 	__Init() {
 		this.moduleName := "AutoCorrect"
 		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
-			moduleName: this.moduleName,
-			enabled: this.enabled,
-			activateOnLoad: getIniVal(this.moduleName, "on", []),
-			deactivateOnLoad: getIniVal(this.moduleName, "off", ["default", "user"]),
-			states: {
-				defaultListEnabled: null,
-				defaultListLoaded: null,
-				userListEnabled: null,
-				userListLoaded: null
-			},
-			menuLabels: {
-				rootMenu: "AutoCorrect",
-				defaultList: "Default",
-				userList: "User",
-				editDefaultList: "Edit Default" . ellipsis,
-				editUserList: "Edit User" . ellipsis
-			},
+			activateOnLoad: getIniVal(this.moduleName, "active", []),
+			fileName: _Settings.app.environment.settingsFile,
 			hotstrings: []
 		}
+		this.states := {
+			defaultListActive: isInArray(this.settings.activateOnLoad, "default"),
+			defaultListEnabled: null,
+			userListActive: isInArray(this.settings.activateOnLoad, "user"),
+			userListEnabled: null
+		}
+		this.settings.menu := {
+			path: "TRAY\AutoCorrect",
+			items: [{
+				type: "item",
+				label: "Default list",
+			}, {
+				type: "item",
+				label: "User list",
+			}, {
+				type: "separator"
+			}, {
+				type: "item",
+				label: "Edit User list" . U_ellipsis
+			}, {
+				type: "---"
+			}, {
+				type: "item",
+				label: "Show counts"
+			}]
+		}
 
-		this.doSettingsFileCheck()
-		this.doUserAutoCorrectFileCheck()
+		; this.checkSettingsFile()
+		; this.checkUserAutocorrectFile()
 	}
 
 
 
+	/** */
 	__New() {
 		if (!this.enabled) {
 			return
 		}
 
-		if isInArray(this.settings.activateOnLoad, "default") {
-			this.settings.states.defaultListEnabled := true
-			SetTimer(ObjBindMethod(this, "readHotstrings", "default", true), -3000)
+		thisMenu := this.drawMenu()
+
+		if (this.states.defaultListEnabled) {
+			setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: true })
+			SetTimer(ObjBindMethod(this, "readHotstrings", "default", true), -1000)
 		}
-		if isInArray(this.settings.activateOnLoad, "user") {
-			this.settings.states.userListEnabled := true
+
+		if (this.states.userListEnabled) {
+			setMenuItemProps(this.settings.menu.items[2].label, thisMenu, { checked: true })
 			SetTimer(ObjBindMethod(this, "readHotstrings", "user", true), -1000)
 		}
-		; this.setState("en-gb", isInArray(this.settings.activateOnLoad, "en-gb"))
-		; this.setState("en-us", isInArray(this.settings.activateOnLoad, "en-us"))
-
-		this.drawMenu()
 	}
 
 
 
+	/** */
 	__Delete() {
+		; remove hotstrings
 	}
 
 
 
+	/** */
 	drawMenu() {
-		menuLabels := this.settings.menuLabels
-		_ST := _Settings.app.tray
-		_SM := _Settings.app.tray.menuHandles
-		local doMenuItem := ObjBindMethod(this, "doMenuItem")
-
-		if (_SM.has(menuLabels.rootMenu)) {
-			this.rootMenu := rootMenu := _SM[menuLabels.rootMenu]
-		} else {
-			this.rootMenu := rootMenu := Menu()
-			_SM.set(menuLabels.rootMenu, rootMenu)
-			A_TrayMenu.add(menuLabels.rootMenu, rootMenu)
-			if (_ST.includeSubmenuIcons) {
-				A_TrayMenu.setIcon(menuLabels.rootMenu, "icons\" . StrLower(menuLabels.rootMenu) . ".ico", -0)
+		thisMenu := getMenu(this.settings.menu.path)
+		if (!isMenu(thisMenu)) {
+			parentMenu := getMenu("TRAY")
+			if (!isMenu(parentMenu)) {
+				throw Error("ParentMenu not found")
+			}
+			thisMenu := setMenu(this.settings.menu.path, parentMenu)
+			arrMenuPath := StrSplit(this.settings.menu.path, "\")
+			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
+		}
+		for ii, item in this.settings.menu.items {
+			switch (item.type) {
+				case "item":
+					local doMenuItem := ObjBindMethod(this, "doMenuItem")
+					menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
+				case "separator", "---":
+					setMenuItem(item.type, thisMenu)
 			}
 		}
-		rootMenu.add(menuLabels.defaultList, doMenuItem)
-		rootMenu.add(menuLabels.userList, doMenuItem)
-		rootMenu.add()
-		rootMenu.add(menuLabels.editDefaultList, doMenuItem)
-		rootMenu.add(menuLabels.editUserList, doMenuItem)
-		rootMenu.add()
-		rootMenu.add("Show counts", doMenuItem)
 
-		this.tickMenuItems()
+		return (isMenu(thisMenu) ? thisMenu : null)
 	}
 
 
 
-	tickMenuItems() {
-		try {
-			defaultListEnabled := this.settings.states.defaultListEnabled
-			userListEnabled := this.settings.states.userListEnabled
-			menuLabels := this.settings.menuLabels
-			rootMenu := this.rootMenu
-
-			(defaultListEnabled == true ? rootMenu.check(menuLabels.defaultList) : rootMenu.uncheck(menuLabels.defaultList))
-			(userListEnabled == true ? rootMenu.check(menuLabels.userList) : rootMenu.uncheck(menuLabels.userList))
-		} catch Error as e {
-			; do nothing
-		}
-	}
-
-
-
+	/** */
 	doMenuItem(name, position, menu) {
-		defaultListEnabled := this.settings.states.defaultListEnabled
-		userListEnabled := this.settings.states.userListEnabled
-		menuLabels := this.settings.menuLabels
-
 		switch (name) {
-			case menuLabels.defaultList: this.setListState("default", !defaultListEnabled)
-			case menuLabels.userList: this.setListState("user", !userListEnabled)
-			case menuLabels.editDefaultList: this.editFile("default")
-			case menuLabels.editUserList: this.editFile("user")
-			case "Show counts": this.showHotstringsInfo()
+			case this.settings.menu.items[1].label:
+				this.states.defaultListEnabled := !this.states.defaultListEnabled
+				setMenuItemProps(name, menu, { checked: this.states.defaultListEnabled, clickCount: +1 })
+				this.readHotstrings("default", this.states.defaultListEnabled)
+			case this.settings.menu.items[2].label:
+				this.states.userListEnabled := !this.states.userListEnabled
+				setMenuItemProps(name, menu, { checked: this.states.userListEnabled, clickCount: +1 })
+				this.readHotstrings("user", this.states.userListEnabled)
+			case this.settings.menu.items[4].label:
+				this.editFile("user")
+			case this.settings.menu.items[6].label:
+				this.showHotstringsInfo()
 		}
 	}
 
 
 
-	setListState(key, state) {
-		switch (key) {
-			case "default": this.settings.states.defaultListEnabled := state
-			case "user": this.settings.states.userListEnabled := state
-		}
-
-		this.readHotstrings(key, state)
-
-		this.tickMenuItems()
-	}
-
-
-
+	/** */
 	readHotstrings(key, state) {
 		filename := key . "_autocorrect.txt"
-		if FileExist(filename) {
+		if (FileExist(filename)) {
 			loop read, filename {
 				readLine := Trim(A_LoopReadLine)
 				if (readLine == "") {
@@ -164,6 +160,7 @@ class module__AutoCorrect {
 
 
 
+	/** */
 	makeTriggers(trigger, replacement, triggers := []) {
 		; loop through potentially multiple character sets
 		; if the trigger has an [xyz]?+ character set then we need to loop through each character in the set and make a hotstring for each one
@@ -222,14 +219,14 @@ class module__AutoCorrect {
 
 	; https://www.autohotkey.com/boards/viewtopic.php?p=158444#p158444
 	getCharCombos(str) {
-		if ((len := StrLen(str)) = 1) {
+		if ((len := StrLen(str)) == 1) {
 			return [str]
 		}
 		result := []
 		loop len {
-			Split1 := SubStr(str, 1, A_Index - 1)      ; before pos
-			Split2 := SubStr(str, A_Index, 1)          ; at pos
-			Split3 := SubStr(str, A_Index + 1)         ; after pos
+			Split1 := SubStr(str, 1, A_Index - 1)    ; before pos
+			Split2 := SubStr(str, A_Index, 1)        ; at pos
+			Split3 := SubStr(str, A_Index + 1)       ; after pos
 			for each, Perm in this.getCharCombos(Split1 Split3) {
 				result.push(Split2 Perm)
 			}
@@ -239,6 +236,7 @@ class module__AutoCorrect {
 
 
 
+	/** */
 	editFile(key) {
 		switch (key) {
 			case "default": filePath := "default_autocorrect.txt"
@@ -255,11 +253,12 @@ class module__AutoCorrect {
 
 
 
+	/** */
 	showHotstringsInfo() {
 		defaultCount := 0
 		userCount := 0
 
-		for index, subArray in this.settings.hotstrings {
+		for ii, subArray in this.settings.hotstrings {
 			switch (subArray[4]) {
 				case "default": defaultCount++
 				case "user": userCount++
@@ -275,22 +274,43 @@ class module__AutoCorrect {
 
 
 
-	doSettingsFileCheck() {
-		sectionExists := IniRead("user_settings.ini", this.moduleName, , false)
-		if (!sectionExists) {
-			section := join([
-				"[" . this.moduleName . "]",
-				"enabled = " . (this.enabled ? "true" : "false"),
-				"on = [" . join(this.settings.activateOnLoad, ",") . "]",
-				"off = [" . join(this.settings.deactivateOnLoad, ",") . "]"
-			], "`n")
-			FileAppend("`n" . section . "`n", "user_settings.ini")
+	/** */
+	updateSettingsFile() {
+		try {
+			state := join([
+				(this.states.defaultListEnabled ? "default" : ""),
+				(this.states.userListEnabled ? "user" : "")
+			], ",")
+			state := RegExReplace(state, ",+", ",")
+			state := RegExReplace(state, "^,", "")
+			state := RegExReplace(state, ",$", "")
+
+			IniWrite((this.enabled ? "true" : "false"), this.settings.fileName, this.moduleName, "enabled")
+			IniWrite("[" . state . "]", _Settings.app.environment.settingsFile, this.moduleName, "active")
+		} catch Error as e {
+			throw ("Error updating settings file: " . e.Message)
 		}
 	}
 
 
 
-	doUserAutoCorrectFileCheck() {
+	/** */
+	checkSettingsFile() {
+		sectionExists := IniRead(_Settings.app.environment.settingsFile, this.moduleName, , false)
+		if (!sectionExists) {
+			section := join([
+				"[" . this.moduleName . "]",
+				"enabled=true",
+				"active=[default,user]",
+			], "`n")
+			FileAppend("`n" . section . "`n", _Settings.app.environment.settingsFile)
+		}
+	}
+
+
+
+	/** */
+	checkUserAutocorrectFile() {
 		if (!FileExist("user_autocorrect.txt")) {
 			content := join([
 				"; https://www.autohotkey.com/docs/v2/Hotstrings.htm",
@@ -318,11 +338,6 @@ class module__AutoCorrect {
 		}
 	}
 }
-
-
-
-
-
 
 
 

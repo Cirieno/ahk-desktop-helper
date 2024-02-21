@@ -16,8 +16,8 @@
 
 
 
-#Requires AutoHotkey v2+
 #ClipboardTimeout 2000
+#Requires AutoHotkey v2+
 #SingleInstance force
 #WinActivateForce
 A_HotkeyInterval := 2000
@@ -26,6 +26,7 @@ DetectHiddenText(true)
 DetectHiddenWindows(true)
 FileEncoding("UTF-8-RAW")
 InstallKeybdHook(true)
+OnExit(doExit)
 Persistent(true)
 SetTitleMatchMode("slow")
 SetWorkingDir(A_ScriptDir)
@@ -78,7 +79,7 @@ populateGlobalVars() {
 
 
 
-; #Include "*i .\modules\autocorrect.module.ahk"
+#Include "*i .\modules\autocorrect.module.ahk"
 #Include "*i .\modules\desktop-file-dialog-slashes.module.ahk"
 #Include "*i .\modules\desktop-hide-media-popup.module.ahk"
 #Include "*i .\modules\desktop-hide-peek-button.module.ahk"
@@ -95,8 +96,8 @@ checkStartWithWindows()
 drawMenu("init")
 loadModules()
 drawMenu("exit")
+checkMemoryUsage()
 SetTimer(checkMemoryUsage, (30 * U_msMinute))
-OnExit(doExit)
 
 
 
@@ -194,7 +195,7 @@ doMenuItem(name, position, menu) {
 /** */
 loadModules() {
 	; try {
-	; _Modules["AutoCorrect"] := module__AutoCorrect()
+	_Modules["AutoCorrect"] := module__AutoCorrect()
 	_Modules["DesktopFileDialogSlashes"] := module__DesktopFileDialogSlashes()
 	_Modules["DesktopHideMediaPopup"] := module__DesktopHideMediaPopup()
 	_Modules["DesktopHidePeekButton"] := module__DesktopHidePeekButton()
@@ -211,7 +212,7 @@ loadModules() {
 
 /** */
 doExit(reason, code) {
-	if (isSet(_Modules) && isMap(_Modules)) {
+	if (IsSet(_Modules) && isMap(_Modules)) {
 		for key, module in _Modules {
 			module.__Delete()
 			module := null
@@ -228,8 +229,17 @@ checkSettingsFileExists() {
 		section := join([
 			"[Environment]",
 			"startWithWindows=false",
-			"enableTextManipulationHotkeys=false",
-			"enableExtendedRightMouseClick=false"
+			"enableExtendedRightMouseClick=false",
+			"enableTextManipulationHotkeys=true"
+		], "`n")
+		FileAppend("" . section . "`n", _Settings.app.environment.settingsFile)
+	}
+	sectionExists := IniRead(_Settings.app.environment.settingsFile, "CloseAppsWithCtrlW", , false)
+	if (!sectionExists) {
+		section := join([
+			"[CloseAppsWithCtrlW]",
+			"enabled=true",
+			"apps=[`"notepad.exe`",`"vlc.exe`"]"
 		], "`n")
 		FileAppend("" . section . "`n", _Settings.app.environment.settingsFile)
 	}
@@ -274,52 +284,49 @@ checkStartWithWindows() {
 
 /** */
 doTextManipulation(what, reselect := true) {
-	clipboardSaved := ClipboardAll()
+	clipSaved := ClipboardAll()
 	A_Clipboard := ""
-	Send("^c")
+	; Sleep(50)
+	Send("^x")
 	ClipWait()
 	len := StrLen(A_Clipboard)
-	switch (what) {
-		case "lower": SendText(StrLower(A_Clipboard))
-		case "upper": SendText(StrUpper(A_Clipboard))
-		case "title": SendText(StrTitle(A_Clipboard))
-		case "singlequote": SendText("'" . A_Clipboard . "'")
-		case "doublequote": SendText("`"" . A_Clipboard . "`"")
-		case "parentheses": SendText("(" . A_Clipboard . ")")
-		case "brackets": SendText("[" . A_Clipboard . "]")
-		case "curlies": SendText("{" . A_Clipboard . "}")
+	if (len !== 0) {
+		switch (what) {
+			case "lower": A_Clipboard := StrLower(A_Clipboard)
+			case "upper": A_Clipboard := StrUpper(A_Clipboard)
+			case "title": A_Clipboard := StrTitle(A_Clipboard)
+			case "singlequote": A_Clipboard := "'" . A_Clipboard . "'"
+			case "doublequote": A_Clipboard := "`"" . A_Clipboard . "`""
+			case "parentheses": A_Clipboard := "(" . A_Clipboard . ")"
+			case "brackets": A_Clipboard := "[" . A_Clipboard . "]"
+			case "curlies": A_Clipboard := "{" . A_Clipboard . "}"
+		}
+		Send("^v")
+		if (reselect) {
+			Send("+{left " . (len + 2) . "}")
+		}
 	}
-	if (reselect) {
-		Send("+{left " . (len + 2) . "}")
-	}
-	A_Clipboard := clipboardSaved
-	clipboardSaved := ""
+	; Sleep(50)
+	A_Clipboard := clipSaved
+	clipSaved := ""
 }
 
 
 
 /** */
-enableTextManipulationHotkeys := getIniVal("Environment", "enableTextManipulationHotkeys", false)
-#HotIf enableTextManipulationHotkeys
-$^!L:: doTextManipulation("lower")
-$^!U:: doTextManipulation("upper")
-$^!T:: doTextManipulation("title")
-$^!':: doTextManipulation("singlequote")
-$^!2:: doTextManipulation("doublequote")
-$^!9:: doTextManipulation("parentheses")
-$^!0:: doTextManipulation("parentheses")
-$^![:: doTextManipulation("brackets")
-$^!]:: doTextManipulation("brackets")
-$+^!{:: doTextManipulation("curlies")
-$+^!}:: doTextManipulation("curlies")
-#HotIf
-
-
-
-/** */
-GroupAdd("closeWindows", "ahk_exe notepad.exe")
-GroupAdd("closeWindows", "ahk_exe vlc.exe")
-#HotIf WinActive("ahk_group closeWindows")
+closeAppsWithCtrlW_enabled := getIniVal("CloseAppsWithCtrlW", "enabled", true)
+if (closeAppsWithCtrlW_enabled) {
+	doCloseAppsWithCtrlWGroupAdd()
+	doCloseAppsWithCtrlWGroupAdd() {
+		appsList := getIniVal("closeAppsWithCtrlW", "apps", [])
+		for key, app in appsList {
+			app := StrReplace(app, "`"", "")
+			app := StrReplace(app, "'", "")
+			GroupAdd("closeAppsWithCtrlW", "ahk_exe " . app)
+		}
+	}
+}
+#HotIf (WinActive("ahk_group closeAppsWithCtrlW") && closeAppsWithCtrlW_enabled)
 $^w:: WinClose("A")
 #HotIf
 
@@ -327,6 +334,24 @@ $^w:: WinClose("A")
 
 /** */
 enableExtendedRightMouseClick := getIniVal("Environment", "enableExtendedRightMouseClick", false)
-#HotIf WinActive("ahk_group explorerWindows") && enableExtendedRightMouseClick
+#HotIf (WinActive("ahk_group explorerWindows") && enableExtendedRightMouseClick)
 $RButton:: SendInput("+{RButton}")
+#HotIf
+
+
+
+/** */
+enableTextManipulationHotkeys := getIniVal("Environment", "enableTextManipulationHotkeys", true)
+#HotIf enableTextManipulationHotkeys
+$^!U:: doTextManipulation("upper")
+$^!L:: doTextManipulation("lower")
+$^!T:: doTextManipulation("title")
+$^!':: doTextManipulation("singlequote")
+$^!2:: doTextManipulation("doublequote")
+$^!9:: doTextManipulation("parentheses")
+$^!0:: doTextManipulation("parentheses")
+$^![:: doTextManipulation("brackets")
+$^!]:: doTextManipulation("brackets")
+$^!+{:: doTextManipulation("curlies")
+$^!+}:: doTextManipulation("curlies")
 #HotIf

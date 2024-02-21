@@ -6,8 +6,6 @@
  ***********************************************************************/
 ; Replaces forward-slashes with back-slashes in Explorer-based windows
 ; and File dialogs, useful when working with LAMP paths in VSCode
-;
-; `ahk_group explorerWindows` is defined in constants.utils.ahk
 
 
 
@@ -17,18 +15,17 @@ class module__DesktopFileDialogSlashes {
 		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
 			activateOnLoad: getIniVal(this.moduleName, "active", false),
-			resetOnExit: null,
-			fileName: _Settings.app.environment.settingsFile,
-			menu: {
-				path: "TRAY\Desktop",
-				items: [{
-					type: "item",
-					label: "Replace fwd slashes in File dialogs"
-				}]
-			}
+			fileName: _Settings.app.environment.settingsFile
 		}
 		this.states := {
 			active: this.settings.activateOnLoad
+		}
+		this.settings.menu := {
+			path: "TRAY\Desktop",
+			items: [{
+				type: "item",
+				label: "Replace fwd slashes in File dialogs"
+			}]
 		}
 
 		this.checkSettingsFile()
@@ -96,6 +93,7 @@ class module__DesktopFileDialogSlashes {
 	setHotkeys(state) {
 		local doPaste := ObjBindMethod(this, "doPaste")
 		; HotIfWinactive("ahk_class #32770")
+		; `ahk_group explorerWindows` is defined in constants.utils.ahk
 		HotIfWinactive("ahk_group explorerWindows")
 		Hotstring(":*:/", "\", (state ? "on" : "off"))
 		Hotkey("^v", doPaste, (state ? "on" : "off"))
@@ -136,7 +134,7 @@ class module__DesktopFileDialogSlashes {
 			section := join([
 				"[" . this.moduleName . "]",
 				"enabled=true",
-				"active=false",
+				"active=false"
 			], "`n")
 			FileAppend("`n" . section . "`n", this.settings.fileName)
 		}
@@ -148,7 +146,7 @@ class module__DesktopFileDialogSlashes {
 	showDebugTooltip() {
 		debugMsg(join([
 			"MODULE = " . this.moduleName . "`n",
-			"states.active = " . this.states.active,
+			"states.active = " . this.states.active
 		], "`n"), 1, 1)
 	}
 }

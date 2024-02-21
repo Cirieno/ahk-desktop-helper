@@ -19,13 +19,6 @@ class module__DesktopHidePeekButton {
 			overrideExternalChanges: getIniVal(this.moduleName, "overrideExternalChanges", true),
 			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false),
 			fileName: _Settings.app.environment.settingsFile,
-			menu: {
-				path: "TRAY\Desktop",
-				items: [{
-					type: "item",
-					label: "Hide Peek button"
-				}]
-			},
 			hWnd: null
 		}
 		this.states := {
@@ -33,6 +26,13 @@ class module__DesktopHidePeekButton {
 			buttonFound: null,
 			buttonEnabled: null,
 			buttonEnabledOnInit: null
+		}
+		this.settings.menu := {
+			path: "TRAY\Desktop",
+			items: [{
+				type: "item",
+				label: "Hide Peek button"
+			}]
 		}
 
 		this.checkSettingsFile()

@@ -19,20 +19,7 @@ class module__KeyboardKeylocks {
 			activateOnLoad: getIniVal(this.moduleName, "active", "[num]"),
 			overrideExternalChanges: getIniVal(this.moduleName, "overrideExternalChanges", false),
 			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false),
-			fileName: _Settings.app.environment.settingsFile,
-			menu: {
-				path: "TRAY\Keyboard",
-				items: [{
-					type: "item",
-					label: "Caps Lock"
-				}, {
-					type: "item",
-					label: "Num Lock"
-				}, {
-					type: "item",
-					label: "Scroll Lock"
-				}]
-			}
+			fileName: _Settings.app.environment.settingsFile
 		}
 		this.states := {
 			capsActive: isInArray(this.settings.activateOnLoad, "caps"),
@@ -44,6 +31,19 @@ class module__KeyboardKeylocks {
 			scrollActive: isInArray(this.settings.activateOnLoad, "scroll"),
 			scrollEnabled: null,
 			scrollEnabledOnInit: null
+		}
+		this.settings.menu := {
+			path: "TRAY\Keyboard",
+			items: [{
+				type: "item",
+				label: "Caps Lock"
+			}, {
+				type: "item",
+				label: "Num Lock"
+			}, {
+				type: "item",
+				label: "Scroll Lock"
+			}]
 		}
 
 		this.checkSettingsFile()
@@ -214,8 +214,8 @@ class module__KeyboardKeylocks {
 				(this.states.scrollEnabled ? "scroll" : "")
 			], ",")
 			state := RegExReplace(state, ",+", ",")
-			state := RegExReplace(state, ",$", "")
 			state := RegExReplace(state, "^,", "")
+			state := RegExReplace(state, ",$", "")
 
 			IniWrite((this.enabled ? "true" : "false"), this.settings.fileName, this.moduleName, "enabled")
 			IniWrite("[" . state . "]", this.settings.fileName, this.moduleName, "active")
@@ -257,7 +257,7 @@ class module__KeyboardKeylocks {
 			"states.numEnabled = " . this.states.numEnabled . " (init: " . this.states.numEnabledOnInit . ")",
 			"states.scrollEnabled = " . this.states.scrollEnabled . " (init: " . this.states.scrollEnabledOnInit . ")",
 			"settings.resetOnExit = " . this.settings.resetOnExit
-			"settings.activateOnLoad = [" . join(this.settings.activateOnLoad, ",") . "]",
+			"settings.activateOnLoad = [" . join(this.settings.activateOnLoad, ",") . "]"
 		], "`n"), 1, 1)
 	}
 }

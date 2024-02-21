@@ -131,6 +131,8 @@ setMenuItem(label?, menuRef?, CallbackOrSubmenu?, props?) {
 
 	if (isFunction(CallbackOrSubmenu) || isMenu(CallbackOrSubmenu)) {
 		thisMenu.add(label, CallbackOrSubmenu)
+	} else if ((label == "---") || (strLower(label) == "separator")) {
+		thisMenu.add()
 	} else {
 		throw Error("CallbackOrSubmenu not a function or menu")
 	}
