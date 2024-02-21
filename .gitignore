@@ -7,3 +7,4 @@ temp_test.ahk
 modules/TODO - disable-proxy.module.ahk
 modules/TODO - enable-proxy-overrides.module.ahk
 modules/TODO - prevent-sleep.module.ahk
+.vscode/launch.json

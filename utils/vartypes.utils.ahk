@@ -28,6 +28,12 @@ isString(val) {
 
 
 
+isMap(val) {
+	return (Type(val) == "Map")
+}
+
+
+
 isMenu(val) {
 	return (Type(val) == "Menu")
 }

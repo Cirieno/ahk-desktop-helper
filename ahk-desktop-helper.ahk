@@ -211,9 +211,11 @@ loadModules() {
 
 /** */
 doExit(reason, code) {
-	for key, module in _Modules {
-		module.__Delete()
-		module := null
+	if (isSet(_Modules) && isMap(_Modules)) {
+		for key, module in _Modules {
+			module.__Delete()
+			module := null
+		}
 	}
 }
 

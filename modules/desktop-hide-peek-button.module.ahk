@@ -140,6 +140,7 @@ class module__DesktopHidePeekButton {
 			return hWnd
 		} catch Error as e {
 			; throw ("Couldn't get button hWnd")
+			; NOTE: for some reason an error is thrown when the Start menu is open, so return null instead
 			return null
 		}
 	}
@@ -161,7 +162,7 @@ class module__DesktopHidePeekButton {
 			this.states.buttonEnabled := enabledNow
 			this.states.buttonEnabledOnInit := (isNull(this.states.buttonEnabledOnInit) ? enabledNow : null)
 
-			if (forced || this.settings.overrideExternalChanges){
+			if (forced || this.settings.overrideExternalChanges) {
 				if (this.states.active && enabledNow) {
 					this.setButtonState(false)
 				} else if (!(this.states.active && enabledNow)) {

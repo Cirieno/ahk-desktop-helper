@@ -23,7 +23,7 @@ class module__DesktopHideMediaPopup {
 				path: "TRAY\Desktop",
 				items: [{
 					type: "item",
-					label: "Hide Media Volume / Brightness popup"
+					label: "Hide Volume / Brightness popup"
 				}]
 			},
 			hWnd: null
