@@ -1,7 +1,6 @@
 /************************************************************************
  * @description KeyboardKeylocks
  * @author Rob McInnes
- * @date 2024-01
  * @file keyboard-keylocks.module.ahk
  ***********************************************************************/
 ; Just a handy-dandy way to keep track of the state of the keyboard keylocks
@@ -84,8 +83,6 @@ class module__KeyboardKeylocks {
 		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.capsActive })
 		setMenuItemProps(this.settings.menu.items[2].label, thisMenu, { checked: this.states.numActive })
 		setMenuItemProps(this.settings.menu.items[3].label, thisMenu, { checked: this.states.scrollActive })
-
-		; SetTimer(ObjBindMethod(this, "showDebugTooltip"), U_msSecond)
 
 		this.runObserver(true)
 		SetTimer(ObjBindMethod(this, "runObserver"), 5 * U_msSecond)
@@ -209,9 +206,9 @@ class module__KeyboardKeylocks {
 	updateSettingsFile() {
 		try {
 			state := join([
-				(this.states.capsEnabled ? "caps" : ""),
-				(this.states.numEnabled ? "num" : ""),
-				(this.states.scrollEnabled ? "scroll" : "")
+				(isTruthy(this.states.capsEnabled) ? "caps" : ""),
+				(isTruthy(this.states.numEnabled) ? "num" : ""),
+				(isTruthy(this.states.scrollEnabled) ? "scroll" : "")
 			], ",")
 			state := RegExReplace(state, ",+", ",")
 			state := RegExReplace(state, "^,", "")
@@ -233,14 +230,8 @@ class module__KeyboardKeylocks {
 		try {
 			IniRead(this.settings.fileName, this.moduleName)
 		} catch Error as e {
-			section := join([
-				"[" . this.moduleName . "]",
-				"enabled=true",
-				"active=[num]",
-				"overrideExternalChanges=false"
-				"resetOnExit=false"
-			], "`n")
-			FileAppend("`n" . section . "`n", this.settings.fileName)
+			FileAppend("`n", this.settings.fileName)
+			this.updateSettingsFile()
 		}
 	}
 

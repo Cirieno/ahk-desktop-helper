@@ -1,10 +1,9 @@
 /************************************************************************
  * @description DesktopHideMediaPopup
  * @author Rob McInnes
- * @date 2024-02
  * @file desktop-hide-media-popup.module.ahk
  ***********************************************************************/
-; Checks for external changes every seconds
+; Checks for external changes every 5 seconds
 ; Can be forced to override external changes
 ; TODO: this also hides the brightness popup...
 
@@ -50,8 +49,6 @@ class module__DesktopHideMediaPopup {
 
 		this.runObserver(true)
 		SetTimer(ObjBindMethod(this, "runObserver"), 5 * U_msSecond)
-
-		; SetTimer(ObjBindMethod(this, "showDebugTooltip"), U_msSecond)
 	}
 
 
@@ -206,14 +203,8 @@ class module__DesktopHideMediaPopup {
 		try {
 			IniRead(this.settings.fileName, this.moduleName)
 		} catch Error as e {
-			section := join([
-				"[" . this.moduleName . "]",
-				"enabled=true",
-				"active=false",
-				"overrideExternalChanges=true"
-				"resetOnExit=false"
-			], "`n")
-			FileAppend("`n" . section . "`n", this.settings.fileName)
+			FileAppend("`n", this.settings.fileName)
+			this.updateSettingsFile()
 		}
 	}
 

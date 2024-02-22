@@ -1,7 +1,6 @@
 /************************************************************************
  * @description DesktopFileDialogSlashes
  * @author Rob McInnes
- * @date 2024-01
  * @file desktop-file-dialog-slashes.module.ahk
  ***********************************************************************/
 ; Replaces forward-slashes with back-slashes in Explorer-based windows
@@ -41,8 +40,6 @@ class module__DesktopFileDialogSlashes {
 
 		thisMenu := this.drawMenu()
 		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.active })
-
-		; SetTimer(ObjBindMethod(this, "showDebugTooltip"), U_msSecond)
 	}
 
 
@@ -131,12 +128,8 @@ class module__DesktopFileDialogSlashes {
 		try {
 			IniRead(this.settings.fileName, this.moduleName)
 		} catch Error as e {
-			section := join([
-				"[" . this.moduleName . "]",
-				"enabled=true",
-				"active=false"
-			], "`n")
-			FileAppend("`n" . section . "`n", this.settings.fileName)
+			FileAppend("`n", this.settings.fileName)
+			this.updateSettingsFile()
 		}
 	}
 

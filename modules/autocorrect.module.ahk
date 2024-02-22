@@ -1,7 +1,6 @@
 /************************************************************************
  * @description AutoCorrect
  * @author Rob McInnes
- * @date 2024-01
  * @file autocorrect.module.ahk
  ***********************************************************************/
 
@@ -18,9 +17,7 @@ class module__AutoCorrect {
 		}
 		this.states := {
 			defaultListActive: isInArray(this.settings.activateOnLoad, "default"),
-			defaultListEnabled: null,
-			userListActive: isInArray(this.settings.activateOnLoad, "user"),
-			userListEnabled: null
+			userListActive: isInArray(this.settings.activateOnLoad, "user")
 		}
 		this.settings.menu := {
 			path: "TRAY\AutoCorrect",
@@ -57,13 +54,13 @@ class module__AutoCorrect {
 
 		thisMenu := this.drawMenu()
 
-		if (this.states.defaultListEnabled) {
-			setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: true })
+		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.defaultListActive })
+		if (this.states.defaultListActive) {
 			SetTimer(ObjBindMethod(this, "readHotstrings", "default", true), -1000)
 		}
 
-		if (this.states.userListEnabled) {
-			setMenuItemProps(this.settings.menu.items[2].label, thisMenu, { checked: true })
+		setMenuItemProps(this.settings.menu.items[2].label, thisMenu, { checked: this.states.userListActive })
+		if (this.states.userListActive) {
 			SetTimer(ObjBindMethod(this, "readHotstrings", "user", true), -1000)
 		}
 	}
@@ -72,7 +69,7 @@ class module__AutoCorrect {
 
 	/** */
 	__Delete() {
-		; remove hotstrings
+		; remove hotstrings?
 	}
 
 
@@ -95,7 +92,7 @@ class module__AutoCorrect {
 					local doMenuItem := ObjBindMethod(this, "doMenuItem")
 					menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
 				case "separator", "---":
-					setMenuItem(item.type, thisMenu)
+					setMenuItem("---", thisMenu)
 			}
 		}
 
@@ -108,13 +105,13 @@ class module__AutoCorrect {
 	doMenuItem(name, position, menu) {
 		switch (name) {
 			case this.settings.menu.items[1].label:
-				this.states.defaultListEnabled := !this.states.defaultListEnabled
-				setMenuItemProps(name, menu, { checked: this.states.defaultListEnabled, clickCount: +1 })
-				this.readHotstrings("default", this.states.defaultListEnabled)
+				this.states.defaultListActive := !this.states.defaultListActive
+				setMenuItemProps(name, menu, { checked: this.states.defaultListActive, clickCount: +1 })
+				this.readHotstrings("default", this.states.defaultListActive)
 			case this.settings.menu.items[2].label:
-				this.states.userListEnabled := !this.states.userListEnabled
-				setMenuItemProps(name, menu, { checked: this.states.userListEnabled, clickCount: +1 })
-				this.readHotstrings("user", this.states.userListEnabled)
+				this.states.userListActive := !this.states.userListActive
+				setMenuItemProps(name, menu, { checked: this.states.userListActive, clickCount: +1 })
+				this.readHotstrings("user", this.states.userListActive)
 			case this.settings.menu.items[4].label:
 				this.editFile("user")
 			case this.settings.menu.items[6].label:
@@ -265,11 +262,10 @@ class module__AutoCorrect {
 			}
 		}
 
-		MsgBox("ACTIVE HOTSTRINGS"
-			. "`n"
-			. "`nDefault count: " . defaultCount
-			. "`nUser count: " . userCount
-			, _Settings.app.name, 4160)
+		MsgBox(join([
+			"Default list: " . defaultCount,
+			"User list: " . userCount
+		], "`n"), (_Settings.app.name . " - Hotstrings Info" . U_ellipsis), (0 + 64 + 4096))
 	}
 
 
@@ -278,8 +274,8 @@ class module__AutoCorrect {
 	updateSettingsFile() {
 		try {
 			state := join([
-				(this.states.defaultListEnabled ? "default" : ""),
-				(this.states.userListEnabled ? "user" : "")
+				(isTruthy(this.states.defaultListActive) ? "default" : ""),
+				(isTruthy(this.states.userListActive) ? "user" : "")
 			], ",")
 			state := RegExReplace(state, ",+", ",")
 			state := RegExReplace(state, "^,", "")
@@ -296,14 +292,11 @@ class module__AutoCorrect {
 
 	/** */
 	checkSettingsFile() {
-		sectionExists := IniRead(_Settings.app.environment.settingsFile, this.moduleName, , false)
-		if (!sectionExists) {
-			section := join([
-				"[" . this.moduleName . "]",
-				"enabled=true",
-				"active=[default,user]",
-			], "`n")
-			FileAppend("`n" . section . "`n", _Settings.app.environment.settingsFile)
+		try {
+			IniRead(this.settings.fileName, this.moduleName)
+		} catch Error as e {
+			FileAppend("`n", this.settings.fileName)
+			this.updateSettingsFile()
 		}
 	}
 

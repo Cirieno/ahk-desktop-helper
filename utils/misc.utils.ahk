@@ -67,7 +67,7 @@ debugMsg(msg := "", showMsg := false, asTooltip := false) {
 			CoordMode("Tooltip", "Screen")
 			ToolTip(msg, 0, (A_ScreenHeight / 2) + Random(-100, 100))
 		} else {
-			MsgBox(msg, "Debugging", 64)
+			MsgBox(msg, (_Settings.app.name . " - " . "Debugging" . U_ellipsis), (0 + 64 + 4096))
 		}
 	}
 }

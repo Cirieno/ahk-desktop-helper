@@ -5,7 +5,7 @@ class module__VolumeMouseWheel {
 		this.settings := {
 			moduleName: this.moduleName,
 			enabled: this.enabled,
-			activateOnLoad: getIniVal(this.moduleName, "on", false),
+			activateOnLoad: getIniVal(this.moduleName, "active", false),
 			states: {
 				wheelEnabled: null
 			},
@@ -16,7 +16,7 @@ class module__VolumeMouseWheel {
 			step: getIniVal(this.moduleName, "step", 3)
 		}
 
-		this.doSettingsFileCheck()
+		this.checkSettingsFile()
 	}
 
 
@@ -26,7 +26,7 @@ class module__VolumeMouseWheel {
 			return
 		}
 
-		this.settings.states.wheelEnabled := this.settings.activateOnLoad
+		this.states.wheelEnabled := this.settings.activateOnLoad
 		this.setWheelState(this.settings.activateOnLoad)
 
 		this.drawMenu()
@@ -64,12 +64,12 @@ class module__VolumeMouseWheel {
 
 	tickMenuItems() {
 		try {
-			wheelEnabled := this.settings.states.wheelEnabled
+			wheelEnabled := this.states.wheelEnabled
 			menuLabels := this.settings.menuLabels
 			rootMenu := this.rootMenu
 
 			(wheelEnabled == true ? rootMenu.check(menuLabels.btns) : rootMenu.uncheck(menuLabels.btns))
-		} catch Error as e {
+		; } catch Error as e {
 			; do nothing
 		}
 	}
@@ -77,7 +77,7 @@ class module__VolumeMouseWheel {
 
 
 	doMenuItem(name, position, menu) {
-		wheelEnabled := this.settings.states.wheelEnabled
+		wheelEnabled := this.states.wheelEnabled
 		menuLabels := this.settings.menuLabels
 
 		switch (name) {
@@ -88,7 +88,7 @@ class module__VolumeMouseWheel {
 
 
 	setWheelState(state) {
-		this.settings.states.wheelEnabled := state
+		this.states.wheelEnabled := state
 		local doWheelChange := ObjBindMethod(this, "doWheelChange")
 
 		Hotkey("~WheelUp", doWheelChange, state)
@@ -103,7 +103,7 @@ class module__VolumeMouseWheel {
 		trayControls := ["Button2", "ToolbarWindow323", "TrayButton1", "TrayClockWClass1", "TrayNotifyWnd1", "TrayShowDesktopButtonWClass1"]
 		MouseGetPos(&x, &y, &winUID, &winControl)
 
-		if isInArray(trayControls, winControl) {
+		if (isInArray(trayControls, winControl)) {
 			vol := SoundGetVolume()
 			switch (name) {
 				case "~WheelUp": newVol := Min((vol + this.settings.step), 100)
@@ -115,17 +115,24 @@ class module__VolumeMouseWheel {
 
 
 
-	doSettingsFileCheck() {
+	updateSettingsFile() {
+		strOn := (this.states.wheelEnabled ? "true" : "false")
+		IniWrite(strOn, _Settings.app.environment.settingsFile, this.moduleName, "active")
+	}
+
+
+
+	checkSettingsFile() {
 		try {
-			IniRead("user_settings.ini", this.moduleName)
+			IniRead(_Settings.app.environment.settingsFile, this.moduleName)
 		} catch Error as e {
 			section := join([
 				"[" . this.moduleName . "]",
-				"enabled = " . (this.settings.enabled ? "true" : "false"),
-				"on = " . (this.settings.activateOnLoad ? "true" : "false"),
-				"step = " . this.settings.step,
+				"enabled=" . (this.settings.enabled ? "true" : "false"),
+				"on=" . (this.settings.activateOnLoad ? "true" : "false"),
+				"step=" . this.settings.step,
 			], "`n")
-			FileAppend("`n" . section . "`n", "user_settings.ini")
+			FileAppend("`n" . section . "`n", _Settings.app.environment.settingsFile)
 		}
 	}
 }

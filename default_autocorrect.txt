@@ -10976,8 +10976,9 @@ loop|;oop
 o'clock|oclock
 oll|o;;|?*
 replace|relpace|?
+sinecure|synecure
 ull|u;;|?*
 upper|uppser|*
+Vodafone|Vodaphone
 Windows|WIndows|C
 Wonka|wonka|C
-

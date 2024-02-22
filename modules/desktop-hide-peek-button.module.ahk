@@ -1,11 +1,10 @@
 /************************************************************************
  * @description DesktopHidePeekButton
  * @author Rob McInnes
- * @date 2024-01
  * @file desktop-hide-peek-button.module.ahk
  ***********************************************************************/
 ; Removes the annoying little button at the end of the taskbar
-; Checks for external changes every second
+; Checks for external changes every 5 seconds
 ; Can be forced to override external changes
 
 
@@ -50,8 +49,6 @@ class module__DesktopHidePeekButton {
 
 		this.runObserver(true)
 		SetTimer(ObjBindMethod(this, "runObserver"), 5 * U_msSecond)
-
-		; SetTimer(ObjBindMethod(this, "showDebugTooltip"), U_msSecond)
 	}
 
 
@@ -201,14 +198,8 @@ class module__DesktopHidePeekButton {
 		try {
 			IniRead(this.settings.fileName, this.moduleName)
 		} catch Error as e {
-			section := join([
-				"[" . this.moduleName . "]",
-				"enabled=true",
-				"active=false",
-				"overrideExternalChanges=true",
-				"resetOnExit=false"
-			], "`n")
-			FileAppend("`n" . section . "`n", this.settings.fileName)
+			FileAppend("`n", this.settings.fileName)
+			this.updateSettingsFile()
 		}
 	}
 

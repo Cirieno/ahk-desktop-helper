@@ -48,14 +48,16 @@ isFunction(val) {
 
 isTruthy(val) {
 	val := StrUpper(val)
-	return (val == 1 || val == "1" || val == "T" || val == "TRUE" || val == "ENABLED" || val == "ACTIVE" || val == "ON")
+	arr := [1, "1", "T", "TRUE", "ACTIVE", "ENABLED", "ON", "YES"]
+	return isInArray(arr, val)
 }
 
 
 
 isFalsy(val) {
 	val := StrUpper(val)
-	return (val == 0 || val == "0" || val == -1 || val == "-1" || val == "" || val == "F" || val == "FALSE" || val == "DISABLED" || val == "DEACTIVE" || val == "INACTIVE" || val == "OFF")
+	arr := [0, "0", -1, "-1", "F", "FALSE", "DEACTIVE", "INACTIVE", "DISABLED", "OFF", "NO", "CANCEL", "NULL"]
+	return isInArray(arr, val)
 }
 
 

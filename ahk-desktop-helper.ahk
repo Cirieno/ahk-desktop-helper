@@ -16,14 +16,15 @@
 
 
 
+/** */
 #ClipboardTimeout 2000
 #Requires AutoHotkey v2+
 #SingleInstance force
 #WinActivateForce
 A_HotkeyInterval := 2000
 A_MaxHotkeysPerInterval := 2000
-DetectHiddenText(true)
-DetectHiddenWindows(true)
+; DetectHiddenText(true)
+; DetectHiddenWindows(true)
 FileEncoding("UTF-8-RAW")
 InstallKeybdHook(true)
 OnExit(doExit)
@@ -79,14 +80,15 @@ populateGlobalVars() {
 
 
 
+/** */
 #Include "*i .\modules\autocorrect.module.ahk"
 #Include "*i .\modules\desktop-file-dialog-slashes.module.ahk"
+#Include "*i .\modules\desktop-gather-windows.module.ahk"
 #Include "*i .\modules\desktop-hide-media-popup.module.ahk"
 #Include "*i .\modules\desktop-hide-peek-button.module.ahk"
 #Include "*i .\modules\keyboard-keylocks.module.ahk"
 #Include "*i .\modules\mouse-swap-buttons.module.ahk"
 ; #Include "*i .\modules\volume-mousewheel.module.ahk"
-; #Include "*i .\modules\volume-steps.module.ahk"
 
 
 
@@ -103,8 +105,7 @@ SetTimer(checkMemoryUsage, (30 * U_msMinute))
 
 /** */
 drawMenu(section) {
-	_SA := _Settings.app
-	_ST := _Settings.app.tray
+	_SAT := _Settings.app.tray
 
 	if (!_ShadowMenu.menus.has("TRAY")) {
 		menuVals := {
@@ -120,12 +121,12 @@ drawMenu(section) {
 
 	switch (section) {
 		case "init":
-			A_IconTip := _ST.traytip
-			TraySetIcon(_ST.icon.location)
+			A_IconTip := _SAT.traytip
+			TraySetIcon(_SAT.icon.location)
 			A_TrayMenu.delete()
-			A_TrayMenu.add(_ST.title, doMenuItem)
+			A_TrayMenu.add(_SAT.title, doMenuItem)
 			; A_TrayMenu.setIcon(_ST.title, _ST.icon.location)
-			A_TrayMenu.default := _ST.title
+			A_TrayMenu.default := _SAT.title
 			A_TrayMenu.add()
 		case "exit":
 			A_TrayMenu.add()
@@ -158,26 +159,23 @@ drawMenu(section) {
 /** */
 doMenuItem(name, position, menu) {
 	_SA := _Settings.app
-	_ST := _Settings.app.tray
-	_S := _Settings.apps
 
 	switch (name) {
-		case _ST.title:
+		case _Settings.app.tray.title:
 			if (!A_IsCompiled) {
 				; TODO: this is for debugging
 				Reload()
 			}
 		case "About" . U_ellipsis:
-			msg := join([
+			MsgBox(join([
 				_SA.name, "v" . _SA.build.version . " (" . _SA.build.date . ")", "",
 				"Repo @ " . _SA.build.repo,
 				"AutoHotkey v2 @ autohotkey.com",
-				"AutoCorrect @ github.com/cdelahousse",
-				"Icons @ flaticon.com/authors/xnimrodx"
-			], "`n")
-			MsgBox(msg, _ST.title, 4160)
+				; "AutoCorrect @ github.com/cdelahousse",
+				; "Icons @ flaticon.com/authors/xnimrodx"
+			], "`n"), (_Settings.app.name . " - About" . U_ellipsis), (0 + 64 + 4096))
 		case "Edit config" . U_ellipsis:
-			local exitcode := RunWait(_S.Notepad.location . " " . _SA.environment.settingsFile)
+			local exitcode := RunWait(_Settings.apps.Notepad.location . " " . _SA.environment.settingsFile)
 			if (exitcode == 0) {
 				Reload()
 			}
@@ -199,9 +197,10 @@ loadModules() {
 	_Modules["DesktopFileDialogSlashes"] := module__DesktopFileDialogSlashes()
 	_Modules["DesktopHideMediaPopup"] := module__DesktopHideMediaPopup()
 	_Modules["DesktopHidePeekButton"] := module__DesktopHidePeekButton()
+	setMenuItem("---", "TRAY\Desktop")
+	_Modules["DesktopGatherWindows"] := module__DesktopGatherWindows()
 	_Modules["KeyboardKeylocks"] := module__KeyboardKeylocks()
 	_Modules["MouseSwapButtons"] := module__MouseSwapButtons()
-	; _Modules["VolumeSteps"] := module__VolumeSteps()
 	; _Modules["VolumeMouseWheel"] := module__VolumeMouseWheel()
 	; } catch Error as e {
 	; do nothing
@@ -232,7 +231,7 @@ checkSettingsFileExists() {
 			"enableExtendedRightMouseClick=false",
 			"enableTextManipulationHotkeys=true"
 		], "`n")
-		FileAppend("" . section . "`n", _Settings.app.environment.settingsFile)
+		FileAppend("`n" . section . "`n", _Settings.app.environment.settingsFile)
 	}
 	sectionExists := IniRead(_Settings.app.environment.settingsFile, "CloseAppsWithCtrlW", , false)
 	if (!sectionExists) {
@@ -241,7 +240,7 @@ checkSettingsFileExists() {
 			"enabled=true",
 			"apps=[`"notepad.exe`",`"vlc.exe`"]"
 		], "`n")
-		FileAppend("" . section . "`n", _Settings.app.environment.settingsFile)
+		FileAppend("`n" . section . "`n", _Settings.app.environment.settingsFile)
 	}
 }
 

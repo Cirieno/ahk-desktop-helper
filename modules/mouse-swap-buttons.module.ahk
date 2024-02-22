@@ -1,11 +1,10 @@
 /************************************************************************
  * @description MouseSwapButtons
  * @author Rob McInnes
- * @date 2024-01
  * @file mouse-swap-buttons.module.ahk
  ***********************************************************************/
-; Handy for if you're left-handed, or maybe just those RSI days
-; Checks for external changes every second
+; Handy for if you're left-handed, or maybe just having an RSI day
+; Checks for external changes every 5 seconds
 
 
 
@@ -52,12 +51,10 @@ class module__MouseSwapButtons {
 		}
 
 		thisMenu := this.drawMenu()
-		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.active })
+		setMenuItemProps( this.settings.menu.items[1].label, thisMenu, { checked: this.states.active, enabled: SysGet(SM_MOUSEPRESENT) })
 
 		this.runObserver(true)
 		SetTimer(ObjBindMethod(this, "runObserver"), 5 * U_msSecond)
-
-		; SetTimer(ObjBindMethod(this, "showDebugTooltip"), U_msSecond)
 	}
 
 
@@ -138,7 +135,7 @@ class module__MouseSwapButtons {
 		if (stateNow !== stateThen) {
 			this.states.buttonsSwapped := stateNow
 			this.states.active := !this.states.active
-			setMenuItemProps(this.settings.menu.items[1].label, this.settings.menu.path, { checked: this.states.active })
+			setMenuItemProps( this.settings.menu.items[1].label, this.settings.menu.path, { checked: this.states.active, enabled: SysGet(SM_MOUSEPRESENT) })
 		}
 	}
 
@@ -163,14 +160,8 @@ class module__MouseSwapButtons {
 		try {
 			IniRead(this.settings.fileName, this.moduleName)
 		} catch Error as e {
-			section := join([
-				"[" . this.moduleName . "]",
-				"enabled=true",
-				"active=false",
-				"overrideExternalChanges=false"
-				"resetOnExit=false"
-			], "`n")
-			FileAppend("`n" . section . "`n", this.settings.fileName)
+			FileAppend("`n", this.settings.fileName)
+			this.updateSettingsFile()
 		}
 	}
 
