@@ -17,7 +17,6 @@ class module__DesktopHidePeekButton {
 			activateOnLoad: getIniVal(this.moduleName, "active", false),
 			overrideExternalChanges: getIniVal(this.moduleName, "overrideExternalChanges", true),
 			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false),
-			fileName: _Settings.app.environment.settingsFile,
 			hWnd: null
 		}
 		this.states := {
@@ -33,8 +32,6 @@ class module__DesktopHidePeekButton {
 				label: "Hide Peek button"
 			}]
 		}
-
-		this.checkSettingsFile()
 	}
 
 
@@ -104,7 +101,7 @@ class module__DesktopHidePeekButton {
 			try {
 				return (ControlGetVisible(this.settings.hWnd) > 0)
 			} catch Error as e {
-				throw ("Couldn't get button state")
+				throw Error("Couldn't get button state")
 			}
 		}
 		return null
@@ -123,7 +120,7 @@ class module__DesktopHidePeekButton {
 				}
 				this.states.buttonEnabled := state
 			} catch Error as e {
-				throw ("Couldn't set button state")
+				throw Error("Couldn't set button state")
 			}
 		}
 	}
@@ -136,7 +133,7 @@ class module__DesktopHidePeekButton {
 			hWnd := ControlGetHwnd("TrayShowDesktopButtonWClass1", "ahk_class Shell_TrayWnd")
 			return hWnd
 		} catch Error as e {
-			; throw ("Couldn't get button hWnd")
+			; throw Error("Couldn't get button hWnd")
 			; NOTE: for some reason an error is thrown when the Start menu is open, so return null instead
 			return null
 		}
@@ -181,13 +178,14 @@ class module__DesktopHidePeekButton {
 
 	/** */
 	updateSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniWrite((this.enabled ? "true" : "false"), this.settings.fileName, this.moduleName, "enabled")
-			IniWrite((this.states.active ? "true" : "false"), this.settings.fileName, this.moduleName, "active")
-			IniWrite((this.settings.overrideExternalChanges ? "true" : "false"), this.settings.fileName, this.moduleName, "overrideExternalChanges")
-			IniWrite((this.settings.resetOnExit ? "true" : "false"), this.settings.fileName, this.moduleName, "resetOnExit")
+			IniWrite((this.enabled ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "enabled")
+			IniWrite((this.states.active ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "active")
+			IniWrite((this.settings.overrideExternalChanges ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "overrideExternalChanges")
+			IniWrite((this.settings.resetOnExit ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "resetOnExit")
 		} catch Error as e {
-			throw ("Error updating settings file: " . e.Message)
+			throw Error("Error updating settings file: " . e.Message)
 		}
 	}
 
@@ -195,25 +193,12 @@ class module__DesktopHidePeekButton {
 
 	/** */
 	checkSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniRead(this.settings.fileName, this.moduleName)
+			IniRead(_SAE.settingsFilename, this.moduleName)
 		} catch Error as e {
-			FileAppend("`n", this.settings.fileName)
+			FileAppend("`n", _SAE.settingsFilename)
 			this.updateSettingsFile()
 		}
-	}
-
-
-
-	/** */
-	showDebugTooltip() {
-		debugMsg(join([
-			"MODULE = " . this.moduleName . "`n",
-			"states.active = " . this.states.active,
-			"states.buttonFound = " . this.states.buttonFound . " (hWnd: " . Format("{:#x}", this.settings.hWnd) . ")",
-			"states.buttonEnabled = " . this.states.buttonEnabled . " (init: " . this.states.buttonEnabledOnInit . ")",
-			"settings.overrideExternalChanges = " . this.settings.overrideExternalChanges,
-			"settings.resetOnExit = " . this.settings.resetOnExit
-		], "`n"), 1, 1)
 	}
 }

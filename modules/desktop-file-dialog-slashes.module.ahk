@@ -13,8 +13,7 @@ class module__DesktopFileDialogSlashes {
 		this.moduleName := "DesktopFileDialogSlashes"
 		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
-			activateOnLoad: getIniVal(this.moduleName, "active", false),
-			fileName: _Settings.app.environment.settingsFile
+			activateOnLoad: getIniVal(this.moduleName, "active", false)
 		}
 		this.states := {
 			active: this.settings.activateOnLoad
@@ -26,8 +25,6 @@ class module__DesktopFileDialogSlashes {
 				label: "Replace fwd slashes in File dialogs"
 			}]
 		}
-
-		this.checkSettingsFile()
 	}
 
 
@@ -40,12 +37,14 @@ class module__DesktopFileDialogSlashes {
 
 		thisMenu := this.drawMenu()
 		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.active })
+		this.setHotkeys(this.states.active)
 	}
 
 
 
 	/** */
 	__Delete() {
+		; nothing to do
 	}
 
 
@@ -89,12 +88,10 @@ class module__DesktopFileDialogSlashes {
 	/** */
 	setHotkeys(state) {
 		local doPaste := ObjBindMethod(this, "doPaste")
-		; HotIfWinactive("ahk_class #32770")
-		; `ahk_group explorerWindows` is defined in constants.utils.ahk
-		HotIfWinactive("ahk_group explorerWindows")
+		HotIfWinActive("ahk_group explorerWindows")    ;// defined in constants.utils.ahk
 		Hotstring(":*:/", "\", (state ? "on" : "off"))
 		Hotkey("^v", doPaste, (state ? "on" : "off"))
-		HotIfWinactive()
+		HotIfWinActive()
 	}
 
 
@@ -105,7 +102,7 @@ class module__DesktopFileDialogSlashes {
 			clipboardSaved := StrReplace(A_Clipboard, "/", "\")
 			EditPaste(clipboardSaved, ControlGetFocus("A"))
 		} catch Error as e {
-			throw ("Couldn't paste content to control")
+			throw Error("Couldn't paste content to control")
 		}
 	}
 
@@ -113,11 +110,12 @@ class module__DesktopFileDialogSlashes {
 
 	/** */
 	updateSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniWrite((this.enabled ? "true" : "false"), this.settings.fileName, this.moduleName, "enabled")
-			IniWrite((this.states.active ? "true" : "false"), this.settings.fileName, this.moduleName, "active")
+			IniWrite((this.enabled ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "enabled")
+			IniWrite((this.states.active ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "active")
 		} catch Error as e {
-			throw ("Error updating settings file: " . e.Message)
+			throw Error("Error updating settings file: " . e.Message)
 		}
 	}
 
@@ -125,21 +123,12 @@ class module__DesktopFileDialogSlashes {
 
 	/** */
 	checkSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniRead(this.settings.fileName, this.moduleName)
+			IniRead(_SAE.settingsFilename, this.moduleName)
 		} catch Error as e {
-			FileAppend("`n", this.settings.fileName)
+			FileAppend("`n", _SAE.settingsFilename)
 			this.updateSettingsFile()
 		}
-	}
-
-
-
-	/** */
-	showDebugTooltip() {
-		debugMsg(join([
-			"MODULE = " . this.moduleName . "`n",
-			"states.active = " . this.states.active
-		], "`n"), 1, 1)
 	}
 }

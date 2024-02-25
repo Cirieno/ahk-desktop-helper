@@ -16,11 +16,11 @@
 ;   C1 = ignore the case that was typed, always use the same case for output
 ;   O = remove the trigger character
 ;   R = send raw output
-;------------------------------------------------------------------------------
-;------------------------------------------------------------------------------
+;--------------------------------------
+;--------------------------------------
 ; WIKIPEDIA WORDS (JAN 2024)
 ; https://en.wikipedia.org/wiki/Wikipedia:Lists_of_common_misspellings
-;------------------------------------------------------------------------------
+;--------------------------------------
 a bit of|abit of
 a lot more|alot more
 a lot of|alot of
@@ -4501,7 +4501,7 @@ thickened|thickend
 thief|theif
 thieves|theives
 thing|hting
-thing|thign
+; thing|thign
 thing|thnig
 things|thigsn
 things|thnigs
@@ -4951,9 +4951,9 @@ yourself|youself
 zebra|zeebra
 Zionist|Sionist
 Zionists|Sionists
-;------------------------------------------------------------------------------
+;--------------------------------------
 ; https://github.com/cdelahousse/Autocorrect-AutoHotKey
-;------------------------------------------------------------------------------
+;--------------------------------------
 a vengeance|avengence
 abandon|adbandon
 abandoned|abandonned
@@ -7575,7 +7575,7 @@ northern|nothern
 notable|noteable
 notably|notabley
 notably|noteably
-nothing|nothign
+; nothing|nothign
 notice|notive
 noticeable|noticable
 noticeably|noticably
@@ -8535,7 +8535,7 @@ solitary|solatary
 soluble|soluable
 some|soem
 someone|somene
-something|somethign
+; something|somethign
 something|someting
 something|somthing
 sometimes|somtimes
@@ -8906,9 +8906,9 @@ they|tyhe
 thief|theif
 thieves|theives
 thing|hting
-thing|thign
+; thing|thign
 thing|thnig
-things|thigns
+; things|thigns
 things|thigsn
 things|thnigs
 think|htikn
@@ -9342,10 +9342,10 @@ yousef|youseff
 zebra|zeebra
 Zionist|sionist
 Zionists|sionists
-;------------------------------------------------------------------------------
+;--------------------------------------
 ; WIKIPEDIA GRAMMAR (JAN 2024)
 ; https://en.wikipedia.org/wiki/Wikipedia:Lists_of_common_misspellings/Grammar_and_miscellaneous
-;------------------------------------------------------------------------------
+;--------------------------------------
 a 10|an 10
 a 12|an 12
 a British|an British
@@ -10955,9 +10955,9 @@ wreak havoc|wreck havoc
 writer's block|writers block
 younger than|younger that
 younger than|younger then
-;------------------------------------------------------------------------------
+;--------------------------------------
 ; GENERAL TYPOS
-;------------------------------------------------------------------------------
+;--------------------------------------
 .co.uk|[,.]?co[,.]?uk|?
 .com|,com|?
 additional|additioal
@@ -10977,8 +10977,12 @@ o'clock|oclock
 oll|o;;|?*
 replace|relpace|?
 sinecure|synecure
+thing|thign|*
 ull|u;;|?*
 upper|uppser|*
+;--------------------------------------
+; REAL NAMES & NOUNS
+;--------------------------------------
 Vodafone|Vodaphone
 Windows|WIndows|C
 Wonka|wonka|C

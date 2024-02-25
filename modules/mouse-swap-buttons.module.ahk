@@ -15,8 +15,7 @@ class module__MouseSwapButtons {
 		this.settings := {
 			activateOnLoad: getIniVal(this.moduleName, "active", false),
 			overrideExternalChanges: getIniVal(this.moduleName, "overrideExternalChanges", false),
-			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false),
-			fileName: _Settings.app.environment.settingsFile
+			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false)
 		}
 		this.states := {
 			active: this.settings.activateOnLoad,
@@ -30,8 +29,6 @@ class module__MouseSwapButtons {
 				label: "Swap mouse buttons"
 			}]
 		}
-
-		this.checkSettingsFile()
 	}
 
 
@@ -51,7 +48,7 @@ class module__MouseSwapButtons {
 		}
 
 		thisMenu := this.drawMenu()
-		setMenuItemProps( this.settings.menu.items[1].label, thisMenu, { checked: this.states.active, enabled: SysGet(SM_MOUSEPRESENT) })
+		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.active, enabled: isTruthy(SysGet(SM_MOUSEPRESENT)) })
 
 		this.runObserver(true)
 		SetTimer(ObjBindMethod(this, "runObserver"), 5 * U_msSecond)
@@ -97,7 +94,7 @@ class module__MouseSwapButtons {
 		switch (name) {
 			case this.settings.menu.items[1].label:
 				this.states.active := !this.states.active
-				setMenuItemProps(name, menu, { checked: this.states.active, clickCount: +1 })
+				setMenuItemProps(name, menu, { checked: this.states.active, clickCount: +1, enabled: isTruthy(SysGet(SM_MOUSEPRESENT)) })
 				this.setButtonsState(this.states.active)
 		}
 	}
@@ -109,7 +106,7 @@ class module__MouseSwapButtons {
 		try {
 			return isTruthy(RegRead("HKEY_CURRENT_USER\Control Panel\Mouse", "SwapMouseButtons", 0))
 		} catch Error as e {
-			throw ("Error reading registry key")
+			throw Error("Error reading registry key")
 		}
 	}
 
@@ -122,7 +119,7 @@ class module__MouseSwapButtons {
 			DllCall("SwapMouseButton", "int", (state == true ? 1 : 0))
 			this.states.buttonsSwapped := state
 		} catch Error as e {
-			throw ("Error writing registry key")
+			throw Error("Error writing registry key")
 		}
 	}
 
@@ -135,7 +132,7 @@ class module__MouseSwapButtons {
 		if (stateNow !== stateThen) {
 			this.states.buttonsSwapped := stateNow
 			this.states.active := !this.states.active
-			setMenuItemProps( this.settings.menu.items[1].label, this.settings.menu.path, { checked: this.states.active, enabled: SysGet(SM_MOUSEPRESENT) })
+			setMenuItemProps(this.settings.menu.items[1].label, this.settings.menu.path, { checked: this.states.active, enabled: SysGet(SM_MOUSEPRESENT) })
 		}
 	}
 
@@ -143,13 +140,14 @@ class module__MouseSwapButtons {
 
 	/** */
 	updateSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniWrite((this.enabled ? "true" : "false"), this.settings.fileName, this.moduleName, "enabled")
-			IniWrite((this.states.active ? "true" : "false"), this.settings.fileName, this.moduleName, "active")
-			IniWrite((this.settings.overrideExternalChanges ? "true" : "false"), this.settings.fileName, this.moduleName, "overrideExternalChanges")
-			IniWrite((this.settings.resetOnExit ? "true" : "false"), this.settings.fileName, this.moduleName, "resetOnExit")
+			IniWrite((this.enabled ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "enabled")
+			IniWrite((this.states.active ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "active")
+			IniWrite((this.settings.overrideExternalChanges ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "overrideExternalChanges")
+			IniWrite((this.settings.resetOnExit ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "resetOnExit")
 		} catch Error as e {
-			throw ("Error updating settings file: " . e.Message)
+			throw Error("Error updating settings file: " . e.Message)
 		}
 	}
 
@@ -157,23 +155,12 @@ class module__MouseSwapButtons {
 
 	/** */
 	checkSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniRead(this.settings.fileName, this.moduleName)
+			IniRead(_SAE.settingsFilename, this.moduleName)
 		} catch Error as e {
-			FileAppend("`n", this.settings.fileName)
+			FileAppend("`n", _SAE.settingsFilename)
 			this.updateSettingsFile()
 		}
-	}
-
-
-
-	/** */
-	showDebugTooltip() {
-		debugMsg(join([
-			"MODULE = " . this.moduleName . "`n",
-			"states.active = " . this.states.active,
-			"states.buttonsSwapped = " . this.states.buttonsSwapped . " (init: " . this.states.buttonsSwappedOnInit . ")",
-			"settings.resetOnExit = " . this.settings.resetOnExit
-		], "`n"), 1, 1)
 	}
 }

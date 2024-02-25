@@ -11,8 +11,7 @@ class module__AutoCorrect {
 		this.moduleName := "AutoCorrect"
 		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
-			activateOnLoad: getIniVal(this.moduleName, "active", []),
-			fileName: _Settings.app.environment.settingsFile,
+			activateOnLoad: getIniVal(this.moduleName, "active", ["default", "user"]),
 			hotstrings: []
 		}
 		this.states := {
@@ -23,10 +22,10 @@ class module__AutoCorrect {
 			path: "TRAY\AutoCorrect",
 			items: [{
 				type: "item",
-				label: "Default list",
+				label: "Default list"
 			}, {
 				type: "item",
-				label: "User list",
+				label: "User list"
 			}, {
 				type: "separator"
 			}, {
@@ -40,7 +39,6 @@ class module__AutoCorrect {
 			}]
 		}
 
-		; this.checkSettingsFile()
 		; this.checkUserAutocorrectFile()
 	}
 
@@ -272,6 +270,7 @@ class module__AutoCorrect {
 
 	/** */
 	updateSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
 			state := join([
 				(isTruthy(this.states.defaultListActive) ? "default" : ""),
@@ -281,10 +280,10 @@ class module__AutoCorrect {
 			state := RegExReplace(state, "^,", "")
 			state := RegExReplace(state, ",$", "")
 
-			IniWrite((this.enabled ? "true" : "false"), this.settings.fileName, this.moduleName, "enabled")
-			IniWrite("[" . state . "]", _Settings.app.environment.settingsFile, this.moduleName, "active")
+			IniWrite((this.enabled ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "enabled")
+			IniWrite("[" . state . "]", _SAE.settingsFilename, this.moduleName, "active")
 		} catch Error as e {
-			throw ("Error updating settings file: " . e.Message)
+			throw Error("Error updating settings file: " . e.Message)
 		}
 	}
 
@@ -292,10 +291,11 @@ class module__AutoCorrect {
 
 	/** */
 	checkSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniRead(this.settings.fileName, this.moduleName)
+			IniRead(_SAE.settingsFilename, this.moduleName)
 		} catch Error as e {
-			FileAppend("`n", this.settings.fileName)
+			FileAppend("`n", _SAE.settingsFilename)
 			this.updateSettingsFile()
 		}
 	}
@@ -304,7 +304,8 @@ class module__AutoCorrect {
 
 	/** */
 	checkUserAutocorrectFile() {
-		if (!FileExist("user_autocorrect.txt")) {
+		filename := "user_autocorrect.txt"
+		if (!FileExist(filename)) {
 			content := join([
 				"; https://www.autohotkey.com/docs/v2/Hotstrings.htm",
 				";",
@@ -325,9 +326,9 @@ class module__AutoCorrect {
 				";   O = remove the trigger character",
 				";   R = send raw output",
 				";------------------------------------------------------------------------------",
-				"`n`n"
+				"`n`n`n"
 			], "`n")
-			FileAppend(content, "user_autocorrect.txt")
+			FileAppend(content, filename)
 		}
 	}
 }

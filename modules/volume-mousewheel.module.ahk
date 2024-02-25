@@ -1,107 +1,103 @@
+/************************************************************************
+ * @description VolumeMouseWheel
+ * @author Rob McInnes
+ * @file volume-mousewheel.module.ahk
+ ***********************************************************************/
+
+
+
 class module__VolumeMouseWheel {
 	__Init() {
 		this.moduleName := "VolumeMouseWheel"
 		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
-			moduleName: this.moduleName,
-			enabled: this.enabled,
-			activateOnLoad: getIniVal(this.moduleName, "active", false),
-			states: {
-				wheelEnabled: null
-			},
-			menuLabels: {
-				rootMenu: "Volume",
-				btns: "Wheel over Systray"
-			},
+			activateOnLoad: getIniVal(this.moduleName, "active", true),
 			step: getIniVal(this.moduleName, "step", 3)
 		}
-
-		this.checkSettingsFile()
+		this.states := {
+			active: this.settings.activateOnLoad
+		}
+		this.settings.menu := {
+			path: "TRAY\Volume",
+			items: [{
+				type: "item",
+				label: "Wheel over Systray"
+			}]
+		}
 	}
 
 
 
+	/** */
 	__New() {
 		if (!this.enabled) {
 			return
 		}
 
-		this.states.wheelEnabled := this.settings.activateOnLoad
-		this.setWheelState(this.settings.activateOnLoad)
+		thisMenu := this.drawMenu()
+		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.active, enabled: isTruthy(SysGet(SM_MOUSEWHEELPRESENT)) })
 
-		this.drawMenu()
+		this.setWheelState(this.settings.activateOnLoad)
 	}
 
 
 
+	/** */
 	__Delete() {
 	}
 
 
 
+	/** */
 	drawMenu() {
-		menuLabels := this.settings.menuLabels
-		_ST := _Settings.app.tray
-		_SM := _Settings.app.tray.menuHandles
-		local doMenuItem := ObjBindMethod(this, "doMenuItem")
-
-		if (_SM.has(menuLabels.rootMenu)) {
-			this.rootMenu := rootMenu := _SM[menuLabels.rootMenu]
-		} else {
-			this.rootMenu := rootMenu := Menu()
-			_SM.set(menuLabels.rootMenu, rootMenu)
-			A_TrayMenu.add(menuLabels.rootMenu, rootMenu)
-			if (_ST.includeSubmenuIcons) {
-				A_TrayMenu.setIcon(menuLabels.rootMenu, "icons\" . StrLower(menuLabels.rootMenu) . ".ico", -0)
+		thisMenu := getMenu(this.settings.menu.path)
+		if (!isMenu(thisMenu)) {
+			parentMenu := getMenu("TRAY")
+			if (!isMenu(parentMenu)) {
+				throw Error("ParentMenu not found")
+			}
+			thisMenu := setMenu(this.settings.menu.path, parentMenu)
+			arrMenuPath := StrSplit(this.settings.menu.path, "\")
+			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
+		}
+		for ii, item in this.settings.menu.items {
+			if (item.type == "item") {
+				local doMenuItem := ObjBindMethod(this, "doMenuItem")
+				menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
 			}
 		}
-		rootMenu.add(menuLabels.btns, doMenuItem)
 
-		this.tickMenuItems()
+		return (isMenu(thisMenu) ? thisMenu : null)
 	}
 
 
 
-	tickMenuItems() {
-		try {
-			wheelEnabled := this.states.wheelEnabled
-			menuLabels := this.settings.menuLabels
-			rootMenu := this.rootMenu
-
-			(wheelEnabled == true ? rootMenu.check(menuLabels.btns) : rootMenu.uncheck(menuLabels.btns))
-		; } catch Error as e {
-			; do nothing
-		}
-	}
-
-
-
+	/** */
 	doMenuItem(name, position, menu) {
-		wheelEnabled := this.states.wheelEnabled
-		menuLabels := this.settings.menuLabels
-
 		switch (name) {
-			case menuLabels.btns: this.setWheelState(!wheelEnabled)
+			case this.settings.menu.items[1].label:
+				this.states.active := !this.states.active
+				setMenuItemProps(name, menu, { checked: this.states.active, clickCount: +1, enabled: isTruthy(SysGet(SM_MOUSEWHEELPRESENT)) })
+				this.setWheelState(!this.states.active)
 		}
 	}
 
 
 
+	/** */
 	setWheelState(state) {
-		this.states.wheelEnabled := state
 		local doWheelChange := ObjBindMethod(this, "doWheelChange")
 
 		Hotkey("~WheelUp", doWheelChange, state)
 		Hotkey("~WheelDown", doWheelChange, state)
-
-		this.tickMenuItems()
 	}
 
 
 
+	/** */
 	doWheelChange(name) {
 		trayControls := ["Button2", "ToolbarWindow323", "TrayButton1", "TrayClockWClass1", "TrayNotifyWnd1", "TrayShowDesktopButtonWClass1"]
-		MouseGetPos(&x, &y, &winUID, &winControl)
+		MouseGetPos(&posX, &posY, &winUID, &winControl)
 
 		if (isInArray(trayControls, winControl)) {
 			vol := SoundGetVolume()
@@ -115,24 +111,27 @@ class module__VolumeMouseWheel {
 
 
 
+	/** */
 	updateSettingsFile() {
-		strOn := (this.states.wheelEnabled ? "true" : "false")
-		IniWrite(strOn, _Settings.app.environment.settingsFile, this.moduleName, "active")
+		_SAE := _Settings.app.environment
+		try {
+			IniWrite((this.enabled ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "enabled")
+			IniWrite((this.states.active ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "active")
+		} catch Error as e {
+			throw Error("Error updating settings file: " . e.Message)
+		}
 	}
 
 
 
+	/** */
 	checkSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniRead(_Settings.app.environment.settingsFile, this.moduleName)
+			IniRead(_SAE.settingsFilename, this.moduleName)
 		} catch Error as e {
-			section := join([
-				"[" . this.moduleName . "]",
-				"enabled=" . (this.settings.enabled ? "true" : "false"),
-				"on=" . (this.settings.activateOnLoad ? "true" : "false"),
-				"step=" . this.settings.step,
-			], "`n")
-			FileAppend("`n" . section . "`n", _Settings.app.environment.settingsFile)
+			FileAppend("`n", _SAE.settingsFilename)
+			this.updateSettingsFile()
 		}
 	}
 }

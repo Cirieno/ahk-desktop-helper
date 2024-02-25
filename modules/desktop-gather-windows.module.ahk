@@ -11,8 +11,7 @@ class module__DesktopGatherWindows {
 		this.moduleName := "DesktopGatherWindows"
 		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
-			resizeOnMove: getIniVal(this.moduleName, "resizeOnMove", false),
-			fileName: _Settings.app.environment.settingsFile
+			resizeOnMove: getIniVal(this.moduleName, "resizeOnMove", false)
 		}
 		this.states := {
 		}
@@ -23,8 +22,6 @@ class module__DesktopGatherWindows {
 				label: "Bring windows to main monitor"
 			}]
 		}
-
-		this.checkSettingsFile()
 	}
 
 
@@ -42,6 +39,7 @@ class module__DesktopGatherWindows {
 
 	/** */
 	__Delete() {
+		; nothing to do
 	}
 
 
@@ -120,7 +118,7 @@ class module__DesktopGatherWindows {
 			; to count as being "offscreen" the whole window must be entirely off the primary monitor, not just the top left corner
 			; this is made harder by Windows having a shadow that extends beyond the window's actual dimensions (which I'm going to assume is 20 pixels)
 			; so if the window is 20 pixels or more into the primary monitor we can consider the actual content to be offscreen
-			; TODO: all of this
+			; TODO: all of this ^^^
 
 			res := MsgBox(join([
 				win.title . "`n",
@@ -165,11 +163,12 @@ class module__DesktopGatherWindows {
 
 	/** */
 	updateSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniWrite((this.enabled ? "true" : "false"), this.settings.fileName, this.moduleName, "enabled")
-			IniWrite((this.settings.resizeOnMove ? "true" : "false"), this.settings.fileName, this.moduleName, "resizeOnMove")
+			IniWrite((this.enabled ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "enabled")
+			IniWrite((this.settings.resizeOnMove ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "resizeOnMove")
 		} catch Error as e {
-			throw ("Error updating settings file: " . e.Message)
+			throw Error("Error updating settings file: " . e.Message)
 		}
 	}
 
@@ -177,10 +176,11 @@ class module__DesktopGatherWindows {
 
 	/** */
 	checkSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniRead(this.settings.fileName, this.moduleName)
+			IniRead(_SAE.settingsFilename, this.moduleName)
 		} catch Error as e {
-			FileAppend("`n", this.settings.fileName)
+			FileAppend("`n", _SAE.settingsFilename)
 			this.updateSettingsFile()
 		}
 	}

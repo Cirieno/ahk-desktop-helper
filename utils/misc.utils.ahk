@@ -6,19 +6,24 @@
  */
 getIniVal(section, key, defaultVal := "") {
 	try {
-		keyVal := IniRead(_Settings.app.environment.settingsFile, section, key)
+		_SAE := _Settings.app.environment
+		keyVal := IniRead(_SAE.settingsFilename, section, key)
 	} catch Error as e {
 		return defaultVal
 	}
+
 	if (keyVal == "") {
 		return defaultVal
 	}
+
 	if (SubStr(keyVal, 1, 1) == "[" && SubStr(keyVal, -1) == "]") {
 		return toArray(keyVal)
 	}
+
 	if (isTruthy(keyVal)) {
 		return true
 	}
+
 	if (isFalsy(keyVal)) {
 		return false
 	}

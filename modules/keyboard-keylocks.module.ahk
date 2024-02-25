@@ -17,8 +17,7 @@ class module__KeyboardKeylocks {
 		this.settings := {
 			activateOnLoad: getIniVal(this.moduleName, "active", "[num]"),
 			overrideExternalChanges: getIniVal(this.moduleName, "overrideExternalChanges", false),
-			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false),
-			fileName: _Settings.app.environment.settingsFile
+			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false)
 		}
 		this.states := {
 			capsActive: isInArray(this.settings.activateOnLoad, "caps"),
@@ -44,8 +43,6 @@ class module__KeyboardKeylocks {
 				label: "Scroll Lock"
 			}]
 		}
-
-		this.checkSettingsFile()
 	}
 
 
@@ -204,6 +201,7 @@ class module__KeyboardKeylocks {
 
 	/** */
 	updateSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
 			state := join([
 				(isTruthy(this.states.capsEnabled) ? "caps" : ""),
@@ -214,12 +212,12 @@ class module__KeyboardKeylocks {
 			state := RegExReplace(state, "^,", "")
 			state := RegExReplace(state, ",$", "")
 
-			IniWrite((this.enabled ? "true" : "false"), this.settings.fileName, this.moduleName, "enabled")
-			IniWrite("[" . state . "]", this.settings.fileName, this.moduleName, "active")
-			IniWrite((this.settings.overrideExternalChanges ? "true" : "false"), this.settings.fileName, this.moduleName, "overrideExternalChanges")
-			IniWrite((this.settings.resetOnExit ? "true" : "false"), this.settings.fileName, this.moduleName, "resetOnExit")
+			IniWrite((this.enabled ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "enabled")
+			IniWrite("[" . state . "]", _SAE.settingsFilename, this.moduleName, "active")
+			IniWrite((this.settings.overrideExternalChanges ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "overrideExternalChanges")
+			IniWrite((this.settings.resetOnExit ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "resetOnExit")
 		} catch Error as e {
-			throw ("Error updating settings file: " . e.Message)
+			throw Error("Error updating settings file: " . e.Message)
 		}
 	}
 
@@ -227,28 +225,12 @@ class module__KeyboardKeylocks {
 
 	/** */
 	checkSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniRead(this.settings.fileName, this.moduleName)
+			IniRead(_SAE.settingsFilename, this.moduleName)
 		} catch Error as e {
-			FileAppend("`n", this.settings.fileName)
+			FileAppend("`n", _SAE.settingsFilename)
 			this.updateSettingsFile()
 		}
-	}
-
-
-
-	/** */
-	showDebugTooltip() {
-		debugMsg(join([
-			"MODULE = " . this.moduleName . "`n",
-			"states.capsActive = " . this.states.capsActive,
-			"states.numActive = " . this.states.numActive,
-			"states.scrollActive = " . this.states.scrollActive,
-			"states.capsEnabled = " . this.states.capsEnabled . " (init: " . this.states.capsEnabledOnInit . ")",
-			"states.numEnabled = " . this.states.numEnabled . " (init: " . this.states.numEnabledOnInit . ")",
-			"states.scrollEnabled = " . this.states.scrollEnabled . " (init: " . this.states.scrollEnabledOnInit . ")",
-			"settings.resetOnExit = " . this.settings.resetOnExit
-			"settings.activateOnLoad = [" . join(this.settings.activateOnLoad, ",") . "]"
-		], "`n"), 1, 1)
 	}
 }

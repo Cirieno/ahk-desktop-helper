@@ -17,7 +17,6 @@ class module__DesktopHideMediaPopup {
 			activateOnLoad: getIniVal(this.moduleName, "active", false),
 			overrideExternalChanges: getIniVal(this.moduleName, "overrideExternalChanges", true),
 			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false),
-			fileName: _Settings.app.environment.settingsFile,
 			hWnd: null
 		}
 		this.states := {
@@ -33,8 +32,6 @@ class module__DesktopHideMediaPopup {
 				label: "Hide Volume / Brightness popup"
 			}]
 		}
-
-		this.checkSettingsFile()
 	}
 
 
@@ -104,7 +101,7 @@ class module__DesktopHideMediaPopup {
 			try {
 				return (WinGetStyle(this.settings.hWnd) & WS_MINIMIZE ? false : true)
 			} catch Error as e {
-				throw ("Couldn't get popup state")
+				throw Error("Couldn't get popup state")
 			}
 		}
 		return null
@@ -123,7 +120,7 @@ class module__DesktopHideMediaPopup {
 				}
 				this.states.popupEnabled := state
 			} catch Error as e {
-				throw ("Couldn't set popup state")
+				throw Error("Couldn't set popup state")
 			}
 		}
 	}
@@ -186,13 +183,14 @@ class module__DesktopHideMediaPopup {
 
 	/** */
 	updateSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniWrite((this.enabled ? "true" : "false"), this.settings.fileName, this.moduleName, "enabled")
-			IniWrite((this.states.active ? "true" : "false"), this.settings.fileName, this.moduleName, "active")
-			IniWrite((this.settings.overrideExternalChanges ? "true" : "false"), this.settings.fileName, this.moduleName, "overrideExternalChanges")
-			IniWrite((this.settings.resetOnExit ? "true" : "false"), this.settings.fileName, this.moduleName, "resetOnExit")
+			IniWrite((this.enabled ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "enabled")
+			IniWrite((this.states.active ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "active")
+			IniWrite((this.settings.overrideExternalChanges ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "overrideExternalChanges")
+			IniWrite((this.settings.resetOnExit ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "resetOnExit")
 		} catch Error as e {
-			throw ("Error updating settings file: " . e.Message)
+			throw Error("Error updating settings file: " . e.Message)
 		}
 	}
 
@@ -200,27 +198,13 @@ class module__DesktopHideMediaPopup {
 
 	/** */
 	checkSettingsFile() {
+		_SAE := _Settings.app.environment
 		try {
-			IniRead(this.settings.fileName, this.moduleName)
+			IniRead(_SAE.settingsFilename, this.moduleName)
 		} catch Error as e {
-			FileAppend("`n", this.settings.fileName)
+			FileAppend("`n", _SAE.settingsFilename)
 			this.updateSettingsFile()
 		}
-	}
-
-
-
-	/** */
-	showDebugTooltip() {
-		debugMsg(join([
-			"MODULE = " . this.moduleName . "`n",
-			"states.active = " . this.states.active,
-			"settings.hWnd = " . this.settings.hWnd . " (hWnd: " . Format("{:#x}", this.settings.hWnd) . ")",
-			"states.popupFound = " . this.states.popupFound,
-			"states.popupEnabled = " . this.states.popupEnabled . " (init: " . this.states.popupEnabledOnInit . ")",
-			"settings.overrideExternalChanges = " . this.settings.overrideExternalChanges,
-			"settings.resetOnExit = " . this.settings.resetOnExit
-		], "`n"), 1, 1)
 	}
 }
 

@@ -53,7 +53,7 @@ setMenu(menuPath?, parentMenuRef?) {
 		parentHandle: parentMenu.handle,
 		items: []
 	}
-	_ShadowMenu.menus.set("" . menuVals.path, menuVals)
+	_ShadowMenu.menus.set(menuVals.path, menuVals)
 	thisMenu.vals := _ShadowMenu.menus[menuVals.path]
 
 	return thisMenu
