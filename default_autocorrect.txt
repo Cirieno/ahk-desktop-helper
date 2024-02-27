@@ -10980,6 +10980,7 @@ sinecure|synecure
 thing|thign|*
 ull|u;;|?*
 upper|uppser|*
+obviously|obvisouly
 ;--------------------------------------
 ; REAL NAMES & NOUNS
 ;--------------------------------------

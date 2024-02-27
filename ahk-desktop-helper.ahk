@@ -1,7 +1,7 @@
 ;// Compile-time settings for "File Properties > Details" panel
-;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.2.0.0, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
-;@ Ahk2Exe-ExeName C:\Program Files (portable)\%U_PName%\%U_PName%.exe
-;@Ahk2Exe-ExeName %A_ScriptDir%\compiled\%U_PName%.exe
+;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.2.0.1, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
+;@Ahk2Exe-ExeName C:\Program Files (portable)\%U_PName%\%U_PName%.exe
+;@ Ahk2Exe-ExeName %A_ScriptDir%\compiled\%U_PName%.exe
 ;@Ahk2Exe-SetCompanyName %U_PCompany%
 ;@Ahk2Exe-SetCopyright %U_PCompany%
 ;@Ahk2Exe-SetDescription %U_PName%
@@ -52,12 +52,12 @@ populateGlobalVars() {
 	_S.app := {
 		name: "AHK Desktop Helper",
 		author: { name: "Rob McInnes", email: "rob.mcinnes@cirieno.co.uk", company: "Cirieno Ltd" },
-		build: { version: "2.2.0.0", date: "2024-02", repo: "github.com/cirieno/ahk-desktop-helper" }
+		build: { version: "2.2.0.1", date: "2024-02", repo: "github.com/cirieno/ahk-desktop-helper" }
 	}
 
 	_S.app.tray := {
 		title: _S.app.name,
-		traytip: _S.app.name . " - " . _S.app.build.version,
+		traytip: _S.app.name . " — " . _S.app.build.version,
 		icon: { location: (A_IsCompiled == true ? A_ScriptName : "icons\app-icon-debugging.ico"), index: -0 },
 		includeSubmenuIcons: false
 	}
@@ -173,7 +173,7 @@ doMenuItem(name, position, menu) {
 				; "AutoCorrect @ github.com/cdelahousse",
 				; "Icons @ flaticon.com/authors/xnimrodx"
 			], "`n")
-			title := _Settings.app.name . " - About" . U_ellipsis
+			title := _Settings.app.name . " — About" . U_ellipsis
 			MsgBox(msg, title, (0 + 64 + 4096))
 		case "Edit config" . U_ellipsis:
 			local exitcode := RunWait(_SAP.Notepad.location . " " . _SA.environment.settingsFilename)

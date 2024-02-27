@@ -37,13 +37,14 @@ class module__VolumeMouseWheel {
 		thisMenu := this.drawMenu()
 		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.active, enabled: isTruthy(SysGet(SM_MOUSEWHEELPRESENT)) })
 
-		this.setWheelState(this.settings.activateOnLoad)
+		this.setWheelState(this.states.active)
 	}
 
 
 
 	/** */
 	__Delete() {
+		; nothing to do
 	}
 
 
@@ -97,7 +98,7 @@ class module__VolumeMouseWheel {
 	/** */
 	doWheelChange(name) {
 		trayControls := ["Button2", "ToolbarWindow323", "TrayButton1", "TrayClockWClass1", "TrayNotifyWnd1", "TrayShowDesktopButtonWClass1"]
-		MouseGetPos(&posX, &posY, &winUID, &winControl)
+		MouseGetPos(&X, &Y, &winUID, &winControl)
 
 		if (isInArray(trayControls, winControl)) {
 			vol := SoundGetVolume()

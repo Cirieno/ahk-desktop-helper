@@ -31,6 +31,19 @@ getIniVal(section, key, defaultVal := "") {
 
 
 
+/** */
+toggle(&val){
+	return !val
+}
+
+
+
+
+
+
+
+
+
 checkMemoryUsage() {
 	pid := DllCall("GetCurrentProcessId")
 	h := DllCall("OpenProcess", "UInt", 0x001F0FFF, "Int", 0, "Int", pid)
@@ -72,7 +85,7 @@ debugMsg(msg := "", showMsg := false, asTooltip := false) {
 			CoordMode("Tooltip", "Screen")
 			ToolTip(msg, 0, (A_ScreenHeight / 2) + Random(-100, 100))
 		} else {
-			MsgBox(msg, (_Settings.app.name . " - " . "Debugging" . U_ellipsis), (0 + 64 + 4096))
+			MsgBox(msg, (_Settings.app.name . " — " . "Debugging" . U_ellipsis), (0 + 64 + 4096))
 		}
 	}
 }

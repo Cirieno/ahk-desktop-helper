@@ -37,6 +37,7 @@ class module__DesktopFileDialogSlashes {
 
 		thisMenu := this.drawMenu()
 		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.active })
+
 		this.setHotkeys(this.states.active)
 	}
 
@@ -88,9 +89,10 @@ class module__DesktopFileDialogSlashes {
 	/** */
 	setHotkeys(state) {
 		local doPaste := ObjBindMethod(this, "doPaste")
+
 		HotIfWinActive("ahk_group explorerWindows")    ;// defined in constants.utils.ahk
-		Hotstring(":*:/", "\", (state ? "on" : "off"))
-		Hotkey("^v", doPaste, (state ? "on" : "off"))
+		Hotstring(":*:/", "\", state)
+		Hotkey("^v", doPaste, state)
 		HotIfWinActive()
 	}
 

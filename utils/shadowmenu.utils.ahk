@@ -285,5 +285,5 @@ alertMenuPaths() {
 	}
 
 	msg := StrReplace(msg, "TRAY\", "")
-	MsgBox(msg, (_Settings.app.name . " - " . "Menu Paths" . U_ellipsis), (0 + 64 + 4096))
+	MsgBox(msg, (_Settings.app.name . " — " . "Menu Paths" . U_ellipsis), (0 + 64 + 4096))
 }

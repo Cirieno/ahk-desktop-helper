@@ -148,7 +148,7 @@ class module__AutoCorrect {
 				}
 			}
 			for each, trigger in this.settings.hotstrings {
-				Hotstring(":" . trigger[3] . ":" . trigger[1], trigger[2], (state ? "on" : "off"))
+				Hotstring(":" . trigger[3] . ":" . trigger[1], trigger[2], state)
 			}
 		}
 	}
