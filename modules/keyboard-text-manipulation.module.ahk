@@ -37,6 +37,7 @@ class module__KeyboardTextManipulation {
 
 		thisMenu := this.drawMenu()
 		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.active })
+
 		this.setHotkeys(this.states.active)
 	}
 
@@ -87,18 +88,19 @@ class module__KeyboardTextManipulation {
 
 	/** */
 	setHotkeys(state) {
-		Hotkey("$^!U", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!L", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!T", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!'", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!2", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!9", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!0", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^![", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!]", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!+{", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!+}", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!``", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!U", whichHotkey, state)
+		Hotkey("$^!L", whichHotkey, state)
+		Hotkey("$^!T", whichHotkey, state)
+		Hotkey("$^!'", whichHotkey, state)
+		Hotkey("$^!2", whichHotkey, state)
+		Hotkey("$^!9", whichHotkey, state)
+		Hotkey("$^!0", whichHotkey, state)
+		Hotkey("$^![", whichHotkey, state)
+		Hotkey("$^!]", whichHotkey, state)
+		Hotkey("$^!+{", whichHotkey, state)
+		Hotkey("$^!+}", whichHotkey, state)
+		Hotkey("$^!``", whichHotkey, state)
+		Hotkey("$^!-", whichHotkey, state)
 
 		whichHotkey(*) {
 			prefix := "i)\$?\^\!"
@@ -130,6 +132,9 @@ class module__KeyboardTextManipulation {
 			if (RegExMatch(A_ThisHotkey, prefix . "``")) {
 				this.doPaste("backticks")
 			}
+			if (RegExMatch(A_ThisHotkey, prefix . "-")) {
+				SendText(" — ")
+			}
 		}
 	}
 
@@ -140,39 +145,38 @@ class module__KeyboardTextManipulation {
 		clipSavedAll := ClipboardAll()
 		A_Clipboard := ""
 		Send("^c")
-		ClipWait()
-		copied := A_Clipboard
+		ClipWait(1)
 		linebreak := ""
+		copied := A_Clipboard ?? ""
+		A_Clipboard := clipSavedAll
 
-		if (StrLen(copied)) {
-			; remove final CR or NL from copied text (we put it back on later)
-			if ((SubStr(copied, -1) == "`r") || (SubStr(copied, -1) == "`n")) {
-				linebreak := SubStr(copied, -1)
-				copied := SubStr(copied, 1, -2)
-			}
-
-			switch (mode) {
-				case "upper": copied := StrUpper(copied)
-				case "lower": copied := StrLower(copied)
-				case "title": copied := StrTitle(copied)
-				case "singlequotes": copied := "'" . copied . "'"
-				case "doublequotes": copied := "`"" . copied . "`""
-				case "parentheses": copied := "(" . copied . ")"
-				case "brackets": copied := "[" . copied . "]"
-				case "braces": copied := "{" . copied . "}"
-				case "backticks": copied := "``" . copied . "``"
-			}
-
-			A_Clipboard := copied
-			ClipWait()
-			SendText(copied . linebreak)
-
-			if (reselect) {
-				Send("+{left " . StrLen(copied) . "}")
-			}
+		; remove final CR or NL from copied text (we put it back on later)
+		if ((SubStr(copied, -1) == "`r") || (SubStr(copied, -1) == "`n")) {
+			linebreak := SubStr(copied, -1)
+			copied := SubStr(copied, 1, -2)
 		}
 
-		A_Clipboard := clipSavedAll
+		if !(StrLen(copied)) {
+			return
+		}
+
+		switch (mode) {
+			case "upper": copied := StrUpper(copied)
+			case "lower": copied := StrLower(copied)
+			case "title": copied := StrTitle(copied)
+			case "singlequotes": copied := "'" . copied . "'"
+			case "doublequotes": copied := "`"" . copied . "`""
+			case "parentheses": copied := "(" . copied . ")"
+			case "brackets": copied := "[" . copied . "]"
+			case "braces": copied := "{" . copied . "}"
+			case "backticks": copied := "``" . copied . "``"
+		}
+
+		SendText(copied . linebreak)
+
+		if (reselect) {
+			Send("+{left " . StrLen(copied) . "}")
+		}
 	}
 
 
