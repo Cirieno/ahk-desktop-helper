@@ -63,7 +63,7 @@ Correction strings can be straight replacements, or you can dynamically replace 
 
 On first run a `user_autocorrect.txt` file will be created for you to add your own replacements.  I keep tinkering with and adding to `default_autocorrect.txt` so it's not a good idea to make changes to that file, though there might be strings that you want to comment out for your own environment.
 
-### `DesktopFileDialogSlashes`
+### `KeyboardExplorerDialogSlashes`
 
 Converts forward-slashes in a path into back-slashes.  Handy if you're working with any Unix-y environments on your Windows machine.
 

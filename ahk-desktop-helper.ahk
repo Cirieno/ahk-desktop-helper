@@ -1,5 +1,5 @@
 ;// Compile-time settings for "File Properties > Details" panel
-;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.2.1.0, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
+;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.2.2.0, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
 ;@Ahk2Exe-ExeName C:\Program Files (portable)\%U_PName%\%U_PName%.exe
 ;@ Ahk2Exe-ExeName %A_ScriptDir%\compiled\%U_PName%.exe
 ;@Ahk2Exe-SetCompanyName %U_PCompany%
@@ -52,7 +52,7 @@ populateGlobalVars() {
 	_S.app := {
 		name: "AHK Desktop Helper",
 		author: { name: "Rob McInnes", email: "rob.mcinnes@cirieno.co.uk", company: "Cirieno Ltd" },
-		build: { version: "2.2.1.0", date: "2024-02", repo: "github.com/cirieno/ahk-desktop-helper" }
+		build: { version: "2.2.2.0", date: "2024-02", repo: "github.com/cirieno/ahk-desktop-helper" }
 	}
 
 	_S.app.tray := {
@@ -82,10 +82,11 @@ populateGlobalVars() {
 
 /** */
 #Include "*i .\modules\autocorrect.module.ahk"
-#Include "*i .\modules\desktop-file-dialog-slashes.module.ahk"
 #Include "*i .\modules\desktop-gather-windows.module.ahk"
 #Include "*i .\modules\desktop-hide-media-popup.module.ahk"
 #Include "*i .\modules\desktop-hide-peek-button.module.ahk"
+#Include "*i .\modules\keyboard-explorer-backspace.module.ahk"
+#Include "*i .\modules\keyboard-explorer-dialog-slashes.module.ahk"
 #Include "*i .\modules\keyboard-keylocks.module.ahk"
 #Include "*i .\modules\keyboard-text-manipulation.module.ahk"
 #Include "*i .\modules\mouse-swap-buttons.module.ahk"
@@ -198,16 +199,20 @@ doMenuItem(name, position, menu) {
 loadModules() {
 	try {
 		_Modules["AutoCorrect"] := module__AutoCorrect()
-		_Modules["DesktopFileDialogSlashes"] := module__DesktopFileDialogSlashes()
+
 		_Modules["DesktopHideMediaPopup"] := module__DesktopHideMediaPopup()
 		_Modules["DesktopHidePeekButton"] := module__DesktopHidePeekButton()
-		_Modules["KeyboardKeylocks"] := module__KeyboardKeylocks()
-		_Modules["MouseSwapButtons"] := module__MouseSwapButtons()
-		_Modules["VolumeMouseWheel"] := module__VolumeMouseWheel()
 		setMenuItem("---", "TRAY\Desktop")
 		_Modules["DesktopGatherWindows"] := module__DesktopGatherWindows()
+
+		_Modules["KeyboardKeylocks"] := module__KeyboardKeylocks()
 		setMenuItem("---", "TRAY\Keyboard")
+		_Modules["KeyboardExplorerBackspace"] := module__KeyboardExplorerBackspace()
+		_Modules["KeyboardExplorerDialogSlashes"] := module__KeyboardExplorerDialogSlashes()
 		_Modules["KeyboardTextManipulation"] := module__KeyboardTextManipulation()
+
+		_Modules["MouseSwapButtons"] := module__MouseSwapButtons()
+		_Modules["VolumeMouseWheel"] := module__VolumeMouseWheel()
 
 		for key, module in _Modules {
 			if (module.hasMethod("checkSettingsFile")) {

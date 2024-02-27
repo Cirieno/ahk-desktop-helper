@@ -1,16 +1,16 @@
 /************************************************************************
- * @description DesktopFileDialogSlashes
+ * @description KeyboardExplorerDialogSlashes
  * @author Rob McInnes
- * @file desktop-file-dialog-slashes.module.ahk
+ * @file keyboard-explorer-dialog-slashes.module.ahk
  ***********************************************************************/
 ; Replaces forward-slashes with back-slashes in Explorer-based windows
 ; and File dialogs, useful when working with LAMP paths in VSCode
 
 
 
-class module__DesktopFileDialogSlashes {
+class module__KeyboardExplorerDialogSlashes {
 	__Init() {
-		this.moduleName := "DesktopFileDialogSlashes"
+		this.moduleName := "KeyboardExplorerDialogSlashes"
 		this.enabled := getIniVal(this.moduleName, "enabled", true)
 		this.settings := {
 			activateOnLoad: getIniVal(this.moduleName, "active", false)
@@ -19,10 +19,10 @@ class module__DesktopFileDialogSlashes {
 			active: this.settings.activateOnLoad
 		}
 		this.settings.menu := {
-			path: "TRAY\Desktop",
+			path: "TRAY\Keyboard",
 			items: [{
 				type: "item",
-				label: "Replace fwd slashes in File dialogs"
+				label: "Replace fwd slashes in File Explorer"
 			}]
 		}
 	}
