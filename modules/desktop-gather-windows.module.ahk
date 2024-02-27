@@ -3,6 +3,11 @@
  * @author Rob McInnes
  * @file desktop-gather-windows.module.ahk
  ***********************************************************************/
+; Because sometimes windows get stuck offscreen and you can't get them back,
+;   or the window size goes a bit wonky
+; This script will bring windows back to the main monitor
+; It will also resize them if they are resizable
+; It ignores minimized windows and certain processes and titles
 
 
 
@@ -13,8 +18,7 @@ class module__DesktopGatherWindows {
 		this.settings := {
 			resizeOnMove: getIniVal(this.moduleName, "resizeOnMove", false)
 		}
-		this.states := {
-		}
+		this.states := {}
 		this.settings.menu := {
 			path: "TRAY\Desktop",
 			items: [{
@@ -83,35 +87,45 @@ class module__DesktopGatherWindows {
 	doGatherWindows(doResize := this.settings.resizeOnMove) {
 		primaryWorkArea := getPrimaryVals()
 		getPrimaryVals() {
-			primaryId := MonitorGetWorkArea(MonitorGetPrimary(), &primaryLeft, &primaryTop, &primaryRight, &primaryBottom)
-			p := { id: primaryId, left: primaryLeft, top: primaryTop, right: primaryRight, bottom: primaryBottom }
+			primaryId := MonitorGetWorkArea(MonitorGetPrimary(), &L, &T, &R, &B)
+			p := { id: primaryId, left: L, top: T, right: R, bottom: B }
 			p.width := (p.right - p.left)
 			p.height := (p.bottom - p.top)
 			return p
 		}
 
+		msgboxTimeout := "T5"    ;// seconds
+		countMoves := 0
 		border := 100
 		pwaWidthWithBorders := (primaryWorkArea.width - (border * 2))
 		pwaHeightWithBorders := (primaryWorkArea.height - (border * 2))
 
 		ignoreProcesses := []
 		ignoreTitles := ["Program Manager"]
+		ignoreMinimized := true
 
 		for handle in WinGetList() {
 			win := getWinVals(handle)
 			getWinVals(handle) {
-				WinGetPos(&winPosX, &winPosY, &winWidth, &winHeight, handle)
-				w := { posX: winPosX, posY: winPosY, width: winWidth, height: winHeight }
-				w.title := WinGetTitle(handle)
-				w.class := WinGetClass(handle)
-				w.state := WinGetMinMax(handle)
-				w.process := WinGetProcessName(handle)
-				w.style := WinGetStyle(handle)
-				return w
+				WinGetPos(&X, &Y, &W, &H, handle)
+				W := { posX: X, posY: Y, width: W, height: H }
+				W.hWnd := handle
+				W.title := WinGetTitle(handle)
+				W.class := WinGetClass(handle)
+				W.state := WinGetMinMax(handle)
+				W.process := WinGetProcessName(handle)
+				W.path := WinGetProcessPath(handle)
+				W.style := WinGetStyle(handle)
+				return W
+			}
+
+			;// ignore if the window is minimized
+			if (ignoreMinimized && (win.state == -1)) {
+				continue
 			}
 
 			;// don't bother with windows we have elected to ignore
-			if ((win.process == "explorer.exe" && win.title == "") || isInArray(ignoreProcesses, win.process) || isInArray(ignoreTitles, win.title)) {
+			if (isInArray(ignoreProcesses, win.process) || isInArray(ignoreTitles, win.title) || (win.process == "explorer.exe" && win.title == "")) {
 				continue
 			}
 
@@ -120,40 +134,42 @@ class module__DesktopGatherWindows {
 			; so if the window is 20 pixels or more into the primary monitor we can consider the actual content to be offscreen
 			; TODO: all of this ^^^
 
-			res := MsgBox(join([
+			mboxResult := MsgBox(join([
 				win.title . "`n",
 				; "Window class: " . win.class,
 				"Process: " . win.process,
 				"State: " . (win.state == -1 ? "minimized" : (win.state == 0 ? "normal" : (win.state == 1 ? "maximized" : "unknown"))),
 				"Position: " . win.posX . " x " . win.posY,
 				"Size: " . win.width . " x " . win.height
-			], "`n"), (_Settings.app.name . " - " . this.settings.menu.items[1].label . U_ellipsis), (3 + 256 + 64))
-			switch res {
+			], "`n"), (_Settings.app.name . " — " . this.settings.menu.items[1].label . U_ellipsis), (3 + 512 + 64) . " " . msgboxTimeout)
+
+			switch mboxResult {
 				case "Yes":
-					WinSetTransparent(1, handle)
-					WinRestore(handle)
+					countMoves++
 
 					countTries := 0
-					while ((countTries < 3) || (win.state != 0)) {
+					while ((countTries <= 3) || (win.state != 0)) {
+						countTries++
 						WinRestore(handle)
 						Sleep(50)
 						win.state := WinGetMinMax(handle)
-						countTries++
 					}
 
-					WinMove((primaryWorkArea.left + border), (primaryWorkArea.top + border), , , handle)
+					moveLeft := (primaryWorkArea.left + (border * countMoves))
+					moveTop := (primaryWorkArea.top + (border * countMoves))
+					moveWidth := (pwaWidthWithBorders * 0.75)
+					moveHeight := (pwaHeightWithBorders * 0.8)
+
 					if (doResize && (win.style & WS_SIZEBOX)) {
-						WinMove(, ,
-							pwaWidthWithBorders,
-							pwaHeightWithBorders,
-							; (win.width > pwaWidthWithBorders ? pwaWidthWithBorders : win.width),
-							; (win.height > pwaHeightWithBorders ? pwaHeightWithBorders : win.height),
-							handle)
+						WinMove(moveLeft, moveTop, moveWidth, moveHeight, handle)
+					} else {
+						WinMove(moveLeft, moveTop, handle)
 					}
-					WinSetTransparent(255, handle)
+
+					WinActivate(handle)
 				case "No":
 					continue
-				case "Cancel":
+				case "Cancel", "Timeout":
 					break
 			}
 		}
