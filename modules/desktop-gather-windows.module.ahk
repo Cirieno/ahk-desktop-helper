@@ -88,35 +88,33 @@ class module__DesktopGatherWindows {
 		primaryWorkArea := getPrimaryVals()
 		getPrimaryVals() {
 			primaryId := MonitorGetWorkArea(MonitorGetPrimary(), &L, &T, &R, &B)
-			p := { id: primaryId, left: L, top: T, right: R, bottom: B }
-			p.width := (p.right - p.left)
-			p.height := (p.bottom - p.top)
-			return p
+			ret := { id: primaryId, left: L, top: T, right: R, bottom: B }
+			ret.width := (ret.right - ret.left)
+			ret.height := (ret.bottom - ret.top)
+			return ret
 		}
 
-		msgboxTimeout := "T5"    ;// seconds
+		msgboxTimeout := "T10"    ;// seconds
 		countMoves := 0
-		border := 100
-		pwaWidthWithBorders := (primaryWorkArea.width - (border * 2))
-		pwaHeightWithBorders := (primaryWorkArea.height - (border * 2))
+		windowOffsetX := windowOffsetY := (SysGet(SM_CYCAPTION) + SysGet(SM_CXSIZEFRAME))
 
 		ignoreProcesses := []
 		ignoreTitles := ["Program Manager"]
 		ignoreMinimized := true
 
-		for handle in WinGetList() {
-			win := getWinVals(handle)
-			getWinVals(handle) {
-				WinGetPos(&X, &Y, &W, &H, handle)
-				W := { posX: X, posY: Y, width: W, height: H }
-				W.hWnd := handle
-				W.title := WinGetTitle(handle)
-				W.class := WinGetClass(handle)
-				W.state := WinGetMinMax(handle)
-				W.process := WinGetProcessName(handle)
-				W.path := WinGetProcessPath(handle)
-				W.style := WinGetStyle(handle)
-				return W
+		for hWnd in WinGetList() {
+			win := getWinVals(hWnd)
+			getWinVals(hWnd) {
+				WinGetPos(&X, &Y, &W, &H, hWnd)
+				ret := { posX: X, posY: Y, width: W, height: H }
+				ret.hWnd := hWnd
+				ret.title := WinGetTitle(hWnd)
+				ret.class := WinGetClass(hWnd)
+				ret.state := WinGetMinMax(hWnd)
+				ret.process := WinGetProcessName(hWnd)
+				ret.path := WinGetProcessPath(hWnd)
+				ret.style := WinGetStyle(hWnd)
+				return ret
 			}
 
 			;// ignore if the window is minimized
@@ -147,26 +145,22 @@ class module__DesktopGatherWindows {
 				case "Yes":
 					countMoves++
 
-					countTries := 0
-					while ((countTries <= 3) || (win.state != 0)) {
-						countTries++
-						WinRestore(handle)
-						Sleep(50)
-						win.state := WinGetMinMax(handle)
+					if (win.state == 1) {
+						WinRestore(hWnd)
 					}
 
-					moveLeft := (primaryWorkArea.left + (border * countMoves))
-					moveTop := (primaryWorkArea.top + (border * countMoves))
-					moveWidth := (pwaWidthWithBorders * 0.75)
-					moveHeight := (pwaHeightWithBorders * 0.8)
+					newPosX := (primaryWorkArea.left + (windowOffsetX * (countMoves * 1.5)))
+					newPosY := (primaryWorkArea.top + (windowOffsetY * (countMoves * 1.5)))
+					newPosW := (primaryWorkArea.width * 0.7)
+					newPosH := (primaryWorkArea.height * 0.7)
 
 					if (doResize && (win.style & WS_SIZEBOX)) {
-						WinMove(moveLeft, moveTop, moveWidth, moveHeight, handle)
+						WinMove(newPosX, newPosY, newPosW, newPosH, hWnd)
 					} else {
-						WinMove(moveLeft, moveTop, handle)
+						WinMove(newPosX, newPosY, , , hWnd)
 					}
 
-					WinActivate(handle)
+					WinActivate(hWnd)
 				case "No":
 					continue
 				case "Cancel", "Timeout":

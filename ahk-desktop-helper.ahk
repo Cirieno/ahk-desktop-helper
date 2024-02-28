@@ -151,7 +151,7 @@ drawMenu(section) {
 				setMenuItem("Edit config" . U_ellipsis, thisMenu, doMenuItem)
 			case "TRAY\Debugging":
 				setMenuItem("Show menu paths", thisMenu, doMenuItem)
-				setMenuItem("Reload app" . U_ellipsis, thisMenu, doMenuItem)
+				setMenuItem("Reload" . U_ellipsis, thisMenu, doMenuItem)
 		}
 		return thisMenu
 	}
@@ -163,34 +163,51 @@ drawMenu(section) {
 doMenuItem(name, position, menu) {
 	_SA := _Settings.app
 	_SAP := _Settings.apps
+	_SAT := _Settings.app.tray
 
 	switch (name) {
-		case _SA.tray.title, "About" . U_ellipsis:
-			msg := join([
-				_SA.name, "v" . _SA.build.version . " (" . _SA.build.date . ")",
-				"",
-				"Repo @ " . _SA.build.repo,
-				"AutoHotkey v2 @ autohotkey.com",
-				; "AutoCorrect @ github.com/cdelahousse",
-				; "Icons @ flaticon.com/authors/xnimrodx"
-			], "`n")
-			title := _Settings.app.name . " — About" . U_ellipsis
-			MsgBox(msg, title, (0 + 64 + 4096))
+		case _SAT.title:
+			if (A_IsCompiled) {
+				showAboutDialog()
+			} else {
+				Reload()
+			}
+		case "About" . U_ellipsis:
+			showAboutDialog()
 		case "Edit config" . U_ellipsis:
 			local exitcode := RunWait(_SAP.Notepad.location . " " . _SA.environment.settingsFilename)
 			if (exitcode == 0) {
-				; save config first?
 				Reload()
 			}
 		case "Save current config":
 			doSettingsFileUpdate()
 		case "Show menu paths":
 			alertMenuPaths()
-		case "Reload app" . U_ellipsis:
+		case "Reload" . U_ellipsis:
 			Reload()
 		case "Exit":
 			ExitApp()
 	}
+}
+
+
+
+/** */
+showAboutDialog() {
+	_SA := _Settings.app
+
+	msg := join([
+		_SA.name, "v" . _SA.build.version . " (" . _SA.build.date . ")",
+		"",
+		"Repo @ " . _SA.build.repo,
+		"AutoHotkey v2 @ autohotkey.com",
+		; "AutoCorrect @ github.com/cdelahousse",
+		; "Icons @ flaticon.com/authors/xnimrodx"
+	], "`n")
+
+	title := _SA.name . " — About" . U_ellipsis
+
+	MsgBox(msg, title, (0 + 64 + 4096))
 }
 
 
