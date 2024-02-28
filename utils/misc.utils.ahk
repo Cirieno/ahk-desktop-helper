@@ -32,15 +32,9 @@ getIniVal(section, key, defaultVal := "") {
 
 
 /** */
-toggle(&val){
+toggle(&val) {
 	return !val
 }
-
-
-
-
-
-
 
 
 

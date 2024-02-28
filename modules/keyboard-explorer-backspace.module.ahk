@@ -86,9 +86,9 @@ class module__KeyboardExplorerBackspace {
 
 	/** */
 	setHotkeys(state) {
-		HotIfWinactive("ahk_group explorerWindows")    ;// defined in constants.utils.ahk
+		HotIfWinActive("ahk_group explorerWindows")    ;// defined in constants.utils.ahk
 		Hotkey("BackSpace", doBackspace, state)
-		HotIfWinactive()
+		HotIfWinActive()
 
 		doBackspace(*) {
 			try {

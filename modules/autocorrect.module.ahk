@@ -128,11 +128,14 @@ class module__AutoCorrect {
 				if (readLine == "") {
 					continue
 				}
+
 				firstChar := SubStr(readLine, 1, 1)
 				if ((firstChar == ";") || (firstChar == "#") || (firstChar == " ")) {
 					continue
 				}
+
 				replacement := "", trigger := "", modifiers := ""
+
 				Loop parse, readLine, "|" {
 					if (replacement == "") {
 						replacement := A_LoopField
@@ -142,11 +145,13 @@ class module__AutoCorrect {
 						modifiers := A_LoopField
 					}
 				}
+
 				triggers := this.makeTriggers(trigger, replacement)
 				for each, trigger in triggers {
 					this.settings.hotstrings.push([trigger, replacement, modifiers, key, state])
 				}
 			}
+
 			for each, trigger in this.settings.hotstrings {
 				Hotstring(":" . trigger[3] . ":" . trigger[1], trigger[2], state)
 			}
