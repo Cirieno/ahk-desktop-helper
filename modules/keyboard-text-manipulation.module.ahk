@@ -101,6 +101,7 @@ class module__KeyboardTextManipulation {
 		Hotkey("$^!+}", whichHotkey, state)
 		Hotkey("$^!``", whichHotkey, state)
 		Hotkey("$^!-", whichHotkey, state)
+		Hotkey("$^!J", whichHotkey, state)
 
 		whichHotkey(*) {
 			prefix := "i)\$?\^\!"
@@ -132,6 +133,9 @@ class module__KeyboardTextManipulation {
 			if (RegExMatch(A_ThisHotkey, prefix . "``")) {
 				this.doPaste("backticks")
 			}
+			if (RegExMatch(A_ThisHotkey, prefix . "J")) {
+				this.doPaste("join", false)
+			}
 			if (RegExMatch(A_ThisHotkey, prefix . "-")) {
 				SendText(" — ")
 			}
@@ -145,12 +149,13 @@ class module__KeyboardTextManipulation {
 		clipSavedAll := ClipboardAll()
 		A_Clipboard := ""
 		Send("^c")
-		ClipWait(1)
-		linebreak := ""
-		copied := A_Clipboard ?? ""
-		A_Clipboard := clipSavedAll
+		if (!ClipWait(3)) {
+			return
+		}
+		copied := A_Clipboard
 
 		; remove final CR or NL from copied text (we put it back on later)
+		linebreak := ""
 		if ((SubStr(copied, -1) == "`r") || (SubStr(copied, -1) == "`n")) {
 			linebreak := SubStr(copied, -1)
 			copied := SubStr(copied, 1, -2)
@@ -161,18 +166,32 @@ class module__KeyboardTextManipulation {
 		}
 
 		switch (mode) {
-			case "upper": copied := StrUpper(copied)
-			case "lower": copied := StrLower(copied)
-			case "title": copied := StrTitle(copied)
-			case "singlequotes": copied := "'" . copied . "'"
-			case "doublequotes": copied := "`"" . copied . "`""
-			case "parentheses": copied := "(" . copied . ")"
-			case "brackets": copied := "[" . copied . "]"
-			case "braces": copied := "{" . copied . "}"
-			case "backticks": copied := "``" . copied . "``"
+			case "upper":
+				copied := StrUpper(copied)
+			case "lower":
+				copied := StrLower(copied)
+			case "title":
+				copied := StrTitle(copied)
+			case "singlequotes":
+				copied := "'" . copied . "'"
+			case "doublequotes":
+				copied := "`"" . copied . "`""
+			case "parentheses":
+				copied := "(" . copied . ")"
+			case "brackets":
+				copied := "[" . copied . "]"
+			case "braces":
+				copied := "{" . copied . "}"
+			case "backticks":
+				copied := "``" . copied . "``"
+			case "join":
+				copied := RegExReplace(copied, "\s*[\r\n]\s*", " ")
 		}
 
-		SendText(copied . linebreak)
+		A_Clipboard := copied := (copied . linebreak)
+		Send("^v")
+		Sleep(StrLen(copied) * 0.75)
+		A_Clipboard := clipSavedAll
 
 		if (reselect) {
 			Send("+{left " . StrLen(copied) . "}")
