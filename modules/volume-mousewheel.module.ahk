@@ -118,6 +118,7 @@ class module__VolumeMouseWheel {
 		try {
 			IniWrite((this.enabled ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "enabled")
 			IniWrite((this.states.active ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "active")
+			IniWrite(this.settings.step, _SAE.settingsFilename, this.moduleName, "step")
 		} catch Error as e {
 			throw Error("Error updating settings file: " . e.Message)
 		}

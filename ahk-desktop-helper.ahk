@@ -150,8 +150,12 @@ drawMenu(section) {
 				setMenuItem("Save current config", thisMenu, doMenuItem)
 				setMenuItem("Edit config" . U_ellipsis, thisMenu, doMenuItem)
 			case "TRAY\Debugging":
-				setMenuItem("Show menu paths", thisMenu, doMenuItem)
 				setMenuItem("Reload" . U_ellipsis, thisMenu, doMenuItem)
+				setMenuItem("Show menu paths", thisMenu, doMenuItem)
+				if _Modules.Has("AutoCorrect") {
+					setMenuItem("---", thisMenu)
+					setMenuItem("Build Default AutoCorrect list", thisMenu, doMenuItem)
+				}
 		}
 		return thisMenu
 	}
@@ -181,12 +185,16 @@ doMenuItem(name, position, menu) {
 			}
 		case "Save current config":
 			doSettingsFileUpdate()
+		case "Exit":
+			ExitApp()
 		case "Show menu paths":
 			alertMenuPaths()
 		case "Reload" . U_ellipsis:
 			Reload()
-		case "Exit":
-			ExitApp()
+		case "Build Default AutoCorrect list":
+			try {
+				_Modules["AutoCorrect"].buildDefaultList()
+			}
 	}
 }
 
@@ -260,17 +268,19 @@ doExit(reason, code) {
 /** */
 checkSettingsFileExists() {
 	_SAE := _Settings.app.environment
+
 	sectionExists := IniRead(_SAE.settingsFilename, "Environment", , false)
 	if (!sectionExists) {
 		section := join([
 			"[Environment]",
+			"version=" . _Settings.app.build.version,
 			"startWithWindows=false",
 			"enableExtendedRightMouseClick=false"
 		], "`n")
 		FileAppend("`n" . section . "`n", _SAE.settingsFilename)
 	}
 
-	; TODO: move to module?
+	;// TODO: move to module?
 	sectionExists := IniRead(_SAE.settingsFilename, "CloseAppsWithCtrlW", , false)
 	if (!sectionExists) {
 		section := join([
@@ -286,6 +296,11 @@ checkSettingsFileExists() {
 
 /** */
 doSettingsFileUpdate() {
+	_SA := _Settings.app
+	_SAE := _Settings.app.environment
+
+	IniWrite(_SA.build.version, _SAE.settingsFilename, "Environment", "version")
+
 	try {
 		for key, module in _Modules {
 			if (module.hasMethod("updateSettingsFile")) {
