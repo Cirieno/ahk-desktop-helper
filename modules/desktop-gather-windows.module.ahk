@@ -107,7 +107,7 @@ class module__DesktopGatherWindows {
 			getWinVals(hWnd) {
 				WinGetPos(&X, &Y, &W, &H, hWnd)
 				ret := { posX: X, posY: Y, width: W, height: H }
-				ret.hWnd := hWnd
+				ret.handle := hWnd
 				ret.title := WinGetTitle(hWnd)
 				ret.class := WinGetClass(hWnd)
 				ret.state := WinGetMinMax(hWnd)

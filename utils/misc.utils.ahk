@@ -48,17 +48,6 @@ checkMemoryUsage() {
 
 
 
-; used for debugging menu stuff
-; addTestMenuItem(menux, label) {
-; 	local m := Menu()
-; 	m.add("Test1", doMenuItem)
-; 	m.add("Test2", doMenuItem)
-; 	menux.add(label, m)
-; 	_Settings.app.tray.menuHandles.set(label, m)
-; }
-
-
-
 ; reload this script/app on save
 #HotIf WinActive("`.ahk",)
 ~^s:: {

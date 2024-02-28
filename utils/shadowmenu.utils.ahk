@@ -103,7 +103,7 @@ getMenuItem(labelRef?, menuRef?) {
 
 /**
  * @param {string} [label:=null] menuItem label
- * @param {(menu|number|string)} [menuRef:=null] menu object or handle or path
+ * @param {(menu|number|string)} [menuRef:=null] menu object | handle | path
  * @param {(object|string)} [CallbackOrSubmenu:=null]
  * @param {object} [props:=null]
  * @returns {ref} pointer to menuItem in _ShadowMenu
@@ -165,7 +165,7 @@ setMenuItem(label?, menuRef?, CallbackOrSubmenu?, props?) {
 
 /**
  * @param {string} [labelRef:=null] menuItem label or path
- * @param {(menu|number|string)} [menuRef:=null] menu object or handle or path
+ * @param {(menu|number|string)} [menuRef:=null] menu object | handle | path
  * @param {object} [props:=null]
  * @returns {ref} pointer to menuItem in _ShadowMenu
  */

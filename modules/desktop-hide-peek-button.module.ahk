@@ -130,10 +130,9 @@ class module__DesktopHidePeekButton {
 	/** */
 	getButtonHwnd() {
 		try {
-			hWnd := ControlGetHwnd("TrayShowDesktopButtonWClass1", "ahk_class Shell_TrayWnd")
-			return hWnd
+			return ControlGetHwnd("TrayShowDesktopButtonWClass1", "ahk_class Shell_TrayWnd")
 		} catch Error as e {
-			; throw Error("Couldn't get button hWnd")
+			; throw Error("Couldn't get button handle")
 			; NOTE: for some reason an error is thrown when the Start menu is open, so return null instead
 			return null
 		}
@@ -143,15 +142,15 @@ class module__DesktopHidePeekButton {
 
 	/** */
 	runObserver(forced := false) {
-		handleThen := this.settings.hWnd
-		handleNow := this.getButtonHwnd()
+		hWndThen := this.settings.hWnd
+		hWndNow := this.getButtonHwnd()
 		foundThen := this.states.buttonFound
-		foundNow := !isNull(handleNow)
+		foundNow := !isNull(hWndNow)
 		enabledThen := this.states.buttonEnabled
 		enabledNow := this.getButtonState()
 
-		if ((handleNow != handleThen) || (foundNow != foundThen) || (enabledNow != enabledThen)) {
-			this.settings.hWnd := handleNow
+		if ((hWndNow != hWndThen) || (foundNow != foundThen) || (enabledNow != enabledThen)) {
+			this.settings.hWnd := hWndNow
 			this.states.buttonFound := foundNow
 			this.states.buttonEnabled := enabledNow
 			this.states.buttonEnabledOnInit := (isNull(this.states.buttonEnabledOnInit) ? enabledNow : null)

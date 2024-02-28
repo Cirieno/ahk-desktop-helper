@@ -148,15 +148,15 @@ class module__DesktopHideMediaPopup {
 
 	/** */
 	runObserver(forced := false) {
-		handleThen := this.settings.hWnd
-		handleNow := this.getPopupHwnd()
+		hWndThen := this.settings.hWnd
+		hWndNow := this.getPopupHwnd()
 		foundThen := this.states.popupFound
-		foundNow := !isNull(handleNow)
+		foundNow := !isNull(hWndNow)
 		enabledThen := this.states.popupEnabled
 		enabledNow := this.getPopupState()
 
-		if ((handleNow != handleThen) || (foundNow != foundThen) || (enabledNow != enabledThen)) {
-			this.settings.hWnd := handleNow
+		if ((hWndNow != hWndThen) || (foundNow != foundThen) || (enabledNow != enabledThen)) {
+			this.settings.hWnd := hWndNow
 			this.states.popupFound := foundNow
 			this.states.popupEnabled := enabledNow
 			this.states.popupEnabledOnInit := (isNull(this.states.popupEnabledOnInit) ? enabledNow : null)
