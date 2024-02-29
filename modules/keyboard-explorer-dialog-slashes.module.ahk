@@ -62,7 +62,7 @@ class module__KeyboardExplorerDialogSlashes {
 			arrMenuPath := StrSplit(this.settings.menu.path, "\")
 			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
 		}
-		for ii, item in this.settings.menu.items {
+		for item in this.settings.menu.items {
 			if (item.type == "item") {
 				local doMenuItem := ObjBindMethod(this, "doMenuItem")
 				menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
@@ -91,8 +91,8 @@ class module__KeyboardExplorerDialogSlashes {
 		local doPaste := ObjBindMethod(this, "doPaste")
 
 		HotIfWinActive("ahk_group explorerWindows")    ;// defined in constants.utils.ahk
-		Hotstring(":*:/", "\", state)
-		Hotkey("^v", doPaste, state)
+		Hotstring(":*:/", "\", (state ? "on" : "off"))
+		Hotkey("^v", doPaste, (state ? "on" : "off"))
 		HotIfWinActive()
 	}
 

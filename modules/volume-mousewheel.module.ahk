@@ -61,7 +61,7 @@ class module__VolumeMouseWheel {
 			arrMenuPath := StrSplit(this.settings.menu.path, "\")
 			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
 		}
-		for ii, item in this.settings.menu.items {
+		for item in this.settings.menu.items {
 			if (item.type == "item") {
 				local doMenuItem := ObjBindMethod(this, "doMenuItem")
 				menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
@@ -89,8 +89,8 @@ class module__VolumeMouseWheel {
 	setWheelState(state) {
 		local doWheelChange := ObjBindMethod(this, "doWheelChange")
 
-		Hotkey("~WheelUp", doWheelChange, state)
-		Hotkey("~WheelDown", doWheelChange, state)
+		Hotkey("~WheelUp", doWheelChange, (state ? "on" : "off"))
+		Hotkey("~WheelDown", doWheelChange, (state ? "on" : "off"))
 	}
 
 

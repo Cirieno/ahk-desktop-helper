@@ -62,7 +62,7 @@ class module__KeyboardTextManipulation {
 			arrMenuPath := StrSplit(this.settings.menu.path, "\")
 			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
 		}
-		for ii, item in this.settings.menu.items {
+		for item in this.settings.menu.items {
 			if (item.type == "item") {
 				local doMenuItem := ObjBindMethod(this, "doMenuItem")
 				menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
@@ -88,20 +88,20 @@ class module__KeyboardTextManipulation {
 
 	/** */
 	setHotkeys(state) {
-		Hotkey("$^!U", whichHotkey, state)
-		Hotkey("$^!L", whichHotkey, state)
-		Hotkey("$^!T", whichHotkey, state)
-		Hotkey("$^!'", whichHotkey, state)
-		Hotkey("$^!2", whichHotkey, state)
-		Hotkey("$^!9", whichHotkey, state)
-		Hotkey("$^!0", whichHotkey, state)
-		Hotkey("$^![", whichHotkey, state)
-		Hotkey("$^!]", whichHotkey, state)
-		Hotkey("$^!+{", whichHotkey, state)
-		Hotkey("$^!+}", whichHotkey, state)
-		Hotkey("$^!``", whichHotkey, state)
-		Hotkey("$^!-", whichHotkey, state)
-		Hotkey("$^!J", whichHotkey, state)
+		Hotkey("$^!U", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!L", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!T", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!'", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!2", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!9", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!0", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^![", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!]", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!+{", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!+}", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!``", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!-", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!J", whichHotkey, (state ? "on" : "off"))
 
 		whichHotkey(*) {
 			prefix := "i)\$?\^\!"

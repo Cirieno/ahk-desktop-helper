@@ -60,7 +60,7 @@ class module__KeyboardExplorerBackspace {
 			arrMenuPath := StrSplit(this.settings.menu.path, "\")
 			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
 		}
-		for ii, item in this.settings.menu.items {
+		for item in this.settings.menu.items {
 			if (item.type == "item") {
 				local doMenuItem := ObjBindMethod(this, "doMenuItem")
 				menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
@@ -87,7 +87,7 @@ class module__KeyboardExplorerBackspace {
 	/** */
 	setHotkeys(state) {
 		HotIfWinActive("ahk_group explorerWindows")    ;// defined in constants.utils.ahk
-		Hotkey("BackSpace", doBackspace, state)
+		Hotkey("BackSpace", doBackspace, (state ? "on" : "off"))
 		HotIfWinActive()
 
 		doBackspace(*) {

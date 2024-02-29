@@ -110,7 +110,7 @@ class module__KeyboardKeylocks {
 			arrMenuPath := StrSplit(this.settings.menu.path, "\")
 			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
 		}
-		for ii, item in this.settings.menu.items {
+		for item in this.settings.menu.items {
 			if (item.type == "item") {
 				local doMenuItem := ObjBindMethod(this, "doMenuItem")
 				menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
@@ -160,13 +160,13 @@ class module__KeyboardKeylocks {
 	setButtonState(key, state) {
 		switch (key) {
 			case "caps":
-				SetCapsLockState(state)
+				SetCapsLockState((state ? "on" : "off"))
 				this.states.capsEnabled := state
 			case "num":
-				SetNumLockState(state)
+				SetNumLockState((state ? "on" : "off"))
 				this.states.numEnabled := state
 			case "scroll":
-				SetScrollLockState(state)
+				SetScrollLockState((state ? "on" : "off"))
 				this.states.scrollEnabled := state
 		}
 	}
