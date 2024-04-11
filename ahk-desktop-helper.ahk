@@ -1,7 +1,7 @@
 ;// Compile-time settings for "File Properties > Details" panel
-;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.2.2.0, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
-;@Ahk2Exe-ExeName C:\Program Files (portable)\%U_PName%\%U_PName%.exe
-;@ Ahk2Exe-ExeName %A_ScriptDir%\compiled\%U_PName%.exe
+;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.5.0.0, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
+;@ Ahk2Exe-ExeName C:\Program Files (portable)\%U_PName%\%U_PName%.exe
+;@Ahk2Exe-ExeName %A_ScriptDir%\releases\%U_PVersion%\%U_PName% x64.exe
 ;@Ahk2Exe-SetCompanyName %U_PCompany%
 ;@Ahk2Exe-SetCopyright %U_PCompany%
 ;@Ahk2Exe-SetDescription %U_PName%
@@ -16,15 +16,16 @@
 
 
 
-/** */
-#ClipboardTimeout 2000
 #Requires AutoHotkey v2+
+; Run *RunAs.
+#ClipboardTimeout 2000
 #SingleInstance force
+#Warn
 #WinActivateForce
 A_HotkeyInterval := 2000
 A_MaxHotkeysPerInterval := 2000
-DetectHiddenText(false)
-DetectHiddenWindows(false)
+DetectHiddenText(true)
+DetectHiddenWindows(true)
 FileEncoding("UTF-8-RAW")
 InstallKeybdHook(true)
 OnExit(doExit)
@@ -34,68 +35,56 @@ SetWorkingDir(A_ScriptDir)
 
 
 
-/** */
-#Include ".\utils\constants.utils.ahk"
-#Include ".\utils\misc.utils.ahk"
-#Include ".\utils\shadowmenu.utils.ahk"
-#Include ".\utils\vartypes.utils.ahk"
+#Include ".\libs\misc_utils.lib.ahk"
+#Include ".\libs\shadow_menu.lib.ahk"
+#Include ".\libs\vartypes.lib.ahk"
 
 
 
-/** */
-global _Modules := Map()
-global _ShadowMenu := { menus: Map(), items: Map() }
-global _Settings := populateGlobalVars()
-populateGlobalVars() {
-	_S := {}
-
-	_S.app := {
+global __DEBUGGING := (A_IsCompiled ? false : true)    ; use true to override compiled setting
+global __Modules := Map()
+global __ShadowMenu := { menus: Map(), items: Map() }
+if (__Settings := {}) {
+	__Settings.app := {
 		name: "AHK Desktop Helper",
 		author: { name: "Rob McInnes", email: "rob.mcinnes@cirieno.co.uk", company: "Cirieno Ltd" },
-		build: { version: "2.2.2.0", date: "2024-02", repo: "github.com/cirieno/ahk-desktop-helper" }
+		build: { version: "2.5.0.0", date: "2024-03", repo: "github.com/cirieno/ahk-desktop-helper" }
 	}
-
-	_S.app.tray := {
-		title: _S.app.name,
-		traytip: _S.app.name . " — " . _S.app.build.version,
-		icon: { location: (A_IsCompiled == true ? A_ScriptName : "icons\app-icon-debugging.ico"), index: -0 },
+	__Settings.settingsFilePath := A_WorkingDir . "\settings.ini"
+	__Settings.app.tray := {
+		title: __Settings.app.name,
+		traytip: __Settings.app.name,
+		icon: { location: (A_IsCompiled ? A_ScriptName : "icons\app-icon-debugging.ico"), index: 0 },
 		includeSubmenuIcons: false
 	}
-
-	_S.app.environment := {
+	__Settings.app.environment := {
 		company: getIniVal("Environment", "company", ""),
 		user: getIniVal("Environment", "user", A_UserName),
 		computerName: A_ComputerName,
 		domain: EnvGet("USERDOMAIN"),
 		architecture: (A_Is64bitOS ? "x64" : "x86"),
-		settingsFilename: "user_settings.ini"
+		startWithWindows: getIniVal("Environment", "startWithWindows", false),
+		debugging: __DEBUGGING
 	}
-
-	_S.apps := {
+	__Settings.apps := {
 		Notepad: { location: A_WinDir . "\notepad.exe" }
 	}
-
-	return _S
 }
 
 
 
-/** */
 #Include "*i .\modules\autocorrect.module.ahk"
 #Include "*i .\modules\desktop-gather-windows.module.ahk"
 #Include "*i .\modules\desktop-hide-media-popup.module.ahk"
 #Include "*i .\modules\desktop-hide-peek-button.module.ahk"
 #Include "*i .\modules\keyboard-explorer-backspace.module.ahk"
 #Include "*i .\modules\keyboard-explorer-dialog-slashes.module.ahk"
-#Include "*i .\modules\keyboard-keylocks.module.ahk"
 #Include "*i .\modules\keyboard-text-manipulation.module.ahk"
 #Include "*i .\modules\mouse-swap-buttons.module.ahk"
 #Include "*i .\modules\volume-mousewheel.module.ahk"
 
 
 
-/** */
-checkSettingsFileExists()
 checkStartWithWindows()
 drawMenu("before")
 loadModules()
@@ -105,11 +94,10 @@ SetTimer(checkMemoryUsage, (30 * U_msMinute))
 
 
 
-/** */
 drawMenu(section) {
-	_SAT := _Settings.app.tray
+	SAT := __Settings.app.tray
 
-	if (!_ShadowMenu.menus.has("TRAY")) {
+	if (!__ShadowMenu.menus.has("TRAY")) {
 		menuVals := {
 			type: "menu",
 			path: "TRAY",
@@ -117,25 +105,24 @@ drawMenu(section) {
 			parentHandle: null,
 			items: []
 		}
-		_ShadowMenu.menus.set(menuVals.path, menuVals)
-		A_TrayMenu.vals := _ShadowMenu.menus[menuVals.path]
+		__ShadowMenu.menus.set(menuVals.path, menuVals)
+		A_TrayMenu.vals := __ShadowMenu.menus[menuVals.path]
 	}
 
 	switch (section) {
 		case "before":
-			A_IconTip := _SAT.traytip
-			TraySetIcon(_SAT.icon.location)
+			A_IconTip := SAT.traytip
+			TraySetIcon(SAT.icon.location)
 			A_TrayMenu.delete()
-			A_TrayMenu.add(_SAT.title, doMenuItem)
-			; A_TrayMenu.setIcon(_ST.title, _ST.icon.location)
-			A_TrayMenu.default := _SAT.title
+			A_TrayMenu.add(SAT.title, doMenuItem)
+			A_TrayMenu.default := SAT.title
 			A_TrayMenu.add()
 		case "after":
 			A_TrayMenu.add()
 			setMenuItem("Settings" . U_ellipsis, A_TrayMenu, setSubMenu("TRAY\Settings"))
 			setMenuItem("About" . U_ellipsis, A_TrayMenu, doMenuItem)
 			setMenuItem("Exit", A_TrayMenu, doMenuItem)
-			if (A_IsCompiled == false) {
+			if (__DEBUGGING) {
 				A_TrayMenu.add()
 				setMenuItem("Debugging" . U_ellipsis, A_TrayMenu, setSubMenu("TRAY\Debugging"))
 				A_TrayMenu.add()
@@ -150,11 +137,10 @@ drawMenu(section) {
 				setMenuItem("Save current config", thisMenu, doMenuItem)
 				setMenuItem("Edit config" . U_ellipsis, thisMenu, doMenuItem)
 			case "TRAY\Debugging":
-				setMenuItem("Reload" . U_ellipsis, thisMenu, doMenuItem)
-				setMenuItem("Show menu paths", thisMenu, doMenuItem)
-				if _Modules.Has("AutoCorrect") {
-					setMenuItem("---", thisMenu)
-					setMenuItem("Build Default AutoCorrect list", thisMenu, doMenuItem)
+				setMenuItem("Reload", thisMenu, doMenuItem)
+				setMenuItem("Pause hotstrings", thisMenu, doMenuItem)
+				if (__Modules.has("AutoCorrect")) {
+					setMenuItem("Rebuild AutoCorrect list", thisMenu, doMenuItem)
 				}
 		}
 		return thisMenu
@@ -163,23 +149,22 @@ drawMenu(section) {
 
 
 
-/** */
 doMenuItem(name, position, menu) {
-	_SA := _Settings.app
-	_SAP := _Settings.apps
-	_SAT := _Settings.app.tray
+	SA := __Settings.app
+	SAP := __Settings.apps
+	SAT := __Settings.app.tray
+	SFP := __Settings.settingsFilePath
 
 	switch (name) {
-		case _SAT.title:
-			if (A_IsCompiled) {
-				showAboutDialog()
-			} else {
-				Reload()
-			}
+		case SAT.title:
+			(A_IsCompiled ? showAboutDialog() : Reload())
 		case "About" . U_ellipsis:
 			showAboutDialog()
 		case "Edit config" . U_ellipsis:
-			local exitcode := RunWait(_SAP.Notepad.location . " " . _SA.environment.settingsFilename)
+			if (!FileExist(SFP)) {
+				doSettingsFileUpdate()
+			}
+			exitcode := RunWait(A_WinDir . "\notepad.exe " . StrWrap(SFP, 5))
 			if (exitcode == 0) {
 				Reload()
 			}
@@ -189,136 +174,102 @@ doMenuItem(name, position, menu) {
 			ExitApp()
 		case "Show menu paths":
 			alertMenuPaths()
-		case "Reload" . U_ellipsis:
+		case "Reload":
 			Reload()
-		case "Build Default AutoCorrect list":
-			try {
-				_Modules["AutoCorrect"].buildDefaultList()
-			}
+		case "Rebuild AutoCorrect list":
+			__Modules["AutoCorrect"].buildDefaultList()
+		case "Pause Hotstrings":
+			Suspend(-1)
+		default:
+			MsgBox("Menu item " . StrWrap(name, 5) . " doesn't exist")
 	}
 }
 
 
 
-/** */
 showAboutDialog() {
-	_SA := _Settings.app
+	SA := __Settings.app
 
-	msg := join([
-		_SA.name, "v" . _SA.build.version . " (" . _SA.build.date . ")",
-		"",
-		"Repo @ " . _SA.build.repo,
+	title := SA.name . " — About" . U_ellipsis
+	msg := MsgboxJoin([
+		SA.name, "v" . SA.build.version . " (" . SA.build.date . ")", "",
+		"Repo @ " . SA.build.repo,
 		"AutoHotkey v2 @ autohotkey.com",
-		; "AutoCorrect @ github.com/cdelahousse",
-		; "Icons @ flaticon.com/authors/xnimrodx"
-	], "`n")
-
-	title := _SA.name . " — About" . U_ellipsis
-
+		"Icons @ flaticon.com/authors/juicy-fish"
+	])
 	MsgBox(msg, title, (0 + 64 + 4096))
 }
 
 
 
-/** */
 loadModules() {
-	try {
-		_Modules["AutoCorrect"] := module__AutoCorrect()
+	__Modules["AutoCorrect"] := module__AutoCorrect()
 
-		_Modules["DesktopHideMediaPopup"] := module__DesktopHideMediaPopup()
-		_Modules["DesktopHidePeekButton"] := module__DesktopHidePeekButton()
-		setMenuItem("---", "TRAY\Desktop")
-		_Modules["DesktopGatherWindows"] := module__DesktopGatherWindows()
+	__Modules["DesktopHideMediaPopup"] := module__DesktopHideMediaPopup()
+	__Modules["DesktopHidePeekButton"] := module__DesktopHidePeekButton()
+	setMenuItem("---", "TRAY\Desktop")
+	__Modules["DesktopGatherWindows"] := module__DesktopGatherWindows()
 
-		_Modules["KeyboardKeylocks"] := module__KeyboardKeylocks()
-		setMenuItem("---", "TRAY\Keyboard")
-		_Modules["KeyboardExplorerBackspace"] := module__KeyboardExplorerBackspace()
-		_Modules["KeyboardExplorerDialogSlashes"] := module__KeyboardExplorerDialogSlashes()
-		_Modules["KeyboardTextManipulation"] := module__KeyboardTextManipulation()
+	__Modules["KeyboardExplorerBackspace"] := module__KeyboardExplorerBackspace()
+	__Modules["KeyboardExplorerDialogSlashes"] := module__KeyboardExplorerDialogSlashes()
+	__Modules["KeyboardTextManipulation"] := module__KeyboardTextManipulation()
 
-		_Modules["MouseSwapButtons"] := module__MouseSwapButtons()
-		_Modules["VolumeMouseWheel"] := module__VolumeMouseWheel()
-
-		for key, module in _Modules {
-			if (module.hasMethod("checkSettingsFile")) {
-				module.checkSettingsFile()
-			}
-		}
-	} catch Error as e {
-		throw Error("Error loading modules: " . e.Message)
-	}
+	__Modules["MouseSwapButtons"] := module__MouseSwapButtons()
+	__Modules["VolumeMouseWheel"] := module__VolumeMouseWheel()
 }
 
 
 
-/** */
 doExit(reason, code) {
-	if (IsSet(_Modules) && isMap(_Modules)) {
-		for key, module in _Modules {
+	if (IsSet(__Modules) && isMap(__Modules)) {
+		for key, module in __Modules {
 			if (module.hasMethod("__Delete")) {
 				module.__Delete()
 			}
-			module := null
+			module := unset
 		}
 	}
 }
 
 
 
-/** */
-checkSettingsFileExists() {
-	_SAE := _Settings.app.environment
-
-	sectionExists := IniRead(_SAE.settingsFilename, "Environment", , false)
-	if (!sectionExists) {
-		section := join([
-			"[Environment]",
-			"version=" . _Settings.app.build.version,
-			"startWithWindows=false",
-			"enableExtendedRightMouseClick=false"
-		], "`n")
-		FileAppend("`n" . section . "`n", _SAE.settingsFilename)
-	}
-
-	;// TODO: move to module?
-	sectionExists := IniRead(_SAE.settingsFilename, "CloseAppsWithCtrlW", , false)
-	if (!sectionExists) {
-		section := join([
-			"[CloseAppsWithCtrlW]",
-			"enabled=true",
-			"apps=[`"notepad.exe`",`"vlc.exe`"]"
-		], "`n")
-		FileAppend("`n" . section . "`n", _SAE.settingsFilename)
-	}
-}
-
-
-
-/** */
 doSettingsFileUpdate() {
-	_SA := _Settings.app
-	_SAE := _Settings.app.environment
+	SAB := __Settings.app.build
+	SAE := __Settings.app.environment
+	SFP := __Settings.settingsFilePath
 
-	IniWrite(_SA.build.version, _SAE.settingsFilename, "Environment", "version")
+	moduleName := "Environment"
+	IniWrite(SAB.version, SFP, moduleName, "version")
+	IniWrite(toString(SAE.startWithWindows), SFP, moduleName, "startWithWindows")
+	IniWrite(toString(false), SFP, moduleName, "enableExtendedRightMouseClick")
+	FileAppend("`n", SFP)
 
-	try {
-		for key, module in _Modules {
-			if (module.hasMethod("updateSettingsFile")) {
+	; TODO: move to module
+	moduleName := "CloseAppsWithCtrlW"
+	IniWrite(toString(false), SFP, moduleName, "enabled")
+	IniWrite("[`"notepad.exe`",`"vlc.exe`"]", SFP, moduleName, "apps")
+	FileAppend("`n", SFP)
+
+	for key, module in __Modules {
+		if (module.hasMethod("updateSettingsFile")) {
+			try {
 				module.updateSettingsFile()
+				FileAppend("`n", SFP)
+			} catch Error as e {
+				throw Error("Error updating settings file: " . e.Message)
 			}
 		}
-	} catch Error as e {
-		throw Error("Error updating settings file: " . e.Message)
 	}
 }
 
 
 
-/** */
 checkStartWithWindows() {
-	startWithWindows := getIniVal("Environment", "startWithWindows", false)
+	SAE := __Settings.app.environment
+
+	startWithWindows := SAE.startWithWindows
 	startupFolder := A_AppData . "\Microsoft\Windows\Start Menu\Programs\Startup"
-	startupShortcut := startupFolder . "\" . _Settings.app.name . ".lnk"
+	startupShortcut := startupFolder . "\" . __Settings.app.name . ".lnk"
 	shortcutExists := (FileExist(startupShortcut) ? true : false)
 
 	if (!startWithWindows && shortcutExists) {
@@ -328,7 +279,7 @@ checkStartWithWindows() {
 		shortcut := wsh.CreateShortcut(startupShortcut)
 		shortcut.TargetPath := A_ScriptFullPath
 		shortcut.WorkingDirectory := A_ScriptDir
-		shortcut.Description := _Settings.app.name
+		shortcut.Description := __Settings.app.name
 		; shortcut.IconLocation := A_ScriptDir . "\icons\app-icon-debugging.ico"
 		shortcut.Save()
 	}
@@ -336,27 +287,30 @@ checkStartWithWindows() {
 
 
 
-/** */
-closeAppsWithCtrlW_enabled := getIniVal("CloseAppsWithCtrlW", "enabled", true)
-if (closeAppsWithCtrlW_enabled) {
-	doCloseAppsWithCtrlWGroupAdd()
-	doCloseAppsWithCtrlWGroupAdd() {
-		appsList := getIniVal("closeAppsWithCtrlW", "apps", [])
-		for key, app in appsList {
-			app := StrReplace(app, "`"", "")
-			app := StrReplace(app, "'", "")
-			GroupAdd("closeAppsWithCtrlW", "ahk_exe " . app)
+checkCloseAppsWithCtrlW() {
+	global closeAppsWithCtrlW_enabled := getIniVal("CloseAppsWithCtrlW", "enabled", false)
+	if (closeAppsWithCtrlW_enabled) {
+		if (doCloseAppsWithCtrlWGroupAdd := true) {
+			appsList := getIniVal("closeAppsWithCtrlW", "apps", [])
+			for ii, app in appsList {
+				app := Trim(StrReplace(app, "`"", ""))
+				app := Trim(StrReplace(app, "'", ""))
+				GroupAdd("closeAppsWithCtrlW", "ahk_exe " . app)
+			}
 		}
 	}
 }
+checkCloseAppsWithCtrlW()
 #HotIf (WinActive("ahk_group closeAppsWithCtrlW") && closeAppsWithCtrlW_enabled)
 $^w:: WinClose("A")
 #HotIf
 
 
 
-/** */
-enableExtendedRightMouseClick := getIniVal("Environment", "enableExtendedRightMouseClick", false)
-#HotIf (WinActive("ahk_group explorerWindows") && enableExtendedRightMouseClick)
+checkExtendedRightMouseClick() {
+	global extendedRightMouseClick_enabled := getIniVal("Environment", "enableExtendedRightMouseClick", false)
+}
+checkExtendedRightMouseClick()
+#HotIf (WinActive("ahk_group explorerWindows") && extendedRightMouseClick_enabled)
 $RButton:: SendInput("+{RButton}")
 #HotIf

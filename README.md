@@ -1,98 +1,133 @@
 # AHK Desktop Helper
 
-### What is it?
-
 A collection of small enhancements for Windows.
 
 Written in AutoHotkey v2, the script can either be run as-is or compiled into an executable using AHK2Exe w/ MPRESS from the Autohotkey site.
 
-On first run AHKDH will make a `user_settings.ini` file with some default vales - edit the key values to turn options and modules on or off.
+ These are things I wrote for myself and use on a daily(ish) basis.  Only tested on Win10 so far.
 
-`Enabled` means show the module in the app menu at all.
+## Modules
 
-`On` means the module or item(s) will be active on load.
+Each enhancement is presented via its own module which can be enabled via `settings.ini`.  Some modules can be auto-actived when loading the app.  Click `Settings > Save current config` to save the current states which will be active on load in the future.
 
-These are things I wrote for myself and use on a daily(ish) basis.  Only tested on Win10 so far.
+`enabled=true` Make the module available to the app.
 
-### `Environment`
+`active=true` or `active=[x,y]` The module or module items will be automatically activated on load.
 
-##### `startWithWindows`
+---
 
-Creates a shortcut in the user's Start Menu startup folder
+### Environment
 
-##### `enableTextManipulationHotkeys`
+`startWithWindows=false` Creates a shortcut in the user's startup folder
 
-Enables some global hotkeys that can change any selected text:
+`enableExtendedRightMouseClick=false` Always send a Shift + right-click in Explorer-based windows, which reveals extra options in Explorer's right-click context menu.
 
-`Ctrl + Alt + u` = uppercase
+---
 
-`Ctrl + Alt + l` = lowercase
+### AutoCorrect
 
-`Ctrl + Alt + t` = title case
+There are two autocorrect lists: the Default one with some 9k entries, and the User one for your own replacements.
 
-`Ctrl + Alt + '` = enclose in single quotes
-
-`Ctrl + Alt + 2` = enclose in double quotes
-
-`Ctrl + Alt + 9` or `Ctrl + Alt + 0` = enclose in parentheses
-
-`Ctrl + Alt + [` or `Ctrl + Alt + ]` = enclose in square brackets
-
-`Ctrl + Alt + Shift + [` or `Ctrl + Alt + Shift + ]` = enclose in curly brackets
-
-
-
-##### `enableExtendedRightMouseClick`
-
-Transforms every right-click in Explorer windows into a Shift + Click, which reveals extra options in Explorer's right-click context menu.
-
-### `AutoCorrect`
-
-on|off = `[default, user]`
-
-There are two autocorrect dictionaries - the default one with ~10k entries, and a user one for your own replacements.
-
-Rename `user_autocorrect.template.txt` template to `user_autocorrect.txt`
-
-A correction string is added in the format `<replacement>|<trigger>|modifiers`.  Most common modifiers are `?`, `*`, and `C`.
+A correction string is added in the format `replacement | trigger | modifiers`.  Most common modifiers are `?`, `*`, and `C`.
 
 Correction strings can be straight replacements, or you can dynamically replace characters with the following optionals:
-   `[abc]` = one of these characters must be present at this position
-   `[abc]?` = one (or none) of these characters must be present at this position
-   `[abc]+` = all of these characters must be present in any order
 
-On first run a `user_autocorrect.txt` file will be created for you to add your own replacements.  I keep tinkering with and adding to `default_autocorrect.txt` so it's not a good idea to make changes to that file, though there might be strings that you want to comment out for your own environment.
+|     |     |
+| --- | --- |
+| [abc] | one of these characters must be present at this position |
+| [abc]! | one (or none) of these characters must be present at this position |
+| [abc]+ | all of these characters must be present in any order |
+| [abc]? | this phrase is optional |
 
-### `KeyboardExplorerDialogSlashes`
 
-Converts forward-slashes in a path into back-slashes.  Handy if you're working with any Unix-y environments on your Windows machine.
+On first run `user.autocorrect.txt` will be created for you to add your own replacements.
 
-### `DesktopHideMediaPopup`
+I keep tinkering with `default.autocorrect.txt` so it's not a good idea to make changes to that file.
 
-Hide the OSD volume popup
+---
 
-### `DesktopHidePeekButton`
+### CloseAppsWithCtrlW
+
+A list of apps that you want to close with the Ctrl+W shortcut.
+
+`apps=["notepad.exe","vlc.exe"]` Add your own app exes to this list
+
+---
+
+### DesktopGatherWindows
+
+Bring all windows to the main monitor and resize them if possible.  Handy for when a window opens outside the monitor workspace.
+
+`resizeOnMove=true` Resize the window if it's resizeable
+
+---
+
+### DesktopHideMediaPopup
+
+Hide the OSD volume popup.  (NB: this also hides the brightness popup)
+
+`allowExternalChange=true` Allow changes to this setting via other apps or the Control Panel
+
+`resetOnExit=true` Reset to the state that was active when AHK-DH was loaded
+
+---
+
+### DesktopHidePeekButton
 
 Hide the small Desktop Peek button found at the end of the taskbar.
 
-### `KeyboardKeylocks`
+`allowExternalChange=true` Allow changes to this setting via other apps or the Control Panel
 
-on|off = `[num, caps, scroll]`
+`resetOnExit=true` Reset to the state that was active when AHK-DH was loaded
 
-Turn on or off the Caps Lock, Num Lock, Scroll Lock keys on load.
+---
 
-### `MouseSwapButtons`
+### KeyboardExplorerBackspace
+
+Use the backspace key to drill upwards in File Explorer windows and dialogs.
+
+---
+
+### KeyboardExplorerDialogSlashes
+
+Converts forward-slashes in a path into back-slashes.  Handy if you're working with any Unix-y environments on your Windows machine.
+
+---
+
+### KeyboardTextManipulation
+
+Enables some global hotkeys that can change the selected text:
+
+| Syntax | Description |
+| ------ | ----------- |
+| Ctrl + Alt + U | uppercase |
+| Ctrl + Alt + L | lowercase |
+| Ctrl + Alt + T | title case |
+| Ctrl + Alt + S | sarcasm case |
+| Ctrl + Alt + ' | enclose in single quotes |
+| Ctrl + Alt + 2 | enclose in double quotes |
+| Ctrl + Alt + ` | enclose in backticks |
+| Ctrl + Alt + 9 | enclose in parentheses |
+| Ctrl + Alt + [ | enclose in square brackets |
+| Ctrl + Alt + Shift + { | enclose in curly braces |
+| Ctrl + Alt + Shift + < | enclose in angled brackets |
+| Ctrl + Alt + J | join lines |
+| Ctrl + Alt + - | insert an m-dash |
+
+---
+
+#### MouseSwapButtons
 
 Swap left and right mouse buttons.  Handy for left-handed people, or those like me with intermittent RSI.
 
-### `VolumeMouseWheel`
+`allowExternalChange=true` Allow changes to this setting via other apps or the Control Panel
 
-step = `3`
+`resetOnExit=true` Reset to the state that was active when AHK-DH was loaded
+
+---
+
+#### VolumeMouseWheel
 
 Use the mousewheel to change volume anywhere over the system icons and date/time part of the taskbar.
 
-### `VolumeSteps`
-
-steps = `[10, 20, 25, 30, 33, 40, 50, 60, 66, 70, 75, 80, 90, 100]`
-
-For those like me who are slightly OCD about their volume.
+`step=3` The increment by which the volume will change

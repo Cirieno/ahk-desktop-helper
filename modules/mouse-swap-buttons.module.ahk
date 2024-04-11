@@ -1,8 +1,8 @@
-/************************************************************************
- * @description MouseSwapButtons
- * @author Rob McInnes
+/**********************************************************
+ * @name MouseSwapButtons
+ * @author RM
  * @file mouse-swap-buttons.module.ahk
- ***********************************************************************/
+ *********************************************************/
 ; Handy for if you're left-handed, or maybe just having an RSI day
 ; Checks for external changes every 5 seconds
 
@@ -10,17 +10,18 @@
 
 class module__MouseSwapButtons {
 	__Init() {
-		this.moduleName := "MouseSwapButtons"
-		this.enabled := getIniVal(this.moduleName, "enabled", true)
+		this.moduleName := moduleName := "MouseSwapButtons"
+		this.enabled := getIniVal(moduleName, "enabled", true)
 		this.settings := {
-			activateOnLoad: getIniVal(this.moduleName, "active", false),
-			overrideExternalChanges: getIniVal(this.moduleName, "overrideExternalChanges", false),
-			resetOnExit: getIniVal(this.moduleName, "resetOnExit", false)
+			activateOnLoad: getIniVal(moduleName, "active", ignore),
+			resetOnExit: getIniVal(moduleName, "resetOnExit", true),
+			allowExternalChange: getIniVal(moduleName, "allowExternalChange", true)
 		}
 		this.states := {
-			active: this.settings.activateOnLoad,
+			active: null,
+			mouseFound: null,
 			buttonsSwapped: null,
-			buttonsSwappedOnInit: null
+			buttonsSwappedOnLoad: null
 		}
 		this.settings.menu := {
 			path: "TRAY\Mouse",
@@ -33,39 +34,27 @@ class module__MouseSwapButtons {
 
 
 
-	/** */
 	__New() {
 		if (!this.enabled) {
 			return
 		}
 
-		this.states.buttonsSwapped := this.states.buttonsSwappedOnInit := this.getButtonsState()
+		this.drawMenu()
 
-		if (this.states.active && !this.states.buttonsSwapped) {
-			this.setButtonsState(true)
-		} else if (!this.states.active && this.states.buttonsSwapped) {
-			this.setButtonsState(false)
-		}
-
-		thisMenu := this.drawMenu()
-		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.active, enabled: isTruthy(SysGet(SM_MOUSEPRESENT)) })
-
-		this.runObserver(true)
-		SetTimer(ObjBindMethod(this, "runObserver"), 5 * U_msSecond)
+		this.runObserver(this.settings.activateOnLoad, true)
+		SetTimer(ObjBindMethod(this, "runObserver"), 10 * U_msSecond)
 	}
 
 
 
-	/** */
 	__Delete() {
 		if (this.settings.resetOnExit) {
-			this.setButtonsState(this.states.buttonsSwappedOnInit)
+			; this.setButtonsState(this.states.buttonsSwappedOnLoad)
 		}
 	}
 
 
 
-	/** */
 	drawMenu() {
 		thisMenu := getMenu(this.settings.menu.path)
 		if (!isMenu(thisMenu)) {
@@ -77,10 +66,13 @@ class module__MouseSwapButtons {
 			arrMenuPath := StrSplit(this.settings.menu.path, "\")
 			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
 		}
+		local doMenuItem := ObjBindMethod(this, "doMenuItem")
 		for item in this.settings.menu.items {
-			if (item.type == "item") {
-				local doMenuItem := ObjBindMethod(this, "doMenuItem")
-				menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
+			switch (item.type) {
+				case "item":
+					menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
+				case "separator", "---":
+					setMenuItem("---", thisMenu)
 			}
 		}
 
@@ -89,22 +81,24 @@ class module__MouseSwapButtons {
 
 
 
-	/** */
 	doMenuItem(name, position, menu) {
 		switch (name) {
 			case this.settings.menu.items[1].label:
 				this.states.active := !this.states.active
-				setMenuItemProps(name, menu, { checked: this.states.active, clickCount: +1, enabled: isTruthy(SysGet(SM_MOUSEPRESENT)) })
-				this.setButtonsState(this.states.active)
+				setMenuItemProps(name, menu, {
+					checked: this.states.active,
+					clickCount: +1,
+					enabled: this.states.mouseFound
+				})
+				this.runObserver(this.states.active, true)
 		}
 	}
 
 
 
-	/** */
 	getButtonsState() {
 		try {
-			return isTruthy(RegRead("HKEY_CURRENT_USER\Control Panel\Mouse", "SwapMouseButtons", 0))
+			return toBoolean(RegRead("HKEY_CURRENT_USER\Control Panel\Mouse", "SwapMouseButtons", 0))
 		} catch Error as e {
 			throw Error("Error reading registry key")
 		}
@@ -112,12 +106,11 @@ class module__MouseSwapButtons {
 
 
 
-	/** */
 	setButtonsState(state) {
 		try {
-			RegWrite((state == true ? 1 : 0), "REG_SZ", "HKEY_CURRENT_USER\Control Panel\Mouse", "SwapMouseButtons")
-			DllCall("SwapMouseButton", "int", (state == true ? 1 : 0))
-			this.states.buttonsSwapped := state
+			RegWrite((state ? 1 : 0), "REG_SZ", "HKEY_CURRENT_USER\Control Panel\Mouse", "SwapMouseButtons")
+			DllCall("SwapMouseButton", "int", (state ? 1 : 0))
+			this.states.buttonsSwapped := this.getButtonsState()
 		} catch Error as e {
 			throw Error("Error writing registry key")
 		}
@@ -125,42 +118,50 @@ class module__MouseSwapButtons {
 
 
 
-	/** */
-	runObserver(forced := false) {
-		stateThen := this.states.buttonsSwapped
-		stateNow := this.getButtonsState()
-		if (stateNow !== stateThen) {
-			this.states.buttonsSwapped := stateNow
-			this.states.active := !this.states.active
-			setMenuItemProps(this.settings.menu.items[1].label, this.settings.menu.path, { checked: this.states.active, enabled: SysGet(SM_MOUSEPRESENT) })
+	runObserver(state := this.states.active, forced := false) {
+		foundThen := this.states.mouseFound
+		foundNow := this.states.mouseFound := toBoolean(SysGet(SM_MOUSEPRESENT))
+
+		swappedThen := this.states.buttonsSwapped
+		swappedNow := this.states.buttonsSwapped := this.getButtonsState()
+
+		activeThen := this.states.active
+		activeNow := this.states.active := swappedNow
+
+		if (isNull(foundThen) && isNull(swappedThen)) {
+			this.states.buttonsSwappedOnLoad := swappedNow
+		}
+
+		if (isIgnore(state)) {
+			setMenuItemProps(this.settings.menu.items[1].label, this.settings.menu.path, { checked: this.states.active })
+		} else {
+			if ((state !== activeNow) || (foundNow !== foundThen) || (swappedNow !== swappedThen)) {
+				if (forced || !this.settings.allowExternalChange) {
+					this.states.active := state
+					this.setButtonsState(state)
+				} else {
+					this.states.active := activeNow
+				}
+				setMenuItemProps(this.settings.menu.items[1].label, this.settings.menu.path, {
+					checked: this.states.active,
+					enabled: this.states.mouseFound
+				 })
+			}
 		}
 	}
 
 
 
-	/** */
 	updateSettingsFile() {
-		_SAE := _Settings.app.environment
+		SFP := __Settings.settingsFilePath
+
 		try {
-			IniWrite((this.enabled ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "enabled")
-			IniWrite((this.states.active ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "active")
-			IniWrite((this.settings.overrideExternalChanges ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "overrideExternalChanges")
-			IniWrite((this.settings.resetOnExit ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "resetOnExit")
+			IniWrite(toString(this.enabled), SFP, this.moduleName, "enabled")
+			IniWrite(toString(this.states.active), SFP, this.moduleName, "active")
+			IniWrite(toString(this.settings.allowExternalChange), SFP, this.moduleName, "allowExternalChange")
+			IniWrite(toString(this.settings.resetOnExit), SFP, this.moduleName, "resetOnExit")
 		} catch Error as e {
 			throw Error("Error updating settings file: " . e.Message)
-		}
-	}
-
-
-
-	/** */
-	checkSettingsFile() {
-		_SAE := _Settings.app.environment
-		try {
-			IniRead(_SAE.settingsFilename, this.moduleName)
-		} catch Error as e {
-			FileAppend("`n", _SAE.settingsFilename)
-			this.updateSettingsFile()
 		}
 	}
 }

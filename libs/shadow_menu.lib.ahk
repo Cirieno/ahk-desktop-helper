@@ -9,20 +9,20 @@
 
 
 /**
- * @param {(menu|number|string)} [menuRef:=null] menu object | handle | path
- * @returns {(menu|null)} menu object | null
+ * @param {(menu|number|string)} [menuRef] - menu object | handle | path
+ * @returns {(menu|null)} - menu object | null
  */
 getMenu(menuRef?) {
 	menuRef := (IsSet(menuRef) && isMenuRef(menuRef) ? menuRef : null)
 
 	thisMenu := (isMenu(menuRef) ? menuRef : null)
 
-	if (!isMenu(thisMenu) && IsNumber(menuRef) && (menuRef > 0)) {
+	if (!isMenu(thisMenu) && isNumber(menuRef) && (menuRef > 0)) {
 		thisMenu := MenuFromHandle(menuRef)
 	}
 
-	if (!isMenu(thisMenu) && isString(menuRef) && _ShadowMenu.menus.has(menuRef)) {
-		thisMenu := MenuFromHandle(_ShadowMenu.menus[menuRef].handle)
+	if (!isMenu(thisMenu) && isString(menuRef) && __ShadowMenu.menus.has(menuRef)) {
+		thisMenu := MenuFromHandle(__ShadowMenu.menus[menuRef].handle)
 	}
 
 	return (isMenu(thisMenu) ? thisMenu : null)
@@ -31,8 +31,8 @@ getMenu(menuRef?) {
 
 
 /**
- * @param {string} [menuPath:=null]
- * @param {(menu|number|string)} [parentMenuRef:=null] menu object | handle | path
+ * @param {string} [menuPath]
+ * @param {(menu|number|string)} [parentMenuRef] - menu object | handle | path
  * @returns {menu} menu object
  */
 setMenu(menuPath?, parentMenuRef?) {
@@ -53,8 +53,8 @@ setMenu(menuPath?, parentMenuRef?) {
 		parentHandle: parentMenu.handle,
 		items: []
 	}
-	_ShadowMenu.menus.set(menuVals.path, menuVals)
-	thisMenu.vals := _ShadowMenu.menus[menuVals.path]
+	__ShadowMenu.menus.set(menuVals.path, menuVals)
+	thisMenu.vals := __ShadowMenu.menus[menuVals.path]
 
 	return thisMenu
 }
@@ -62,16 +62,16 @@ setMenu(menuPath?, parentMenuRef?) {
 
 
 /**
- * @param {string} [labelRef:=null] menuItem label or path or id or position
- * @param {(menu|number|string)} [menuRef:=null] menu object | handle | path
- * @returns {(ref|null)} pointer to menuItem in _ShadowMenu | null
+ * @param {string} [labelRef] - menuItem label or path or id or position
+ * @param {(menu|number|string)} [menuRef] - menu object | handle | path
+ * @returns {(ref|null)} - pointer to menuItem in __ShadowMenu | null
  */
 getMenuItem(labelRef?, menuRef?) {
-	labelRef := (IsSet(labelRef) && (isString(labelRef) || IsNumber(labelRef)) ? labelRef : null)
+	labelRef := (IsSet(labelRef) && (isString(labelRef) || isNumber(labelRef)) ? labelRef : null)
 	menuRef := (IsSet(menuRef) && isMenuRef(menuRef) ? menuRef : null)
 
-	if (_ShadowMenu.items.has(labelRef)) {
-		return _ShadowMenu.items[labelRef]
+	if (__ShadowMenu.items.has(labelRef)) {
+		return __ShadowMenu.items[labelRef]
 	}
 
 	thisMenu := (isMenu(menuRef) ? menuRef : getMenu(menuRef))
@@ -81,17 +81,16 @@ getMenuItem(labelRef?, menuRef?) {
 
 	if (isMenu(thisMenu) && thisMenu.HasOwnProp("vals") && thisMenu.vals.HasOwnProp("items") && isArray(thisMenu.vals.items)) {
 		loop thisMenu.vals.items.length {
-
 			if (isString(labelRef) && !isNull(labelRef) && (thisMenu.vals.items[A_Index].label == labelRef)) {
-				return _ShadowMenu.items[thisMenu.vals.items[A_Index].path]
+				return __ShadowMenu.items[thisMenu.vals.items[A_Index].path]
 			}
 
-			if (IsNumber(labelRef) && !isNull(labelRef) && (thisMenu.vals.items[A_Index].id == labelRef)) {
-				return _ShadowMenu.items[thisMenu.vals.items[A_Index].path]
+			if (isNumber(labelRef) && !isNull(labelRef) && (thisMenu.vals.items[A_Index].id == labelRef)) {
+				return __ShadowMenu.items[thisMenu.vals.items[A_Index].path]
 			}
 		}
 
-		if (IsNumber(labelRef) && (labelRef > 0) && (labelRef <= thisMenu.vals.items.length)) {
+		if (isNumber(labelRef) && (labelRef > 0) && (labelRef <= thisMenu.vals.items.length)) {
 			return thisMenu.vals.items[labelRef]
 		}
 	}
@@ -102,11 +101,11 @@ getMenuItem(labelRef?, menuRef?) {
 
 
 /**
- * @param {string} [label:=null] menuItem label
- * @param {(menu|number|string)} [menuRef:=null] menu object | handle | path
- * @param {(object|string)} [CallbackOrSubmenu:=null]
- * @param {object} [props:=null]
- * @returns {ref} pointer to menuItem in _ShadowMenu
+ * @param {string} [label] - menuItem label
+ * @param {(menu|number|string)} [menuRef] - menu object | handle | path
+ * @param {(object|string)} [CallbackOrSubmenu]
+ * @param {object} [props]
+ * @returns {ref} - pointer to menuItem in __ShadowMenu
  */
 setMenuItem(label?, menuRef?, CallbackOrSubmenu?, props?) {
 	label := (IsSet(label) && isString(label) ? label : null)
@@ -119,19 +118,18 @@ setMenuItem(label?, menuRef?, CallbackOrSubmenu?, props?) {
 		throw Error("Menu not found")
 	}
 
-	thisMenuVals := getMenuVals()
-	getMenuVals() {
-		for key, vals in _ShadowMenu.menus {
-			if ((vals.type == "menu") && (vals.handle == thisMenu.handle)) {
-				return vals
+	if (thisMenuVals := {}) {
+		for key, vals in __ShadowMenu.menus {
+			if (vals.handle == thisMenu.handle) {
+				thisMenuVals := vals
+				break
 			}
 		}
-		return {}
 	}
 
 	if (isFunction(CallbackOrSubmenu) || isMenu(CallbackOrSubmenu)) {
 		thisMenu.add(label, CallbackOrSubmenu)
-	} else if ((label == "---") || (strLower(label) == "separator")) {
+	} else if ((label == "---") || (StrLower(label) == "separator")) {
 		thisMenu.add()
 	} else {
 		throw Error("CallbackOrSubmenu not a function or menu")
@@ -155,19 +153,19 @@ setMenuItem(label?, menuRef?, CallbackOrSubmenu?, props?) {
 		position: menuItemPostion,
 		parentHandle: thisMenu.handle
 	}
-	_ShadowMenu.items.set(menuItemVals.path, menuItemVals)
-	thisMenu.vals.items.push(_ShadowMenu.items[menuItemVals.path])
+	__ShadowMenu.items.set(menuItemVals.path, menuItemVals)
+	thisMenu.vals.items.push(__ShadowMenu.items[menuItemVals.path])
 
-	return _ShadowMenu.items[menuItemVals.path]
+	return __ShadowMenu.items[menuItemVals.path]
 }
 
 
 
 /**
- * @param {string} [labelRef:=null] menuItem label or path
- * @param {(menu|number|string)} [menuRef:=null] menu object | handle | path
- * @param {object} [props:=null]
- * @returns {ref} pointer to menuItem in _ShadowMenu
+ * @param {string} [labelRef] - menuItem label or path
+ * @param {(menu|number|string)} [menuRef] - menu object | handle | path
+ * @param {object} [props]
+ * @returns {ref} - pointer to menuItem in __ShadowMenu
  */
 setMenuItemProps(labelRef?, menuRef?, props?) {
 	labelRef := (IsSet(labelRef) && isString(labelRef) ? labelRef : null)
@@ -186,11 +184,11 @@ setMenuItemProps(labelRef?, menuRef?, props?) {
 
 	if (IsObject(props)) {
 		if (props.HasOwnProp("enabled")) {
-			(isTruthy(props.enabled) ? thisMenu.enable(thisMenuItem.label) : thisMenu.disable(thisMenuItem.label))
+			(toBoolean(props.enabled) ? thisMenu.enable(thisMenuItem.label) : thisMenu.disable(thisMenuItem.label))
 			thisMenuItem.enabled := toBoolean(props.enabled)
 		}
 		if (props.HasOwnProp("checked")) {
-			(isTruthy(props.checked) ? thisMenu.check(thisMenuItem.label) : thisMenu.uncheck(thisMenuItem.label))
+			(toBoolean(props.checked) ? thisMenu.check(thisMenuItem.label) : thisMenu.uncheck(thisMenuItem.label))
 			thisMenuItem.checked := toBoolean(props.checked)
 		}
 		if (props.HasOwnProp("label")) {
@@ -206,15 +204,15 @@ setMenuItemProps(labelRef?, menuRef?, props?) {
 		; }
 	}
 
-	return _ShadowMenu.items[thisMenuItem.path]
+	return __ShadowMenu.items[thisMenuItem.path]
 }
 
 
 
 /**
- * @param {string} [labelRef:=null] menuItem label or path
- * @param {(menu|number|string)} [menuRef:=null] menu object | handle | path
- * @param {string} [prop:=null]
+ * @param {string} [labelRef] - menuItem label or path
+ * @param {(menu|number|string)} [menuRef] - menu object | handle | path
+ * @param {string} [prop]
  * @returns {(boolean|number|string|null)}
  */
 getMenuItemProp(labelRef?, menuRef?, prop?) {
@@ -234,13 +232,13 @@ getMenuItemProp(labelRef?, menuRef?, prop?) {
 
 	switch (prop) {
 		case "enabled":
-			return thisMenuItem.HasOwnProp("enabled") ? thisMenuItem.enabled : null
+			return (thisMenuItem.HasOwnProp("enabled") ? thisMenuItem.enabled : null)
 		case "checked":
-			return thisMenuItem.HasOwnProp("checked") ? thisMenuItem.checked : null
+			return (thisMenuItem.HasOwnProp("checked") ? thisMenuItem.checked : null)
 		case "label":
-			return thisMenuItem.HasOwnProp("label") ? thisMenuItem.label : null
+			return (thisMenuItem.HasOwnProp("label") ? thisMenuItem.label : null)
 		case "iconPath":
-			return thisMenuItem.HasOwnProp("iconPath") ? thisMenuItem.iconPath : null
+			return (thisMenuItem.HasOwnProp("iconPath") ? thisMenuItem.iconPath : null)
 	}
 
 	return null
@@ -249,7 +247,7 @@ getMenuItemProp(labelRef?, menuRef?, prop?) {
 
 
 isMenuRef(val) {
-	return (isMenu(val) || IsNumber(val) || isString(val))
+	return (!isNull(val) && (isMenu(val) || isNumber(val) || isString(val)))
 }
 
 
@@ -258,32 +256,28 @@ isMenuRef(val) {
  * @note this is a debug function
  */
 alertMenuPaths() {
-	msg := ""
+	str := ""
 
-	for key, vals in _ShadowMenu.menus {
+	for key, vals in __ShadowMenu.menus {
 		if (vals.type == "menu") {
-			msg .= "[" . key . "]`n"
-			if (vals.HasOwnProp("items") && isArray(vals.items) && vals.items.length) {
+			str .= StrWrap(key, 2) . "`n"
+			if (vals.HasOwnProp("items") && isArray(vals.items) && !isEmpty(vals.items)) {
 				loop vals.items.length {
-					menuItem := _ShadowMenu.items[vals.items[A_Index].path]
-					msg .= "   " . menuItem.label
+					menuItem := __ShadowMenu.items[vals.items[A_Index].path]
+					str .= StrRepeat(" ", 4) . menuItem.label
 					props := []
-					if (menuItem.HasOwnProp("checked") && menuItem.checked) {
-						props.push("C")
+					(menuItem.HasOwnProp("checked") && menuItem.checked ? props.push("C") : ignore)
+					(menuItem.HasOwnProp("enabled") && !menuItem.enabled ? props.push("D") : ignore)
+					if (!isEmpty(props)) {
+						str .= " [" . ArrJoin(props) . "]"
 					}
-					if (menuItem.HasOwnProp("enabled") && !menuItem.enabled) {
-						props.push("D")
-					}
-					if (props.length) {
-						msg .= " [" . join(props, ", ") . "]"
-					}
-					msg .= "`n"
+					str .= "`n"
 				}
 			}
-			msg .= "`n"
+			str .= "`n"
 		}
 	}
 
-	msg := StrReplace(msg, "TRAY\", "")
-	MsgBox(msg, (_Settings.app.name . " — " . "Menu Paths" . U_ellipsis), (0 + 64 + 4096))
+	str := StrReplace(str, "TRAY\", "")
+	MsgBox(str, (__Settings.app.name . " — " . "Menu Paths" . U_ellipsis), (0 + 64 + 4096))
 }

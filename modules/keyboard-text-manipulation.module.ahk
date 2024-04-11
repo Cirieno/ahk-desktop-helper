@@ -1,22 +1,22 @@
-/************************************************************************
- * @description KeyboardTextManipulation
- * @author Rob McInnes
+/**********************************************************
+ * @name KeyboardTextManipulation
+ * @author RM
  * @file keyboard-text-manipulation.module.ahk
- ***********************************************************************/
-; a set of hotkeys to manipulate text copied to the clipboard
-; works much like VSCode's text manipulation shortcuts
+ *********************************************************/
+; A set of hotkeys to manipulate text copied to the clipboard
+; Works like VSCode's text manipulation shortcuts
 
 
 
 class module__KeyboardTextManipulation {
 	__Init() {
-		this.moduleName := "KeyboardTextManipulation"
-		this.enabled := getIniVal(this.moduleName, "enabled", true)
+		this.moduleName := moduleName := "KeyboardTextManipulation"
+		this.enabled := getIniVal(moduleName, "enabled", true)
 		this.settings := {
-			activateOnLoad: getIniVal(this.moduleName, "active", false)
+			activateOnLoad: getIniVal(moduleName, "active", false)
 		}
 		this.states := {
-			active: this.settings.activateOnLoad
+			active: null
 		}
 		this.settings.menu := {
 			path: "TRAY\Keyboard",
@@ -29,11 +29,12 @@ class module__KeyboardTextManipulation {
 
 
 
-	/** */
 	__New() {
 		if (!this.enabled) {
 			return
 		}
+
+		this.states.active := this.settings.activateOnLoad
 
 		thisMenu := this.drawMenu()
 		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.active })
@@ -43,14 +44,11 @@ class module__KeyboardTextManipulation {
 
 
 
-	/** */
 	__Delete() {
-		; nothing to do
 	}
 
 
 
-	/** */
 	drawMenu() {
 		thisMenu := getMenu(this.settings.menu.path)
 		if (!isMenu(thisMenu)) {
@@ -62,10 +60,13 @@ class module__KeyboardTextManipulation {
 			arrMenuPath := StrSplit(this.settings.menu.path, "\")
 			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
 		}
+		local doMenuItem := ObjBindMethod(this, "doMenuItem")
 		for item in this.settings.menu.items {
-			if (item.type == "item") {
-				local doMenuItem := ObjBindMethod(this, "doMenuItem")
-				menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
+			switch (item.type) {
+				case "item":
+					menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
+				case "separator", "---":
+					setMenuItem("---", thisMenu)
 			}
 		}
 
@@ -74,7 +75,6 @@ class module__KeyboardTextManipulation {
 
 
 
-	/** */
 	doMenuItem(name, position, menu) {
 		switch (name) {
 			case this.settings.menu.items[1].label:
@@ -86,70 +86,82 @@ class module__KeyboardTextManipulation {
 
 
 
-	/** */
 	setHotkeys(state) {
 		Hotkey("$^!U", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^!L", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^!T", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!S", whichHotkey, (state ? "on" : "off"))
+
 		Hotkey("$^!'", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^!2", whichHotkey, (state ? "on" : "off"))
+		Hotkey("~$^!``", whichHotkey, (state ? "on" : "off"))
+
 		Hotkey("$^!9", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^!0", whichHotkey, (state ? "on" : "off"))
+
 		Hotkey("$^![", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^!]", whichHotkey, (state ? "on" : "off"))
+
 		Hotkey("$^!+{", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^!+}", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!``", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!-", whichHotkey, (state ? "on" : "off"))
+
+		Hotkey("$^!,", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!.", whichHotkey, (state ? "on" : "off"))
+
 		Hotkey("$^!J", whichHotkey, (state ? "on" : "off"))
 
-		whichHotkey(*) {
-			prefix := "i)\$?\^\!"
+		Hotkey("$^!-", whichHotkey, (state ? "on" : "off"))
 
-			if (RegExMatch(A_ThisHotkey, prefix . "U")) {
+		whichHotkey(*) {
+			if (SubStr(A_ThisHotkey, -1, 1) = "U") {
 				this.doPaste("upper")
 			}
-			if (RegExMatch(A_ThisHotkey, prefix . "L")) {
+			if (SubStr(A_ThisHotkey, -1, 1) = "L") {
 				this.doPaste("lower")
 			}
-			if (RegExMatch(A_ThisHotkey, prefix . "T")) {
+			if (SubStr(A_ThisHotkey, -1, 1) = "T") {
 				this.doPaste("title")
 			}
-			if (RegExMatch(A_ThisHotkey, prefix . "'")) {
-				this.doPaste("singlequotes")
+			if (SubStr(A_ThisHotkey, -1, 1) = "S") {
+				this.doPaste("sarcasm")
 			}
-			if (RegExMatch(A_ThisHotkey, prefix . "2")) {
-				this.doPaste("doublequotes")
+			if (SubStr(A_ThisHotkey, -1, 1) = "'") {
+				this.doPaste("single-quotes")
 			}
-			if (RegExMatch(A_ThisHotkey, prefix . "9") || RegExMatch(A_ThisHotkey, prefix . "0")) {
-				this.doPaste("parentheses")
+			if (SubStr(A_ThisHotkey, -1, 1) = "2") {
+				this.doPaste("double-quotes")
 			}
-			if (RegExMatch(A_ThisHotkey, prefix . "\[") || RegExMatch(A_ThisHotkey, prefix . "\]")) {
-				this.doPaste("brackets")
-			}
-			if (RegExMatch(A_ThisHotkey, prefix . "\+\{") || RegExMatch(A_ThisHotkey, prefix . "\+\}")) {
-				this.doPaste("braces")
-			}
-			if (RegExMatch(A_ThisHotkey, prefix . "``")) {
+			if (SubStr(A_ThisHotkey, -1, 1) = "``") {
 				this.doPaste("backticks")
 			}
-			if (RegExMatch(A_ThisHotkey, prefix . "J")) {
+			if (SubStr(A_ThisHotkey, -1, 1) = "9" || SubStr(A_ThisHotkey, -1, 1) = "0") {
+				this.doPaste("parentheses")
+			}
+			if (SubStr(A_ThisHotkey, -1, 1) = "[" || SubStr(A_ThisHotkey, -1, 1) = "]") {
+				this.doPaste("square-brackets")
+			}
+			if (SubStr(A_ThisHotkey, -1, 1) = "{" || SubStr(A_ThisHotkey, -1, 1) = "}") {
+				this.doPaste("braces")
+			}
+			if (SubStr(A_ThisHotkey, -1, 1) = "," || SubStr(A_ThisHotkey, -1, 1) = ".") {
+				this.doPaste("angle-brackets")
+			}
+			if (SubStr(A_ThisHotkey, -1, 1) = "J") {
 				this.doPaste("join", false)
 			}
-			if (RegExMatch(A_ThisHotkey, prefix . "-")) {
-				SendText(" — ")
+			if (SubStr(A_ThisHotkey, -1, 1) = "-") {
+				SendText("—")
 			}
 		}
 	}
 
 
 
-	/** */
 	doPaste(mode, reselect := true) {
 		clipSavedAll := ClipboardAll()
 		A_Clipboard := ""
 		Send("^c")
-		if (!ClipWait(3)) {
+		if (!ClipWait(2)) {
 			return
 		}
 		copied := A_Clipboard
@@ -161,7 +173,7 @@ class module__KeyboardTextManipulation {
 			copied := SubStr(copied, 1, -2)
 		}
 
-		if !(StrLen(copied)) {
+		if (!StrLen(copied)) {
 			return
 		}
 
@@ -172,25 +184,34 @@ class module__KeyboardTextManipulation {
 				copied := StrLower(copied)
 			case "title":
 				copied := StrTitle(copied)
-			case "singlequotes":
-				copied := "'" . copied . "'"
-			case "doublequotes":
-				copied := "`"" . copied . "`""
-			case "parentheses":
-				copied := "(" . copied . ")"
-			case "brackets":
-				copied := "[" . copied . "]"
-			case "braces":
-				copied := "{" . copied . "}"
+			case "sarcasm":
+				arr := StrSplit(copied)
+				for ii, el in arr {
+					arr[ii] := (Random(1) ? StrUpper(el) : StrLower(el))
+				}
+				copied := ArrJoin(arr, "")
+			case "single-quotes":
+				copied := StrWrap(copied, 6)
+			case "double-quotes":
+				copied := StrWrap(copied, 5)
 			case "backticks":
-				copied := "``" . copied . "``"
+				copied := StrWrap(copied, 7)
+			case "parentheses":
+				copied := StrWrap(copied, 1)
+			case "square-brackets":
+				copied := StrWrap(copied, 2)
+			case "braces":
+				copied := StrWrap(copied, 3)
+			case "angle-brackets":
+				copied := StrWrap(copied, 4)
 			case "join":
-				copied := RegExReplace(copied, "\s*[\r\n]\s*", " ")
+				copied := RegExReplace(copied, "\s*[\r\n]\s*", "")
 		}
 
 		A_Clipboard := copied := (copied . linebreak)
 		Send("^v")
-		Sleep(StrLen(copied) * 0.75)
+		; Sleep(Max(StrLen(copied), 250))
+		Sleep(200)
 		A_Clipboard := clipSavedAll
 
 		if (reselect) {
@@ -200,27 +221,14 @@ class module__KeyboardTextManipulation {
 
 
 
-	/** */
 	updateSettingsFile() {
-		_SAE := _Settings.app.environment
+		SFP := __Settings.settingsFilePath
+
 		try {
-			IniWrite((this.enabled ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "enabled")
-			IniWrite((this.states.active ? "true" : "false"), _SAE.settingsFilename, this.moduleName, "active")
+			IniWrite(toString(this.enabled), SFP, this.moduleName, "enabled")
+			IniWrite(toString(this.states.active), SFP, this.moduleName, "active")
 		} catch Error as e {
 			throw Error("Error updating settings file: " . e.Message)
-		}
-	}
-
-
-
-	/** */
-	checkSettingsFile() {
-		_SAE := _Settings.app.environment
-		try {
-			IniRead(_SAE.settingsFilename, this.moduleName)
-		} catch Error as e {
-			FileAppend("`n", _SAE.settingsFilename)
-			this.updateSettingsFile()
 		}
 	}
 }
