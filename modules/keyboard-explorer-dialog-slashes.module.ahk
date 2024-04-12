@@ -89,10 +89,18 @@ class module__KeyboardExplorerDialogSlashes {
 	setHotkeys(state) {
 		doPaste := ObjBindMethod(this, "doPaste")
 
-		HotIfWinActive("ahk_group explorerWindows")
+		HotIf(this.checkCtrl)
 		Hotstring(":*:/", "\", (state ? "on" : "off"))
 		Hotkey("^v", doPaste, (state ? "on" : "off"))
-		HotIfWinActive()
+		HotIf()
+	}
+
+
+
+	checkCtrl() {
+		controls := ["Edit1", "Edit2"]
+		ctrl := ControlGetClassNN(ControlGetFocus("A"))
+		return (WinActive("ahk_group explorerWindows") && controls.includes(ctrl))
 	}
 
 
