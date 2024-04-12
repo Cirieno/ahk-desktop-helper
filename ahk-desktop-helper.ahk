@@ -91,6 +91,7 @@ loadModules()
 drawMenu("after")
 checkMemoryUsage()
 SetTimer(checkMemoryUsage, (30 * U_msMinute))
+doSettingsFileUpdate()
 
 
 

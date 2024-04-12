@@ -98,9 +98,13 @@ class module__KeyboardExplorerDialogSlashes {
 
 
 	checkCtrl() {
-		controls := ["Edit1", "Edit2"]
-		ctrl := ControlGetClassNN(ControlGetFocus("A"))
-		return (WinActive("ahk_group explorerWindows") && controls.includes(ctrl))
+		try {
+			controls := ["Edit1", "Edit2"]
+			ctrl := ControlGetClassNN(ControlGetFocus("A"))
+			return (WinActive("ahk_group explorerWindows") && controls.includes(ctrl))
+		} catch Error as e {
+			return false
+		}
 	}
 
 
