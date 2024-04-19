@@ -4,15 +4,21 @@ A collection of small enhancements for Windows.
 
 Written in AutoHotkey v2, the script can either be run as-is or compiled into an executable using AHK2Exe w/ MPRESS from the Autohotkey site.
 
- These are things I wrote for myself and use on a daily(ish) basis.  Only tested on Win10 so far.
+ These are things I wrote for myself and use on a daily(ish) basis. Only tested on Win10 so far.
 
 ## Modules
 
-Each enhancement is presented via its own module which can be enabled via `settings.ini`.  Some modules can be auto-actived when loading the app.  Click `Settings > Save current config` to save the current states which will be active on load in the future.
+Each enhancement is presented via its own module which can be enabled via `settings.ini`. Some modules can be auto-actived when loading the app. Click `Settings > Save current config` to save the current states which will be active on load in the future.
+
+Common module options:
 
 `enabled=true` Make the module available to the app.
 
 `active=true` or `active=[x,y]` The module or module items will be automatically activated on load.
+
+`allowExternalChange=true` Allow changes to this setting via other apps or the Control Panel.
+
+`resetOnExit=true` Reset to the state that was active when AHK-DH was loaded.
 
 ---
 
@@ -26,23 +32,34 @@ Each enhancement is presented via its own module which can be enabled via `setti
 
 ### AutoCorrect
 
+There are many AHK autocorrect scripts out there, but this one has a different approach. It allows you to add a single entry (or accented words) that can expand to multiple correction strings.
+
 There are two autocorrect lists: the Default one with some 9k entries, and the User one for your own replacements.
 
-A correction string is added in the format `replacement | trigger | modifiers`.  Most common modifiers are `?`, `*`, and `C`.
+A correction string is added in the format `replacement | trigger | modifiers`.
 
 Correction strings can be straight replacements, or you can dynamically replace characters with the following optionals:
 
-|     |     |
-| --- | --- |
-| [abc] | one of these characters must be present at this position |
-| [abc]! | one (or none) of these characters must be present at this position |
+| Syntax | Description |
+| ------ | ----------- |
+| [abc]* | one of these characters can optionally be at this position |
+| [abc]? | one of these characters must be at this position |
 | [abc]+ | all of these characters must be present in any order |
-| [abc]? | this phrase is optional |
+| [abc]! | this combination is optional |
 
+Examples:
+
+`directly|driectly` -> a straightforward replacement
+
+`dis[s]?obedi[ea]?nt` -> is automatically expanded into three replacement strings: `dissobedient`, `dissobediant`, `disobediant`
+
+`débâcle` -> is internally turned into `d[eé]b[aâ]cle`, which automatically expands into the replacement strings `debacle`, `debâcle`, `débacle`
+
+Any duplicated replacements are automatically ignored, as are any strings that are identical to the replacement string.
 
 On first run `user.autocorrect.txt` will be created for you to add your own replacements.
 
-I keep tinkering with `default.autocorrect.txt` so it's not a good idea to make changes to that file.
+NB: I keep tinkering with `default.autocorrect.txt` so don't make changes to this file unless you're happy to diff between revisions. It might be better to put any overrides in `user.autocorrect.txt`.
 
 ---
 
@@ -50,35 +67,27 @@ I keep tinkering with `default.autocorrect.txt` so it's not a good idea to make 
 
 A list of apps that you want to close with the Ctrl+W shortcut.
 
-`apps=["notepad.exe","vlc.exe"]` Add your own app exes to this list
+`apps=["notepad.exe","vlc.exe"]` Add your own apps to this list. Path not required.
 
 ---
 
 ### DesktopGatherWindows
 
-Bring all windows to the main monitor and resize them if possible.  Handy for when a window opens outside the monitor workspace.
+Bring all windows to the main monitor and resize them if possible. Handy for when a window opens outside the monitor workspace.
 
-`resizeOnMove=true` Resize the window if it's resizeable
+`resizeOnMove=true` Resize the window if possible.
 
 ---
 
 ### DesktopHideMediaPopup
 
-Hide the OSD volume popup.  (NB: this also hides the brightness popup)
-
-`allowExternalChange=true` Allow changes to this setting via other apps or the Control Panel
-
-`resetOnExit=true` Reset to the state that was active when AHK-DH was loaded
+Hide the OSD volume popup. NB: this also hides the brightness popup.
 
 ---
 
 ### DesktopHidePeekButton
 
 Hide the small Desktop Peek button found at the end of the taskbar.
-
-`allowExternalChange=true` Allow changes to this setting via other apps or the Control Panel
-
-`resetOnExit=true` Reset to the state that was active when AHK-DH was loaded
 
 ---
 
@@ -90,13 +99,13 @@ Use the backspace key to drill upwards in File Explorer windows and dialogs.
 
 ### KeyboardExplorerDialogSlashes
 
-Converts forward-slashes in a path into back-slashes.  Handy if you're working with any Unix-y environments on your Windows machine.
+Converts forward-slashes in a path into back-slashes. Handy if you're working with any Unix-y environments on your Windows machine.
 
 ---
 
 ### KeyboardTextManipulation
 
-Enables some global hotkeys that can change the selected text:
+Enables these global hotkeys to change selected text:
 
 | Syntax | Description |
 | ------ | ----------- |
@@ -104,6 +113,7 @@ Enables some global hotkeys that can change the selected text:
 | Ctrl + Alt + L | lowercase |
 | Ctrl + Alt + T | title case |
 | Ctrl + Alt + S | sarcasm case |
+| Ctrl + Alt + J | join lines |
 | Ctrl + Alt + ' | enclose in single quotes |
 | Ctrl + Alt + 2 | enclose in double quotes |
 | Ctrl + Alt + ` | enclose in backticks |
@@ -111,18 +121,15 @@ Enables some global hotkeys that can change the selected text:
 | Ctrl + Alt + [ | enclose in square brackets |
 | Ctrl + Alt + Shift + { | enclose in curly braces |
 | Ctrl + Alt + Shift + < | enclose in angled brackets |
-| Ctrl + Alt + J | join lines |
-| Ctrl + Alt + - | insert an m-dash |
+| Ctrl + Alt + - | insert an n-dash |
+| Ctrl + Alt + Shift + - | insert an m-dash |
 
 ---
 
 #### MouseSwapButtons
 
-Swap left and right mouse buttons.  Handy for left-handed people, or those like me with intermittent RSI.
+Swap left and right mouse buttons. Handy for left-handed people, or those like me with intermittent RSI.
 
-`allowExternalChange=true` Allow changes to this setting via other apps or the Control Panel
-
-`resetOnExit=true` Reset to the state that was active when AHK-DH was loaded
 
 ---
 
@@ -130,4 +137,4 @@ Swap left and right mouse buttons.  Handy for left-handed people, or those like 
 
 Use the mousewheel to change volume anywhere over the system icons and date/time part of the taskbar.
 
-`step=3` The increment by which the volume will change
+`step=3` The increment by which the volume will change.
