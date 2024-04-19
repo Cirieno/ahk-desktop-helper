@@ -111,46 +111,40 @@ class module__KeyboardTextManipulation {
 		Hotkey("$^!J", whichHotkey, (state ? "on" : "off"))
 
 		Hotkey("$^!-", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!_", whichHotkey, (state ? "on" : "off"))
 
 		whichHotkey(*) {
-			if (SubStr(A_ThisHotkey, -1, 1) = "U") {
-				this.doPaste("upper")
-			}
-			if (SubStr(A_ThisHotkey, -1, 1) = "L") {
-				this.doPaste("lower")
-			}
-			if (SubStr(A_ThisHotkey, -1, 1) = "T") {
-				this.doPaste("title")
-			}
-			if (SubStr(A_ThisHotkey, -1, 1) = "S") {
-				this.doPaste("sarcasm")
-			}
-			if (SubStr(A_ThisHotkey, -1, 1) = "'") {
-				this.doPaste("single-quotes")
-			}
-			if (SubStr(A_ThisHotkey, -1, 1) = "2") {
-				this.doPaste("double-quotes")
-			}
-			if (SubStr(A_ThisHotkey, -1, 1) = "``") {
-				this.doPaste("backticks")
-			}
-			if (SubStr(A_ThisHotkey, -1, 1) = "9" || SubStr(A_ThisHotkey, -1, 1) = "0") {
-				this.doPaste("parentheses")
-			}
-			if (SubStr(A_ThisHotkey, -1, 1) = "[" || SubStr(A_ThisHotkey, -1, 1) = "]") {
-				this.doPaste("square-brackets")
-			}
-			if (SubStr(A_ThisHotkey, -1, 1) = "{" || SubStr(A_ThisHotkey, -1, 1) = "}") {
-				this.doPaste("braces")
-			}
-			if (SubStr(A_ThisHotkey, -1, 1) = "," || SubStr(A_ThisHotkey, -1, 1) = ".") {
-				this.doPaste("angle-brackets")
-			}
-			if (SubStr(A_ThisHotkey, -1, 1) = "J") {
-				this.doPaste("join", false)
-			}
-			if (SubStr(A_ThisHotkey, -1, 1) = "-") {
-				SendText("—")
+			key := SubStr(A_ThisHotkey, -1, 1)
+
+			switch (key) {
+				case "U":
+					this.doPaste("upper")
+				case "L":
+					this.doPaste("lower")
+				case "T":
+					this.doPaste("title")
+				case "S":
+					this.doPaste("sarcasm")
+				case "J":
+					this.doPaste("join", false)
+				case "'":
+					this.doPaste("single-quotes")
+				case "2":
+					this.doPaste("double-quotes")
+				case "``":
+					this.doPaste("backticks")
+				case "9", "0":
+					this.doPaste("parentheses")
+				case "[", "]":
+					this.doPaste("square-brackets")
+				case "{", "}":
+					this.doPaste("braces")
+				case ",", ".":
+					this.doPaste("angle-brackets")
+				case "-":
+					SendText("–")
+				case "_":
+					SendText("—")
 			}
 		}
 	}
@@ -166,7 +160,7 @@ class module__KeyboardTextManipulation {
 		}
 		copied := A_Clipboard
 
-		; remove final CR or NL from copied text (we put it back on later)
+		; remove final CR or NL from copied text (will put it back on later)
 		linebreak := ""
 		if ((SubStr(copied, -1) == "`r") || (SubStr(copied, -1) == "`n")) {
 			linebreak := SubStr(copied, -1)
@@ -190,6 +184,8 @@ class module__KeyboardTextManipulation {
 					arr[ii] := (Random(1) ? StrUpper(el) : StrLower(el))
 				}
 				copied := ArrJoin(arr, "")
+			case "join":
+				copied := RegExReplace(copied, "\s*[\r\n]\s*", "")
 			case "single-quotes":
 				copied := StrWrap(copied, 6)
 			case "double-quotes":
@@ -204,8 +200,6 @@ class module__KeyboardTextManipulation {
 				copied := StrWrap(copied, 3)
 			case "angle-brackets":
 				copied := StrWrap(copied, 4)
-			case "join":
-				copied := RegExReplace(copied, "\s*[\r\n]\s*", "")
 		}
 
 		A_Clipboard := copied := (copied . linebreak)
