@@ -64,7 +64,7 @@ class module__AutoCorrect {
 
 			; the default list is big, so load any lists a few seconds after the app has loaded
 			readHotstrings := ObjBindMethod(this, "readHotstrings", listName, listIsActive)
-			SetTimer(readHotstrings, -5000)
+			SetTimer(readHotstrings, -2000)
 		}
 	}
 
@@ -95,6 +95,10 @@ class module__AutoCorrect {
 					setMenuItem("---", thisMenu)
 			}
 		}
+		if __DEBUGGING {
+			setMenuItem("---", thisMenu)
+			setMenuItem("Build Default list", thisMenu, doMenuItem)
+		}
 
 		return (isMenu(thisMenu) ? thisMenu : null)
 	}
@@ -111,6 +115,8 @@ class module__AutoCorrect {
 				this.editFile("user")
 			case this.settings.menu.items[6].label:
 				this.showHotstringsInfo()
+			case "Build Default list":
+				this.buildDefaultList()
 		}
 
 		do(listName) {
@@ -129,10 +135,14 @@ class module__AutoCorrect {
 	setHotstrings(listName, state) {
 		; key = trigger, val = [replacement, modifiers, listName, state]
 		for key, val in this.settings.hotstrings {
+			trigger := key
+			replacement := val[1]
+			modifiers := val[2]
+
 			if (val[3] == listName) {
 				try {
 					val[4] := state
-					Hotstring(":" . val[2] . ":" . key, val[1], (state ? "on" : "off"))
+					Hotstring(":" . modifiers . ":" . key, replacement, (state ? "on" : "off"))
 				} catch Error as e {
 					; throw Error("Error setting hotstring: " . e.Message)
 				}
@@ -164,11 +174,21 @@ class module__AutoCorrect {
 
 			triggers := this.makeTriggers(trigger, replacement)
 			for trigger in triggers {
-				if (trigger !== replacement) {
-					this.settings.hotstrings.Set(trigger, [replacement, modifiers, listName, state])
+				if (trigger == replacement) {
+					continue
 				}
+				this.settings.hotstrings.Set(trigger, [replacement, modifiers, listName, state])
 			}
 		}
+
+		for key, val in this.settings.hotstrings {
+			trigger := key
+			modifiers := val[2]
+			if (InStr(modifiers, "X")) {
+				this.settings.hotstrings.delete(trigger)
+			}
+		}
+
 
 		this.setHotstrings(listName, state)
 	}
@@ -176,7 +196,7 @@ class module__AutoCorrect {
 
 
 	makeTriggers(trigger, replacement, triggers := []) {
-		pattern := "S)((?:\[(.+?)\])([\?\+\^\!\#]?))"
+		pattern := "S)((?:\[(.+?)\])([\?\+\^\!\#\*]?))"
 		posStart := 1
 		matchFound := false
 
@@ -184,15 +204,20 @@ class module__AutoCorrect {
 			posStart := (match.pos + 1)
 			matchFound := (matchFound || true)
 
+			; [abc]* = one or none of these characters must be present at this position
+			; [abc]? = one of these characters must be present at this position
+			; [abc]+ = all of these characters must be present in any order
+			; [abc]! = this phrase is optional
+
 			switch (match[3]) {
-				case "!":
-					do(ArrConcat([""], StrSplit(match[2])))
-				case "+":
-					do(this.getCharCombos(match[2]))
+				case "*":
+					do(ArrConcat(StrSplit(match[2]), [""]))
 				case "?":
-					do([match[2], ""])
-				default:
 					do(StrSplit(match[2]))
+				case "+":
+					do(this.makeCharCombos(match[2]))
+				case "!":
+					do([match[2], ""])
 			}
 		}
 
@@ -201,6 +226,7 @@ class module__AutoCorrect {
 		}
 
 		return triggers
+
 
 		do(combos) {
 			for combo in combos {
@@ -216,8 +242,7 @@ class module__AutoCorrect {
 
 
 
-	; https://www.autohotkey.com/boards/viewtopic.php?p=158444#p158444
-	getCharCombos(str) {
+	makeCharCombos(str) {
 		if ((len := StrLen(str)) == 1) {
 			return [str]
 		}
@@ -226,7 +251,7 @@ class module__AutoCorrect {
 			Split1 := SubStr(str, 1, A_Index - 1)    ; before pos
 			Split2 := SubStr(str, A_Index, 1)    ; at pos
 			Split3 := SubStr(str, A_Index + 1)    ; after pos
-			for Perm in this.getCharCombos(Split1 Split3) {
+			for Perm in this.makeCharCombos(Split1 Split3) {
 				result.push(Split2 . Perm)
 			}
 		}
@@ -270,24 +295,26 @@ class module__AutoCorrect {
 
 
 	buildDefaultList() {
-		outputFileDir := A_WorkingDir . "\releases\" . __Settings.app.build.version
-		outputFilePath := outputFileDir . "\default.autocorrect.txt"
-		if (!DirExist(outputFileDir)) {
-			DirCreate(outputFileDir)
-		}
-		if (FileExist(outputFilePath)) {
-			FileDelete(outputFilePath)
+		fileDir := A_WorkingDir
+		if (!DirExist(fileDir)) {
+			DirCreate(fileDir)
 		}
 
-		lines := Map()    ; Maps don't allow duplicate entries and also sort alphabetically
+		filePath := fileDir . "\default.autocorrect.txt"
+		if (FileExist(filePath)) {
+			FileDelete(filePath)
+		}
+
+		lines := Map()    ; because Maps avoid duplicate entries and also sort alphabetically
+		lines.CaseSense := false
 		hotkeys := []
 		comments := []
 
-		this.importWikipediaCommonMisspellings(&lines)
-		this.importWikipediaCommonGrammar(&lines)
-		this.importWiktionaryDiacritics(&lines)
-		this.importCdelaHousseAutoCorrect(&lines)
-		this.importAdditionals(&lines)
+		this.import_WikipediaCommonMisspellings(&lines)
+		this.import_WikipediaCommonGrammar(&lines)
+		this.import_WiktionaryDiacritics(&lines)
+		this.import_CdelaHousseAutoCorrect(&lines)
+		this.import_AdditionalsAndOverrides(&lines)
 
 		for key, val in lines {
 			if (StrCharAt(key, 1) == ";") {
@@ -297,236 +324,164 @@ class module__AutoCorrect {
 			}
 		}
 
-		FileAppend(ArrJoin(hotkeys, "`n") . "`n`n", outputFilePath)
-		FileAppend(ArrJoin(comments, "`n") . "`n`n", outputFilePath)
+		str := ArrJoin([
+			";" . StrRepeat("-", 69),
+			"; " . __Settings.app.name . " v" . __Settings.app.build.version,
+			"; " . this.moduleName . " — Default list",
+			"; " . FormatTime(A_Now, "yyyy-MM-dd HH:mm"),
+			this.listBoilerplateText(),
+		], "`n")
+		FileAppend(str . "`n`n`n", filePath)
 
-		MsgBox("Default list built", (__Settings.app.name . " - AutoCorrect"), (0 + 64 + 4096) . " T5")
+		FileAppend(ArrJoin([hotkeys.join("`n"), comments.join("`n")], "`n`n`n"), filePath)
+
+		MsgBox("Default list built", (__Settings.app.name . " - AutoCorrect"), (0 + 64 + 4096) . " T3")
 	}
 
 
 
-	importWikipediaCommonMisspellings(&lines) {
-		filePath := A_WorkingDir . "\autocorrect_lists\wikipedia_common_misspellings.txt"
+	import_WikipediaCommonMisspellings(&lines) {
+		filePath := A_WorkingDir . "\autocorrect_lists\wikipedia_list_of_common_misspellings.txt"
 		fileContent := (FileExist(filePath) ? FileRead(filePath) : null)
 
-		fileContent := RegExReplace(fileContent, "S)\s?insource:(\/.*\/)?", "")    ; remove the insource: term
-		fileContent := RegExReplace(fileContent, "S)\[+wikt:(.*?)\|.*?\]+", "$1")    ; remove the wikt: term
-		fileContent := RegExReplace(fileContent, "S)[\[\]]{2}", "")    ; remove double brackets from around words
-		fileContent := RegExReplace(fileContent, "S)\s+\[(.*?)\]", "")    ; remove words in single square brackets
-
 		loop parse fileContent, "`n", "`r" {
-			line := Trim(A_LoopField)
+			regex := "S)^([;#\- ]+)?(.*) - {(.*)}$"
+			RegExMatch(Trim(A_LoopField), regex, &match)
+			if (match && !isEmpty(match[2]) && !isEmpty(match[3])) {
+				comment := match[1]
+				trigger := match[3]
+				replacement := match[2]
 
-			regex := "S){{search link\|`"?(.*?)(?:`"?\s*\|.*?)?(?:(?:\|+ns\d+)*)?}} \((.*?)\)(?: \(.*\))?"
-			RegExMatch(line, regex, &match)
-			if (match && match.pos && !isEmpty(match[1]) && !isEmpty(match[2])) {
-				trigger := Trim(match[1])
-				replacement := Trim(match[2])
-
-				str := ArrJoin([replacement, trigger], "|", , true)
-
-				found := false
-				chars := StrSplit("\|,<.>/?;:@[{]}#~``¦!`"£$%^&*()_=+")
-				for ii, needle in chars {
-					if (StrIncludes(replacement, needle)) {
-						found := true
-						break
-					}
-				}
 				if (trigger == replacement) {
 					continue
 				}
-				if (StrCharAt(line, 1) == ";") {
-					found := true
-				}
-				if (StrIncludes(match[1], " -")) {
-					found := true
-				}
-				if (StrIncludes(match[2], "variant of")) {
-					found := true
+
+				if (StrLen(comment)) {
+					str := "; " . ArrJoin([replacement, trigger], "|", true)
+				} else {
+					this.replaceAccents(&trigger, replacement)
+					str := ArrJoin([replacement, trigger], "|", true)
 				}
 
-				if (!found) {
-					lines.Set(str, null)
-					this.replaceAccents(&trigger, replacement)
-					str := ArrJoin([replacement, trigger], "|", , true)
-					lines.Set(str, null)
-				} else {
-					str := StrReplace("; " . str, "`; `;", ";")
-					lines.Set(str, null)
-				}
+				lines.Set(str, null)
 			}
 		}
 	}
 
 
 
-	importWikipediaCommonGrammar(&lines) {
-		filePath := A_WorkingDir . "\autocorrect_lists\wikipedia_common_grammar.txt"
+	import_WikipediaCommonGrammar(&lines) {
+		filePath := A_WorkingDir . "\autocorrect_lists\wikipedia_common_grammar_and_miscellaneous.txt"
 		fileContent := (FileExist(filePath) ? FileRead(filePath) : null)
 
-		fileContent := RegExReplace(fileContent, "S)\s?insource:(\/.*\/)?", "")    ; remove the insource: term
-		fileContent := RegExReplace(fileContent, "S)\[+wikt:(.*?)\|.*?\]+", "$1")    ; remove the wikt: term
-		fileContent := RegExReplace(fileContent, "S)[\[\]]{2}", "")    ; remove double brackets from around any words
-		fileContent := RegExReplace(fileContent, "S)\s+\[(.*?)\]", "")    ; remove words in single square brackets
-
 		loop parse fileContent, "`n", "`r" {
-			line := Trim(A_LoopField)
-			found := false
+			regex := "S)^([;#\- ]+)?(.*) - {(.*)}$"
+			RegExMatch(Trim(A_LoopField), regex, &match)
+			if (match && !isEmpty(match[2]) && !isEmpty(match[3])) {
+				comment := match[1]
+				trigger := match[3]
+				replacement := match[2]
 
-			regex := "S){{search link\|`"?(.*?)(?:`"?\s*\|.*?)?(?:(?:\|+ns\d+)*)?}} \((.*?)\)(?: \(.*\))?"
-			RegExMatch(line, regex, &match)
-			if (match && match.pos && !isEmpty(match[1]) && !isEmpty(match[2])) {
-				trigger := Trim(match[1])
-				replacement := Trim(match[2])
-
-				str := ArrJoin([replacement, trigger], "|", , true)
-
-				chars := StrSplit("\|,<.>/?;:@[{]}#~``¦!`"£$%^&*()_=+")
-				for ii, needle in chars {
-					if (StrIncludes(replacement, needle)) {
-						found := true
-						break
-					}
-				}
 				if (trigger == replacement) {
 					continue
 				}
-				if (StrCharAt(line, 1) == ";") {
-					found := true
-				}
-				if (StrIncludes(match[1], " -")) {
-					found := true
-				}
-				if (StrIncludes(match[2], "variant of")) {
-					found := true
+
+				if (StrLen(comment)) {
+					str := "; " . ArrJoin([replacement, trigger], "|", true)
+				} else {
+					this.replaceAccents(&trigger, replacement)
+					str := ArrJoin([replacement, trigger], "|", true)
 				}
 
-				if (!found) {
-					lines.Set(str, null)
-					this.replaceAccents(&trigger, replacement)
-					str := ArrJoin([replacement, trigger], "|", , true)
-					lines.Set(str, null)
-				} else {
-					str := StrReplace("; " . str, "`; `;", ";")
-					lines.Set(str, null)
-				}
+				lines.Set(str, null)
 			}
 		}
 	}
 
 
 
-	importWiktionaryDiacritics(&lines) {
-		filePath := A_WorkingDir . "\autocorrect_lists\wiktionary_english_diacritics.txt"
+	import_WiktionaryDiacritics(&lines) {
+		filePath := A_WorkingDir . "\autocorrect_lists\wiktionary_english_words_with_diacritics.txt"
 		fileContent := (FileExist(filePath) ? FileRead(filePath) : null)
 
 		loop parse fileContent, "`n", "`r" {
-			line := Trim(A_LoopField)
-			found := false
+			regex := "S)^([;#\- ]+)?(.*)$"
+			RegExMatch(Trim(A_LoopField), regex, &match)
+			if (match && !isEmpty(match[2])) {
+				comment := match[1]
+				trigger := match[2]
+				replacement := match[2]
 
-			regex := "^(.*?)\|(.*?)(?:\|(.*))?$"
-			RegExMatch(line, regex, &match)
-			if (match && match.pos && !isEmpty(match[1]) && !isEmpty(match[2])) {
-				trigger := Trim(match[2])
-				replacement := Trim(match[1])
-				modifiers := Trim(match[3])
-
-				str := ArrJoin([replacement, trigger, modifiers], "|", , true)
-
-				if (trigger == replacement) {
-					continue
-				}
-				if (StrCharAt(line, 1) == ";") {
-					found := true
-				}
-
-				if (!found) {
-					lines.Set(str, null)
-					this.replaceAccents(&trigger, replacement)
-					str := ArrJoin([replacement, trigger, modifiers], "|", , true)
-					lines.Set(str, null)
+				if (StrLen(comment)) {
+					str := "; " . ArrJoin([replacement], "|", true)
 				} else {
-					str := StrReplace("; " . str, "`; `;", ";")
-					lines.Set(str, null)
+					this.replaceAccents(&trigger, replacement)
+					str := ArrJoin([replacement, trigger], "|", true)
 				}
+
+				lines.Set(str, null)
 			}
 		}
 	}
 
 
 
-	importCdelaHousseAutoCorrect(&lines) {
+	import_CdelaHousseAutoCorrect(&lines) {
 		filePath := A_WorkingDir . "\autocorrect_lists\cdelahousse_autocorrect.txt"
 		fileContent := (FileExist(filePath) ? FileRead(filePath) : null)
 
 		loop parse fileContent, "`n", "`r" {
-			line := Trim(A_LoopField)
-			found := false
-
-			regex := "S)::(.*)::(.*)"
-			RegExMatch(line, regex, &match)
-			if (match && match.pos && !isEmpty(match[1]) && !isEmpty(match[2])) {
-				trigger := Trim(match[1])
-				replacement := Trim(match[2])
-
-				str := ArrJoin([replacement, trigger], "|", , true)
+			regex := "S)^([;# -]+)?:(.*?):(.*?)::(.*?)$"
+			RegExMatch(Trim(A_LoopField), regex, &match)
+			if (match && !isEmpty(match[3]) && !isEmpty(match[4])) {
+				comment := match[1]
+				trigger := match[3]
+				replacement := match[4]
+				modifiers := match[2]
 
 				if (trigger == replacement) {
 					continue
 				}
-				if (StrCharAt(line, 1) == ";") {
-					found := true
+
+				if (StrLen(comment)) {
+					str := "; " . ArrJoin([replacement, trigger, modifiers], "|", true)
+				} else {
+					this.replaceAccents(&trigger, replacement)
+					str := ArrJoin([replacement, trigger, modifiers], "|", true)
 				}
 
-				if (!found) {
-					lines.Set(str, null)
-					this.replaceAccents(&trigger, replacement)
-					str := ArrJoin([replacement, trigger], "|", , true)
-					lines.Set(str, null)
-				} else {
-					str := StrReplace("; " . str, "`; `;", ";")
-					lines.Set(str, null)
-				}
+				lines.Set(str, null)
 			}
 		}
 	}
 
 
 
-	importAdditionals(&lines) {
-		filePath := A_WorkingDir . "\autocorrect_lists\additionals.txt"
+	import_AdditionalsAndOverrides(&lines) {
+		filePath := A_WorkingDir . "\autocorrect_lists\additionals_and_overrides.txt"
 		fileContent := (FileExist(filePath) ? FileRead(filePath) : null)
 
 		loop parse fileContent, "`n", "`r" {
-			line := Trim(A_LoopField)
-			found := false
-
-			regex := "^(.*?)\|(.*?)(?:\|(.*))?$"
-			RegExMatch(line, regex, &match)
-			if (match && match.pos && !isEmpty(match[1]) && !isEmpty(match[2])) {
-				trigger := Trim(match[2])
-				replacement := Trim(match[1])
-				modifiers := Trim(match[3])
-
-				str := ArrJoin([replacement, trigger, modifiers], "|", , true)
+			regex := "^([;# -]+)?(.*?)\|(.*?)(?:\|(.*))?$"
+			RegExMatch(Trim(A_LoopField), regex, &match)
+			if (match && !isEmpty(match[2]) && !isEmpty(match[3])) {
+				comment := match[1]
+				trigger := match[3]
+				replacement := match[2]
+				modifiers := match[4]
 
 				if (trigger == replacement) {
 					continue
 				}
-				if (StrCharAt(line, 1) == ";") {
-					found := true
+
+				if (StrLen(comment)) {
+					str := "; " . ArrJoin([replacement, trigger, modifiers], "|", true)
+				} else {
+					this.replaceAccents(&trigger, replacement)
+					str := ArrJoin([replacement, trigger, modifiers], "|", true)
 				}
 
-				if (!found) {
-					lines.Set(str, null)
-					this.replaceAccents(&trigger, replacement)
-					str := ArrJoin([replacement, trigger, modifiers], "|", , true)
-					lines.Set(str, null)
-				} else {
-					str := StrReplace("; " . str, "`; `;", ";")
-					lines.Set(str, null)
-				}
+				lines.Set(str, null)
 			}
 		}
 	}
@@ -535,31 +490,36 @@ class module__AutoCorrect {
 
 	replaceAccents(&trigger, replacement) {
 		chars := [
-			["a", "àáâãäå"],
-			["c", "ç"],
-			["e", "èéêë"],
-			["i", "ìíîï"],
-			["n", "ñ"],
-			["o", "òóôõöø"],
-			["u", "ùúûüū"],
-			["y", "ýÿ"],
-			["A", "ÀÁÂÃÄÅ"],
-			["C", "Ç"],
-			["E", "ÈÉÊË"],
-			["I", "ÌÍÎÏ"],
-			["N", "Ñ"],
-			["O", "ÒÓÔÕÖØ"],
-			["U", "ÙÚÛÜŪ"],
-			["Y", "ÝŸ"]
+			["a", "àáâãäåāăą"], ["A", "ÀÁÂÃÄÅĀĂĄ"],
+			["c", "çć"], ["C", "ÇĆ"],
+			["e", "èéêëēę"], ["E", "ÈÉÊËĒĘ"],
+			["i", "ìíîïī"], ["I", "ÌÍÎÏĪ"],
+			["l", "ł"], ["L", "Ł"],
+			["n", "ñń"], ["N", "ÑŃ"],
+			["o", "òóôõöøō"], ["O", "ÒÓÔÕÖØŌ"],
+			["s", "śš"], ["S", "ŚŠ"],
+			["u", "ùúûüū"], ["U", "ÙÚÛÜŪ"],
+			["y", "ýÿȳ"], ["Y", "ÝŸȲ"],
+			["Z", "ŹŻ"], ["z", "źż"],
+			[" ", "-"],
+			["ae", "æ"], ["AE", "Æ"],
+			["dh", "ð"], ["DH", "Ð"],
+			["oe", "œ"], ["OE", "Œ"],
+			["ss", "ß"], ["SS", "ẞ"],
+			["th", "þ"], ["TH", "Þ"],
 		]
 
-		regex := "S)[^\w\s\!\`"\£\$\%\^\&\*\(\)\_\+\-\=\|\\\<\>\,\.\?\/\{\}\[\]\#\:\;\@\'\``]"
+		regex := "S)[^\x00-\x7F]+\ *(?:[^\x00-\x7F]| )*"
 		RegExMatch(replacement, regex, &match)
 		if (match) {
 			triggerNew := replacement
-			for ii, arr in chars {
-				for jj, accent in StrSplit(arr[2]) {
-					triggerNew := StrReplace(triggerNew, accent, StrWrap(arr[1] . accent, 2), true)
+			for arr in chars {
+				for accent in StrSplit(arr[2]) {
+					if (StrLen(arr[1]) == 1) {
+						triggerNew := StrReplace(triggerNew, accent, StrWrap(arr[1] . accent, 2) . "?", true)
+					} else {
+						triggerNew := StrReplace(triggerNew, accent, arr[1], true)
+					}
 				}
 			}
 			trigger := triggerNew
@@ -582,35 +542,55 @@ class module__AutoCorrect {
 
 
 	checkUserAutocorrectFile() {
-		filePath := A_WorkingDir . "\user.autocorrect.txt"
+		fileDir := A_WorkingDir
+		filePath := fileDir . "\user.autocorrect.txt"
 		if (!FileExist(filePath)) {
 			str := ArrJoin([
 				";" . StrRepeat("-", 69),
-				"; https://www.autohotkey.com/docs/v2/Hotstrings.htm",
-				";",
-				"; USAGE:",
-				";    replacement | trigger | modifiers",
-				";",
-				"; CHARACTER COMBINATIONS:",
-				";    [abc] = one of these characters must be present at this position",
-				";    [abc]! = one (or none) of these characters must be present at this position",
-				";    [abc]+ = all of these characters must be present in any order",
-				";    [abc]? = this phrase is optional",
-				";",
-				"; MODIFIERS: (optional 3rd parameter)",
-				";    * = an ending character is not required to trigger",
-				";    ? = the hotstring will be triggered even when it is inside another word",
-				";    C = case sensitive",
-				";    C1 = ignore the trigger case and return the replacement as typed",
-				";    B0 = turn off backspacing",
-				";    O = remove the trigger character",
-				";    R = send raw output",
-				";" . StrRepeat("-", 69),
-				"; examples:",
+				"; " . __Settings.app.name . " v" . __Settings.app.build.version,
+				"; " . this.moduleName . " — User list",
+				this.listBoilerplateText(),
+				"; EXAMPLES:",
 				";    {U+02DC}\_({U+30C4})_/{U+02DC}|//shrug|*   -->   ˜\_(ツ)_/˜",
-				"`n`n"
 			], "`n")
-			FileAppend(str, filePath)
+			FileAppend(str . "`n`n`n", filePath)
 		}
 	}
+
+
+
+	listBoilerplateText() {
+		return ArrJoin([
+			";" . StrRepeat("-", 69),
+			"; USAGE:",
+			";    replacement|trigger|modifiers",
+			";",
+			"; CHARACTER COMBINATIONS:",
+			";    [abc]* = one of these characters can optionally be at this position",
+			";    [abc]? = one of these characters must be at this position",
+			";    [abc]+ = all of these characters must be present in any order",
+			";    [abc]! = this combination is optional",
+			";",
+			"; OPTIONAL MODIFIERS:",
+			";    ?  = the hotstring will trigger even when inside another word",
+			";    *  = an ending character is not required to trigger",
+			";    B0 = turn off backspacing",
+			";    C  = trigger is case sensitive",
+			";    C1 = always send the replacement as typed",
+			";    O  = remove the trigger character",
+			";    R  = send raw output",
+			";    X  = ignore this trigger entirely",
+			";" . StrRepeat("-", 69),
+		], "`n")
+	}
 }
+
+
+
+;--------------------------------------------------------------------
+; NOTES:
+; makeCharCombos() from https://www.autohotkey.com/boards/viewtopic.php?p=158444#p158444
+;
+; SOURCES:
+;    https://en.wikipedia.org/wiki/Wikipedia:AutoWikiBrowser/Typos
+;    https://en.wikipedia.org/wiki/Commonly_misspelled_English_words
