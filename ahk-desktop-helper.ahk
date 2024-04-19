@@ -138,11 +138,11 @@ drawMenu(section) {
 				setMenuItem("Save current config", thisMenu, doMenuItem)
 				setMenuItem("Edit config" . U_ellipsis, thisMenu, doMenuItem)
 			case "TRAY\Debugging":
-				setMenuItem("Reload", thisMenu, doMenuItem)
-				setMenuItem("Pause hotstrings", thisMenu, doMenuItem)
-				if (__Modules.has("AutoCorrect")) {
-					setMenuItem("Rebuild AutoCorrect list", thisMenu, doMenuItem)
-				}
+				; setMenuItem("Reload", thisMenu, doMenuItem)
+				; setMenuItem("Pause hotstrings", thisMenu, doMenuItem)
+				; if (__Modules.has("AutoCorrect")) {
+				; 	setMenuItem("Rebuild AutoCorrect list", thisMenu, doMenuItem)
+				; }
 		}
 		return thisMenu
 	}
