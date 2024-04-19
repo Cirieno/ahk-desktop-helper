@@ -1,0 +1,2176 @@
+;--------------------------------------------------------------------
+; SOURCE: https://en.wikipedia.org/wiki/Wikipedia:Lists_of_common_misspellings/Grammar_and_miscellaneous
+; DOWNLOADED: 2024-04-17
+; TEMPLATE: replacement - {trigger}
+;--------------------------------------------------------------------
+
+; === A ===
+; 100, a hundred, one hundred - {a 100}
+; 1000, a thousand, one thousand - {a 1000}
+an 11 - {a 11}
+an 11th - {a 11th}
+an 11th-century - {a 11th century}
+an 18 - {a 18}
+an 1800 - {a 1800}
+an 18th - {a 18th}
+an 18th-century - {a 18th century}
+an 8 - {a 8}
+an 80 - {a 80}
+an 800 - {a 800}
+an 8000 - {a 8000}
+an 80th - {a 80th}
+an 81 - {a 81}
+an 82 - {a 82}
+an 83 - {a 83}
+an 84 - {a 84}
+an 85 - {a 85}
+an 86 - {a 86}
+an 87 - {a 87}
+an 88 - {a 88}
+an 89 - {a 89}
+an 8th - {a 8th}
+an 8th-century - {a 8th century}
+an abbreviation - {a abbreviation}
+an ABC - {a ABC}
+an absolute - {a absolute}
+an abstract - {a abstract}
+an accident - {a accident}
+an accidental - {a accidental}
+an account - {a account}
+an acoustic - {a acoustic}
+an acronym - {a acronym}
+an acting - {a acting}
+an action - {a action}
+an active - {a active}
+an actor - {a actor}
+an actress - {a actress}
+an actual - {a actual}
+an additional - {a additional}
+an advanced - {a advanced}
+an affair - {a affair}
+an affiliate - {a affiliate}
+an African - {a African}
+an album - {a album}
+an Algerian - {a Algerian}
+an alias - {a alias}
+an alien - {a alien}
+an alternative - {a alternative}
+an AM - {a AM}
+an amateur - {a amateur}
+an American - {a American}
+an amount - {a amount}
+; a, an - {a an}
+an analog - {a analog}
+an analogue - {a analogue}
+an ancient - {a ancient}
+an angle - {a angle}
+an Angolan - {a Angolan}
+an annual - {a annual}
+another - {a another}
+an answer - {a answer}
+an antenna - {a antenna}
+an anti - {a anti}
+an Arabian - {a Arabian}
+an Arabic - {a Arabic}
+an Argentine - {a Argentine}
+an Armenian - {a Armenian}
+an Asian - {a Asian}
+an assistant - {a assistant}
+an associate - {a associate}
+an ATM - {a ATM}
+an Australian - {a Australian}
+an Austrian - {a Austrian}
+an average - {a average}
+; a back-up, a backup - {a back up}
+; a bacterium, bacteria - {a bacteria}
+a batsman - {a batsmen}
+a breakdown - {a break down}
+a businessman - {a businessmen}
+a businesswoman - {a businesswomen}
+a consortium - {a consortia}
+a criterion - {a criteria}
+a dominant - {a dominate}
+an early - {a early}
+an effective - {a effective}
+an Egyptian - {a Egyptian}
+an eight - {a eight}
+an eighth - {a eighth}
+an eighteen - {a eighteen}
+an eighteenth - {a eighteenth}
+an eighty - {a eighty}
+an electric - {a electric}
+an electronic - {a electronic}
+an eleven - {a eleven}
+an eleventh - {a eleventh}
+an elite - {a elite}
+an embedded - {a embedded}
+an English - {a English}
+an entire - {a entire}
+an EP - {a EP}
+an epic - {a epic}
+an episode - {a episode}
+an equal - {a equal}
+an estimate - {a estimate}
+an Ethiopian - {a Ethiopian}
+an ethnic - {a ethnic}
+an example - {a example}
+an extra - {a extra}
+a falling-out - {a falling out}
+a fireman - {a firemen}
+a flagellum - {a flagella}
+an FM - {a FM}
+a follow-up - {a follow up}
+a foreword by - {a forward by}
+a freshman - {a freshmen}
+a fungus - {a fungi}
+a gunman - {a gunmen}
+an heir - {a heir}
+an honor - {a honor}
+an hour - {a hour}
+an impact - {a impact}
+an important - {a important}
+an independent - {a independent}
+an Indian - {a Indian}
+an individual - {a individual}
+an Indonesian - {a Indonesian}
+an indoor - {a indoor}
+an information - {a information}
+an initiative - {a initiative}
+an intelligent - {a intelligent}
+an interesting - {a interesting}
+an interim - {a interim}
+an interior - {a interior}
+an intermediate - {a intermediate}
+an international - {a international}
+an Internet - {a Internet}
+an intersection - {a intersection}
+an interview - {a interview}
+an introduction - {a introduction}
+an Iranian - {a Iranian}
+an Iraqi - {a Iraqi}
+an Irish - {a Irish}
+an iron - {a iron}
+an island - {a island}
+an Israeli - {a Israeli}
+an issue - {a issue}
+an Italian - {a Italian}
+a larva - {a larvae}
+; a line-up, a lineup - {a line up}
+a lockout - {a lock out}
+; a lockup, a lock-up - {a lock up}
+a loss - {a lose}
+a manufacturer - {a manufacture}
+; a match-up, a matchup - {a match up}
+a medium for - {a media for}
+an MLB - {a MLB}
+an MRI - {a MRI}
+an NBA - {a NBA}
+an NBC - {a NBC}
+an NFL - {a NFL}
+a nucleus - {a nuclei}
+a number of - {a numbers of}
+an ocean - {a ocean}
+an offensive - {a offensive}
+an official - {a official}
+an Ohio - {a Ohio}
+an oil - {a oil}
+an old - {a old}
+an Olympic - {a Olympic}
+one of the - {a one of the}
+an online - {a online}
+; an only, only a - {a only}
+only a - {a only a}
+an open - {a open}
+an opinion - {a opinion}
+an opposite - {a opposite}
+an organization - {a organization}
+an original - {a original}
+an orthodox - {a orthodox}
+an other - {a other}
+an outbreak - {a outbreak}
+an outdoor - {a outdoor}
+an outside - {a outside}
+an overtime - {a overtime}
+an owner - {a owner}
+; a paparazzo, paparazzi - {a paparazzi}
+a parenthesis - {a parentheses}
+; a phenomenon, phenomena - {a phenomena}
+; a protozoon, protozoa - {a protozoa}
+a pupa - {a pupae}
+a radius - {a radii}
+a renowned - {a renown}
+a run-in - {a run in}
+; a set-back, a setback - {a set back}
+a setup - {a set up}
+several - {a several}
+as simple as - {a simple as}
+a spermatozoon - {a spermatozoa}
+a statesman - {a statesmen}
+a stratum - {a strata}
+a taxon - {a taxa}
+; a toss-up, a tossup - {a toss up}
+a two-month - {a two months}
+an ultimate - {a ultimate}
+an undercover - {a undercover}
+an underground - {a underground}
+an unfortunate - {a unfortunate}
+an unusual - {a unusual}
+an upgrade - {a upgrade}
+an upper - {a upper}
+an urban - {a urban}
+a vertebra - {a vertebrae}
+a woman - {a women}
+a workout - {a work out}
+Aboriginal descent - {Aboriginal decent}
+about its - {about it's}
+about their - {about they're}
+about whom to - {about who to}
+about whose - {about who's}
+above its - {above it's}
+; AC, alternating current - {AC current}
+according to a - {according a}
+; ACL, anterior cruciate ligament - {ACL ligament}
+across its - {across it's}
+effect on - {affect on}
+effect upon - {affect upon}
+effects of - {affects of}
+African descent - {African decent}
+after a long time - {after along time}
+after a while - {after awhile}
+after being - {after been}
+after its - {after it's}
+after quite a while - {after quite awhile}
+against its - {against it's}
+against whom - {against who}
+since - {ago since}
+agree in principle - {agree in principal}
+agreement in principle - {agreement in principal}
+Air Canada Centre - {Air Canada Center}
+airplane hangar - {airplane hanger}
+Albanian descent - {Albanian decent}
+all for naught - {all for not}
+all its - {all it's}
+although - {all though}
+all told - {all tolled}
+a lot of - {allot of}
+alma mater - {alma matter}
+along its - {along it's}
+alongside - {along side}
+a long time - {along time}
+alongside its - {alongside it's}
+; along with, alongside - {alongside with}
+also known as - {also know as}
+also known by - {also know by}
+also known for - {also know for}
+altar boy - {alter boy}
+altar server - {alter server}
+; am, a.m. - {am in the morning}
+am loath to - {am loathe to}
+American descent - {American decent}
+amid its - {amid it's}
+amidst its - {amidst it's}
+among its - {among it's}
+; among the, one of the - {among one of the}
+among other things - {among others things}
+amongst its - {amongst it's}
+; amongst the, one of the - {amongst one of the}
+amongst other things - {amongst others things}
+a 10 - {an 10}
+; a 10th, and 10th - {an 10th}
+a 12 - {an 12}
+; a 12th, and 12th - {an 12th}
+; a 16, and 16 - {an 16}
+; a 16th, and 16th - {an 16th}
+; a 17th, and 17th - {an 17th}
+; a 19th, and 19th - {an 19th}
+an effect - {an affect}
+an alumna of - {an alumnae of}
+an alumnus of - {an alumni of}
+another - {an another}
+an antenna - {an antennae}
+a British - {an British}
+a Canadian - {an Canadian}
+a European - {an European}
+an extent - {an extend}
+a film - {an film}
+a half - {an half}
+a halt - {an halt}
+a hand - {an hand}
+a Hawaiian - {an Hawaiian}
+a head - {an head}
+a heart - {an heart}
+a helicopter - {an helicopter}
+a hero - {an hero}
+a high - {an high}
+a historian - {an historian}
+a historic - {an historic}
+a historical - {an historical}
+a history - {an history}
+a hospital - {an hospital}
+a hotel - {an hotel}
+a humanitarian - {an humanitarian}
+a large - {an large}
+a larger - {an larger}
+a law - {an law}
+a lawyer - {an lawyer}
+a local - {an local}
+a Malaysian - {an Malaysian}
+a new - {an new}
+a nine - {an nine}
+a ninth - {an ninth}
+a non - {an non}
+a number - {an number}
+; a one, and one, one - {an one}
+another - {an other}
+a pair - {an pair}
+a player - {an player}
+a popular - {an popular}
+a pre- - {an pre-}
+a Scottish - {an Scottish}
+a second - {an second}
+a series - {an series}
+a seven - {an seven}
+a seventh - {an seventh}
+a six - {an six}
+a sixteen - {an sixteen}
+a sixth - {an sixth}
+a song - {an song}
+a special - {an special}
+a species - {an species}
+a specific - {an specific}
+a statement - {an statement}
+a ten - {an ten}
+a union - {an union}
+a unit - {an unit}
+a Unix - {an Unix}
+a USB - {an USB}
+etc - {and etc}
+and so forth - {and so fourth}
+another criterion - {another criteria}
+an otherwise - {another wise}
+; in other words, other words - {another words}
+; another, any other - {any another}
+anywhere - {any where}
+anyway - {anyways}
+apart from - {apart for}
+apart from - {apart form}
+are allowed to - {are aloud to}
+; are, were - {are be}
+; are, are being, have been - {are been}
+are built - {are build}
+can - {are can}
+are dominant - {are dominate}
+are drawn - {are drew}
+have - {are have}
+are its - {are it's}
+are known as - {are know as}
+are known by - {are know by}
+are known for - {are know for}
+are known to - {are know to}
+are laid - {are lain}
+are led by - {are lead by}
+are loath to - {are loathe to}
+are met - {are meet}
+are run by - {are ran by}
+are renowned - {are renown}
+are set up - {are set-up}
+are set up - {are setup}
+are shut down - {are shutdown}
+are shut out - {are shutout}
+are supposed to - {are suppose to}
+are used to - {are use to}
+; are, are where, were - {are were}
+Armenian descent - {Armenian decent}
+around its - {around it's}
+as a result - {as a resulted}
+as opposed to - {as apposed to}
+as backup - {as back up}
+; as being, has been - {as been}
+as follows - {as followed}
+as its - {as it's}
+as opposed to - {as oppose to}
+Asian descent - {Asian decent}
+aside from - {aside form}
+aside its - {aside it's}
+assume the reins - {assume the reigns}
+assume the role - {assume the roll}
+at its - {at it's}
+at the altar - {at the alter}
+at the reins - {at the reigns}
+at the end - {at then end}
+; ATM, automated teller machine - {ATM machine}
+away from - {away form}
+
+; === B ===
+back and forth - {back and fourth}
+backdrop - {back drop}
+backfire - {back fire}
+back and forth - {back in forth}
+backpedal - {back peddle}
+background - {back round}
+badly affected - {badly effected}
+bated breath - {baited breath}
+bailed out - {baled out}
+bailing out - {baling out}
+barbed wire - {barb wire}
+bear in mind - {bare in mind}
+based on - {based off of}
+based on - {based off}
+based in - {based out of}
+basic principle - {basic principal}
+be a part of - {be apart of}
+be built - {be build}
+because - {be cause}
+be drawn - {be drew}
+be its - {be it's}
+be known as - {be know as}
+be laid - {be lain}
+be led by - {be lead by}
+be loath to - {be loathe to}
+be run - {be ran}
+be rebuilt - {be rebuild}
+be ridden - {be rode}
+be sent - {be send}
+be set up - {be set-up}
+be set up - {be setup}
+be shut down - {be shutdown}
+be used to - {be use to}
+beware - {be ware}
+became its - {became it's}
+became known - {became know}
+; became, came to be - {became to be}
+because of its - {because of it's}
+because - {because of the fact that}
+been awhile - {been a while}
+been accustomed to - {been accustom to}
+already been - {been already been}
+been built - {been build}
+been its - {been it's}
+been known - {been know}
+been laid - {been lain}
+been led by - {been lead by}
+been loath to - {been loathe to}
+been misled - {been mislead}
+; been previously, previously been - {been previously been}
+been run - {been ran}
+been rebuilt - {been rebuild}
+reportedly been - {been reportedly been}
+been ridden - {been rode}
+been sent - {been send}
+been set up - {been set-up}
+been set up - {been setup}
+been shown on - {been show on}
+been shut down - {been shutdown}
+been used to - {been use to}
+beforehand - {before hand}
+before its - {before it's}
+began its - {began it's}
+behind its - {behind it's}
+being built - {being build}
+; been giving, being given - {being giving}
+being its - {being it's}
+being laid - {being lain}
+being led by - {being lead by}
+being loath to - {being loathe to}
+being run - {being ran}
+being ridden - {being rode}
+being set up - {being set-up}
+being set up - {being setup}
+being shown on - {being show on}
+being shut down - {being shutdown}
+; been taking, being taken - {being taking}
+being used to - {being use to}
+below its - {below it's}
+beneath its - {beneath it's}
+beside its - {beside it's}
+besides its - {besides it's}
+better known as - {better know as}
+better known for - {better know for}
+better than - {better that}
+better than - {better then}
+between him and - {between he and}
+between me and - {between I and}
+between its - {between it's}
+between her and - {between she and}
+between them and - {between they and}
+beyond its - {beyond it's}
+; Bogotá, Colombia - {Bogota, Columbia}
+for both - {both for both}
+both its - {both it's}
+of both - {both of both}
+both of its - {both of it's}
+both of them are - {both of them is}
+both of whom - {both of who}
+; both players, both players' - {both player's}
+; both teams, both teams' - {both team's}
+boys' baseball - {boy's baseball}
+boys' basketball - {boy's basketball}
+boys' bathroom - {boy's bathroom}
+boys' bowling - {boy's bowling}
+boys' cross country - {boy's cross country}
+boys' diving - {boy's diving}
+boys' doubles - {boy's doubles}
+boys' fencing - {boy's fencing}
+boys' football - {boy's football}
+boys' golf - {boy's golf}
+boys' gymnastics - {boy's gymnastics}
+boys' hockey - {boy's hockey}
+boys' ice hockey - {boy's ice hockey}
+boys' lacrosse - {boy's lacrosse}
+boys' restroom - {boy's restroom}
+boys' school - {boy's school}
+boys' singles - {boy's singles}
+boys' soccer - {boy's soccer}
+boys' sports - {boy's sports}
+boys' swimming - {boy's swimming}
+boys' team - {boy's team}
+boys' tennis - {boy's tennis}
+boys' track - {boy's track}
+boys' volleyball - {boy's volleyball}
+boys' wrestling - {boy's wrestling}
+break away - {brake away}
+breathe fire - {breath fire}
+breathe a sigh of relief - {breathe a sign of relief}
+brouhaha - {brew haha}
+Brinsley Schwarz - {Brinsley Schwartz}
+by fishermen - {by fisherman}
+by its - {by it's}
+by whose - {by who's}
+
+; === C ===
+can back up - {can backup}
+can be - {can been}
+can black out - {can blackout}
+can breathe - {can breath}
+can check out - {can checkout}
+can play back - {can playback}
+can set up - {can setup}
+can try out - {can tryout}
+can work out - {can workout}
+can't breathe - {can't breath}
+Canadian descent - {Canadian decent}
+card sharp - {card shark}
+Caribbean descent - {Caribbean decent}
+cashier's check - {cashiers check}
+cashier's cheque - {cashiers cheque}
+celebrated its - {celebrated it's}
+certain extent - {certain extend}
+chock-full - {chalk full}
+changed its - {changed it's}
+Chinese descent - {Chinese decent}
+chock-full - {chocked full}
+champing at the bit - {chomping at the bit}
+; closeness, proximity - {close proximity}
+closed its - {closed it's}
+closer than - {closer then}
+commonly known as - {commonly know as}
+commonly known for - {commonly know for}
+; comprise, consist of - {comprise of}
+; composed almost entirely of, consisting almost entirely of - {comprised almost entirely of}
+; composed chiefly of, comprised chiefly, consisting chiefly of - {comprised chiefly of}
+; composed entirely of, consisting entirely of - {comprised entirely of}
+; composed exclusively of, consisting exclusively of - {comprised exclusively of}
+; composed generally of, comprised generally, consisting generally of - {comprised generally of}
+; composed largely of, consisting largely of - {comprised largely of}
+; composed mainly of, comprised mainly, consisting mainly of - {comprised mainly of}
+; composed mostly of, consisting mostly of - {comprised mostly of}
+; composed of, comprised, consisting of - {comprised of}
+; composed only of, comprised only, consisting only of - {comprised only of}
+composed primarily of - {comprised primarily of}
+composed principally of - {comprised principally of}
+composed solely of - {comprised solely of}
+; composed totally of, comprised totally, consisting totally of - {comprised totally of}
+; composed wholly of, consisting wholly of - {comprised wholly of}
+; comprises entirely, consists entirely of - {comprises entirely of}
+; comprises exclusively, composed exclusively of - {comprises exclusively of}
+; comprises mainly, consists mainly of - {comprises mainly of}
+; comprises mostly, consists mostly of - {comprises mostly of}
+; comprises, consists of - {comprises of}
+; comprises only, composed only of, consists only of - {comprises only of}
+; comprising chiefly, consisting chiefly of - {comprising chiefly of}
+; comprising entirely, consisting entirely of - {comprising entirely of}
+; comprising exclusively, consisting exclusively of - {comprising exclusively of}
+; comprising generally, consisting generally of - {comprising generally of}
+; comprising largely, consisting largely of - {comprising largely of}
+; comprising mainly, consisting mainly of - {comprising mainly of}
+; comprising mostly, consisting mostly of - {comprising mostly of}
+; comprising, consisting of - {comprising of}
+; comprising only, consisting only of - {comprising only of}
+; comprising primarily, consisting primarily of - {comprising primarily of}
+; comprising principally, consisting principally of - {comprising principally of}
+; comprising solely, consisting solely of - {comprising solely of}
+; comprising totally, consisting totally of - {comprising totally of}
+; comprising wholly, consisting wholly of - {comprising wholly of}
+; comprised, comprising - {compromised of}
+; comprises a, consists of a - {consists a}
+; comprises an, consists of an - {consists an}
+consolation prize - {constellation prize}
+; consisted of, constituted - {constituted of}
+; consists of, constitutes - {constitutes of}
+; consisting of, constituting - {constituting of}
+construction site - {construction sight}
+; consists of, contains - {contains of}
+could back up - {could backup}
+; could be, could have been - {could been}
+could breathe - {could breath}
+couldn't care less - {could care less}
+could have - {could of}
+could set up - {could setup}
+could spend - {could spent}
+could work out - {could workout}
+couldn't breathe - {couldn't breath}
+; criteria are, criterion is - {criteria is}
+criteria were - {criteria was}
+currently - {currently at this time}
+
+; === D ===
+daily regimen - {daily regiment}
+darker than - {darker then}
+; DC, direct current - {DC current}
+de facto - {de factor}
+de rigueur - {de rigor}
+death knell - {death nail}
+deciding how - {deciding on how}
+deep-seated - {deep-seeded}
+kelvins - {degrees Kelvin}
+depending on - {depending of}
+depending on whom you - {depending on who you}
+depending upon whom you - {depending upon who you}
+depends on - {depends of}
+despite its - {despite it's}
+despite - {despite of}
+; despite the fact, although, though - {despite of the fact}
+; although, though - {despite the fact that}
+did give - {did gave}
+didn't fare - {didn't fair}
+didn't have - {didn't had}
+different tack - {different tact}
+different from - {different to}
+defuse the situation - {diffuse the situation}
+defuse the tension - {diffuse the tension}
+direct effect - {direct affect}
+disc brake - {disc break}
+due to - {do to}
+does not - {doe snot}
+doling out - {dolling out}
+dominant player - {dominate player}
+dominant role - {dominate role}
+doorjamb - {door jam}
+doubleheader - {double header}
+down its - {down it's}
+downside - {down side}
+due to its - {due to it's}
+because - {due to the fact}
+; during, from - {during from}
+; during, in - {during in}
+during its - {during it's}
+; during, during or - {during of}
+during their - {during they're}
+; during, during the - {during to}
+
+; === E ===
+each alumnus - {each alumni}
+each is - {each are}
+each criterion - {each criteria}
+each has its - {each has their}
+each phenomenon - {each phenomena}
+each vertebra - {each vertebrae}
+easier than - {easier then}
+egg yolk - {egg yoke}
+either criterion - {either criteria}
+either phenomenon - {either phenomena}
+electric current - {electrical current}
+alluded to - {eluded to}
+emergency - {emergency situation}
+en masse - {en mass}
+even though - {even thought}
+even though - {even tough}
+the same - {exactly the same}
+exact punishment - {extract punishment}
+exact revenge - {extract revenge}
+eyebrow - {eye brow}
+eyelash - {eye lash}
+eyelid - {eye lid}
+eyesight - {eye sight}
+eyesore - {eye sore}
+
+; === F ===
+fared as well - {faired as well}
+fared badly - {faired badly}
+fared better - {faired better}
+fared far - {faired far}
+fared less - {faired less}
+fared little - {faired little}
+fared much - {faired much}
+fared no better - {faired no better}
+fared poorly - {faired poorly}
+fared quite - {faired quite}
+fared rather - {faired rather}
+fared slightly - {faired slightly}
+fared somewhat - {faired somewhat}
+fared well - {faired well}
+fared worse - {faired worse}
+farther than - {farther then}
+faster than - {faster then}
+figurehead - {figure head}
+filed a lawsuit - {filled a lawsuit}
+; first, foremost - {first and foremost}
+First World War - {First Word War}
+; five months, five months' - {five month's}
+flagship - {flag ship}
+; current, flow of charge - {flow of current}
+; electric current, flow of electric charge - {flow of electric current}
+follow suit - {follow suite}
+following its - {following it's}
+; follow-up, follow up, follow-up - {followup}
+for all intents and purposes - {for all intensive purposes}
+for a long time - {for along time}
+for a while - {for awhile}
+for him and - {for he and}
+for its - {for it's}
+for quite a while - {for quite awhile}
+foreground - {fore ground}
+forgo her - {forego her}
+forgo his - {forego his}
+forgo their - {forego their}
+foregone conclusion - {forgone conclusion}
+for whom - {for who}
+for whom to - {for who to}
+formerly known as - {formally know as}
+formerly known as - {formerly know as}
+fourth place - {forth place}
+free rein - {free reign}
+; freshman is, freshmen are - {freshman are}
+fried chicken - {friend chicken}
+from whom - {from who}
+full complement of - {full compliment of}
+plans - {future plans}
+
+; === G ===
+gave advice - {gave advise}
+get past - {get pass}
+get set up - {get setup}
+get used to - {get use to}
+gets its - {gets it's}
+getting used to - {getting use to}
+girls' bathroom - {girl's bathroom}
+girls' basketball - {girl's basketball}
+girls' bowling - {girl's bowling}
+girls' cheerleading - {girl's cheerleading}
+girls' cross country - {girl's cross country}
+girls' diving - {girl's diving}
+girls' doubles - {girl's doubles}
+girls' fencing - {girl's fencing}
+girls' field hockey - {girl's field hockey}
+girls' football - {girl's football}
+girls' golf - {girl's golf}
+girls' gymnastics - {girl's gymnastics}
+girls' hockey - {girl's hockey}
+girls' ice hockey - {girl's ice hockey}
+girls' lacrosse - {girl's lacrosse}
+girls' restroom - {girl's restroom}
+girls' school - {girl's school}
+girls' singles - {girl's singles}
+girls' soccer - {girl's soccer}
+girls' softball - {girl's softball}
+girls' sports - {girl's sports}
+girls' swimming - {girl's swimming}
+girls' tennis - {girl's tennis}
+girls' team - {girl's team}
+girls' track - {girl's track}
+girls' volleyball - {girl's volleyball}
+girls' wrestling - {girl's wrestling}
+give advice - {give advise}
+gives advice - {gives advise}
+going through - {going threw}
+got run - {got ran}
+got set up - {got setup}
+got shut down - {got shutdown}
+got shut out - {got shutout}
+greater than - {greater then}
+groundwork - {ground work}
+guest-starred - {guest stared}
+
+; === H ===
+had arisen - {had arose}
+had awoken - {had awoke}
+had been - {had be}
+had become - {had became}
+had begun - {had began}
+had been - {had being}
+had been - {had ben}
+had borne - {had bore}
+had broken - {had broke}
+had brought - {had brung}
+had come - {had came}
+had chosen - {had chose}
+had come back - {had comeback}
+had cut off - {had cut-off}
+had done - {had did}
+had drunk - {had drank}
+had drawn - {had drew}
+had driven - {had drove}
+had fallen - {had fell}
+had flown - {had flew}
+had forbidden - {had forbad}
+had forbidden - {had forbade}
+had given - {had gave}
+had grown - {had grew}
+had its - {had it's}
+had known - {had knew}
+had known - {had know}
+had led for - {had lead for}
+had led the - {had lead the}
+had led to - {had lead to}
+had met - {had meet}
+had misled - {had mislead}
+had overcome - {had overcame}
+had overrun - {had overran}
+had overtaken - {had overtook}
+; had pleaded, had pled - {had plead}
+had run - {had ran}
+had rung - {had rang}
+had ridden - {had rode}
+had risen - {had rose}
+had run away - {had runaway}
+had sung - {had sang}
+had seen - {had saw}
+had sent - {had send}
+had set up - {had set-up}
+had set up - {had setup}
+had shaken - {had shook}
+had shut down - {had shut-down}
+had shut down - {had shutdown}
+had shut out - {had shutout}
+had sat - {had sit}
+had sown - {had sowed}
+had spent - {had spend}
+had spoken - {had spoke}
+had sprung - {had sprang}
+had swum - {had swam}
+had thrown - {had threw}
+; had thriven, had thrived - {had throve}
+had thought - {had thunk}
+had too much - {had to much}
+had to use - {had to used}
+had taken - {had took}
+had torn - {had tore}
+had undertaken - {had undertook}
+had undergone - {had underwent}
+had gone - {had went}
+had woken - {had woke}
+had worn - {had wore}
+had written - {had wrote}
+hadn't gone - {hadn't went}
+half an hour - {half and hour}
+hand the reins - {hand the reigns}
+has arisen - {has arose}
+has awoken - {has awoke}
+has been - {has be}
+; became, has become - {has became}
+has been built - {has been build}
+; began, has begun - {has began}
+; as being, has been - {has being}
+has been - {has ben}
+has borne - {has bore}
+has broken - {has broke}
+has brought - {has brung}
+has built - {has build}
+has come - {has came}
+has chosen - {has chose}
+has come back - {has comeback}
+has cut off - {has cut-off}
+has done - {has did}
+has drunk - {has drank}
+has drawn - {has drew}
+has driven - {has drove}
+has fallen - {has fell}
+has flown - {has flew}
+has forbidden - {has forbad}
+has forbidden - {has forbade}
+has given - {has gave}
+; gives, has given - {has gives}
+as having - {has having}
+has its - {has it's}
+has known - {has knew}
+; has known, has now - {has know}
+has led the - {has lead the}
+has led to - {has lead to}
+has met - {has meet}
+has misled - {has mislead}
+has overcome - {has overcame}
+; has played, plays - {has plays}
+; has pleaded, has pled - {has plead}
+has run - {has ran}
+has rung - {has rang}
+has sung - {has sang}
+has set up - {has set-up}
+has set up - {has setup}
+has shaken - {has shook}
+has spoken - {has spoke}
+has sprung - {has sprang}
+has swum - {has swam}
+has thrown - {has threw}
+; has thrived, has thriven - {has throve}
+has thought - {has thunk}
+has taken - {has took}
+has trodden - {has trod}
+has undertaken - {has undertook}
+has undergone - {has underwent}
+; he was, was - {has was}
+has gone - {has went}
+has woken - {has woke}
+has written - {has wrote}
+have drunk - {have drank}
+have its - {have it's}
+have led to - {have lead to}
+have misled - {have mislead}
+have run - {have ran}
+have rung - {have rang}
+have sung - {have sang}
+have set up - {have setup}
+have sprung - {have sprang}
+have swum - {have swam}
+have taken - {have took}
+have undergone - {have underwent}
+have gone - {have went}
+having become - {having became}
+having begun - {having began}
+having been - {having being}
+having its - {having it's}
+having run - {having ran}
+having sung - {having sang}
+having set up - {having setup}
+having swum - {having swam}
+having taken - {having took}
+having undergone - {having underwent}
+having gone - {having went}
+heyday - {hay day}
+he began - {he begun}
+he garnered - {he garnished}
+he lets - {he let's}
+; he pleaded, he pled - {he plead}
+he saw - {he seen}
+he used to - {he use to}
+; he drank, he's drunk - {he's drank}
+headgear - {head gear}
+headquarters - {head quarters}
+headstone - {head stone}
+headwear - {head wear}
+held the reins - {held the reigns}
+help to make - {help and make}
+; her grandparents, her grandparents' - {her grandparent's}
+; her parents, her parents' - {her parent's}
+higher than - {higher then}
+; his grandparents, his grandparents' - {his grandparent's}
+; his parents, his parents' - {his parent's}
+; he worked, his work - {his worked}
+hit the brakes - {hit the breaks}
+hold on to - {hold onto}
+hold the reins - {hold the reigns}
+holding the reins - {holding the reigns}
+holds the reins - {holds the reigns}
+home in on - {hone in on}
+hotter than - {hotter then}
+household - {house hold}
+however - {how ever}
+
+; === I ===
+eminent domain - {imminent domain}
+also - {in addition also}
+; he also - {in addition, he also}
+; he has also - {in addition, he has also}
+; he is also - {in addition, he is also}
+; he was also - {in addition, he was also}
+; it also - {in addition, it also}
+; it has also - {in addition, it has also}
+; it is also - {in addition, it is also}
+; it was also - {in addition, it was also}
+; she also - {in addition, she also}
+; she has also - {in addition, she has also}
+; she is also - {in addition, she is also}
+; she was also - {in addition, she was also}
+; there are also - {in addition, there are also}
+; there is also - {in addition, there is also}
+; there was also - {in addition, there was also}
+; there were also - {in addition, there were also}
+; they also - {in addition, they also}
+; they are also - {in addition, they are also}
+; they have also - {in addition, they have also}
+; they were also - {in addition, they were also}
+in effect - {in affect}
+in a long time - {in along time}
+in and of itself - {in an of itself}
+in other words - {in another words}
+in any way - {in anyway}
+in a while - {in awhile}
+; close to, in proximity to, near - {in close proximity to}
+in addition to - {in edition to}
+; either in, in either - {in either in}
+in exchange for - {in exchanged for}
+in its - {in it's}
+; on January 1 - {in January 1}, etc.
+; en masse, in massam - {in masse}
+in parentheses - {in parenthesis}
+in place - {in placed}
+in principle - {in principal}
+in quite a while - {in quite awhile}
+instead of - {in stead of}
+intact - {in tact}
+in the long term - {in the long-term}
+in the short term - {in the short-term}
+entitled - {in titled}
+in vain - {in vein}
+since - {in view of the fact that}
+in case of - {incase of}
+; including him, including the - {including he}
+in order to - {inorder to}
+into effect - {into affect}
+into its - {into it's}
+into - {into to}
+is also - {is also is}
+is also known - {is also know}
+; appears, it appears - {is appears}
+; are, is - {is are}
+; is, is by, is to be, was - {is be}
+; has been, is being - {is been}
+can be - {is capable of being}
+comprises - {is comprised from}
+comprises - {is comprised with}
+; comprises, consists of, is composed of - {is compromised of}
+is considered - {is consider}
+contains - {is contained of}
+; is, is currently, is currently in - {is currently is}
+provides - {is dedicated to providing}
+; does, it does - {is does}
+is focused - {is focuses}
+; in front of, is in front of - {is front of}
+; has, it has - {is has}
+is its - {is it's}
+is known - {is know}
+is led by - {is lead by}
+is loath to - {is loathe to}
+is not known - {is not know}
+is not only - {is not only is}
+is probably - {is probably is}
+is run by - {is ran by}
+is renowned for - {is renown for}
+is scheduled to - {is schedule to}
+; it seems, seems - {is seems}
+is set up - {is set-up}
+is set up - {is setup}
+; is a show on, is shown on - {is show on}
+is that - {is the fact that}
+is used to - {is use to}
+wants - {is wants}
+; it was, was - {is was}
+; is where, were - {is were}
+; International Standard Book Number, ISBN - {ISBN number}
+it began - {it begun}
+it comprises - {it comprises of}
+its effect - {it effect}
+it is thought that - {it is though that}
+it is thought to - {it is though to}
+; it led to, it leads to - {it lead to}
+it lay - {it lied}
+itself - {it self}
+it set up - {it set-up}
+it set up - {it setup}
+it spent - {it spend}
+it used to - {it use to}
+it was she who - {it was her who}
+it was he who - {it was him who}
+it weighed - {it weighted}
+it weighs - {it weights}
+its 1000th - {it's 1000th}
+its 100th - {it's 100th}
+; its 10th, its tenth - {it's 10th}
+its 11th - {it's 11th}
+its 125th - {it's 125th}
+its 12th - {it's 12th}
+its 13th - {it's 13th}
+its 14th - {it's 14th}
+its 150th - {it's 150th}
+its 15th - {it's 15th}
+its 16th - {it's 16th}
+its 17th - {it's 17th}
+its 18th - {it's 18th}
+its 19th - {it's 19th}
+; its 1st, its first - {it's 1st}
+its two - {it's 2}
+its 2000th - {it's 2000th}
+its 200th - {it's 200th}
+; its 20th, its twentieth - {it's 20th}
+; its 21st, its twenty-first - {it's 21st}
+; its 25th, its twenty-fifth - {it's 25th}
+; its 2nd, its second - {it's 2nd}
+its 300th - {it's 300th}
+; its 30th, its thirtieth - {it's 30th}
+; its 3rd, its third - {it's 3rd}
+its 400th - {it's 400th}
+; its 40th, its fortieth - {it's 40th}
+; its 4th, its fourth - {it's 4th}
+its 500th - {it's 500th}
+; its 50th, its fiftieth - {it's 50th}
+; its 5th, its fifth - {it's 5th}
+its six - {it's 6}
+; its 60th, its sixtieth - {it's 60th}
+; its 6th, its sixth - {it's 6th}
+; its 70th, its seventieth - {it's 70th}
+; its 7th, its seventh - {it's 7th}
+; its 80th, its eightieth - {it's 80th}
+; its 8th, its eighth - {it's 8th}
+; its 90th, its ninetieth - {it's 90th}
+; its 9th, its ninth - {it's 9th}
+its A-side - {it's A-side}
+its ability - {it's ability}
+its advantage - {it's advantage}
+its aim - {it's aim}
+its anniversary - {it's anniversary}
+its annual - {it's annual}
+its appearance - {it's appearance}
+its B-side - {it's B-side}
+its best - {it's best}
+its capital - {it's capital}
+its class - {it's class}
+its closure - {it's closure}
+its color - {it's color}
+its colour - {it's colour}
+its construction - {it's construction}
+its contents - {it's contents}
+its course - {it's course}
+its current - {it's current}
+its debut - {it's debut}
+its doors - {it's doors}
+its eastern - {it's eastern}
+its end - {it's end}
+its entire - {it's entire}
+its entirety - {it's entirety}
+its final - {it's final}
+its first - {it's first}
+its former - {it's former}
+its fourth - {it's fourth}
+its goal - {it's goal}
+its highest - {it's highest}
+its history - {it's history}
+its home - {it's home}
+its identity - {it's identity}
+its inability - {it's inability}
+its inception - {it's inception}
+its initial - {it's initial}
+its international - {it's international}
+its junction - {it's junction}
+its lack - {it's lack}
+its last - {it's last}
+its latest - {it's latest}
+its lead - {it's lead}
+its leader - {it's leader}
+its length - {it's length}
+its lowest - {it's lowest}
+its main - {it's main}
+its major - {it's major}
+its maximum - {it's maximum}
+its minimum - {it's minimum}
+its money - {it's money}
+its name - {it's name}
+its national - {it's national}
+its north - {it's north}
+its northern - {it's northern}
+its original - {it's original}
+its own - {it's own}
+its peak - {it's peak}
+its performance - {it's performance}
+its period - {it's period}
+its popularity - {it's popularity}
+its population - {it's population}
+its previous - {it's previous}
+its price - {it's price}
+its primary - {it's primary}
+its prime - {it's prime}
+its purpose - {it's purpose}
+its release - {it's release}
+its residents - {it's residents}
+its rival - {it's rival}
+its second - {it's second}
+its sister - {it's sister}
+its size - {it's size}
+its source - {it's source}
+its south - {it's south}
+its southern - {it's southern}
+its status - {it's status}
+its style - {it's style}
+its subsidiary - {it's subsidiary}
+its successor - {it's successor}
+its tail - {it's tail}
+its target - {it's target}
+its team - {it's team}
+its tenth - {it's tenth}
+its test - {it's test}
+its theme - {it's theme}
+its third - {it's third}
+its timeslot - {it's timeslot}
+its toll - {it's toll}
+its total - {it's total}
+its type - {it's type}
+its usage - {it's usage}
+its user - {it's user}
+its value - {it's value}
+its website - {it's website}
+its weight - {it's weight}
+its western - {it's western}
+its width - {it's width}
+its worst - {it's worst}
+its yearly - {it's yearly}
+it is - {its is}
+
+; === J ===
+Jimmy Buffett - {Jimmy Buffet}
+Jimi Hendrix - {Jimmy Hendrix}
+jibe with - {jive with}
+
+; ===K===
+keynote - {key note}
+
+; ===L===
+lack thereof - {lack there of}
+lay ahead - {laid ahead}
+lay dormant - {laid dormant}
+lay empty - {laid empty}
+lay fallow - {laid fallow}
+lay in state - {laid in state}
+larger than - {larger that}
+larger than - {larger then}
+; larva is, larvae are - {larva are}
+; larva feeds on, larvae feed on - {larva feed on}
+; larva was, larvae were - {larva were}
+; larva feeds on, larvae feed on - {larvae feeds on}
+; larva is, larvae are - {larvae is}
+; larva was, larvae were - {larvae was}
+laughingstock - {laughing stock}
+lawsuit - {law suite}
+; lie around, lies around, e.g., "it lies around 100 km north of ...", but "it lay around 100 km north of ...", "the hens lay around 100 eggs" - {lay around}
+lie low - {lay low}
+lying around - {laying around}
+lying awake - {laying awake}
+lying low - {laying low}
+lies atop - {lays atop}
+lies beside - {lays beside}
+lies in - {lays in}
+lies low - {lays low}
+lies near - {lays near}
+lies on - {lays on}
+led by - {lead by}
+lead role - {lead roll}
+leading role - {leading roll}
+less dominant - {less dominate}
+less than - {less that}
+less than - {less then}
+less than - {lesser then}
+lifetime - {life time}
+lighter than - {lighter then}
+lion's share - {lions share}
+; is located, location is - {location is located}
+lose to - {loose to}
+losing effort - {loosing effort}
+losing record - {loosing record}
+losing season - {loosing season}
+losing streak - {loosing streak}
+losing team - {loosing team}
+losing the - {loosing the}
+losing to - {loosing to}
+; lots of, many, much - {lot's of}
+lower than - {lower that}
+lower than - {lower then}
+
+; ===M===
+appeared with - {made an appearance with}
+made its - {made it's}
+mainly known as - {mainly know as}
+mainly known for - {mainly know for}
+major role - {major roll}
+appear with - {make an appearance with}
+make its - {make it's}
+makes its way - {makes it way}
+making its - {making it's}
+win - {manage to win}
+got - {managed to get}
+made - {managed to make}
+won - {managed to win}
+managerial reins - {managerial reigns}
+; mashed potatoes - {mash potatoes}
+; may be, may have been - {may been}
+may be - {maybe be}
+; MCL, medial collateral ligament - {MCL ligament}
+meanwhile - {mean while}
+might have - {might of}
+; Milwaukie, Oregon - {Milwaukee, Oregon}
+minor role - {minor roll}
+more dominant - {more dominate}
+more often than - {more often then}
+; better, optimal - {more optimal}
+more than - {more that}
+more than - {more then}
+; even worse, much worse, worse - {more worse}
+most dominant - {most dominate}
+; best, optimal - {most optimal}
+most populous - {most populace}
+best-known - {most well-known}
+mostly known as - {mostly know as}
+mostly known for - {mostly know for}
+must have - {must of}
+moot point - {mute point}
+
+; ===N===
+nationwide - {nation wide}
+nearby - {near by}
+neither criterion - {neither criteria}
+neither phenomenon - {neither phenomena}
+Netherlands Antilles - {Netherland Antilles}
+newcomer - {new comer}
+nowhere to - {no where to}
+noteworthy - {note worthy}
+nowadays - {now a days}
+
+; ===O===
+; have been, of being - {of been}
+of its kind - {of it's kind}
+of its own - {of it's own}
+of whom to - {of who to}
+oil baron - {oil barron}
+; daily, every day - {on a daily basis}
+; regularly, at regular intervals - {on a regular basis}
+; by accident, accidentally - {on accident}
+because - {on account of the fact that}
+ongoing - {on going}
+on its own - {on it's own}
+ongoing - {on-going}
+one criterion - {one criteria}
+one of the most - {one of most}
+one phenomenon - {one phenomena}
+born in - {originally born in}
+originally known as - {originally know as}
+other than - {other then}
+out of - {our of}
+outgrow - {out grow}
+out of sync - {out of sink}
+outside - {out side}
+; over 100, over a hundred, over one hundred - {over a 100}
+; over 1000, over a thousand, over one thousand - {over a 1000}
+overhear - {over hear}
+overheard - {over heard}
+overlook - {over look}
+overlooked - {over looked}
+overlooking - {over looking}
+overrated - {over rated}
+oversaw - {over saw}
+overseas - {over seas}
+oversee - {over see}
+over whom to - {over who to}
+because - {owing to the fact that}
+
+; ===P===
+parents' house - {parent's house}
+; passed away, died - {past away} – see also MOS:EUPHEMISM
+passed down - {past down}
+pique her interest - {peak her interest}
+pique his interest - {peak his interest}
+per se - {per say}
+Philips Arena - {Phillips Arena}
+players' union - {player's union}
+playoff berth - {playoff birth}
+; pm, p.m. - {pm at night}
+; pm, p.m. - {pm in the afternoon}
+; pm, p.m. - {pm in the evening}
+Portland Trail Blazers - {Portland Trailblazers}
+premiere episode - {premier episode}
+principal action - {principle action}
+principal activity - {principle activity}
+principal actor - {principle actor}
+principal advantage - {principle advantage}
+principal advocate - {principle advocate}
+principal agent - {principle agent}
+principal aim - {principle aim}
+principal area - {principle area}
+principal artist - {principle artist}
+principal assistant - {principle assistant}
+principal attraction - {principle attraction}
+principal author - {principle author}
+principal branch - {principle branch}
+principal cast - {principle cast}
+principal caste - {principle caste}
+principal cause - {principle cause}
+principal character - {principle character}
+principal church - {principle church}
+principal city - {principle city}
+principal component - {principle component}
+principal composer - {principle composer}
+principal goal - {principle goal}
+principal group - {principle group}
+principal method - {principle method}
+principal office - {principle office}
+principal officer - {principle officer}
+principal owner - {principle owner}
+principal photography - {principle photography}
+principal source - {principle source}
+principal student - {principle student}
+principal town - {principle town}
+put forth - {put fourth}
+
+; === Q ===
+
+; ===R===
+rather than - {rather then}
+wreak havoc - {reek havoc}
+rein in - {reign in}
+reins of power - {reigns of power}
+reluctance to - {reticence to}
+reluctant to - {reticent to}
+return - {return back}
+roll call - {role call}
+role player - {roll player}
+runner-up - {runner up}
+
+; ===S===
+sidle up to - {saddle up to}
+; World War II|Second World War - {Second Word War}
+separate - {seperate}
+setbacks - {set backs}
+she began - {she begun}
+she lets - {she let's}
+she saw - {she seen}
+; she waited, she weighed - {she weighted}
+shortcoming - {short coming}
+shorter than - {shorter then}
+shortly thereafter - {shortly there after}
+shortly after - {shorty after}
+shortly before - {shorty before}
+should back up - {should backup}
+; should be, should have been - {should been}
+should not have - {should not of}
+should have - {should of}
+should have gone - {should've went}
+side effect - {side affect}
+sidekick - {side kick}
+simply known as - {simply know as}
+since its - {since it's}
+for many years - {since many years}
+for years - {since years}
+single-handedly - {single handily}
+sight lines - {site lines}
+sleight of hand - {slight of hand}
+slew of - {slue of}
+smaller than - {smaller then}
+smarter than - {smarter then}
+sneak peek - {sneak peak}
+somehow - {some how}
+someone - {some one}
+somewhat - {some what}
+somewhere - {some where}
+sometimes known as - {sometimes know as}
+soon thereafter - {soon there after}
+sooner than - {sooner then}
+second album - {sophomore album}
+second single - {sophomore single}
+split among - {spilt among}
+split between - {spilt between}
+split into - {spilt into}
+split up - {spilt up}
+spinal cord - {spinal chord}
+split into - {split in to}
+ft² - {sq ft}
+in² - {sq in}
+km² - {sq km}
+mi² - {sq mi}
+square feet - {squared feet}
+square inches - {squared inches}
+square kilometers - {squared kilometers}
+square meters - {squared meters}
+square miles - {squared miles}
+stalemate - {stale mate}
+starring role - {staring role}
+starring role - {starring roll}
+stay awhile - {stay a while}
+Stevie Ray Vaughan - {Stevie Ray Vaughn}
+Strait of - {Straight of}
+strikeouts - {strike outs}
+stronger than - {stronger then}
+; enough, sufficient - {sufficient enough}
+supposed to - {suppose to}
+
+; ===T===
+take effect - {take affect}
+take over the reins - {take over the reigns}
+take the reins - {take the reigns}
+taken the reins - {taken the reigns}
+taking the reins - {taking the reigns}
+; teachers' union or teachers union - {teacher's union}
+one tenth as much as - {ten times less than}
+; ten years, ten years', ten-year - {ten year's}
+; than its - {"than it's|than it's}
+; that, the fact that - {that fact that}
+that he and - {that him and}
+that may be - {that maybe}
+that is - {that's is}
+that was - {that's was}
+; 1 January - {the 1st of January} etc.
+; 31 December - {the 31st of December}
+the absence of - {the absent of}
+the advice of - {the advise of}
+the effect of - {the affect of}
+the effect on - {the affect on}
+the effects of - {the affects of}
+all of the - {the all of the}
+among the - {the among the}
+; another, the other - {the another}
+any of the - {the any of the}
+; that are, the area, there are, they are - {the are}
+; that began, then began, they began - {the began}
+both of the - {the both of the}
+both the - {the both the}
+the breakdown - {the break down}
+the breakup - {the break up}
+the buildup - {the build up}
+the clampdown - {the clamp down}
+; could, he could, the cloud, they could - {the could}
+the crackdown - {the crack down}
+; the dominant, they dominate - {the dominate}
+each of the - {the each of the}
+the extent - {the extend}
+the follow-up - {the follow up}
+; that had, there had, they had - {the had}
+; that have, there have, they have - {the have}
+; he was, that he was - {the he was}
+her - {the her}
+him - {the him}
+; his, the - {the his}
+how the - {the how the}
+the injuries - {the injures}
+its - {the its}
+the lead-up - {the lead up}
+they lost it - {the lost it}
+the loss of - {the lost of}
+; they lost the, then lost the - {the lost the}
+many of the - {the many of the}
+most of the - {the most of the}
+much of the - {the much of the}
+one of the - {the one of the}
+; one's, the ones - {the one's}
+only the - {the only the}
+the phenomenon is - {the phenomena is}
+the rationale behind - {the rational behind}
+the rationale for - {the rational for}
+the setup - {the set up}
+several of the - {the several of the}
+some of the - {the some of the}
+their - {the their}
+them - {the them}
+these - {the these}
+this - {the this}
+those - {the those}
+; the thought, though - {the though}
+the trade-off - {the trade off}
+two of the - {the two of the}
+; that was, there was - {the was}
+; then went, they went - {the went}
+they were - {the were}
+where the - {the where the}
+; he won the, she won the, they won the - {the won the}
+; there are, they are - {their are}
+; there had, they had - {their had}
+there has - {their has}
+there have - {their have}
+there is - {their is}
+there may be - {their may be}
+there was - {their was}
+there were - {their were}
+there would - {their would}
+themselves - {them selves}
+thereafter - {there after}
+their best - {there best}
+thereby - {there by}
+their fifth - {there fifth}
+their final - {there final}
+therefore - {there fore}
+their fourth - {there fourth}
+there may be - {there maybe}
+their new - {there new}
+thereof - {there of}
+their own - {there own}
+their second - {there second}
+their third - {there third}
+there were - {there where}
+; theirs are, there are - {there's are}
+; theirs is, there is - {there's is}
+there are three - {there's three}
+there are two - {there's two}
+; theirs was, there was - {there's was}
+; these criteria, this criterion - {these criterion}
+; these include, this includes - {these includes}
+; these kinds of, this kind of - {these kind of}
+these may be - {these maybe}
+; these sorts of, this sort of - {these sort of}
+; these types of, this type of - {these type of}
+these were - {these where}
+they began - {they begun}
+; their breath, they breathe - {they breath}
+they garnered - {they garnished}
+they include - {they includes}
+; there is, they are - {they is}
+they may be - {they maybe}
+; the past, they passed - {they past}
+the player - {they player}
+; the way, their way - {they way}
+they were - {they we're}
+; they weigh, they weighed - {they weight}
+; they wear, they were - {they where}
+; there are, they are - {they're are}
+; these criteria, this criterion - {this criteria}
+these data - {this data}
+; this led to, this leads to - {this lead to}
+this may be - {this maybe}
+; these phenomena, this phenomenon - {this phenomena}
+those include - {those includes}
+those may be - {those maybe}
+three and a half - {three in a half}
+one third as much as - {three times less than}
+through its - {through it's}
+; threw out, throughout - {through out}
+through the wringer - {through the ringer}
+throughout its - {throughout it's}
+timeouts - {time outs}
+to backfire - {to back fire}
+to back off - {to back-off}
+to back out - {to back-out}
+to back up - {to back-up}
+to back off - {to backoff}
+to back out - {to backout}
+to back up - {to backup}
+to bail out  - {to bailout}
+to bathe - {to bath}
+to be built - {to be build}
+to be set up - {to be setup}
+to black out - {to blackout}
+to blast off - {to blastoff}
+to blow out - {to blowout}
+to blow up - {to blowup}
+to break down - {to breakdown}
+to breathe - {to breath}
+to build up - {to buildup}
+to build - {to built}
+to buy out - {to buyout}
+to choose - {to chose}
+to come back - {to comeback}
+to crack down on - {to crackdown on}
+to cut off - {to cut of}
+to cut back - {to cutback}
+to cut off - {to cutoff}
+to drop out - {to dropout}
+due to - {to due to}
+; to emphasise the, to emphasize the - {to emphasis the}
+to fill in - {to fill-in}
+to go - {to goes}
+; to get, to go - {to got}
+to grow - {to grown}
+to happen - {to happened}
+to have led to - {to have lead to}
+to him and - {to he and}
+to hold out - {to holdout}
+to kick off - {to kickoff}
+to light - {to lit}
+to loathe - {to loath}
+to lock out - {to lockout}
+to lock up - {to lockup}
+to log in - {to login}
+to log out - {to logout}
+to look up - {to lookup}
+to mark up - {to markup}
+to miss the - {to missed the}
+; not to, to not - {to not to}
+to opt in - {to opt-in}
+to opt out - {to opt-out}
+to participate - {to participated}
+; to be performed, to perform - {to performed}
+to phase out - {to phaseout}
+to pick up - {to pickup}
+to play back - {to playback}
+; to be produced, to produce - {to produced}
+; to be rebuilt, to rebuild - {to rebuilt}
+; to be released, to release - {to released}
+; returned to, to be returned to, to return to - {to returned to}
+to roll back - {to rollback}
+to run away - {to runaway}
+; to be seen, to see - {to seen}
+to send - {to sent}
+; to serve, to have served - {to served}
+to set up - {to setup}
+to shut down - {to shut-down}
+to shut down - {to shutdown}
+to some extent - {to some extend}
+to spend - {to spent}
+to spin off - {to spin-off}
+to spin off - {to spinoff}
+to take over - {to takeover}
+to that effect - {to that affect}
+to their - {to they're}
+to the - {to to the}
+together - {to together}
+to touch down - {to touchdown}
+to try to - {to try and}
+to try out - {to try-out}
+to try out - {to tryout}
+to turn off - {to turn-off}
+to turn around - {to turnaround}
+to turn off - {to turnoff}
+to turn out - {to turnout}
+to turn over - {to turnover}
+to wake up - {to wakeup}
+to walk out - {to walkout}
+to wipe out - {to wipeout}
+to withdraw - {to withdrew}
+to work around - {to workaround}
+to work out - {to workout}
+; also, to also, too - {too also}
+to be - {too be}
+took effect - {took affect}
+took an interest - {took and interest}
+took a while - {took awhile}
+took over the reins - {took over the reigns}
+took the reins - {took the reigns}
+to the - {tot he}
+touchdown passes - {touchdowns passes}
+tried to use - {tried to used}
+try to - {try and}
+try to achieve - {try and achieve}
+try to add - {try and add}
+try to answer - {try and answer}
+try to attract - {try and attract}
+try to avoid - {try and avoid}
+try to be - {try and be}
+try to beat - {try and beat}
+try to become - {try and become}
+try to bring - {try and bring}
+try to build - {try and build}
+try to buy - {try and buy}
+try to catch - {try and catch}
+try to change - {try and change}
+try to come - {try and come}
+try to convince - {try and convince}
+try to decide - {try and decide}
+try to determine - {try and determine}
+try to do - {try and do}
+try to eat - {try and eat}
+try to escape - {try and escape}
+try to figure - {try and figure}
+try to find - {try and find}
+try to fix - {try and fix}
+try to forget - {try and forget}
+try to gain - {try and gain}
+try to get - {try and get}
+try to give - {try and give}
+try to go - {try and go}
+try to help - {try and help}
+try to hide - {try and hide}
+try to hit - {try and hit}
+try to hold - {try and hold}
+try to improve - {try and improve}
+try to keep - {try and keep}
+try to locate - {try and locate}
+try to make - {try and make}
+try to move - {try and move}
+try to obtain - {try and obtain}
+try to play - {try and play}
+try to prevent - {try and prevent}
+try to prove - {try and protect}
+try to prove - {try and prove}
+try to run - {try and run}
+try to see - {try and see}
+try to show - {try and show}
+try to slow - {try and slow}
+try to solve - {try and solve}
+try to spare - {try and spare}
+try to start - {try and start}
+try to stay - {try and stay}
+try to stop - {try and stop}
+try to support - {try and support}
+try to take - {try and take}
+try to talk - {try and talk}
+try to tell - {try and tell}
+try to think - {try and think}
+try to turn - {try and turn}
+try to understand - {try and understand}
+try to use - {try and use}
+try to win - {try and win}
+turn for the worse - {turn for the worst}
+; twelve months, twelve months', twelve-month - {twelve month's}
+twice as much as - {twice as much than}
+; two days, two days', two-day - {two day's}
+; two hours, two hours', two-hour - {two hour's}
+two and a half - {two in a half}
+; two months, two months', two-month - {two month's}
+half as much as - {two times less than}
+; two weeks, two weeks', two-week - {two week's}
+; two years, two years', two-year - {two year's}
+second anniversary - {two-year anniversary}
+
+; ===U===
+undergo - {under go}
+undergoing - {under going}
+undergone - {under gone}
+under its - {under it's}
+underrated - {under rated}
+undertake - {under take}
+underwear - {under wear}
+underwent - {under went}
+underneath its - {underneath it's}
+United States' - {United State's}
+United States - {United Stats}
+United States - {Unites States}
+unlike its - {unlike it's}
+until its - {until it's}
+upfield - {up field}
+up its - {up it's}
+upside - {up side}
+until - {up until}
+upon its - {upon it's}
+; US dollars, USD - {USD dollars}
+; US dollars, US$ - {USD$}
+; used to, commonly(?), regularly(?); see talk page - {use to}
+used to be - {use to be}
+used to have - {use to have}
+usually known as - {usually know as}
+usually known by - {usually know by}
+usually known for - {usually know for}
+
+; ===V===
+; minimal, very little, very small - {very minimal}
+; optimal, very good - {very optimal}
+; unique, very unusual - {very unique}
+via its - {via it's}
+; vehicle identification number, VIN - {VIN number}
+vice versa - {vise versa}
+; vocal cords, vocal folds - {vocal chords}
+
+; ===W===
+waved off - {waived off}
+worn away - {warn away}
+worn down - {warn down}
+worn out - {warn out}
+was allowed - {was aloud}
+was a part of - {was apart of}
+; was, was being, was to be - {was be}
+; has been, was, was being - {was been}
+; began, was begun - {was began}
+; began, was begun, was being - {was begin}
+was built - {was build}
+was capable of - {was cable of}
+came - {was came}
+comprised - {was comprised by}
+; comprised, was composed from - {was comprised from}
+; comprised, consisted of, was composed of - {was comprised of}
+comprised - {was comprised with}
+was confirmed - {was confirm}
+was considered - {was consider}
+was cut off - {was cutoff}
+was due to - {was do to}
+was drunk - {was drank}
+; drew, was drawn - {was drew}
+was established - {was establish}
+was extended - {was extend}
+; flew, was flown - {was flew}
+; grew, was grown - {was grew}
+; had, who had - {was had}
+; has, who has - {was has}
+; is, was, was in, what is - {was is}
+was its - {was it's}
+was known - {was knew}
+was known - {was know}
+was laid - {was lain}
+was lying on - {was laying on}
+was led by - {was lead by}
+was led to - {was lead to}
+was led by - {was leaded by}
+was loath to - {was loathe to}
+was loath to - {was loathed to}
+was met by - {was meet by}
+was met with - {was meet with}
+was misled - {was mislead}
+was run - {was ran}
+was rebuilt - {was rebuild}
+was released by - {was release by}
+was released on - {was release on}
+was rerun - {was reran}
+was ridden - {was rode}
+was sung - {was sang}
+; saw, was seen - {was saw}
+was scheduled to - {was schedule to}
+was sent - {was send}
+was sentenced to - {was sentence to}
+was set up - {was set-up}
+was set up - {was setup}
+was shaken - {was shook}
+was shot - {was shoot}
+was shown by - {was show by}
+was shown on - {was show on}
+was shown - {was showed}
+was shut off - {was shut-off}
+was shut down - {was shutdown}
+was shut off - {was shutoff}
+was shut out - {was shutout}
+was sold out - {was sold-out}
+was spent - {was spend}
+was succeeded by - {was succeed by}
+was supposed to - {was suppose to}
+was that - {was the fact that}
+was thought that - {was though that}
+; took, was taken - {was took}
+was torn - {was tore}
+was used to - {was use to}
+was written - {was wrote}
+wayside - {way side}
+whether or not - {weather or not}
+well known - {well know}
+went rogue - {went rouge}
+went through - {went threw}
+were allowed - {were aloud}
+were a part of - {were apart of}
+were - {were be}
+; had been, have been, were being - {were been}
+were begun - {were began}
+were built - {were build}
+comprised - {were comprised from}
+; comprised, consisted of, were composed of - {were comprised of}
+comprised - {were comprised with}
+were cut off - {were cutoff}
+were drawn - {were drew}
+where he was - {were he was}
+where it was - {were it was}
+were its - {were it's}
+were known - {were knew}
+were known - {were know}
+were laid - {were lain}
+were led by - {were lead by}
+were led by - {were leaded by}
+were loath to - {were loathe to}
+were met by - {were meet by}
+were met with - {were meet with}
+were overrun - {were overran}
+were run - {were ran}
+were rebuilt - {were rebuild}
+were rerun - {were reran}
+were ridden - {were rode}
+were sung - {were sang}
+were set up - {were set-up}
+were set up - {were setup}
+where she was - {were she was}
+were shown - {were showed}
+were shut out - {were shut-out}
+were shut down - {were shutdown}
+were shut off - {were shutoff}
+were shut out - {were shutout}
+were spent - {were spend}
+were supposed to - {were suppose to}
+were taken - {were took}
+were torn - {were tore}
+were used to - {were use to}
+were written - {were wrote}
+whether or not - {wether or not}
+what led to - {what lead to}
+what lay - {what lied}
+whenever - {when ever}
+went into - {when into}
+went off - {when off}
+went on to - {when on to}
+whereabouts - {where abouts}
+whereas - {where as}
+were being - {where being}
+whereby - {where by}
+where he - {where him}
+; were made, where he made - {where made}
+were taken - {where taken}
+whereupon - {where upon}
+; were won, where he won, where she won - {where won}
+whereas - {whereas as}
+which break down - {which breakdown}
+; which comprised, which consisted of - {which comprised of}
+which had led - {which had lead}
+which has led - {which has lead}
+which have led - {which have lead}
+in which - {which in which}
+which may be - {which maybe}
+which were - {which where}
+while he - {while him}
+who had led - {who had lead}
+who has led - {who has lead}
+who have led - {who have lead}
+whom he had - {who he had}
+whom he knew - {who he knew}
+whom he led - {who he led}
+whom he married - {who he married}
+whom he met - {who he met}
+whom he took - {who he took}
+who led - {who lead}
+who may be - {who maybe}
+who set up - {who setup}
+whom she met - {who she met}
+whom they have - {who they have}
+whom they should - {who they should}
+whom they signed - {who they signed}
+whom to believe - {who to believe}
+whom to blame - {who to blame}
+whom to call - {who to call}
+whom to invite - {who to invite}
+whom to send - {who to send}
+whom to trust - {who to trust}
+who used to - {who use to}
+who were - {who where}
+whose actual - {who's actual}
+whose brother - {who's brother}
+whose father - {who's father}
+whose first - {who's first}
+whose last - {who's last}
+whose mother - {who's mother}
+whose name - {who's name}
+whose opinion - {who's opinion}
+whose own - {who's own}
+whose parents - {who's parents}
+whose previous - {who's previous}
+whose team - {who's team}
+whose title - {who's title}
+who was - {who's was}
+who also - {whom also}
+who else is - {whom else is}
+who is - {whom is}
+who was - {whom was}
+whose - {whose its}
+; one of whose, who's one of - {whose one of}
+; which was, who was - {whose was}
+wildcard berth - {wildcard birth}
+will back up - {will backup}
+; will be, will have been - {will been}
+will begin - {will being}
+will buy out - {will buyout}
+; will be composed of, will comprise, will consist of - {will comprise of}
+; will probably - {will likely}
+will shut down - {will shutdown}
+will shut off - {will shutoff}
+; will have spent, will spend - {will spent}
+; took part, will take part - {will took part}
+; took place, will take place - {will took place}
+will work out - {will workout}
+; with a, with the - {with a the}
+along with - {with along with}
+will be - {with be}
+; when he, with him, with the - {with he}
+within - {with in}
+with its - {with it's}
+with one of - {with on of}
+without - {with out}
+; when she, with her, with the - {with she}
+with whom - {with who}
+close to - {within close proximity to}
+; in, within - {within in}
+within its - {within it's}
+within sight of - {within site of}
+without its - {without it's}
+World War - {Wold War}
+won its - {won it's}
+World War I - {Word War I}
+World War II - {Word War II}
+work in progress - {working progress}
+worldwide - {world wide}
+worse than - {worse that}
+worse than - {worse then}
+worst-case scenario - {worse-case scenario}
+; even worse, much worse, worst - {worser}
+worse comes to worst - {worst comes to worst}
+worse than - {worst than}
+worth its - {worth it's}
+worthwhile - {worth while}
+would back up - {would backup}
+; would be, would have been - {would been}
+would come back - {would comeback}
+; would be composed of, would comprise, would consist of - {would comprise of}
+; developed, would be developed, would develop - {would developed}
+would fare - {would fair}
+would forgo - {would forego}
+; had, would have, would have had - {would had}
+would have been - {would of been}
+would have done - {would of done}
+; made, would be made, would make - {would made}
+would set up - {would setup}
+; spent, would have spent, would spend - {would spent}
+; won, would win - {would won}
+would work out - {would workout}
+would have - {would've have}
+; would have gone, would've gone - {would've went}
+wreak havoc - {wreck havoc}
+writer's block - {writers block}
+
+; === X ===
+
+; ===Y===
+younger than - {younger that}
+younger than - {younger then}
+
+; === Z ===
+
+; === Hyphens ===
+These expressions are normally hyphenated. Note that the hyphenation of an expression is subject to its context (see hyphen and MOS:HYPHEN).
+
+above-mentioned - {above mentioned}
+all-inclusive - {all inclusive}
+anti-inflammatory - {anti inflammatory}
+award-winning - {award winning}
+back-to-back - {back to back}
+case-insensitive - {case insensitive}
+case-sensitive - {case sensitive}
+clear-headed - {clear headed}
+co-op - {co op}
+cross-reference - {cross reference}
+day-to-day - {day to day}
+de-emphasize - {de emphasize}
+devil-may-care - {devil may care}
+ex-husband - {ex husband}
+ex-wife - {ex wife}
+father-in-law - {father in law}
+fine-tune - {fine tune}
+first-class - {first class}
+front-rower - {front rower}
+full-time - {full time}
+left-handed - {left handed}
+low-budget - {low budget}
+mother-in-law - {mother in law}
+non-English - {non English}
+; n-year-long - {n-year-long}
+; (n)-year-old - {(n)-year-old}
+; one-fourth - {one-fourth}
+out-and-out - {out and out}
+out-of-band - {out of band}
+out-of-body - {out of body}
+out-of-bounds - {out of bounds}
+out-of-door - {out of door}
+out-of-doors - {out of doors}
+out-of-order - {out of order}
+out-of-place - {out of place}
+out-of-pocket - {out of pocket}
+out-of-state - {out of state}
+out-of-the-way - {out of the way}
+out-of-town - {out of town}
+out-of-wedlock - {out of wedlock}
+part-time - {part time}
+pre-owned - {pre owned}
+re-creation - {re creation}
+re-sign - {re sign}
+right-handed - {right handed}
+self-evident - {self evident}
+self-explanatory - {self explanatory}
+self-proclaimed - {self proclaimed}
+state-of-the-art - {state of the art}
+; thirty-fifth - {thirty-fifth}
+top-notch - {top notch}
+; twenty-eight - {twenty-eight}
+; two-thirds - {two-thirds}
+; un-Australian - {un-Australian}
+up-to-date - {up to date}
+well-known - {well known}
+X-ray - {X ray}

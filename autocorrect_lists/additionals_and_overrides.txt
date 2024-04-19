@@ -1,0 +1,127 @@
+;---------------------------------------------------------------------
+; USAGE:
+;    replacement|trigger|modifiers
+;
+; CHARACTER COMBINATIONS:
+;    [abc]* = one of these characters can optionally be at this position
+;    [abc]? = one of these characters must be present at this position
+;    [abc]+ = all of these characters must be present in any order
+;    [abc]! = this phrase is optional
+;
+; OPTIONAL MODIFIERS:
+;    ?  = the hotstring will trigger even when inside another word
+;    *  = an ending character is not required to trigger
+;    B0 = turn off backspacing
+;    C  = trigger is case sensitive
+;    C1 = always send the replacement as typed
+;    O  = remove the trigger character
+;    R  = send raw output
+;    X  = ignore this trigger entirely
+;---------------------------------------------------------------------
+
+
+; === A ===
+additional|additioal
+
+; === B ===
+boards|baords
+boolean|boolaen
+bury the lede|bury the lead
+
+; === C ===
+coming|ocming
+cul-de-sac|coldasac
+curly|culry
+
+; === D ===
+desktop|dekstop
+
+; === E ===
+end if|en dif
+executable|exeutable
+
+; === F ===
+false|f[asl]+e
+function|fuction
+
+; === G ===
+GDPR|GDRP|C1
+general|geberal
+
+; === H ===
+handy|hnady
+helpdesk|helpdeks
+helper|herlper
+hotstring|ho[ts]+ring|*
+
+; === I ===
+install|in stall
+integer|itneger
+
+; === J ===
+javascript|javascrtip
+jQuery|jquesy
+
+; === K ===
+
+; === L ===
+little|litlle
+loop|;oop
+
+; === M ===
+margin|maring
+
+; === N ===
+
+; === O ===
+o'clock|oclock
+obviously|obvisouly
+of the|oft he
+
+; === P ===
+phoenix|pheonix
+property|peroprty
+
+; === Q ===
+querystring|quesystring
+
+; === R ===
+replace|relpace|*
+return|retrun|*
+
+; === S ===
+sinecure|synecure
+status|statsu
+straight|stright
+
+; === T ===
+Thank|THank|*C
+
+; === U ===
+unsurprising|unsu[r]*pri[sz]ing|?
+upper|uppser|?
+
+; === V ===
+Vodafone|Vodaphone
+
+; === W ===
+What|WHat|?C
+Windows|WIndows|?C
+Wonka|wonka|?C
+which|whuch
+
+; === X ===
+
+; === Y ===
+Yeah|YEah|?C
+
+; === Z ===
+
+
+; .co.uk|[,.]co[,.]uk|*
+; .com|,com|*
+; all|a;;|?
+; ell|e;;|*?
+; ill|a;;|*?
+; oll|o;;|*?
+; ull|u;;|*?

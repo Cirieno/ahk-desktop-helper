@@ -1,0 +1,328 @@
+;--------------------------------------------------------------------
+; SOURCE: https://en.wikipedia.org/wiki/Commonly_misspelled_English_words
+; DOWNLOADED: 2024-04-17
+; TEMPLATE: replacement - {trigger}
+;--------------------------------------------------------------------
+
+; === A ===
+absence - {absense}
+absence - {absentse}
+absence - {abcense}
+absence - {absance}
+acceptable - {acceptible}
+; accidentally/accidently - {accidentaly}
+accommodate - {accomodate}
+accommodate - {acommodate}
+achieve - {acheive}
+acknowledge - {acknowlege}
+acknowledge - {aknowledge}
+acquaintance - {acquaintence}
+acquaintance - {aquaintance}
+acquire - {aquire}
+acquire - {adquire}
+acquit - {aquit}
+acreage - {acrage}
+acreage - {acerage}
+address - {adress}
+adultery - {adultary}
+advisable - {adviseable}
+advisable - {advizable}
+aggression - {agression}
+aggressive - {agressive}
+allegiance - {allegaince}
+allegiance - {allegience}
+allegiance - {alegiance}
+almost - {allmost}
+; a lot - {alot} (must be two words) {allot}
+amateur - {amatuer}
+amateur - {amature}
+annually - {anually}
+annually - {annualy}
+apparent - {apparant}
+apparent - {aparent}
+apparent - {apparrent}
+apparent - {aparrent}
+arctic - {artic}
+argument - {arguement}
+atheist - {athiest}
+atheist - {athist}
+awful - {awfull}
+awful - {aweful}
+
+; === B ===
+because - {becuase}
+because - {becasue}
+beautiful - {beatiful}
+becoming - {becomeing}
+beginning - {begining}
+believe - {beleive}
+bellwether - {bellweather}
+benefit - {benifit}
+buoy - {bouy}
+buoyant - {bouyant}
+business - {buisness}
+
+; === C ===
+calendar - {calender}
+camouflage - {camoflage}
+camouflage - {camoflague}
+; capitol - capital (both words exist but are distinct)
+Caribbean - {Carribean}
+category - {catagory}
+caught - {cauhgt}
+caught - {caugt}
+cemetery - {cemetary}
+cemetery - {cematery}
+changeable - {changable}
+chief - {cheif}
+colleague - {collaegue}
+colleague - {collegue}
+column - {colum}
+coming - {comming}
+committed - {commited}
+committed - {comitted}
+comparison - {comparsion}
+concede - {conceed}
+congratulate - {congradulate}
+conscientious - {consciencious}
+conscious - {concious}
+conscious - {consious}
+consensus - {concensus}
+controversy - {contraversy}
+coolly - {cooly}
+
+; === D ===
+daiquiri - {dacquiri}
+daiquiri - {daquiri}
+deceive - {decieve}
+definite - {definate}
+definite - {definit}
+definitely - {definitly}
+definitely - {definately}
+definitely - {definatly}
+definitely - {defiantly}
+desperate - {desparate}
+difference - {diffrence}
+dilemma - {dilema}
+disappoint - {dissapoint}
+disastrous - {disasterous}
+drunkenness - {drunkeness}
+dumbbell - {dumbell}
+
+; === E ===
+embarrass - {embarass}
+equipment - {equiptment}
+exceed - {excede}
+exhilarate - {exilerate}
+existence - {existance}
+experience - {experiance}
+extreme - {extreem}
+
+; === F ===
+fascinating - {facinating}
+fiery - {firey}
+fluorescent - {flourescent}
+foreign - {foriegn}
+friend - {freind}
+; fulfil - {fullfil} (American: fulfill)
+
+; === G ===
+gauge - {guage}
+grateful - {gratefull}
+grateful - {greatful}
+great - {grate}
+great - {grat}
+guarantee - {garantee}
+guarantee - {garentee}
+guarantee - {garanty}
+guidance - {guidence}
+
+; === H ===
+harass - {harrass}
+height - {heighth}
+height - {heigth}
+hierarchy - {heirarchy}
+hors d'oeuvres - {hors derves}
+hors d'oeuvres - {ordeurves}
+humorous - {humerous}
+hygiene - {hygene}
+hygiene - {hygine}
+hygiene - {hiygeine}
+hygiene - {higeine}
+hygiene - {hygeine}
+hypocrisy - {hypocricy}
+hypocrite - {hipocrit}
+
+; === I ===
+ignorance - {ignorence}
+imitate - {immitate}
+immediately - {imediately}
+indict - {indite}
+independent - {independant}
+indispensable - {indispensible}
+inoculate - {innoculate}
+intelligence - {inteligence}
+intelligence - {intelligance}
+
+; === J ===
+; jewelry (US)/jewellery (UK) - {jewelery}
+; judgment - {judgement} (only a misspelling in the U.S.)
+
+; === K ===
+kernel - {kernal}
+
+; === L ===
+leisure - {liesure}
+liaison - {liason}
+library - {libary}
+library - {liberry}
+; license - {lisence} (US always license UK noun licence)
+lightning - {lightening}
+; lose - loose
+
+; === M ===
+maintenance - {maintainance}
+maintenance - {maintnance}
+marshmallow - {marshmellow}
+medieval - {medeval}
+medieval - {medevil}
+medieval - {mideval}
+memento - {momento}
+millennium - {millenium}
+millennium - {milennium}
+miniature - {miniture}
+minuscule - {miniscule}
+; mischievous - {mischievious mischevous mischevious} (The spelling "{mischievious}" and the corresponding pronunciation are still considered non-standard.)
+misspell - {mispell}
+misspell - {misspel}
+
+; === N ===
+necessary - {neccessary}
+necessary - {necessery}
+niece - {neice}
+neighbour - {nieghbor}
+noticeable - {noticable}
+
+; === O ===
+occasion - {occassion}
+occasionally - {occasionaly}
+occasionally - {occassionally}
+occurrence - {occurrance}
+occurrence - {occurence}
+occurred - {occured}
+omission - {ommision}
+omission - {omision}
+original - {orignal}
+outrageous - {outragous}
+
+=== P ===
+parliament - {parliment}
+pastime - {passtime}
+pastime - {pasttime}
+perceive - {percieve}
+perseverance - {perseverence}
+personnel - {personell}
+personnel - {personel}
+plagiarize - {plagerize}
+playwright - {playright}
+playwright - {playwrite}
+possession - {posession}
+possession - {possesion}
+potatoes - {potatos}
+precede - {preceed}
+presence - {presance}
+principle - {principal}
+privilege - {privelege}
+privilege - {priviledge}
+professor - {professer}
+protester - {protestor}
+promise - {promiss}
+pronunciation - {pronounciation}
+proof - {prufe}
+; prophecy (as noun) - prophesy (valid as verb)
+publicly - {publically}
+
+; === Q ===
+quarantine - {quarentine}
+queue - {que}
+questionnaire - {questionaire}
+questionnaire - {questionnair}
+
+=== R ===
+readable - {readible}
+really - {realy}
+receive - {recieve}
+receipt - {reciept}
+recommend - {recomend}
+recommend - {reccommend}
+referred  - {refered}
+reference - {referance}
+reference - {refrence}
+relevant - {relevent}
+relevant - {revelant}
+religious - {religous}
+religious - {religius}
+repetition - {repitition}
+restaurant - {restarant}
+restaurant - {restaraunt}
+rhyme - {rime}
+rhythm - {rythm}
+rhythm - {rythem}
+
+; === S ===
+secretary - {secratary}
+secretary - {secretery}
+seize - {sieze}
+separate - {seperate}
+sergeant - {sargent}
+similar - {similer}
+; skilful - {skilfull} (American: skillful)
+speech - {speach}
+speech - {speeche}
+successful - {succesful}
+successful - {successfull}
+successful - {sucessful}
+supersede - {supercede}
+surprise - {suprise}
+surprise - {surprize}
+
+=== T ===
+; than - then
+; their - there
+; they're
+tomatoes - {tomatos}
+tomorrow - {tommorow}
+tomorrow - {tommorrow}
+twelfth - {twelth}
+tyranny - {tyrany}
+
+; === U ===
+underrate - {underate}
+until - {untill}
+upholstery - {upholstry}
+; usable/useable - {usible}
+
+; === V ===
+vacuum - {vaccuum}
+vacuum - {vaccum}
+vacuum - {vacume}
+vehicle - {vehical}
+vicious - {visious}
+
+; === W ===
+weather - {wether}
+; weather - {whether}
+weird - {wierd}
+welfare - {wellfare}
+welfare - {welfair}
+whether - {wether}
+; wilful - {wilfull} (American: willful)
+withhold - {withold}
+writing - {writting}
+writing - {writeing}
+
+; === X ===
+
+; === Y ===
+
+; === Z ===

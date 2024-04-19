@@ -9,3 +9,4 @@ modules/TODO - disable-proxy.module.ahk
 modules/TODO - enable-proxy-overrides.module.ahk
 modules/TODO - keyboard-keylocks.module.ahk
 modules/TODO - prevent-sleep.module.ahk
+default.autocorrect.txt

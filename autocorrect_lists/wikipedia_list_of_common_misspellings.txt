@@ -1,0 +1,6181 @@
+;--------------------------------------------------------------------
+; SOURCE: https://en.wikipedia.org/wiki/Wikipedia:Lists_of_common_misspellings
+; DOWNLOADED: 2024-04-17
+; TEMPLATE: replacement - {trigger}
+;--------------------------------------------------------------------
+
+; === 0-9 ===
+; 1/1000 - {1/1000th}
+; 1/100 - {1/100th}
+;; 1/10, one tenth - {1/10th}
+; 1/12 - {1/12th}
+;; 1/16, one sixteenth - {1/16th}
+; 1/2 - {1/2nd}
+; 1/2 - {1/2th}
+; 1/30 - {1/30th}
+; 1/32 - {1/32nd}
+; 1/360 - {1/360th}
+;; 1/3, one third - {1/3rd}
+;; 1/3, one third - {1/3th}
+; 1/48 - {1/48th}
+;; 1/4, one fourth - {1/4th}
+; 1/50 - {1/50th}
+;; 1/5, one fifth - {1/5th}
+;; 1/6, one sixth - {1/6th}
+;; 1/7, one seventh - {1/7th}
+;; 1/8, one eighth - {1/8th}
+;; 1/9, one ninth - {1/9th}
+; hundreds of - {100's of}
+; thousands of - {1000's of}
+; thousands of - {1000s of}
+; 100 cc - {100cc}
+; 100 cm - {100cm}
+; 100 km - {100km}
+; 100 m - {100m}
+; 100 mm - {100mm}
+; hundreds of - {100s of}
+; 10 million - {10M}
+; 10 V - {10V}
+;; 10 am, 10:00 am - {10am}
+; 10 cc - {10cc}
+; 10 km - {10km}
+; 10 m - {10m}
+;; 10 pm, 10:00 pm - {10pm}
+; 110 V - {110V}
+; 11 am - {11am}
+; 11 pm - {11pm}
+11th - {11st}
+; 120 V - {120V}
+; 12 V - {12V}
+; 12 am - {12am}
+12th - {12nd}
+; 12 pm - {12pm}
+13th - {13rd}
+1830s - {1830ies}
+1840s - {1840's}
+1850s - {1850's}
+1850s - {1850ies}
+1860s - {1860ies}
+1870s - {1870ies}
+1880s - {1880ies}
+1890s - {1890ies}
+1900s - {1900ies}
+1910s - {1910ies}
+1920s - {1920ies}
+1930s - {1930ies}
+1940s - {1940's}
+1940s - {1940ies}
+1950s - {1950-ies}
+1950s - {1950ies}
+1960s - {1960-ies}
+1960s - {1960ies}
+1970s - {1970-ies}
+1970s - {1970ies}
+1980s - {1980-ies}
+1980s - {1980ies}
+1990s - {1990-ies}
+1990s - {1990ies}
+2000s - {2000ies}
+2010s - {2010ies}
+; 1 am - {1am}
+1st - {1nd}
+; 1 pm - {1pm}
+1st - {1th}
+; 2/3 - {2/3rd}
+; 2/3 - {2/3rds}
+; 2/5 - {2/5th}
+; 2010 - {20010}
+; 2011 - {20011}
+; 21st - {21th}
+; 22nd - {22th}
+; 23rd - {23th}
+; 24th - {24st}
+2nd - {2th}
+; 3/4 - {3/4th}
+; 3/5 - {3/5th}
+;; 3/8, three-eighths - {3/8ths}
+;; 1930s, 30s, thirties - {30-ties}
+31st - {31th}
+32nd - {32th}
+33rd - {33th}
+; 3 am - {3am}
+3rd - {3nd}
+; 3 pm - {3pm}
+3rd - {3th}
+;; 1940s, 40s, forties - {40ies}
+41st - {41th}
+42nd - {42th}
+43rd - {43th}
+; 4 am - {4am}
+; 4 pm - {4pm}
+;; 5,000 m, 5,000 meters - {5,000m}
+;; 5/8, five-eighths - {5/8ths}
+;; 1950s, 50s, fifties - {50ies}
+51st - {51th}
+52nd - {52th}
+53rd - {53nd}
+53rd - {53th}
+;; 5 V, 5-volt - {5V}
+; 5 am - {5am}
+; 5 pm - {5pm}
+;; 1960s, 60s, sixties - {60'ies}
+;; 1960s, 60s, sixties - {60's}
+;; 1960s, 60s, sixties - {60-ies}
+;; 60 W, 60-watt - {60W}
+;; 1960s, 60s, sixties - {60es}
+;; 1960s, 60s, sixties - {60ies}
+;; 1960s, 60s, sixties - {60ties}
+61st - {61th}
+62nd - {62th}
+63rd - {63nd}
+63rd - {63th}
+; 6 am - {6am}
+; 6 pm - {6pm}
+;; 1970s, 70s, seventies - {70-ies}
+;; 1970s, 70s, seventies - {70ies}
+71st - {71th}
+72nd - {72th}
+73rd - {73th}
+;; 1980s, 80s, eighties - {80-ies}
+;; 1980s, 80s, eighties - {80ies}
+; 8 am - {8am}
+; 8 pm - {8pm}
+;; 1990s, 90s, nineties - {90ies}
+; 9 am - {9am}
+; 9 pm - {9pm}
+
+; === A ===
+aberrant - {abberant}
+aberration - {abberation}
+abbreviated - {abbrieviated}
+abbreviated - {abbriviated}
+abbreviation - {abbriviation}
+abscess - {abcess}
+and - {abd}
+aberration - {aberation}
+aberrant - {aberrent}
+abilities - {abilites}
+ability - {abillity}
+ability - {abilty}
+a bit of - {abit of}
+abnormalities - {abnormalites}
+abandon - {abondon}
+abandoned - {abondoned}
+abortifacient - {abortificant}
+abbreviate - {abreviate}
+abbreviation - {abreviation}
+arbitrary - {abritrary}
+absence - {abscence}
+absence - {absense}
+absorbency - {absorbancy}
+absorbent - {absorbant}
+absorption - {absorbsion}
+absorption - {absorbtion}
+absorption - {absorpsion}
+absolute - {absoulte}
+abundance - {abudance}
+abundances - {abundacies}
+abundances - {abundancies}
+abundance - {abundence}
+abundant - {abundent}
+abundant - {abundunt}
+abuts - {abutts}
+academy - {acadamy}
+academic - {acadmic}
+academy - {accadamy}
+academy - {accademy}
+accelerate - {accellerate}
+acceleration - {accelleration}
+; accession, ascension - {accension}
+acceptable - {acceptible}
+accessible - {accessable}
+accessed - {accesed}
+accessories - {accesories}
+accessory - {accesory}
+accidentally - {accidentaly}
+accidentally - {accidentially}
+accidentally - {accidently}
+acclimatization - {acclimitization}
+accommodate - {accomadate}
+accommodation - {accomadation}
+accommodate - {accomodate}
+accommodation - {accomodation}
+accompanying - {accompaning}
+accompanied - {accompanyed}
+accordion - {accordeon}
+accordion - {accordian}
+according - {accoring}
+acoustic - {accoustic}
+accredit - {accreditate}
+across - {accros}
+across - {accross}
+accused - {accussed}
+academic - {acedemic}
+ascertain - {acertain}
+access - {acess}
+achieve - {acheive}
+achieved - {acheived}
+achievement - {acheivement}
+achieves - {acheives}
+achieving - {acheiving}
+achievement - {acheivment}
+achievement - {achievment}
+; achieve, archive - {achive}
+; achieved, archived - {achived}
+; awkward, backward - {ackward}
+accolade - {acolade}
+accomplish - {acomplish}
+accomplished - {acomplished}
+accomplishment - {acomplishment}
+according - {acording}
+accordingly - {acordingly}
+acquaintance - {acquaintence}
+acquaintance - {acquiantence}
+acquaintances - {acquiantences}
+acquisition - {acquistion}
+acquitted - {acquited}
+activities - {activites}
+actually - {actualy}
+accuracy - {acuracy}
+accustom - {acustom}
+accustomed - {acustommed}
+actually - {acutally}
+ad nauseam - {ad nauseum}
+; adaption (adaptation) (acceptable variant)
+; adaptions (adaptations) (acceptable variant)
+additional - {addional}
+additionally - {addionally}
+additionally - {additinally}
+additionally - {additionaly}
+addition - {addittion}
+admission - {addmission}
+admitted - {addmitted}
+adopt - {addopt}
+adopted - {addopted}
+adoptive - {addoptive}
+; address, adders - {addres}
+addressable - {addresable}
+addressing - {addresing}
+addition - {addtion}
+adequate - {adecuate}
+adhere - {adhear}
+adherence - {adhearence}
+addition - {adition}
+additional - {aditional}
+amendment - {admendment}
+administration - {administartion}
+administrate - {adminstrate}
+administration - {adminstration}
+administrative - {adminstrative}
+administrator - {adminstrator}
+admissibility - {admissability}
+admissible - {admissable}
+admitted - {admited}
+admitting - {admiting}
+admit - {admitt}
+and - {adn}
+adolescent - {adolecent}
+acquire - {adquire}
+acquiring - {adquiring}
+address - {adres}
+addressable - {adresable}
+addressing - {adresing}
+; address, Adress - {adress}
+addressable - {adressable}
+; addressing, dressing - {adressing}
+advantageous - {advantagous}
+advertisement - {advertisment}
+advertisements - {advertisments}
+advised - {adviced}
+aerial - {aeriel}
+aerials - {aeriels}
+; aeroplane (variant of airplane)
+affidavit - {affadavit}
+aficionado - {afficionado}
+affiliate - {affilate}
+affiliate - {affilliate}
+; afford, effort - {affort}
+afraid - {affraid}
+after - {affter}
+Africa - {Afica}
+after-effect - {after-affect}
+aftereffect - {afteraffect}
+after which - {afterwhich}
+after - {afther}
+against - {againnst}
+against - {agains}
+against - {againsts}
+; ageing (variant of aging)
+agitate - {aggitate}
+agree - {aggree}
+agreement - {aggreement}
+egregious - {aggregious}
+aggressive - {aggresive}
+again - {agian}
+; again, angina - {agina}
+against - {aginst}
+aggravate - {agravate}
+agree - {agre}
+agreed - {agred}
+; aggregate, agrégate - {agregate}
+; aggregation, agrégation - {agregation}
+agreeing - {agreing}
+agrees - {agress}
+aggression - {agression}
+aggressive - {agressive}
+aggressively - {agressively}
+; agriculturalist (agriculturist) (acceptable variant)
+; agriculturalists (agriculturists) (acceptable variant)
+agriculture - {agricultue}
+agriculture - {agriculure}
+aggrieve - {agrieved}
+have - {ahev}
+happen - {ahppen}
+have - {ahve}
+airport - {aiport}
+airborne - {airborn}
+airborne - {airbourne}
+aircraft - {aircrafts}
+airports - {airporta}
+adjacent - {ajacent}
+adjoin - {ajoin}
+adjoining - {ajoining}
+adjust - {ajust}
+; a.k.a., AKA - {aka}
+a.k.a. - {a.k.a}
+awkward - {akward}
+albeit - {albiet}
+alcohol - {alchohol}
+alcoholic - {alchoholic}
+alcohol - {alchol}
+alcoholic - {alcholic}
+alcohol - {alcohal}
+alcoholic - {alcoholical}
+allege - {aledge}
+alleged - {aledged}
+alleges - {aledges}
+allege - {alege}
+alleged - {aleged}
+allegiance - {alegience}
+algorithm - {algoritm}
+algorithms - {algoritms}
+allegory - {allagory}
+alliance - {allaince}
+allege - {alledge}
+alleged - {alledged}
+alleges - {alledges}
+allegiance - {allegence}
+allegiance - {allegience}
+align - {allign}
+alignment - {allignment}
+alleviate - {alliviate}
+almost - {allmost}
+along - {allong}
+allophone - {allopone}
+allophones - {allopones}
+allotted - {alloted}
+allotting - {alloting}
+already - {allready}
+; all right, alright - {allright}
+also - {allso}
+altogether - {alltogether}
+always - {allways}
+almost - {almsot}
+alcohol - {alochol}
+almost - {alomst}
+also - {alos}
+; a lot, allot - {alot}
+a lot of - {alot of}
+a lot more - {alot more}
+allotted - {alotted}
+allotting - {alotting}
+allow - {alow}
+already - {alreayd}
+; alright (variant of all right)
+; also, else - {alse}
+also - {alsot}
+always - {alsways}
+Atlanta - {Altanta}
+alternative - {altenative}
+altered - {alterated}
+altarpiece - {alterpiece}
+; altho (less common variant of although)
+although - {althought}
+although - {altough}
+aluminum (aluminium) (correct spelling in American English)
+; alumna, alumnae - {alumnas}
+; alumni, alumnus - {alumnis}
+; allusion, illusion - {alusion}
+alluvial - {aluvial}
+always - {alwasy}
+always - {alwyas}
+amateur - {amatuer}
+; armature, amateur - {amature}
+; ambiance (ambience) (acceptable French-influenced variant)
+ambient - {ambiant}
+; ambience (ambiance) (acceptable variant)
+ambiguous - {ambigious}
+American - {Ameircan}
+amenities - {amenites}
+America - {Amercia}
+American - {Amercian}
+amendment - {amendmant}
+make - {amke}
+making - {amking}
+amass - {ammass}
+amend - {ammend}
+amended - {ammended}
+amendment - {ammendment}
+amenity - {ammenity}
+amount - {ammount}
+amnesty - {amnisty}
+; amongst (variant of among)
+; among, amongst - {amonst}
+; a month, among, amongst - {amonth}
+among - {amoung}
+amongst - {amoungst}
+amphitheater - {ampitheater}
+amphitheatre - {ampitheatre}
+; ampoule (variant of ampule)
+among - {amung}
+Anaheim - {Anahiem}
+analogous - {analagous}
+analytic - {analitic}
+analogous - {analogeous}
+analogue (analog) (correct spelling in British English)
+; analyze (variant of analyse)
+analysis - {anaylsis}
+and - {anbd}
+ancestor - {ancester}
+ancestral - {ancesteral}
+ancillary - {ancilliary}
+and - {andd}
+androgynous - {androgenous}
+androgyny - {androgeny}
+annihilate - {anihilate}
+annihilation - {anihilation}
+anniversary - {aniversary}
+ankle - {ankel}
+and - {annd}
+; annexe (variant of annex)
+anoint - {annoint}
+announce - {annonce}
+announcement - {annoncement}
+announce - {annouce}
+announced - {annouced}
+announcement - {annoucement}
+annually - {annualy}
+annulled - {annuled}
+anomalies - {anomolies}
+anomalous - {anomolous}
+anomaly - {anomoly}
+anonymity - {anonimity}
+announce - {anounce}
+announcement - {anouncement}
+nasalisation - {ansalisation}
+nasalization - {ansalization}
+aunt - {ant}
+Antarctic - {Antartic}
+anthropomorphization - {anthromorphization}
+anthropologist - {anthropolgist}
+anthropology - {anthropolgy}
+anti-apartheid - {antiapartheid}
+anthropology - {antropology}
+; anal, annual - {anual}
+annually - {anually}
+annulled - {anulled}
+anywhere - {anyhwere}
+anything - {anytying}
+; informal for anyhow or anyway - {anyways}
+April - {Aoril}
+alpaca - {apalca}
+appalled - {apalled}
+apparatus - {aparatus}
+apparent - {aparent}
+apparently - {aparently}
+appear - {apear}
+appearance - {apearance}
+appeared - {apeared}
+appearing - {apearing}
+Apennines - {Apenines}
+April - {Apirl}
+application - {aplication}
+applied - {aplied}
+appoint - {apoint}
+apologetics - {apolegetics}
+apologize - {apoligize}
+; apologise (variant of apologize)
+; upon, apron - {apon}
+apparent - {apparant}
+apparently - {apparantly}
+apart - {appart}
+apartment - {appartmant}
+apartment - {appartment}
+; appealing, appalling - {appealling}
+appearance - {appearence}
+Apennines - {Appenines}
+appearance - {apperance}
+application - {applicaiton}
+applications - {applicaitons}
+applied - {applyed}
+apologies - {appologies}
+apologize - {appologize}
+apology - {appology}
+approach - {apporach}
+appreciate - {appretiate}
+appreciate - {apprieciate}
+approaches - {approachs}
+approach - {approch}
+appropriate - {appropiate}
+approximately - {approximatley}
+approximately - {approximatly}
+approximately - {approximently}
+approximately - {approximitely}
+April - {april}
+approach - {aproach}
+approx. - {aprox.}
+approximately - {aproximately}
+approximation - {aproximation}
+aqueduct - {aquaduct}
+acquaintance - {aquaintance}
+acquainted - {aquainted}
+Aquarius - {aquarius}
+acquaintance - {aquiantance}
+aquifer - {aquifier}
+acquire - {aquire}
+acquired - {aquired}
+acquiring - {aquiring}
+acquisition - {aquisition}
+acquitted - {aquitted}
+arranged - {aranged}
+arrangement - {arangement}
+arbitrarily - {arbitarily}
+arbitrary - {arbitary}
+; arboretum, even in UK - {arbouretum}
+; archaeology, archeology - {archaoelogy}
+; archaeology, archeology - {archaology}
+; archeologist, archaeologist - {archeaologist}
+; archeologists, archaeologists - {archeaologists}
+architect - {archetect}
+architects - {archetects}
+architectural - {archetectural}
+architecturally - {archetecturally}
+architecture - {archetecture}
+; archaic, Archiac - {archiac}
+Archimedean - {Archimedian}
+architecture - {architechture}
+architectural - {architectual}
+achievement - {archivement}
+arches - {archs}
+; arch-type, archetype - {archtype}
+; ardour (variant of ardor) (correct spelling in British English)
+; are not, aren't - {are'nt}
+arguably - {argubly}
+arguably - {argueably}
+arguably - {arguebly}
+argument - {arguement}
+aerial view - {arial view}
+aerial view - {ariel view}
+Aries - {aries}
+arose - {arised}
+; a rival, arrival - {arival}
+arrive - {arive}
+armour (correct spelling in British English) (armor)
+aren't - {arn't}
+arrange - {arrage}
+arrangement - {arragement}
+arrangement - {arrangment}
+arrangement - {arrengement}
+arrangements - {arrengements}
+around - {arround}
+; artefact (artifact) (acceptable variant)
+Arctic Circle - {Artic Circle}
+Arctic Ocean - {Artic Ocean}
+article - {artical}
+article - {artice}
+article - {articel}
+artificial - {artifical}
+artificially - {artifically}
+artificially - {artificialy}
+article - {artilce}
+artillery - {artillary}
+; ascendancy (ascendency) (acceptable variant)
+ascend - {asend}
+ascetic - {asetic}
+asphalt - {ashphalt}
+assign - {asign}
+assimilate - {asimilate}
+asks - {askes}
+also - {aslo}
+associate - {asociate}
+associated - {asociated}
+association - {asociation}
+absorbed - {asorbed}
+aspirations - {asperations}
+assassin - {assasin}
+assassinate - {assasinate}
+assassinated - {assasinated}
+assassinates - {assasinates}
+assassination - {assasination}
+assassinations - {assasinations}
+assassins - {assasins}
+associate - {asscoiate}
+assemble - {assemple}
+assertion - {assertation}
+aside - {asside}
+assimilated - {assimiliated}
+assassinate - {assinate}
+assassination - {assination}
+assistance - {assisstance}
+assistance - {assitance}
+assistant - {assitant}
+association - {assocation}
+associate - {assoicate}
+associated - {assoicated}
+associates - {assoicates}
+assault - {assualt}
+assume - {assumme}
+asymmetric - {assymetric}
+asymmetry - {assymetry}
+asterisk - {asterick}
+asterisk - {asteriks}
+asteroid - {asteriod}
+; aesthetic, esthetic - {asthetic}
+; aesthetical, esthetical - {asthetical}
+; aesthetically, esthetically - {asthetically}
+; astroid, asteroid - {astroid}
+assume - {asume}
+as well - {aswell}
+attempt - {atempt}
+athlete - {athelete}
+athletic - {atheletic}
+athletic - {atheltic}
+Athenian - {Athenean}
+Athenians - {Atheneans}
+atheist - {athiest}
+athlete - {athlethe}
+atmosphere - {athmosphere}
+although - {athough}
+; attitude, altitude - {atitude}
+at least - {atleast}
+athlete - {atlethe}
+atmosphere - {atomsphere}
+attractions - {atractions}
+attribute - {atribute}
+attributed - {atributed}
+attributes - {atributes}
+; attracted, attached, attacked - {attacted}
+attraction - {attaction}
+attractive - {attactive}
+; attainder, attained - {attaindre}
+attach - {attatch}
+attempt - {attemp}
+attempt - {attemt}
+attempted - {attemted}
+attempting - {attemting}
+attendance - {attendence}
+attendant - {attendent}
+attendants - {attendents}
+; attend, attended - {attened}
+attend - {attent}
+attended - {attented}
+attempt - {attept}
+at the - {atthe}
+attitude - {attitide}
+atone - {attone}
+attorneys - {attornies}
+attorney - {attorny}
+audience - {audeince}
+audience - {audiance}
+August - {Augsut}
+August - {auguat}
+August - {Auguest}
+August - {august}
+August - {Augut}
+Australia - {austrailia}
+Australia - {australia}
+Australian - {australian}
+Australasia - {Australiasia}
+August - {Ausust}
+author - {auther}
+autobiographic - {authobiographic}
+autobiography - {authobiography}
+authoritative - {authorative}
+; authorise (variant of authorize)
+authorities - {authorites}
+authoritative - {authoritive}
+autochthonous - {autochtonous}
+autochthonous - {autoctonous}
+author - {autor}
+authority - {autority}
+auxiliaries - {auxillaries}
+auxiliary - {auxillary}
+auxiliaries - {auxilliaries}
+auxiliary - {auxilliary}
+available - {availabe}
+available - {availiable}
+available - {availible}
+available - {avalable}
+avalanche - {avalance}
+available - {avaliable}
+available - {avalible}
+aviation - {avation}
+averaged - {averageed}
+average - {averege}
+awoke - {awaked}
+awareness - {awarness}
+awesome - {awsome}
+away - {awya}
+; axe (ax) (acceptable variant)
+
+; === B ===
+; babies, baby's, babys - {babys}
+became - {bacame}
+backpedal - {backpeddle}
+bankruptcy - {backruptcy}
+background - {backround}
+; became, become - {bacome}
+badminton - {badmiton}
+badminton - {badmitton}
+; based, biased - {baised}
+back - {bakc}
+balance - {balence}
+bailout - {baleout}
+ballast - {ballest}
+bandwidth - {bandwith}
+bankruptcy - {bankrupcy}
+banana - {bannana}
+board - {baord}
+; about, bout - {baout}
+; baptise (variant of baptize)
+barbiturate - {barbituate}
+Barnsley - {Barnsely}
+; barron (baron; huge number of false positives)
+basically - {basicaly}
+basically - {basicly}
+bassist - {basist}
+battalion - {batallion}
+; batch's, batches - {batchs}
+balk - {bauk}
+back - {bcak}
+became - {beacame}
+because - {beacause}
+; beach's, beaches - {beachs}
+because - {beacuse}
+; bared, bearded, bore, borne - {beared}
+barely - {bearly}
+bestial - {beastial}
+bestiality - {beastiality}
+; beat, beaten - {beated}
+beautiful - {beatiful}
+bureaucracy - {beaurocracy}
+bureaucrat - {beaurocrat}
+beautiful - {beautifull}
+beautifully - {beautifuly}
+beautiful - {beautyfull}
+became - {becamae}
+became - {becamed}
+because - {becase}
+because - {becasue}
+became - {becomed}
+becoming - {becomeing}
+becoming - {becomming}
+because - {becouse}
+because - {becuase}
+been - {beeen}
+being - {beeing}
+between - {beetween}
+between - {beetwen}
+before - {befoer}
+before - {befor}
+; begging, begin - {beggin}
+beginner - {begginer}
+beginning - {beggining}
+beginning - {begginning}
+beginning - {begining}
+beginning - {beginnig}
+; behavior (variant of behaviour)
+; behaviour (variant of behavior)
+; behavior, behaviour - {behavour}
+; behove (variant of behoove)
+; begin, being - {beign}
+; begins, beings - {beigns}
+Beijing - {Bejing}
+; belabour (variant of belabor)
+beleaguered - {beleagured}
+believe - {beleave}
+belief - {beleif}
+believe - {beleive}
+; beliefs, believes - {beleives}
+Belgium - {Belguim}
+believable - {believeable}
+believe - {belive}
+believer - {beliver}
+; beliefs, believes - {belives}
+believing - {beliving}
+bellwether - {bellweather}
+benches - {benchs}
+beneficial - {benefical}
+beneficiary - {beneficary}
+Benghazi - {Bengahzi}
+beneficial - {benificial}
+benefit - {benifit}
+benefits - {benifits}
+benefit - {bennefit}
+before - {beofer}
+before - {beofre}
+bureau - {bereau}
+bergamot - {bergamont}
+Bernoulli - {Bernouilli}
+besiege - {beseige}
+berserk - {beserk}
+beset - {besetted}
+between - {beteen}
+between - {bettween}
+between - {betweeen}
+between - {betwen}
+; biannual, biennial - {bianual}
+; biassed (variant of biased)
+being - {bieng}
+bilaterally - {bilateraly}
+bibliography - {bilbliography}
+bound - {binded}
+; binomial, binominal - {binominal}
+bit - {bited}
+bitten - {biten}
+building - {biulding}
+blame - {blaim}
+blamed - {blaimed}
+blatant - {blatent}
+bled - {bleeded}
+; blest (variant of blessed)
+Blitzkrieg - {Blitzkreig}
+blossom - {bloosom}
+blossom - {blossem}
+; blew, blown - {blowed}
+; bout, boat, about - {boaut}
+bodily - {bodly}
+; bodies, body's - {bodys}
+bona fide - {bonafied}
+boundary - {bondary}
+bona fide - {bonified}
+Bonanno - {Bonnano}
+boos - {boo's}
+; boarded, bordered - {borded}
+; bother, brother - {borther}
+; booths, both - {boths}
+boundaries - {boundries}
+boundary - {boundry}
+buoyancy - {bouyancy}
+buoyant - {bouyant}
+buoyant - {boyant}
+boyfriend - {boyfreind}
+boys' - {boys's}
+breakdown - {brakedown}
+; break-up, breakup - {brakeup}
+brackish - {brakish}
+; branch's, branches - {branchs}
+brought - {brang}
+Brazilian - {Brasillian}
+Brazilian - {Brazillian}
+; beaked, broke, broken - {breaked}
+breakthrough - {breakthough}
+bred - {breeded}
+brief - {breif}
+briefcase - {breifcase}
+briefly - {breifly}
+brethren - {brethrens}
+bribery - {bribary}
+Brigadier - {Brigandier}
+brilliant - {briliant}
+brilliance - {brillance}
+; brilliant; false positives for brillant and Brillant - {brillant}
+brought - {bringed}
+Britain - {Britan}
+Britain - {Britian}
+Britain - {Brittain}
+British - {Brittish}
+; broadcast - {broadcasted}
+broadly - {broady}
+broadcast - {brodcast}
+brought - {broght}
+; broke, broken - {broked}
+brought - {brung}
+Brussels - {Brussells}
+; Buddha; but see Buddah Records - {Buddah}
+Buenos Aires - {Buenos Aries}
+; buffalos (acceptable variant of buffaloes)
+budget - {buget}
+building - {buiding}
+building - {buidling}
+built-in - {build-in}
+built - {builded}
+building - {buildng}
+building - {builiding}
+business - {buisness}
+building - {bulding}
+building - {buliding}
+bulletin - {bulliten}
+burial - {buriel}
+; burin, burning, burying, during - {buring}
+burial - {burrial}
+buried - {burried}
+; bury, burry - {burry}
+burying - {burrying}
+business - {busines}
+; business, businesses - {busineses}
+business - {busness}
+business - {bussines}
+business - {bussiness}
+bought - {buyed}
+bypass - {byepass}
+
+; === C ===
+cacophonous - {cacaphonous}
+cacophony - {cacaphony}
+caffeine - {caffiene}
+calendar - {calandar}
+calendar - {calander}
+calendar - {calender}
+; calf's, calves - {calfs}
+; calibre (variant of caliber)
+; caliber, calibre - {calibur}
+California - {Califronia}
+Californian - {Califronian}
+calligraphy - {caligraphy}
+; calloused (callused) (Concise Oxford allows both spellings)
+; callouses (calluses) (Concise Oxford allows both spellings)
+; callous, callus - {calous}
+calculate - {caluclate}
+calculated - {caluclated}
+calculate - {caluculate}
+calculated - {caluculated}
+calculate - {calulate}
+calculated - {calulated}
+Cambridge - {Cambrige}
+came back - {cameback}
+camaraderie - {cameraderie}
+camouflage - {camoflage}
+campaign - {campain}
+camaraderie - {camraderie}
+Canadian - {Canadaian}
+Canadian - {Canadain}
+; cancelled (variant of canceled)
+candidate - {candadate}
+candidate - {canidate}
+canoeing - {canoing}
+canonical - {cannonical}
+connotation - {cannotation}
+connotations - {cannotations}
+; canonise (variant of canonize)
+; can not, can't, cannot; cant may be correct - {cant}
+coast - {caost}
+capabilities - {capabilites}
+capacities - {capacites}
+capability - {caperbility}
+; Cape Town, South Africa; but note HMS Capetown, RMMV Capetown Castle, Capetown, California - {Capetown}
+; capitalise (variant of capitalize)
+captivity - {capitivity}
+capital - {captial}
+capitalize - {captialize}
+captain - {captian}
+character - {carachter}
+; Caracas, carcass - {carcas}
+caring - {careing}
+charismatic - {carismatic}
+Carmelite - {Carmalite}
+; caramel, Carmel-by-the-Sea - {carmel}
+carnivorous - {carniverous}
+carriage - {carraige}
+career - {carrear}
+; cared, carried - {carred}
+career - {carreer}
+career - {carrer}
+Caribbean - {Carribbean}
+Caribbean - {Carribean}
+; caring, carrying - {carring}
+carrying - {carryng}
+Carthaginian - {Carthagian}
+cartographer - {carthographer}
+cartilage - {cartilege}
+cartilage - {cartilidge}
+cartridge - {cartrige}
+cassette - {casette}
+caisson - {casion}
+cassowary - {cassawory}
+cassette - {cassete}
+cassowary - {cassowarry}
+; cast, casted - {casted}
+casualties - {casualites}
+casualties - {casualtes}
+cause - {casue}
+caused - {casued}
+causes - {casues}
+causing - {casuing}
+casualties - {casulaties}
+casualty - {casulaty}
+categories - {catagories}
+categorise - {catagorise}
+categorize - {catagorize}
+category - {catagory}
+; Catalina, Catiline - {Cataline}
+; catalogue (variant of catalog)
+catalogue - {catalouge}
+caught - {catched}
+catches - {catchs}
+; categorise (variant of categorize)
+category - {catergory}
+category - {cathegory}
+catholic - {cathlic}
+caterpillar - {catterpilar}
+; casualties; causalities may be correct - {causalities}
+; cauterise (variant of cauterize)
+cavalry - {cavarly}
+Caesar - {Ceasar}
+Celsius - {Celcius}
+celebrate - {celeberate}
+celebrities - {celebrites}
+celebrate - {celibrate}
+cemetery - {cementary}
+cemetery - {cementery}
+cemetery - {cemetarey}
+cemeteries - {cemetaries}
+cemetery - {cemetary}
+cemetery - {cemetry}
+census - {cencus}
+; censor, censure - {censur}
+centennial - {centenial}
+; centenary, centennial - {centennary}
+; center (variant of centre)
+central - {centeral}
+; centralise (variant of centralize)
+centrally - {centraly}
+; centre (variant of center)
+; centred (variant of centered)
+calculate - {caluclate}
+centrifugal - {centrifical}
+century - {centruy}
+centuries - {centures}
+centuries - {centuties}
+century - {centuty}
+; certain, keratin - {ceratin}
+ceremonial - {cerimonial}
+ceremonies - {cerimonies}
+ceremonious - {cerimonious}
+ceremony - {cerimony}
+certainty - {certainity}
+certain - {certian}
+certified - {certifed}
+; cervical, serval, servile - {cervial}
+; chaffing, chafing - {chaffing}
+chock-full - {chalk-full}
+challenge - {challange}
+challenged - {challanged}
+challenger - {challanger}
+chamfered - {chamferred}
+Champagne - {Champange}
+change - {chanage}
+; channel, but see Chanel (disambiguation) - {chanel}
+changeable - {changable}
+changing - {changeing}
+chaparral - {chapparal}
+character - {charachter}
+characters - {charachters}
+; characterise (variant of characterize)
+characteristic - {characterstic}
+character - {charater}
+; characterised, characterized - {charaterized}
+character - {charcter}
+chairman - {chariman}
+characteristics - {charistics}
+Charlotte - {Charolette}
+; chase, chaser - {chasr}
+Chhattisgarh - {Chattisgarh}
+; chauffer, chauffeur - {chauffer}
+chief - {cheif}
+chemical - {chemcial}
+chemically - {chemcially}
+chemistry - {chemestry}
+chemically - {chemicaly}
+; cheque (variant of check)
+; chequer (checker) (correct spelling in British English but only in the sense of "chequer board", the game of chequers and "chequer tree")
+Chhattisgarh - {Chhatisgarh}
+children - {chidren}
+chieftain - {chieftan}
+childbirth - {childbird}
+children - {childern}
+; children, children's - {childrens}
+Chinese - {Chineese}
+Christmas - {Chrismas}
+chocolate - {choclate}
+choice - {choise}
+; chooses, chose, chosen - {choosed}
+chosen - {choosen}
+; chose, chosen - {chosed}
+chooses - {choses}
+choosing - {chosing}
+; chronic, chronicle - {chronical}
+ceiling - {cieling}
+Cincinnati - {Cincinatti}
+Cincinnati - {Cincinnatti}
+circuit - {circiut}
+circuitous - {circuituous}
+circumcised - {circumcized}
+circuit - {ciricuit}
+; civilisation (variant of civilization)
+; civilise (variant of civilize)
+civilian - {civillian}
+clad or cladded - {claded}
+clear - {claer}
+clearer - {claerer}
+clearly - {claerly}
+claims - {claimes}
+; claiming, clamming - {claming}
+; clamor (variant of clamour)
+; clamour (variant of clamor)
+; clangour (variant of clangor)
+classic - {clasic}
+classical - {clasical}
+classically - {clasically}
+classically - {classicaly}
+classified - {classifed}
+claustrophobia - {claustraphobia}
+clearance - {cleareance}
+clearance - {clearence}
+; clear, sclera - {clera}
+clinical - {clincial}
+clinically - {clinicaly}
+closely - {closley}
+co-starred - {co-stared}
+co-starring - {co-staring}
+co-star - {co-starr}
+; coaches, coaches' - {coachs}
+coalition - {coaltion}
+coefficient - {coefficent}
+coerce - {coerse}
+conform - {coform}
+coincide - {coinside}
+coincidence - {coinsidence}
+collaboration - {colaboration}
+collapse - {colapse}
+collateral - {colateral}
+cobalt - {colbalt}
+collaboration - {collaberation}
+; collectable (variant of collectible)
+collection - {colleciton}
+collegiate - {collegate}
+colleague - {collegue}
+colleagues - {collegues}
+colonnade - {collonade}
+colonies - {collonies}
+colony - {collony}
+colossal - {collosal}
+column - {collum}
+column - {collumn}
+colloquial - {coloquial}
+; color (variant of colour)
+coloration (colouration) (correct spelling in American English)
+colorise/colorize/colourise/colourize (all acceptable spellings)
+; colour (variant of color)
+colouration (coloration) (correct spelling in British English)
+colourless (colorless) (correct spelling in British English)
+; commander, commandeer - {comander}
+commando - {comando}
+commandos - {comandos}
+comeback - {comback}
+commemorate - {comemmorate}
+commencement - {comencement}
+commerce - {comerce}
+; comercial, commercial - {comercial}
+commercially - {comercially}
+commission - {comision}
+commissioned - {comisioned}
+commissioner - {comisioner}
+commissioning - {comisioning}
+commissions - {comisions}
+commission - {comission}
+commissioned - {comissioned}
+commissioner - {comissioner}
+commissioning - {comissioning}
+commissions - {comissions}
+committed - {comited}
+committing - {comiting}
+committee - {comittee}
+committed - {comitted}
+committing - {comitting}
+; commandoes (variant of commandos)
+commemorative - {commemerative}
+commemorate - {commemmorate}
+commemorate - {commerate}
+commemorating - {commerating}
+commemoration - {commeration}
+commemorative - {commerative}
+commercial - {commerical}
+commercially - {commerically}
+commercial - {commericial}
+commercially - {commericially}
+coming - {comming}
+commission - {commision}
+commissioned - {commisioned}
+commissioner - {commisioner}
+commissioning - {commisioning}
+commissions - {commisions}
+committed - {commited}
+committee - {commitee}
+committing - {commiting}
+committee - {committe}
+committees - {committies}
+commitment - {committment}
+committee - {committy}
+commemorated - {commmemorated}
+commonly - {commongly}
+communication - {communciation}
+communities - {communites}
+communities - {communitys}
+community - {communty}
+communal - {communual}
+; CompAir, compare - {compair}
+compared - {compaired}
+comparison - {compairison}
+comparable - {compareable}
+comparison - {comparision}
+comparative - {comparitive}
+comparatively - {comparitively}
+comparison - {comparsion}
+compatibilities - {compatabilities}
+compatibility - {compatability}
+compatible - {compatable}
+compatibilities - {compatablities}
+compatibility - {compatablity}
+compatibilities - {compatiblities}
+compatibility - {compatiblity}
+compete - {compeet}
+competing - {compeeting}
+competence - {competance}
+competent - {competant}
+competitive - {competative}
+; competition, completion - {competion}
+competing - {competiting}
+competition - {competiton}
+; competitive, completive - {competive}
+competitively - {competively}
+; competitor, completor - {competor}
+comprehensive - {comphrehensive}
+compile - {compilate}
+competent - {compitent}
+complainant - {complaintant}
+completely - {completly}
+compiler - {complier}
+compromise - {comprimise}
+compromise - {comprimize}
+compromise - {compromize}
+computation - {compution}
+camaraderie - {comradarie}
+camaraderie - {comraderie}
+community - {comunity}
+combined - {conbined}
+consecutive - {concecutive}
+consensus - {concensus}
+coincide - {concide}
+consider - {concider}
+considered - {concidered}
+considers - {conciders}
+conscience - {concience}
+conscientious - {concientious}
+conceive - {concieve}
+conscious - {concious}
+consciously - {conciously}
+consciousness - {conciousness}
+concrete - {conctete}
+concrete - {conctrete}
+concurrent - {concurent}
+concurring - {concuring}
+concur - {concurr}
+; conclusion, concussion - {concusion}
+condemn - {condem}
+condemned - {condemed}
+condemn - {condemm}
+condemned - {condemmed}
+condition - {condidtion}
+conditions - {condidtions}
+conductor - {conducter}
+; conducive, conductive - {condusive}
+connection - {conection}
+; confectionary (variant of confectionery)
+; confectionery (variant of confectionary)
+conference - {conferance}
+conferred - {confered}
+confer - {conferr}
+confidence - {confidance}
+confidential - {confidental}
+confidentially - {confidentally}
+conference - {confrence}
+confirm - {confrim}
+congratulate - {congradulate}
+congratulations - {congradulations}
+congressional - {congresional}
+connived - {conived}
+conjecture - {conjecutre}
+conjure - {conjour}
+; connection (variant of connexion)
+Connecticut - {Conneticut}
+; connivance (variant of connivence)
+connote - {connotate}
+conqueror - {conquerer}
+conquerors - {conquerers}
+consecrate - {consacrate}
+consent - {conscent}
+consider - {consdider}
+considered - {consdidered}
+consecutive - {consective}
+; consul, counsel - {consel}
+concentrate - {consentrate}
+concentrated - {consentrated}
+concentrates - {consentrates}
+concept - {consept}
+concern - {consern}
+concerned - {conserned}
+concerning - {conserning}
+conserve - {conservate}
+conservative - {conservitive}
+concession - {consession}
+considered - {considerated}
+considered - {considerd}
+consistency - {consistancy}
+consistent - {consistant}
+consistently - {consistantly}
+constituencies - {consituencies}
+constituency - {consituency}
+constitution - {consitution}
+constitutional - {consitutional}
+consolidate - {consolodate}
+consolidated - {consolodated}
+consonant - {consonent}
+consonants - {consonents}
+consortium - {consorcium}
+conspicuous - {conspicious}
+consequently - {consquently}
+constraints - {constaints}
+constantly - {constanly}
+constant - {constatn}
+constituent - {constituant}
+constituents - {constituants}
+constitution - {constituion}
+constitutional - {constituional}
+construction - {constuction}
+consummate - {consumate}
+consummated - {consumated}
+contagious - {contageous}
+contaminate - {contaiminate}
+contains - {containes}
+contemporaries - {contamporaries}
+contemporary - {contamporary}
+contemporaneous - {contemporaneus}
+contemporary - {contempory}
+contention - {contension}
+contestant - {contestent}
+contingent - {contigent}
+continuous - {continious}
+continued - {continiued}
+continuous - {continous}
+continuously - {continously}
+continuing - {continueing}
+continuum - {continum}
+continuous - {continuos}
+continuity - {continuty}
+continuous - {contious}
+controlled - {contolled}
+contractor - {contracter}
+; contractual, contractural - {contractural}
+controversial - {contravercial}
+controversial - {contraversial}
+controversy - {contraversy}
+contributor - {contributer}
+contributors - {contributers}
+contributory - {contributery}
+controlled - {controled}
+controller - {controler}
+controlling - {controling}
+control - {controll}
+controls - {controlls}
+controversial - {controvercial}
+controversy - {controvercy}
+controversies - {controveries}
+controversy - {controversey}
+controversial - {controvertial}
+controversy - {controvery}
+convenient - {conveinent}
+covenant - {convenant}
+convenient - {conveniant}
+conventional - {convential}
+conventionally - {conventionaly}
+Coventry - {Conventry}
+convergence - {convergance}
+convergent - {convergant}
+converse - {conversate}
+conversely - {conversley}
+conversely - {conversly}
+convertible - {convertable}
+conversion - {convertion}
+conventional - {convetional}
+; conveyer (variant of conveyor)
+convenient - {convienient}
+convenient - {convinient}
+coolly - {cooly}
+coordination - {coordiantion}
+; cooperation, corporation - {coorperation}
+corporation - {coporation}
+; copyright; Copywriting|copywrite may be correct - {copywrite}
+correspond - {corespond}
+corrode - {corode}
+coronavirus - {corona virus}
+coronavirus - {corona-virus}
+corrosion - {corosion}
+corporate - {corparate}
+corporation - {corparation}
+corporate - {corperate}
+corporation - {corperation}
+corollary - {correlary}
+corresponding - {correponding}
+corresponding - {correposding}
+correspondence - {correspondance}
+; correspondant, correspondent, corresponding - {correspondant}
+correspondent - {correspondet}
+correspond - {corrispond}
+correspondent - {corrispondant}
+correspondents - {corrispondants}
+corresponding - {corrisponding}
+corresponded - {corrisponded}
+corresponds - {corrisponds}
+constitution - {costitution}
+; could, cloud - {coudl}
+couldn't - {coudn't}
+; counseling, counselling - {counceling}
+; counseling, counselling - {councelling}
+; councillor, councilor, counsellor, counselor - {councellor}
+; councillor (variant of councilor)
+; councilor (variant of councillor)
+; counselling (variant of counseling)
+contain - {countain}
+; countries, country's - {countrys}
+; courier, couturier - {coururier}
+; court, count; some false positives from C code listings - {cout}
+; converted, covered, coveted - {coverted}
+kowtow - {cowtow}
+; coy, copy - {cpoy}
+craftily - {craftly}
+created - {creaeted}
+crescent - {cresent}
+criminal - {crimnal}
+christened - {cristened}
+critical - {critcal}
+criterion - {critereon}
+critically - {criticaly}
+; criticise (variant of criticize)
+critics - {criticists}
+criticise - {critiscise}
+criticism - {critiscism}
+criticize - {critiscize}
+; criticise, criticize - {critise}
+; criticise, criticize - {critisise}
+criticism - {critisism}
+; criticise, criticize - {critisize}
+; criticise, criticize - {critize}
+; crowd, crowded, crowed - {crowed}
+crucifixion - {crucifiction}
+cruises - {crusies}
+cried - {cryed}
+cause - {cuase}
+culminating - {culiminating}
+cutlery - {cultery}
+cumulative - {cumulatative}
+church - {curch}
+current - {curent}
+curiosity - {curiousity}
+curassow - {currasow}
+currently - {currenly}
+currently - {curretly}
+current - {currrent}
+; customisation (variant of customization)
+; customise (variant of customize)
+cut - {cutted}
+; can, cyan - {cxan}
+; cypher (variant of cipher)
+
+; === D ===
+; deal, dial, dahl - {dael}
+Dalmatian - {Dalmation}
+damaging - {damageing}
+damage - {dammage}
+dancing - {danceing}
+dangerous - {dangerious}
+dachshund - {daschund}
+; data, data's - {datas}
+daughter - {daugher}
+daughter - {daugter}
+daughter - {daugther}
+demeanor - {damenor}
+Dardanelles - {Dardenelles}
+December - {Dcember}
+de facto - {de-facto}
+de jure - {de-jure}
+; deactivate, inactive - {deactive}
+dealt - {dealed}
+; deem, dream - {deam}
+debatable - {debateable}
+debut - {debute}
+decadence - {decadance}
+decadent - {decadant}
+decathlon - {decathalon}
+December - {Decemeber}
+December - {Decemer}
+descend - {decend}
+descendant - {decendant}
+; descendant, descendent - {decendent}
+discern - {decern}
+decidable - {decideable}
+decidedly - {decidely}
+decidedly - {decidly}
+deceive - {decieve}
+; decigramme (variant of decigram)
+; decilitre (variant of deciliter)
+; decimetre (variant of decimeter)
+December - {Decmeber}
+decompose - {decomposit}
+decomposed - {decomposited}
+decomposing - {decompositing}
+decomposes - {decomposits}
+decrepit - {decrepid}
+describe - {decribe}
+describing - {decribing}
+decipher - {decypher}
+deciphered - {decyphered}
+deep-seated - {deep-seeded}
+; deemphasise (variant of deemphasize)
+deficit - {defecit}
+; defence (British variant of defense)
+defensive - {defencive}
+defendant - {defendent}
+defender - {defendor}
+; defensed (variant of defended)
+define - {deffine}
+defined - {deffined}
+definite - {deffinite}
+definition - {deffinition}
+defiance - {definance}
+definite - {definate}
+definitely - {definately}
+definitely - {definatly}
+definitely - {definetly}
+definite - {definit}
+definitely - {definitley}
+definitely - {definitly}
+definition - {definiton}
+definition - {defintion}
+defunct - {defuncted}
+degradation - {degredation}
+degrees - {degress}
+deities - {deites}
+delegate - {delagate}
+dilapidate - {delapidate}
+Delhi - {delhi}
+December - {Demcember}
+demeanor - {demenor}
+diminish - {deminish}
+; demographical (variant of demographic)
+denigrating - {denegrating}
+dependency - {dependancy}
+; dependant (British variant of dependent)
+; dram, dream - {deram}
+derived - {derivated}
+derived - {deriviated}
+derivative - {deriviative}
+derogatory - {derogitory}
+; descendant (acceptable variant of descendent)
+; descendent (acceptable variant of descendant)
+; descendents (acceptable variant of descendants)
+decision - {descision}
+decisions - {descisions}
+discuss - {descuss}
+disease - {desease}
+descend - {desend}
+design - {desgin}
+designate - {desginate}
+designed - {desgined}
+decide - {deside}
+designs - {designes}
+dissemination - {desimination}
+designed - {desinged}
+designer - {desinger}
+disintegrated - {desintegrated}
+disintegration - {desintegration}
+desirable - {desireable}
+desirable - {desirible}
+dissolution - {desolution}
+dissolve - {desolve}
+; desperate, disparate - {desparate}
+; desperately, disparately - {desparately}
+desperation - {desparation}
+; British variant of dispatch - {despatch}
+desperation - {despiration}
+describe - {desribe}
+desiccated - {dessicated}
+desiccation - {dessication}
+designed - {dessigned}
+distinct - {destinct}
+distinction - {destinction}
+destroy - {destory}
+destroyer - {destoryer}
+detachment - {detachement}
+detailed - {detailled}
+detach - {detatch}
+detached - {detatched}
+detachment - {detatchment}
+detector - {detecter}
+deterrence - {deterance}
+deterrent - {deterant}
+deterrence - {deterence}
+deterrent - {deterent}
+deterioration - {deteriation}
+; determent, deterrent, detriment - {determent}
+determining - {determing}
+determining - {determinining}
+deterrence - {deterrance}
+deterrent - {deterrant}
+detriment - {detrement}
+detrimental - {detremental}
+Detroit - {Detriot}
+develop - {develope}
+development - {developement}
+development - {developemet}
+developed - {developped}
+developer - {developper}
+develop - {develp}
+devastate - {devestate}
+devastation - {devestation}
+divide - {devide}
+division - {devision}
+devastate - {devistate}
+devastation - {devistation}
+development - {devolopement}
+development - {devolopment}
+developed - {devolopped}
+dyad - {diad}
+dyadic - {diadic}
+dilate - {dialate}
+dilation - {dialation}
+; dialled (variant of dialed)
+; dialogue (variant of dialog)
+; dialog, dialogue - {dialouge}
+disaster - {diaster}
+disciple - {diciple}
+decision - {dicision}
+discover - {dicover}
+discovered - {dicovered}
+discovering - {dicovering}
+discovery - {dicovery}
+discuss - {dicuss}
+discussion - {dicussion}
+; did not, didn't - {did'nt}
+didn't - {didnt}
+; idea, die - {diea}
+; dying, dyeing - {dieing}
+diesel - {diesal}
+deities - {dieties}
+deity - {diety}
+difference - {diference}
+different - {diferent}
+different - {diferrent}
+; defamation, diffamation - {diffamation}
+different - {differant}
+different - {differnt}
+different - {diffrent}
+difficult - {dificult}
+difficulties - {dificulties}
+difficulty - {dificulty}
+dug - {digged}
+digitally - {digitaly}
+; digitise (variant of digitize)
+dignitary - {dignatary}
+dilettante - {dilletante}
+diligence - {dilligence}
+diligent - {dilligent}
+dilute - {dillute}
+dimension - {dimenion}
+dimension - {dimention}
+dimensional - {dimentional}
+diminution - {diminuation}
+diminutive - {diminuative}
+diminution - {diminuition}
+diminutive - {diminuitive}
+diminished - {dimished}
+diminishes - {dimishes}
+diminutive - {dimunitive}
+dynasty - {dinasty}
+dining room - {dinning room}
+diphthong - {diphtong}
+diphthongs - {diphtongs}
+display - {diplay}
+displayed - {diplayed}
+diphtheria - {diptheria}
+diphthong - {dipthong}
+diphthongs - {dipthongs}
+directly - {direcly}
+director - {directer}
+direction - {directon}
+derived - {dirived}
+disabilities - {disabilites}
+disappear - {disapear}
+disappoint - {disapoint}
+disappointment - {disapointment}
+disappearance - {disappearence}
+disapproval - {disaproval}
+disapprove - {disaprove}
+disastrous - {disasterous}
+dissatisfaction - {disatisfaction}
+dissatisfied - {disatisfied}
+; disc (variant of disk)
+discovery - {discoverey}
+discrepancy - {discrepency}
+describe - {discribe}
+described - {discribed}
+describes - {discribes}
+describing - {discribing}
+description - {discription}
+distinction - {disctinction}
+distinctive - {disctinctive}
+; bisect, dissect - {disect}
+; bisection, dissection - {disection}
+dissemination - {disemination}
+disenchanted - {disenchanged}
+dysfunctional - {disfunctional}
+disobedience - {disobediance}
+disobedient - {disobediant}
+dissolution - {disolution}
+dissolve - {disolve}
+; disorientated (variant of disoriented)
+despair - {dispair}
+; despairingly, disparagingly - {disparingly}
+dispense - {dispence}
+dispensed - {dispenced}
+dispensing - {dispencing}
+dispensary - {dispensery}
+; desperate, disparate - {disperate}
+despicable - {dispicable}
+despite - {dispite}
+disputandum - {disputandem}
+disagreement - {dissagreement}
+disappear - {dissapear}
+disappearance - {dissapearance}
+disappeared - {dissapeared}
+disappearing - {dissapearing}
+disappoint - {dissapoint}
+disappointed - {dissapointed}
+disappointment - {dissapointment}
+disappear - {dissappear}
+disappears - {dissappears}
+disappointed - {dissappointed}
+disappointment - {dissappointment}
+disarray - {dissarray}
+disobedience - {dissobediance}
+disobedient - {dissobediant}
+disobedience - {dissobedience}
+disobedient - {dissobedient}
+dissolved - {dissoluted}
+; distinct, district - {distict}
+distinction - {distiction}
+; distil (variant of distill)
+distillation - {distilation}
+distinguish - {distingish}
+distinguished - {distingished}
+distinguishes - {distingishes}
+disturb - {distirb}
+dystopia - {distopia}
+; distributer (variant of distributor)
+destroy - {distroy}
+disturb - {distrub}
+disturbed - {distrubed}
+destruction - {distruction}
+destructive - {distructive}
+; diverse, diverged - {diversed}
+; divesture (variant of divestiture)
+device - {divice}
+divided - {dividied}
+divination - {divinition}
+; devised, divided - {divised}
+division - {divison}
+divisions - {divisons}
+; do not, don't - {do'nt}
+document - {doccument}
+documented - {doccumented}
+doctoral - {doctorial}
+documentary - {documentery}
+documentary - {documentry}
+; did - {doed}
+does - {doens}
+; does not, doesn't - {does'nt}
+; does not, doesn't - {doesnt}
+doing - {doign}
+; dolour (British variant of dolor)
+dominant - {dominent}
+dominant - {dominiant}
+; done, donned - {doned}
+doing - {donig}
+; do not, don't - {dont}
+; donut (acceptable variant of doughnut)
+door jamb - {doorjam}
+doppelgänger - {doppleganger}
+dormant - {dorment}
+; does not, doesn't - {dosen't}
+; daub, doubt - {doub}
+; doughnut (variant of donut)
+dozen - {dozend}
+draftsman - {draftman}
+; dramatise (variant of dramatize)
+dramatic - {dramtic}
+; draught (variant of draft)
+draughtsman - {draughtman}
+Dravidian - {Dravadian}
+; drawn, drew - {drawed}
+; dreamt (variant of dreamed)
+dreams - {dreasm}
+directly - {driectly}
+drank - {drinked}
+; derived, driven, drove - {drived}
+drink - {drnik}
+dropped - {droped}
+during - {druing}
+drummed - {drumed}
+drummer - {drumer}
+drumming - {druming}
+drums - {drumms}
+dried - {dryed}
+daughter - {duaghter}
+; duelled (variant of dueled)
+duly - {duely}
+dug - {dugged}
+dukedom - {dukeship}
+during - {durring}
+; dwelled (variant of dwelt)
+Dwight Yoakam - {Dwight Yokam}
+dryas - {dyas}
+; dyke (variant of dike)
+
+; === E ===
+; each, reached - {eached}
+each other - {eachother}
+earlier - {ealier}
+earliest - {ealiest}
+earlier - {eariler}
+; earing, earning, earring - {earing}
+earlier - {earler}
+; earnt (variant of earned)
+early - {eary}
+easily - {easiliy}
+; early, easily - {easly}
+easternmost - {eastermost}
+; ate, eaten - {eated}
+excessive - {eccessive}
+eclectic - {ecclectic}
+ecclesiastic - {ecclesiatic}
+ecclesiastical - {ecclesiatical}
+ecclesiastical - {ecclestiastical}
+deciduous - {ecidious}
+eclectic - {eclectric}
+eclipse - {eclispe}
+economic - {ecomonic}
+economy - {ecomony}
+economic - {econoımic}
+economic - {econoimic}
+ecstasy - {ecstacy}
+; et cetera, etc. - {ect.}
+editor - {editior}
+edition - {edtion}
+; education, eduction - {eduction}
+educational - {eductional}
+eked - {eeked}
+eking - {eeking}
+ekes - {eeks}
+eerily - {eeriely}
+eeriness - {eerieness}
+efficiency - {effeciency}
+efficient - {effecient}
+efficiency - {efficency}
+efficient - {efficent}
+effluence - {effulence}
+; effort, afford - {efford}
+; efforts, affords - {effords}
+; e.g., egg; results in many false positives - {eg}
+; eight, eighth - {eigth}
+elaborate - {elaborite}
+; eclectic, electric - {electic}
+; election, electron - {electon}
+electoral - {electorial}
+electrical - {electrial}
+electrically - {electricly}
+electricity - {electricty}
+elementary - {elemantary}
+eliminated - {eleminated}
+eliminating - {eleminating}
+eels - {eles}
+electronic - {eletronic}
+elicited - {elicided}
+eligibility - {eligability}
+eligible - {eligable}
+elementary - {elimentary}
+elusive - {ellusive}
+elephant - {elphant}
+embarrass - {embarass}
+embarrassed - {embarassed}
+embarrassing - {embarassing}
+embarrassment - {embarassment}
+embarrass - {embarras}
+embarrassed - {embarrased}
+embarrassing - {embarrasing}
+embarrassment - {embarrasment}
+embedded - {embeded}
+embellish - {embelish}
+embellishment - {embelishment}
+embezzled - {embezelled}
+emanate - {eminate}
+; emisión, emission - {emision}
+emitted - {emited}
+emitter - {emiter}
+emitting - {emiting}
+; emission, emotion - {emition}
+emit - {emitt}
+immediately - {emmediately}
+immense - {emmense}
+emigrant - {emmigrant}
+emigrated - {emmigrated}
+; eminent, imminent - {emminent}
+eminently - {emminently}
+emissaries - {emmisaries}
+emissaries - {emmisarries}
+emissary - {emmisarry}
+emissary - {emmisary}
+emission - {emmision}
+emission - {emmission}
+emitted - {emmited}
+emitting - {emmiting}
+emitted - {emmitted}
+emitting - {emmitting}
+enmity - {emnity}
+emphasis - {empahsis}
+emphasize - {empahsize}
+impede - {empede}
+empirical - {emperical}
+; emphasise (variant of emphasize)
+emphysema - {emphysyma}
+; empirical, imperial - {empirial}
+; old spelling of employee, employee, employ, employer - {employe}
+; old spelling of employees, employees, employs, employers - {employes}
+impound - {empound}
+impoundment - {empoundment}
+; enamoured (acceptable variant of enamored)
+embankment - {enbankment}
+enhancement - {enchancement}
+incorporate - {encorperate}
+incorporate - {encorporate}
+encounter - {encouter}
+encounter - {encoutner}
+increase - {encrease}
+encryption - {encryptiion}
+; encyclopaedia, encyclopedia - {encyclopeadia}
+; encyclopaedia, encyclopedia - {encyclpedia}
+; encypher, encipher - {encypher}
+; endeavor, endeavour - {endeaver}
+; endeavour (variant of endeavor)
+; endeavor, endeavour - {endevor}
+; endeavor, endeavour - {endevour}
+endoliths - {endolithes}
+endurance - {endurace}
+need - {ened}
+enemy - {enemey}
+; energise (variant of energize)
+engineer - {engeneer}
+engineering - {engeneering}
+engineer - {engieneer}
+engineers - {engieneers}
+engineer - {engineeer}
+engineering - {engineeering}
+engineer - {enginer}
+entity - {enity}
+enlargement - {enlargment}
+; English, enlist - {Enlish}
+enough - {enought}
+enormous - {enourmous}
+enormously - {enourmously}
+; enquire (variant of inquire)
+; enquiry (variant of inquiry)
+; enrol (British alternative spelling of enroll)
+; enrol, enroll - {enrole}
+; enrollment, enrolment - {enrolement}
+; enroll (American alternative spelling of enrol)
+; enrollment (American alternative spelling of enrolment)
+; enrolment (British alternative spelling of enrollment)
+en route - {enroute}
+enterprise - {enteprise}
+entrance - {enterance}
+entrepreneur - {enterpreneur}
+; enterprise, Enterprize - {enterprize}
+entertainment - {entertainement}
+entitled - {entilted}
+entitled - {entited}
+; entities, entitles - {entites}
+entrance - {entrace}
+entered - {entred}
+entrepreneur - {entrepeneur}
+entrepreneurial - {entrepeneurial}
+entrepreneurs - {entrepeneurs}
+; entire, entry - {entrie}
+environment - {enivoriment}
+entitled - {entitied}
+environment - {enviorment}
+environmental - {enviormental}
+environmentally - {enviormentally}
+environments - {enviorments}
+environment - {enviornment}
+environmental - {enviornmental}
+environmentalist - {enviornmentalist}
+environmentally - {enviornmentally}
+environments - {enviornments}
+environment - {enviroment}
+environmental - {enviromental}
+environmentalist - {enviromentalist}
+environmentally - {enviromentally}
+environments - {enviroments}
+; evoke, invoke - {envoke}
+; evolve, involve - {envolve}
+next - {enxt}
+; epicentre (variant of epicenter)
+episode - {epiode}
+epitome - {epitomy}
+episode - {eposide}
+episode - {epsiode}
+aptitude - {eptitude}
+; equalise (variant of equalize)
+; equalled (variant of equaled)
+equally - {equaly}
+equivalent - {equilavent}
+equilibrium - {equilibium}
+equilibrium - {equilibrum}
+equipped - {equiped}
+equipment - {equippment}
+equipment - {equiptment}
+equatorial - {equitorial}
+equivalent - {equivalant}
+equivalent - {equivelant}
+equivalent - {equivelent}
+equivalent - {equivilant}
+equivalent - {equivilent}
+; orally, really - {erally}
+erratic - {eratic}
+erratically - {eraticly}
+; arrested, erected - {erested}
+eradicate - {erradicate}
+erect - {errect}
+erode - {errode}
+erosion - {errosion}
+ecstasy - {esctasy}
+essence - {esence}
+essential - {esential}
+else - {esle}
+essential - {essencial}
+essence - {essense}
+essential - {essental}
+essentially - {essentialy}
+essential - {essentual}
+essential - {essesital}
+establish - {estabilish}
+established - {establised}
+establishment - {establishement}
+establish - {estalbish}
+; ethos, those - {ethose}
+etymology - {ethymology}
+ethnography - {etnography}
+eulogy - {euology}
+Europe - {Euorpe}
+European - {Euorpean}
+euphemism - {euphamism}
+European - {Europian}
+Europeans - {Europians}
+European - {Eurpean}
+European - {Eurpoean}
+; euthanise (variant of euthanize)
+; evaluation, evolution - {evalution}
+eventually - {eventualy}
+ever since - {eversince}
+every - {eveyr}
+evidently - {evidentally}
+exaggerate - {exagerate}
+exaggerated - {exagerated}
+exaggerates - {exagerates}
+exaggerating - {exagerating}
+exaggerate - {exagerrate}
+exaggerates - {exagerrates}
+exaggerating - {exagerrating}
+examine - {examinate}
+exempt - {exampt}
+exasperated - {exasparated}
+exhaust - {exaust}
+escape - {excape}
+execute - {excecute}
+execution - {excecution}
+exceeded - {excedded}
+exceed - {excede}
+excellent - {excelent}
+excel - {excell}
+excellence - {excellance}
+excellent - {excellant}
+excels - {excells}
+exempt - {excempt}
+exercise - {excercise}
+excruciating - {excrutiating}
+except - {execpt}
+excellent - {exelent}
+excellent - {exellent}
+; exemple, example, - {exemple}
+except - {exept}
+exacerbate - {exerbate}
+exacerbated - {exerbated}
+exercise - {exercice}
+excerpt - {exerpt}
+external - {exerternal}
+exalt - {exhalt}
+; exaltation, exhalation - {exhaltation}
+exhibition - {exhibtion}
+exhilarate - {exhilirate}
+exorbitant - {exhorbitant}
+exhaust - {exhuast}
+exuberance - {exhuberance}
+exuberant - {exhuberant}
+exhibit - {exibit}
+exhibition - {exibition}
+existing - {exisiting}
+existence - {existance}
+; existant, existent - {existant}
+example - {exmaple}
+exoskeleton - {exoskelaton}
+explain - {expalin}
+expansion - {expantion}
+especially - {expecially}
+expelled - {expeled}
+expelling - {expeling}
+expel - {expell}
+expels - {expells}
+expense - {expence}
+experiment - {experement}
+experience - {experiance}
+experiment - {experment}
+expedite - {expidite}
+experiment - {expirement}
+explanation - {explaination}
+explain - {explane}
+explicitly - {explicitely}
+explanation - {explination}
+exploit - {exploitate}
+exploitative - {exploititive}
+escape - {exscape}
+exist - {exsist}
+existence - {exsistance}
+existence - {exsistence}
+extensive - {exstensive}
+extension - {extention}
+exerted - {extered}
+; extinct, extinguished - {extincted}
+; extinct, extant - {extint}
+extraterrestrial - {extraterestrial}
+extraterrestrial - {extraterrestial}
+extraterrestrials - {extraterrestials}
+extravagance - {extravagence}
+extravagant - {extravagent}
+extremophile - {extremeophile}
+extremely - {extremley}
+extremely - {extremly}
+extraordinarily - {extrordinarily}
+extraordinary - {extrordinary}
+; year, eyas - {eyar}
+; years, eyas - {eyars}
+; years, eyas - {eyasr}
+
+; === F ===
+February - {Fabruary}
+facilitate - {faciliate}
+facilities - {facilites}
+facility - {facillity}
+facsimile - {facimile}
+fascinate - {facinate}
+fascination - {facination}
+facsimile - {facsimilie}
+; facility, faculty - {faculity}
+farewell - {fairwell}
+faithful - {faithfull}
+; failing, falling - {faling}
+failure - {faliure}
+; fallen, fell - {falled}
+falsely - {falsley}
+falsely - {falsly}
+family - {famaly}
+familiar - {familar}
+families - {familes}
+family - {familiy}
+; families, family's - {familys}
+famous - {famouse}
+fanaticism - {fanatism}
+Fahrenheit - {Farenheit}
+facetious - {fascitious}
+fascism - {fashism}
+fascinate - {fasinate}
+fashion - {fasion}
+fatalities - {fatalies}
+fatalities - {fatalites}
+fatally - {fataly}
+fatally - {fately}
+; Faught, fought - {faught}
+falter - {faulter}
+; favour (variant of favor)
+; favourite (variant of favorite)
+feasibility - {feasability}
+feasible - {feasable}
+feature - {feauture}
+February - {Febrary}
+February - {Febraury}
+February - {Februarz}
+February - {Februaury}
+February - {Februrary}
+February - {Februray}
+February - {Februsry}
+February - {Febuary}
+February - {Feburary}
+February - {Feburay}
+February - {Feburuary}
+federally - {federaly}
+fed - {feeded}
+felt - {feeled}
+; feet, foot's - {feets}
+; Feild, field - {feild}
+fierce - {feirce}
+February - {Fenruary}
+February - {Ferbruary}
+February - {Ferbuary}
+February - {Ferburary}
+pheromone - {feromone}
+February - {Feruary}
+; fervour (variant of fervor)
+from - {ffrom}
+final - {fianl}
+finally - {fianlly}
+; fibre (variant of fiber)
+fictional - {ficitional}
+fictitious - {ficticious}
+fictitious - {fictious}
+fictional - {fictonal}
+fictitious - {fictous}
+find - {fidn}
+; feel, field, file, phial - {fiel}
+; feels, fields, files, phials - {fiels}
+fiercely - {fiercly}
+fought - {fighted}
+filament - {filiament}
+filament - {fillament}
+filmmaker - {filmaker}
+filmmaking - {filmaking}
+; finalise (variant of finalize)
+finally - {finaly}
+financially - {financialy}
+find out - {findout}
+finally - {finnally}
+finally - {finnaly}
+finished - {finnished}
+finisher - {finnisher}
+friend - {firend}
+fiery - {firey}
+first - {firt}
+; first, flirts - {firts}
+fishes - {fishs}
+fifth - {fith}
+fixture - {fixure}
+flabbergast - {flabergast}
+flaccid - {flacid}
+flagged - {flaged}
+; flavour (variant of flavor)
+; fled, flee, freed - {fleed}
+Flemish - {Flemmish}
+flown - {flewn}
+flexibility - {flexability}
+flexible - {flexable}
+; florescence, fluorescence - {florescence}
+; florescent, fluorescent - {florescent}
+; Floride, fluoride - {floride}
+fluorescence - {flourescence}
+fluorescent - {flourescent}
+fluoride - {flouride}
+fluorine - {flourine}
+fluoroscopy - {flouroscopy}
+flourish - {fluorish}
+fluoroscopy - {fluroscopy}
+flurry - {flury}
+fluctuate - {fluxuate}
+; for, of; many false positives - {fo}
+focus - {focuse}
+; focussed (variant of focused)
+foliage - {foilage}
+follicle - {folicle}
+; follow up, follow-up, follow-up - {followup}
+follow - {folow}
+followed - {folowed}
+follower - {folower}
+following - {folowing}
+former - {fomer}
+formerly - {fomerly}
+; from, form - {fomr}
+phonetic - {fonetic}
+; feet, foot's - {foots}
+footwear - {footware}
+for example - {for exemple}
+forerunner - {for-runner}
+; forbad (variant of forbade)
+; forbade, forbidden - {forbidded}
+forebode - {forbode}
+forecast - {forcast}
+; forecast, forecasted - {forcasted}
+forecasting - {forcasting}
+foreclose - {forclose}
+foreclosure - {forclosure}
+forbad - {forebad}
+forbade - {forebade}
+forbid - {forebid}
+forbidden - {forebidden}
+; forecast, forecasted - {forecasted}
+forceps - {foreceps}
+forfeit - {forefeit}
+forfeit - {forefiet}
+forfeiture - {forefieture}
+forget - {foreget}
+forgive - {foregive}
+; forego, forgo - {forego}
+forlese - {forelese}
+forlorn - {forelorn}
+forsake - {foresake}
+forsaken - {foresaken}
+forsook - {foresook}
+; foreword, forward - {foreward}
+; forewent, forwent - {forewent}
+forfeit - {forfiet}
+forfeiture - {forfieture}
+forgo - {forgoe}
+; foregoing, forgoing - {forgoing}
+forehead - {forhead}
+foreign - {foriegn}
+foreigner - {foriegner}
+Fomalhaut - {Formalhaut}
+; formalise (variant of formalize)
+formal - {formall}
+formalize - {formallize}
+formalized - {formallized}
+formally - {formaly}
+; formatted, formed, format - {formated}
+foremost - {formost}
+forest - {forrest}
+forerunner - {forrunner}
+foresaw - {forsaw}
+; foresee, Forsee - {forsee}
+foreseeable - {forseeable}
+foreseen - {forseen}
+foreshadow - {forshadow}
+foresight - {forsight}
+forestall - {forstall}
+foretell - {fortell}
+fourth - {forth}
+for the - {forthe}
+fortunately - {fortunatly}
+formula - {forumla}
+formulate - {forumlate}
+forerunner - {forunner}
+forewarn - {forwarn}
+; foreword, forward - {forword}
+for the - {fot the}
+found - {foudn}
+fought - {fougth}
+foundries - {foundaries}
+foundry - {foundary}
+Newfoundland - {Foundland}
+forty - {fourty}
+forward - {foward}
+fragment - {fragement}
+Frankfurt - {Franfurt}
+Franciscan - {Fransiscan}
+Franciscans - {Fransiscans}
+February - {Frbruary}
+; froze, frozen - {freezed}
+friend - {freind}
+; freshman's, freshmen - {freshmans}
+friends - {friens}
+; first, Frist - {frist}
+format - {fromat}
+formed - {fromed}
+; former, Fromer - {fromer}
+formerly - {fromerly}
+forming - {froming}
+from the - {fromt he}
+from the - {fromthe}
+from the - {fron the}
+frontier - {fronteir}
+frontispiece - {frontpiece}
+frontispiece - {frontspiece}
+fraught - {frought}
+frozen - {frozed}
+fruition - {fruiton}
+frustum - {frustrum}
+fruition - {frution}
+feud - {fued}
+feudal - {fuedal}
+; fuelled (variant of fueled)
+fulfill - {fufill}
+; fulfil (variant of fulfill)
+; filled, fulled, fuelled - {fulled}
+fulfill - {fullfil}
+fulfill - {fullfill}
+functionally - {functionaly}
+fundamentally - {fundamentaly}
+fundamental - {fundametal}
+foundation - {fundation}
+fundamental - {fundemental}
+function - {funtion}
+further - {furhter}
+furthermore - {furhtermore}
+furniture - {furnature}
+; furore (variant of furor)
+fertile - {furtile}
+further - {furuther}
+frustrate - {fustrate}
+further - {futher}
+furthermore - {futhermore}
+; futhark, futhorc - {futhroc}
+physical - {fysical}
+
+; === G ===
+; game, Gael, gale - {gae}
+galactic - {galatic}
+Galatians - {Galations}
+gangster - {ganster}
+guarantee - {garantee}
+guaranteed - {garanteed}
+guarantees - {garantees}
+garrison - {garisson}
+garrison - {garrision}
+garrison - {garrisson}
+; gasses (acceptable variant of gases)
+guaraná - {gauarana}
+guarantee - {gaurantee}
+guaranteed - {gauranteed}
+guarantees - {gaurantees}
+; gourd, guard - {gaurd}
+guardian - {gaurdian}
+guarantee - {gaurentee}
+guaranteed - {gaurenteed}
+guarantees - {gaurentees}
+general - {genaral}
+general - {genearl}
+genealogies - {geneologies}
+genealogy - {geneology}
+generally - {generaly}
+generator - {generater}
+generic - {generical}
+genitalia - {genialia}
+genesis - {genisis}
+genera or genre - {genra}
+general - {genreal}
+gentlemen's - {gentlemens}
+genius or genus - {genuis}
+; Gerät, great - {gerat}
+German Shepherd - {German Shepard}
+German Shepherd - {German Sheperd}
+German Shepherd - {German Shephard}
+gets - {get's}
+Gandhi - {Ghandi}
+Gibraltar - {Gibralter}
+gyrate - {girate}
+gyrated - {girated}
+gyrates - {girates}
+gyrating - {girating}
+gyration - {giration}
+girlfriend - {girlfreind}
+girls' - {girls's}
+guide - {giude}
+guilt - {giult}
+gives - {give's}
+; gave, given, gives - {gived}
+giving - {giveing}
+; glamour (variant of glamor)
+glamorous - {glamourous}
+goddess - {godess}
+goddesses - {godesses}
+Godunov - {Godounov}
+George - {Goerge}
+; going, Gauguin - {gogin}
+going - {goign}
+going - {gonig}
+good riddance - {good riddens}
+; Goodby, goodbye - {goodby}
+Gothenburg - {Gothenberg}
+Gottlieb - {Gottleib}
+governor - {gouvener}
+governor - {govenor}
+government - {goverment}
+governmental - {govermental}
+government - {governement}
+governor - {governer}
+Government Minister - {Government Minster}
+governmentally - {governmentaly}
+government - {govorment}
+governmental - {govormental}
+grabbed - {grabed}
+grabbing - {grabing}
+gradually - {gradualy}
+great - {graet}
+graffiti - {graffitti}
+graffiti - {grafitti}
+; grammatic, grammatical - {gramatical}
+grammatically - {gramatically}
+grammatical - {gramattical}
+grammatically - {grammaticaly}
+grammar - {grammer}
+grandchild - {granchild}
+grandchildren - {granchildren}
+granddaughter - {grandaughter}
+grandeur - {grandure}
+grandfather - {granfather}
+grandmother - {granmother}
+grandparent - {granparent}
+grandson - {granson}
+; great, grat - {grat}
+grateful - {gratefull}
+gratuitous - {gratuitious}
+greatly - {greately}
+grateful - {greatful}
+gratefully - {greatfully}
+Grecian - {Greecian}
+; Greif, grief - {greif}
+grievance - {greviance}
+grievous - {grevious}
+; grey (variant of gray)
+group - {gropu}
+; grew, grown - {growed}
+grow - {grwo}
+; Guadalupe, Guadeloupe - {Guaduloupe}
+; Guadalupe, Guadeloupe - {Guadulupe}
+; Guadalupe, Guadeloupe - {Guaduloupe}
+gauge - {guage}
+guarantee - {guarentee}
+guaranteed - {guarenteed}
+guarantees - {guarentees}
+Guatemala - {Guatamala}
+Guatemalan - {Guatamalan}
+; guerilla, guerrilla - {guerrila}
+; guerillas, guerrillas - {guerrilas}
+guidance - {guidence}
+gilded - {guilded}
+Giulia - {Guilia}
+Giuliani - {Guiliani}
+Giulio - {Guilio}
+Guinness - {Guiness}
+Giuseppe - {Guiseppe}
+guitarist - {guitarrist}
+guanine - {gunanine}
+guard - {gurad}
+guardian - {guradian}
+guarantee - {gurantee}
+guaranteed - {guranteed}
+guarantees - {gurantees}
+guttural - {guttaral}
+guttural - {gutteral}
+
+; === H ===
+habeas - {habaeus}
+habit - {habbit}
+habeas corpus - {habeus corpus}
+; habitant (uncommon Canadian variant of inhabitant)
+; habitants (uncommon Canadian variant of inhabitants)
+harbor or harbour - {habor}
+harbour or harbor - {habour}
+Habsburg - {Habsbourg}
+; have, hare; mostly false positives for the Spanish word hace - {hace}
+; had not, hadn't - {had'nt}
+; had not, hadn't - {hadnt}
+; have, heave - {haev}
+; half's, halves - {halfs}
+; Hallowe'en, Halloween - {Hallowean}
+handled - {handeled}
+handful - {handfull}
+handkerchief - {hankerchief}
+happen - {hapen}
+happened - {hapened}
+happening - {hapening}
+happened - {happend}
+happened - {happended}
+harass - {haras}
+harassed - {harased}
+harasses - {harases}
+harassment - {harasment}
+; harbour (variant of harbor)
+hardened - {hardend}
+hardware - {hardwear}
+harass - {harras}
+harassed - {harrased}
+harasses - {harrases}
+harassing - {harrasing}
+harassment - {harrasment}
+harass - {harrass}
+harassed - {harrassed}
+harasses - {harrasses}
+harassing - {harrassing}
+harassment - {harrassment}
+; has not, hasn't - {has'nt}
+; has not, hasn't - {hasnt}
+hastily - {hastly}
+have - {haved}
+having - {haveing}
+heyday - {hayday}
+hazardous - {hazerdous}
+headquarters - {headquartes}
+headquarter - {headquater}
+headquartered - {headquatered}
+headquarters - {headquaters}
+heard - {heared}
+heartthrob - {hearthrob}
+heavily - {heaviliy}
+Heidelberg - {Heidelburg}
+higher - {heigher}
+height - {heighth}
+height - {heigth}
+hierarchical - {heirarchial}
+hierarchical - {heirarchical}
+hierarchy - {heirarchy}
+hieroglyphics - {heiroglyphics}
+held - {helded}
+helpful - {helpfull}
+hemorrhage - {hemmorhage}
+heinous - {henious}
+heptathlon - {heptathalon}
+; her, hers, here's - {her's}
+; heard, Hera, herald - {herad}
+hearsay - {heresay}
+; heros (heroes, Heros may be correct)
+hirsute - {hersuit}
+hirsute - {hersute}
+heritage - {hertiage}
+; he's, his - {hes}
+; heterogenous (acceptable variant of heterogeneous)
+hiding - {hidding}
+height - {hieght}
+hierarchical - {hierachical}
+hierarchies - {hierachies}
+hierarchy - {hierachy}
+hierarchical - {hierarchial}
+hierarchical - {hierarcical}
+hierarchy - {hierarcy}
+hieroglyph - {hieroglph}
+hieroglyphs - {hieroglphs}
+higher - {higer}
+highest - {higest}
+higher - {highter}
+; heights, highs - {hights}
+hilarious - {hillarious}
+hindrance - {hinderence}
+hindrance - {hindrence}
+hippopotamus - {hipopotamus}
+hirsute - {hirsuit}
+himself - {hismelf}
+himself - {hisself}
+histocompatibility - {histocompatability}
+history - {histroy}
+hitches - {hitchs}
+hitting - {hiting}
+history - {hitory}
+; hit, hitter - {hitted}
+hosted - {hoasted}
+hobbyist - {hobbiest}
+hobbyist - {hobbist}
+holds - {hold's}
+held - {holded}
+holistic - {hollistic}
+homicide - {homocide}
+homogenize - {homogeneize}
+homogenized - {homogeneized}
+; home page, homepage - {hompage}
+; honorable, honourable - {honarable}
+; honor (variant of honour)
+; honorable (variant of honourable)
+honorary - {honory}
+; honour (variant of honor)
+; honourable (variant of honorable)
+; honorarium, even in UK - {honourarium}
+; honorary, honourary - {honourary}
+; honorific, even in UK - {honourific}
+hopeful - {hopefull}
+hopefully - {hopefuly}
+hoping - {hopeing}
+hopefully - {hopfully}
+horrifying - {horrifing}
+hospital - {hosptial}
+hospital - {hostpital}
+housewives - {housewifes}
+household - {houshold}
+housekeeper - {houskeeper}
+; hours, house - {housr}
+housewife - {houswife}
+however - {howver}
+that - {htat}
+the - {hte}
+; then, hen, the - {hten}
+; there, here - {htere}
+they - {htey}
+think - {htikn}
+thing - {hting}
+think - {htink}
+this - {htis}
+; humor, humour - {humer}
+; humorous, humerus - {humerous}
+; humour (variant of humor)
+humoral - {humoural}
+; humourist (variant of humorist)
+; humorous, even in UK - {humourous}
+hundred - {hundered}
+hurricane - {hurricaine}
+husband - {husban}
+have - {hvae}
+having - {hvaing}
+; have, heave - {hvea}
+which - {hwihc}
+while - {hwile}
+whole - {hwole}
+hydraulic - {hydralic}
+hydrophile - {hydropile}
+hydrophilic - {hydropilic}
+hydrophobe - {hydropobe}
+hydrophobic - {hydropobic}
+hygiene - {hygeine}
+hygiene - {hygene}
+hygienic - {hygenic}
+hygiene - {hygine}
+; hypnotise (variant of hypnotize)
+hypocrisy - {hypocracy}
+hypocrisy - {hypocrasy}
+hypocrisy - {hypocricy}
+hypocrite - {hypocrit}
+hypocrites - {hypocrits}
+hypnotize - {hyptonize}
+history - {hystory}
+
+; === I ===
+; it's, its - {i'ts}
+iceberg - {iceburg}
+icing - {iceing}
+iconoclastic - {iconclastic}
+idea - {idae}
+ideas - {idaes}
+; idealise (variant of idealize)
+ideologies - {idealogies}
+ideology - {idealogy}
+ideally - {idealy}
+identify - {idenify}
+identity - {idenity}
+identically - {identicaly}
+identical - {identicial}
+identified - {identifed}
+identifying - {identifing}
+idiosyncratic - {ideosyncratic}
+; ideas, ides - {idesa}
+Ithaca - {Ihaca}
+in - {iin}
+illegally - {ilegally}
+illegally - {illegaly}
+illegitimacy - {illegimacy}
+illegitimate - {illegimate}
+illegitimate - {illegitmate}
+illicit - {illict}
+Illinois - {Illionis}
+illusion - {illution}
+illogical - {ilogical}
+illumination - {ilumination}
+imaginary - {imagenary}
+imagine - {imagin}
+; imaginary, imagery - {imaginery}
+; eminent, immanent, imminent - {imanent}
+immediate - {imediate}
+immense - {imense}
+; emigrant, immigrant - {imigrant}
+; emigrate, immigrate - {imigrate}
+; emigration, immigration - {imigration}
+; emanant, eminent, immanent, imminent - {iminent}
+imagination - {immagination}
+immediately - {immediatelly}
+immediately - {immediatley}
+immediately - {immediatly}
+immensely - {immensley}
+immensely - {immensly}
+immediately - {immidately}
+immediately - {immidiately}
+imitate - {immitate}
+imitation - {immitation}
+imitator - {immitator}
+immunosuppressant - {immunosupressant}
+immutable - {immuntable}
+immoral - {imoral}
+impair - {impare}
+impasse - {impass}
+impedance - {impedence}
+empiric - {imperic}
+; empiric, empirical, imperial - {imperical}
+empirically - {imperically}
+implement - {impliment}
+important - {imporatnt}
+important - {importan}
+improve - {impove}
+impresario - {impressario}
+improvisation - {improvision}
+improvement - {improvment}
+in lieu - {in leiu}
+in memoriam - {in memorium}
+inaccessible - {inaccessable}
+; enact, intact - {inact}
+in addition - {inaddition}
+inadvertent - {inadvertant}
+inappropriate - {inappropiate}
+inappropriate - {inapropriate}
+innate - {inate}
+inaugurate - {inaugrate}
+inaugurate - {inaugure}
+inaugurates - {inaugures}
+imbalance - {inbalance}
+imbalanced - {inbalanced}
+; incase, in case - {incase}
+Incheon - {Inchon}
+inches - {inchs}
+incidental - {incidential}
+incidentally - {incidently}
+insinuate - {incinuate}
+; inclose (enclose) (acceptable variant)
+; inclosed (enclosed) (acceptable variant)
+including - {includeing}
+incompatibilities - {incompatabilities}
+incompatibility - {incompatability}
+incompatible - {incompatable}
+incompatibility - {incompatablity}
+incompatibilities - {incompatablities}
+incompatibility - {incompatiblity}
+incompatibilities - {incompatiblities}
+incompetence - {incompetance}
+incompetent - {incompetant}
+inconsistency - {inconsistancy}
+inconsistent - {inconsistant}
+incorporate - {incorperate}
+incorporation - {incorperation}
+incorruptible - {incorruptable}
+incredible - {increadible}
+incredible - {incredable}
+increase - {increse}
+introduce - {inctroduce}
+introduced - {inctroduced}
+including - {incuding}
+incumbency - {incumbancy}
+incumbent - {incumbant}
+; incumber (variant of encumber)
+; incumbrance (variant of encumbrance)
+incunabula - {incunabla}
+indefinitely - {indefinately}
+indefinitely - {indefinitly}
+idempotent - {indempotent}
+identification - {indentification}
+identified - {indentified}
+identifying - {indentifying}
+independently - {indepedantly}
+independence - {indepedence}
+independent - {indepedent}
+independence - {indepence}
+independence - {independance}
+independent - {independant}
+independently - {independantly}
+independence - {independece}
+independent - {independient}
+independent - {indepent}
+independently - {indepently}
+independent - {indipendent}
+independently - {indipendently}
+indispensable - {indispensible}
+indisputable - {indisputible}
+indisputably - {indisputibly}
+indict - {indite}
+individual - {individial}
+independent - {indpendent}
+independently - {indpendently}
+indulge - {indulgue}
+endurance - {indurance}
+endure - {indure}
+industrial - {indutrial}
+inevitable - {inevatible}
+inevitable - {inevitible}
+in fact - {infact}
+infantry - {infanty}
+infectious - {infectuous}
+infiltrate - {infilitrate} <!-- also matches infilitrated -->
+infinite - {infinate}
+infinite - {infinit}
+inflammation - {inflamation}
+inflammatory - {inflamatory}
+inflamed - {inflammed}
+infiltrate - {inflitrate} <!-- also matches inflitrated -->
+influential - {influencial}
+influential - {influental}
+influenced - {influented}
+information - {infomation}
+information - {inforamtion}
+information - {infromation}
+in front - {infront}
+ingredients - {ingreediants}
+inhabit - {inhabitate}
+inherit - {inheret}
+; heritage, inheritance - {inheritage}
+inherent - {inherrent}
+initial - {inicial}
+initiate - {iniciate}
+initial - {inital}
+initiate - {initate}
+initiation - {initation}
+initiative - {initative}
+initiator - {initator}
+; initialise (variant of initialize)
+initially - {initialy}
+initially - {initiially}
+initiative - {initiatve}
+initiative - {inititive}
+injury - {injuiry}
+; injured, injuries - {injuried}
+injuries - {injurys}
+include - {inlcude}
+include - {inlude}
+immigrant - {inmigrant}
+immigrate - {inmigrate}
+immigration - {inmigration}
+inappropriate - {innappropriate}
+inaugurate - {innaugurate}
+inauguration - {innauguration}
+inundate - {innundate}
+inundated - {innundated}
+inundation - {innundation}
+innocence - {inocence}
+into - {inot}
+innovation - {inovation}
+innovative - {inovative}
+impact - {inpact}
+impeach - {inpeach}
+impolite - {inpolite}
+impose - {inpose}
+imprisonment - {inprisonment}
+inspired - {inpsired}
+inquirer - {inquierer}
+; enroll, inroll - {inroll}
+inseparable - {inseperable}
+incident - {insident}
+insistence - {insistance}
+insistent - {insistant}
+institute - {insititute}
+; in situ, Insitu - {insitu}
+institution - {insitution}
+institutions - {insitutions}
+insoluble - {insoluable}
+inspiration - {insperation}
+; in spite, inspire - {inspite}
+instead - {instade}
+; instal (variant of install)
+installation - {instalation}
+; instalment (variant of installment)
+instance - {instatance}
+; instil (variant of instill)
+; installation, instillation - {instilation}
+; instill (variant of instil)
+instructor - {instructer}
+ensue - {insue}
+insufficient - {insufficent}
+insufficiently - {insufficently}
+insurance - {insurence}
+in the - {int he}
+installment - {intallment}
+installments - {intallments}
+interfere - {intefere}
+intellectual - {intelectual}
+intelligence - {inteligence}
+intelligent - {inteligent}
+intended - {intented}
+; interbreed, interbred - {interbread}
+interchangeable - {interchangable}
+interchangeably - {interchangably}
+; interred, interned - {intered}
+interregnum - {interegnum}
+interrelated - {interelated}
+interfere - {interfear}
+interference - {interfearance}
+interfering - {interfearing}
+interference - {interferance}
+integral - {intergral}
+integrate - {intergrate}
+integrated - {intergrated}
+integration - {intergration}
+intermediary - {intermidiary}
+intermediate - {intermidiate}
+intermittent - {intermitant}
+intermittent - {intermitent}
+intermittent - {intermittant}
+; intramural, intermural - {intermural}
+internally - {internaly}
+international - {internation}
+internationally - {internationaly}
+; interment, internment - {internment}
+interrogation - {interogation}
+interior - {interoir}
+interior - {interor}
+interpret - {interpet}
+interpretation - {interpetation}
+interpret - {interpretate}
+interpret - {interprete}
+interpretation - {interpretion}
+interpreter - {interpretor}
+interpreted - {interpretted}
+interior - {interrior}
+interregnum - {interregum}
+interregnum - {interrugum}
+interruptible - {interruptable}
+interested - {interseted}
+interest - {interst}
+interested - {intersted}
+interesting - {intersting}
+entertaining - {intertaining}
+inner tube - {intertube}
+interrupt - {interupt}
+interrupted - {interupted}
+interruption - {interuption}
+intensity - {intesity}
+in the - {inthe}
+initial - {intial}
+initially - {intially}
+initiative - {intiative}
+; entice, incite - {intice}
+integrate - {intigrate}
+initial - {intital}
+initial - {intitial}
+introduce - {intoduce}
+introduce - {intorduce}
+into the - {intot he}
+integral - {intregal}
+interest - {intrest} <!-- also matches intresting -->
+integral - {intrical}
+interim - {intrim}
+; induct, introduce - {introduct}
+introduce - {introduse}
+instruction - {intruction}
+entrust - {intrust}
+interrupt - {inturrupt}
+intuition - {intution}
+intuitive - {intutive}
+intuitively - {intutively}
+innuendo - {inuendo}
+; enumerable, innumerable - {inumerable}
+invariance - {invarience}
+; invariant - {invarient}
+inventor - {inventer}
+inversely - {inversly}
+invertebrate - {invertabrate}
+invertebrate - {invertibrate}
+inversion - {invertion}
+investor - {invester}
+involve - {invole}
+involvement - {involement}
+involvement - {involment}
+involvement - {involvment}
+involve - {invovle}
+in which - {inwhich}
+irrelevant - {irelevent}
+irresistible - {iresistable}
+irresistibly - {iresistably}
+irresistible - {iresistible}
+irresistibly - {iresistibly}
+irritable - {iritable}
+irritate - {iritate}
+ironically - {ironicaly}
+ironically - {ironicly}
+regardless - {irregardless}
+irrelevant - {irrelavent}
+irrelevant - {irrelevent}
+irrelevant - {irrevelant}
+irreverent - {irreverant}
+is still - {is stil}
+; is not, isn't - {is'nt}
+; is not, isn't - {isnt}
+Israelis - {Israelies}
+Israeli - {Israely}
+Israel - {Isreal}
+Israeli - {Isreali}
+Israelite - {Isrealite}
+; itemise (variant of itemize)
+itinerant - {itenerant}
+; itinerant, itinerate - {itinerate}
+itinerary - {itinery}
+Italy - {Itlay}
+; it's, its - {"its'" / its' /|its'}
+; it's, its - {its's}
+itself - {itsself}
+will - {iwll}
+with - {iwth}
+
+; === J ===
+Jamaica - {Jamacia}
+January - {Jamuary}
+January - {Janauary}
+January - {Januart}
+January - {Januray}
+January - {Janusry}
+January - {Janurary}
+January - {Janyary}
+Japanese - {Japaneese}
+Japanese - {Japanes}
+January - {Jauary}
+January - {Jaunary}
+January - {Jauuary}
+jeopardy - {jeapardy}
+Jerusalem - {Jersualem}
+jeweler - {jewler}
+; jewellery, jewelry - {jewlery}
+; jewellery, jewelry - {jewlrey}
+Jharkhand - {Jharkand}
+January - {Jnauary}
+January - {Jnuary}
+Johannine - {Johanine}
+Johnson - {Johsnon}
+journal - {jorunal}
+Joseph - {Jospeh}
+journeys - {journies}
+journey - {journy}
+just - {jstu}
+just - {jsut}
+Judaism - {Juadaism}
+Judaism - {Juadism}
+junction - {juction}
+judgement (judgment)
+judgment (judgement)
+judicial - {judical}
+judiciary - {judisuary}
+junior - {juniour}
+junior - {junoir}
+junction - {juntion}
+jurisdiction - {jurisdication}
+juvenile - {juvinile}
+
+; === K ===
+keeps - {keep's}
+kept - {keeped}
+; kerb (British alternative spelling of curb)
+keyboard - {keybord}
+kilogram - {killogram}
+kilometer - {killometer}
+kilometre - {killometre}
+kindergarten - {kindergarden}
+kingdom - {kingdon}
+kinescope - {kinoscope}
+Ku Klux Klan - {Klu Klux Klan}
+; knifes; knives - {knifes}
+nitpick - {knit-pick}
+nitpick - {knitpick}
+; connive, knife - {knive}
+knows - {know's}
+; knew, known - {knowed}
+knowledge - {knowldge}
+knowledge - {knowlege}
+knowledgeable - {knowlegeable}
+know - {knwo}
+knows - {knwos}
+know - {konw}
+knows - {konws}
+
+; === L ===
+laboratory - {labaratory}
+laboratory - {labatory}
+; labelled (variant of labeled)
+label - {lable}
+; labeled, labelled - {labled}
+; labour (variant of labor)
+laborious - {labourious}
+laboratory - {labratory}
+laden - {ladden}
+language - {laguage}
+lambda - {lamda}
+landscaping - {landscapping}
+language - {langauge}
+languish - {languise}
+linguistic - {languistic}
+landscape - {lanscape}
+language - {lanugage}
+laparoscopic - {laparascopic}
+largest - {largets}
+largely - {largley}
+largely - {largly}
+larynx - {larnyx}
+; last, latest - {lastest}
+latency - {latancy}
+latent - {latant}
+; latch's, latches - {latchs}
+; later, lasted, late, last, dated - {lated}
+lately - {lateley}
+laterally - {lateraly}
+lantern - {latern}
+lately - {latley}
+latitude - {lattitude}
+launch - {lauch}
+launches - {launchs}
+laundromat - {laundrymat}
+larvae - {lavae}
+laid - {layed}
+lay low - {layed low}
+; "bury the lede" - {lead}
+; leaded, led - {leaded}
+; lean, leaner, learn - {leanr}
+; leant (variant of leaned)
+; leapt (variant of leaped)
+; learnt (variant of learned)
+leisure - {leasure}
+league - {leauge}
+left - {leaved}
+legend - {ledgend}
+legendary - {ledgendary}
+legislate - {ledgislate}
+legislation - {ledgislation}
+legislative - {ledgislative}
+legislator - {ledgislator}
+; legalise (variant of legalize)
+legally - {legaly}
+; legendary, legendry - {legendry}
+legitimate - {legimate}
+legislate - {legistlate}
+legislation - {legistlation}
+legislative - {legistlative}
+legislator - {legistlator}
+legitimate - {legitamate}
+; legitimise (variant of legitimize)
+length - {legnth}
+length - {lenght}
+lengthen - {lenghten}
+lengthy - {lenghty}
+lens - {lense}
+length - {lenth}
+; leaped, leapt - {lept}
+learn - {leran}
+learns - {lerans}
+; learned, learnt - {lernt}
+; less, lesser, lessor - {lessor}
+lieutenant - {leutenant}
+; levelled (variant of leveled)
+levitate - {levetate}
+level - {levle}
+lexicon - {lexion}
+liaison - {liason}
+library - {libarary}
+library - {libary}
+libel - {libell}
+; libellous (variant of libelous)
+linguistic - {libguistic}
+linguistics - {libguistics}
+; libel, liable - {lible}
+; licence (variant of license)
+; leaf, lief, life - {lief}
+lying - {lieing}
+like - {liek}
+liked - {liekd}
+leisure - {liesure}
+lieutenant - {lieutentant}
+; likeable (variant of likable)
+likelihood - {likelyhood}
+likely - {likley}
+lilies - {lillies}
+limit - {limitate}
+Lincolnshire - {Linconshire}
+linguistic - {lingustic}
+; liquour (variant of liquor)
+licence - {liscence}
+license - {liscense}
+; licence, license - {lisence}
+; licence, license - {lisense}
+literature - {litature}
+light - {lite}
+; liter (variant of litre)
+literally - {literaly}
+literature - {literture}
+; Litle, little - {litle}
+; litre (variant of liter)
+litany - {littany}
+little - {littel}
+literal - {litteral}
+literature - {litterature}
+literature - {liturature}
+like - {liuke}
+; liveable (variant of livable)
+lively - {livley}
+located - {loacted}
+; localise (variant of localize)
+locally - {localy}
+locomotive - {locamotive}
+locker room - {lockeroom}
+location - {loction}
+; locus, locust - {locus}
+love - {loev}
+logically - {logicaly}
+loneliness - {lonelyness}
+lonely - {lonley}
+loneliness - {lonleyness}
+loneliness - {lonliness}
+; lonely, only - {lonly}
+; loose, lose - {loose}
+; loosing, losing - {loosing}
+loosely - {loosley}
+loosely - {loosly}
+Los Angeles - {Los Angles}
+lost - {losed}
+losing - {loseing}
+Louisiana - {Lousiana}
+; loveable (variant of lovable)
+lovely - {lovley}
+last - {lsat}
+lost - {lsot}
+the - {lthe}
+lubrication - {lubrification}
+luckily - {luckly}
+leukemia - {luekemia}
+leukemia - {lukemia}
+lunches - {lunchs}
+luxury - {luxary}
+love - {lveo}
+love - {lvoe}
+Libya - {Lybia}
+
+; === M ===
+maybe - {mabye}
+mackerel - {mackeral}
+magnet - {magent}
+magnetic - {magentic}
+majestic - {magestic}
+magically - {magicaly}
+magnate - {magnant}
+magnificent - {magnificient}
+magnolia - {magolia}
+Miami - {Maimi}
+manifest - {mainfest}
+mainly - {mainley}
+maintenance - {maintainance}
+maintenance - {maintainence}
+maintaining - {maintaing}
+maintenance - {maintance}
+maintenance - {maintanence}
+maintenance - {maintence}
+maintenance - {maintenence}
+maintenance - {maintinance}
+mentioned - {maintioned}
+majuscule - {majiscule}
+; marked, made - {maked}
+making - {makeing}
+makes - {makse}
+Malcolm - {Malcom}
+Maltese - {Maltesian}
+mammal - {mamal}
+mammalian - {mamalian}
+; manageable, manageably - {managable}
+management - {managament}
+managerial - {manageral}
+management - {managment}
+mandatory - {manditory}
+maneuver - {maneover}
+manoeuvre - {maneovre}
+management - {mangement}
+managerial - {mangerial}
+Manhattan - {Manhatten}
+manifestation - {manifestion}
+; maneuverability, manoeuvrability - {manoeuverability}
+; maneuverable, manoeuvrable - {manoeuverable}
+; manoeuvre (variant of maneuver)
+; maneuver, manoeuvre - {manouver}
+; maneuverability, manoeuvrability - {manouverability}
+; maneuverable, manoeuvrable - {manouverable}
+; maneuvers, manoeuvres - {manouvers}
+; maneuver, manoeuvre - {manuever}
+; maneuvers, manoeuvres - {manuevers}
+manufacture - {manufature}
+maneuver - {manuver}
+marches - {marchs}
+margin - {margain}
+margin - {margine}
+married - {maried}
+Marxist - {Marixist}
+majority - {marjority}
+marketing - {marketting}
+marriage - {marrage}
+marriage - {marraige}
+marriage - {marrige}
+married - {marryed}
+married - {marryied}
+marshmallow - {marshmellow}
+; marvellous (variant of marvelous)
+masonry - {masonary}
+masonry - {masonery}
+Massachusetts - {Massachussets}
+Massachusetts - {Massachussetts}
+mass media - {massmedia}
+masturbation - {masterbation}
+matches - {matchs}
+; materialise (variant of materialize)
+mathematics - {mathamatics}
+mathematicians - {matheticians}
+mathematician - {mathmatician}
+mathematics - {mathmatics}
+maximize - {maximalize}
+; maximise (variant of maximize)
+maximum - {maximium}
+mayoral - {mayorial}
+; meagre (variant of meager)
+meaning - {meaing}
+meant - {meaned}
+meaningful - {meaningfull}
+; mare, mere, wear - {mear}
+merely - {mearly}
+measurement - {measurment}
+mechanical - {mecanical}
+merchandise - {mechandise}
+; mechanise (variant of mechanize)
+mechanism - {mechanisim}
+medicine - {medacine}
+; medallist (variant of medalist)
+; mediaeval, medieval - {medeival}
+; mediaeval, medieval - {medeval}
+; mediaeval (variant of medieval)
+mediciny - {mediciney}
+mediocre - {medicore}
+; mediaeval, medieval - {medievel}
+Mediterranean - {Mediteranean}
+; mediaeval, medieval - {medival}
+meerkat - {meerkrat}
+meet - {meeet}
+membranophone - {membranaphone}
+member - {memeber}
+memory - {memmory}
+; memorise (variant of memorize)
+; men, men's - {mens}
+men's - {mens'}
+menstruation - {menstration}
+mentally - {mentaly}
+mentions - {mentiones}
+mentioned - {mentionned}
+; Miranda, veranda - {meranda}
+mercenary - {mercernary}
+; merchandise, merchandize - {merchandize}
+messenger - {messanger}
+metallic - {metalic}
+metallicity - {metalicity}
+metallurgic - {metalurgic}
+metallurgical - {metalurgical}
+metallurgy - {metalurgy}
+metamorphosis - {metamorphysis}
+; meter (variant of metre)
+meteorology - {meterology}
+meteorology - {metorology}
+; metre (variant of meter)
+metropolitan - {metropolian}
+Michael - {Micheal}
+Michigan - {Michagan}
+Michigan - {Michgian}
+midwives - {midwifes}
+milieu - {mileau}
+millennia - {milennia}
+millennium - {milennium}
+milieu - {mileu}
+million - {milion}
+millennia - {millenia}
+millennium - {millenium}
+millipede - {millepede}
+military - {militairy}
+military - {millitary}
+military - {miltary}
+mimicry - {mimickry}
+minimal - {miminal}
+minimum - {miminum}
+miniature - {minature}
+; mineralogical, mineralogically - {minerological}
+mineralogist - {minerologist}
+mineralogy - {minerology}
+; Minnesota; Minesota Mine is correct - {Minesota}
+minimise - {minimalise}
+minimize - {minimalize}
+minimally - {minimaly}
+; minimise (variant of minimize)
+minimum - {minimium}
+minuscule - {miniscule}
+ministry - {ministery}
+ministry - {ministy}
+miniature - {miniture}
+mining - {minning}
+minutes - {mintues}
+myriad - {miriad}
+miracle - {miricle}
+miscellaneous - {miscelaneous}
+miscellaneous - {miscellanious}
+miscellaneous - {miscellanous}
+mischievous - {mischeivous}
+mischievous - {mischevious}
+mischievous - {mischievious}
+misdemeanor - {misdameanor}
+misdemeanors - {misdameanors}
+misdemeanor - {misdemenor}
+misdemeanors - {misdemenors}
+missile - {misile}
+; misjudgement (variant of misjudgment)
+; misorientate (variant of misorient)
+Missouri - {Misouri}
+; misspell) (adopted - {mispell}
+Mississippi - {Missisipi}
+Mississippi - {Missisippi}
+Mississippi - {Mississipi}
+missile - {missle}
+mistaken - {misstaken}
+misunderstand - {missunderstand}
+misuse - {missuse}
+mysterious - {misterious}
+mystery - {mistery}
+mysterious - {misteryous}
+mixed - {mixted}
+make - {mkae}
+makes - {mkaes}
+making - {mkaing}
+make - {mkea}
+; mobilise (variant of mobilize)
+moccasins - {moccassins}
+; modelled (variant of modeled)
+; modelling (variant of modeling)
+moderately - {moderatley}
+moderately - {moderatly}
+; modernise (variant of modernize)
+modified - {modfied}
+modification - {modifaction}
+modified - {modifed}
+model - {modle}
+moment - {moent}
+money - {moeny}
+molest - {mollest}
+; mollusc (variant of mollusk)
+; mollusk (variant of mollusc)
+memento - {momento}
+Monaco - {Monacco}
+monastery - {monastry}
+monasteries - {monestaries}
+; monastery, monetary - {monestary}
+monitor - {moniter}
+monatomic - {monoatomic}
+monolithic - {monolite}
+; Montserrat, but see Monserrat, Buenos Aires - {Monserrat}
+months - {monthes}
+monotypic - {montypic}
+morally - {moraly}
+more so - {moreso}
+mortgage - {morgage}
+Morocco - {Morrocco}
+motivated - {motiviated}
+; mould (variant of mold)
+mountainous - {mountanous}
+; moustache (variant of mustache)
+movie - {movei}
+moving - {moveing}
+more - {mroe}
+mucous - {mucuous}
+murder - {muder}
+murderer - {muderer}
+murdering - {mudering}
+museum - {mueseum}
+multiplayer - {mulitplayer}
+multiple - {mulitple}
+multiply - {mulitply}
+multiplied - {multiplyed}
+municipalities - {muncipalities}
+municipality - {muncipality}
+municipalities - {municipalites}
+municipalities - {municipalties}
+municipality - {municipalty}
+municipality - {municipaly}
+; mussels, muscles - {muscels}
+musical - {muscial}
+musically - {musicaly}
+musician - {musican}
+musical - {musicial}
+museum - {musseum}
+museum - {musuem}
+multiple - {mutiple}
+multiplication - {mutiplication}
+multiply - {mutiply}
+mutually - {mutualy}
+myriad - {myraid}
+myself - {mysef}
+misogynist - {mysogynist}
+misogynistic - {mysogynistic}
+misogyny - {mysogyny}
+mysterious - {mysterous}
+Mithraic - {Mythraic}
+
+; === N ===
+nascent - {nacent}
+naivety - {naivity}
+Napoleonic - {Napoleonian}
+narrate - {narate}
+narrative - {narative}
+narrow - {narow}
+nascent - {nascient}
+nationalities - {nationalites}
+nationally - {nationaly}
+natural - {natrual}
+natural - {natual}
+naturally - {natuarlly}
+; naturalise (variant of naturalize)
+naturally - {naturaly}
+naturally - {naturely}
+natural - {naturual}
+naturally - {naturually}
+navigation - {navagation}
+navigation - {naviagation}
+Nazareth - {Nazereth}
+nearby - {nearbye}
+necessarily - {neccesarily}
+necessary - {neccesary}
+necessarily - {neccessarily}
+necessary - {neccessary}
+necessarily - {necesarily}
+necessary - {necesary}
+needs - {need's}
+née - {neé}
+negatively - {negativley}
+negatively - {negativly}
+negative - {negitive}
+negativity - {negitivity}
+negligible - {neglible}
+negligible - {negligable}
+negotiate - {negociate}
+; négociation, negotiation - {negociation}
+negotiation - {negotation}
+negotiator - {negotiater}
+; nice, niece - {neice}
+; neighbour, neighbor - {neigbor}
+; neighbour, neighbor - {neigbour}
+; neighbouring, neighboring - {neigbouring}
+; neighbours, neighbors - {neigbours}
+; neighbour, neighbor - {neighboor}
+; neighbour (variant of neighbor)
+; neighbourhood (variant of neighborhood)
+necessary - {nessacary}
+necessarily - {nessasarily}
+necessary - {nessecary}
+; Netherlands, Netherlands' - {Netherland's}
+nevertheless - {nethertheless}
+nuclear - {neuclear}
+; neutralise (variant of neutralize)
+newly - {newely}
+newsletter - {newletter}
+nephew - {newphew}
+New Yorker - {Newyorker}
+Niagara Falls - {Niagra Falls}
+; nickle (variant of nickel)
+nickname - {nicname}
+neighbor - {nieghbor}
+; neighborhood, neighbourhood - {nieghborhood}
+neighbour - {nieghbour}
+neither - {niether}
+night - {nigth}
+ninth - {nineth}
+ninthly - {ninethly}
+; 19 (number)|nineteen - {ninteen}
+nineteenth - {ninteenth}
+; 90 (number)|ninety - {nintey}
+nineties - {ninties}
+ninety - {ninty}
+niche - {nitch}
+know - {nkow}
+know - {nkwo}
+November - {Nobember}
+nomenclature - {nomencalture}
+nonexistent - {non-existant}
+nonsense - {nonsence}
+; variant of no one - {noone}
+; normalise (variant of normalize)
+normally - {normaly}
+northern - {northen}
+northeastern - {northereastern}
+northernmost - {northermost}
+notoriety - {nortoriety}
+notorious - {nortorious}
+Norwegian - {Norweigan}
+notoriety - {notariety}
+notable - {noteable}
+notably - {noteably}
+notoriety - {noteriety}
+noteworthy - {notewothy}
+north - {noth}
+northern - {nothern}
+noticeable - {noticable}
+noticeably - {noticably}
+noticing - {noticeing}
+noticeable - {noticible}
+notorious - {notorius}
+nouveau - {noveau}
+November - {Novemeber}
+November - {Novemebr}
+November - {Novemer}
+November - {Novemnber}
+November - {Novemver}
+November - {Novermber}
+nowadays - {now adays}
+nowadays - {nowdays}
+not - {nto}
+nuclear - {nucular}
+nuclear - {nuculear}
+neurological - {nuerological}
+neurotransmitter - {nuerotransmitter}
+neurotic - {nuerotic}
+neutral - {nuetral}
+neutrality - {nuetrality}
+neutralize - {nuetralize}
+nuisance - {nuisanse}
+Nullarbor - {Nullabour}
+numerous - {numberous}
+nuptial - {nuptual}
+Nuremberg - {Nuremburg}
+nuisance - {nusance}
+nutrient - {nutritent}
+
+; === O ===
+obscene - {obcene}
+obscenity - {obcenity}
+obedience - {obediance}
+obedient - {obediant}
+observation - {obervation}
+objective - {objetive}
+; oblige, oblique - {obligue}
+obliged - {obligued}
+observance - {observence}
+observer - {observor}
+obsolescence - {obsolecence}
+obsolescence - {obsolecense}
+obsolescence - {obsolesence}
+obsolescence - {obsolesense}
+obsession - {obssession}
+obsessive - {obssessive}
+obstacle - {obstacal}
+obstacle - {obsticle}
+occasion - {ocasion}
+occasional - {ocasional}
+occasionally - {ocasionally}
+occasionally - {ocasionaly}
+occasioned - {ocasioned}
+occasions - {ocasions}
+occasion - {ocassion}
+occasional - {ocassional}
+occasionally - {ocassionally}
+occasioned - {ocassioned}
+occasions - {ocassions}
+occasionally - {occaisonally}
+occasionally - {occasionaly}
+occasional - {occasonal}
+occasion - {occassion}
+occasional - {occassional}
+occasionally - {occassionally}
+occasionally - {occassionaly}
+occasioned - {occassioned}
+occasions - {occassions}
+occur - {occour}
+occurrence - {occurance}
+occurrences - {occurances}
+occurred - {occured}
+occurrence - {occurence}
+occurrences - {occurences}
+occurring - {occuring}
+occur - {occurr}
+occurrence - {occurrance}
+occurrences - {occurrances}
+October - {Ocober}
+October - {Ocotber}
+October - {Octoebr}
+October - {Octber}
+October - {Octoer}
+octagon - {octogon}
+octagonal - {octogonal}
+octahedra - {octohedra}
+octahedral - {octohedral}
+octahedron - {octohedron}
+October - {Octomber}
+October - {Octoner}
+octastyle - {octostyle}
+October - {Octover}
+October - {Octpber}
+October - {Octuber}
+country - {ocuntry}
+countries - {ocuntries}
+occupied - {ocupied}
+occupy - {ocupy}
+occur - {ocurr}
+occurrence - {ocurrance}
+occurred - {ocurred}
+occurrence - {ocurrence}
+occurring - {ocurring}
+occurs - {ocurrs}
+oddities - {oddites}
+; odour (variant of odor)
+; odoriferous, even in UK - {odouriferous}
+; odorous, even in UK - {odourous}
+of course - {ofcourse}
+office - {offce}
+official - {offcial}
+officer - {offcier}
+often - {offen}
+; offence (variant of offense)
+offender - {offendor}
+; offense (variant of offence)
+official - {offical}
+officially - {offically}
+officially - {officaly}
+officially - {officialy}
+offshoot - {offshot}
+official - {oficial}
+often - {oftenly}
+often - {oftern}
+of the - {ofthe}
+; going, ogling - {oging}
+Oklahoma - {Okalahoma}
+only - {olny}
+; omelet (variant of omelette)
+; omelette (variant of omelet)
+omission - {omision}
+omitted - {omited}
+omitting - {omiting}
+omit - {omitt}
+omission - {ommision}
+omission - {ommission}
+omit - {ommit}
+omitted - {ommited}
+omitting - {ommiting}
+omitted - {ommitted}
+omitting - {ommitting}
+omnivorous - {omniverous}
+omnivorously - {omniverously}
+more - {omre}
+; note, not - {onot}
+on the - {onthe}
+on top - {ontop}
+only - {onyl}
+operate - {oparate}
+opened - {opend}
+opened - {openned}
+operator - {operater}
+operation - {opertion}
+opportunity - {opertunity}
+opine - {opinate}
+opinion - {opionion}
+upon - {opon}
+opponent - {oponent}
+opportunity - {oportunity}
+oppose - {opose}
+opposite - {oposite}
+opposition - {oposition}
+open - {oppen}
+opened - {oppened}
+opening - {oppening}
+operate - {opperate}
+operation - {opperation}
+opportunity - {oppertunity}
+opinion - {oppinion}
+opponent - {opponet}
+opportunity - {opportuinity}
+opportunities - {opportunites}
+opportunity - {opportunty}
+opposite - {opposit}
+opportunity - {oppotunity}
+opportunity - {oppourtunity}
+opportunity - {oppurtunity}
+oppress - {opress}
+oppression - {opression}
+oppressive - {opressive}
+ophthalmic - {opthalmic}
+ophthalmologist - {opthalmologist}
+ophthalmology - {opthalmology}
+ophthalmologist - {opthamologist}
+ophthalmology - {opthamology}
+ophthalmologist - {opthomologist}
+ophthalmology - {opthomology}
+optimism - {optomism}
+optimist - {optomist}
+optimistic - {optomistic}
+orchestra - {orchestera}
+orchestral - {orchesteral}
+; ordered, orders - {orderes}
+organisation - {orgainisation}
+organise - {orgainise}
+organization - {orgainization}
+organize - {orgainize}
+organization - {organiation}
+organic - {organical}
+organism - {organim}
+; organisation (variant of organization)
+; organise (variant of organize)
+; origin, organ - {orgin}
+original - {orginal}
+originally - {orginally}
+originate - {orginate}
+organise - {orginise}
+organization - {orginization}
+organize - {orginize}
+; orientate (British variant of orient)
+; orientated (variant of oriented)
+orientation - {oriention}
+original - {origanal}
+originally - {originaly}
+original - {originial}
+originate - {originiate}
+original - {originnal}
+originally - {originnally}
+original - {origional}
+original - {orignal}
+originate - {orignate}
+original - {orignial}
+original - {origonal}
+orthogonal - {orthagonal}
+orthogonally - {orthagonally}
+orthogonal - {orthgonal}
+orthogonally - {orthogonaly}
+OSs - {OSes}
+other - {otehr}
+other - {othere}
+others - {otheres}
+Ottoman - {ottaman}
+; Ottoman empire etc but not the furniture - {ottoman}
+Ottawa - {Ottowa}
+oeuvre - {ouevre}
+outside - {ouside}
+outstanding - {oustanding}
+outside - {oustide}
+outtake - {outake}
+outcast - {outcasted}
+outlying - {outlaying}
+out loud - {outloud}
+output - {outputted}
+outrageous - {outragous}
+outer - {outter}
+outweighed - {outweighted}
+overran - {overan}
+overrated - {overated}
+overreach - {overeach}
+override - {overide}
+overlaid - {overlayed}
+overrode - {overode}
+overshadowed - {overshaddowed}
+oversight - {oversite}
+overrule - {overule}
+overrun - {overun}
+overwhelming - {overwelming}
+overture - {oveture}
+work - {owrk}
+would - {owudl}
+; Ox|oxen, oxen's - {oxens}
+; ox's, oxen - {oxes}
+oxygen - {oxigen}
+oxymoron - {oximoron}
+oxygen - {oxyen}
+October - {0ctober}
+
+; === P ===
+paid - {paide}
+; Place (geography)|place, palace - {palce}
+parliament - {paliament}
+parliamentarian - {paliamentarian}
+Palestinian - {Palistian}
+Palestinian - {Palistinian}
+Palestinians - {Palistinians}
+palette - {pallete}
+; pallour (variant of pallor)
+played - {palyed}
+player - {palyer}
+playing - {palying}
+pamphlet - {pamflet}
+pamphlet - {pamplet}
+panel - {panal}
+panorama - {panarama}
+; paneled (variant of panelled)
+; paneling (variant of panelling)
+; panelled (variant of paneled)
+; panelling (variant of paneling)
+; panellist (variant of panelist)
+panicking - {panicing}
+panicking - {paniking}
+pantomime - {pantomine}
+Papanicolaou - {Papanicalou}
+paparazzi - {paparazzis}
+parallel - {paralel}
+parallel - {paralell}
+parallelly - {paralelly}
+parallelly - {paralely}
+parallel - {parallell}
+parallelly - {parallely}
+parenthesis - {paranthesis}
+paraphernalia - {paraphenalia}
+parasitic - {parisitic}
+particular - {parituclar}
+parliament - {parlament}
+parliament - {parliment}
+; parlour (variant of parlor)
+parakeets - {parrakeets}
+parallel - {parralel}
+parallel - {parrallel}
+parallel - {parrallell}
+parallelly - {parrallelly}
+parallelly - {parrallely}
+parsable - {parseable}
+participate - {partecipate}
+partially - {partialy}
+; partial, particle - {partical}
+participant - {particpant}
+participated - {particpated}
+particularly - {particularily}
+; partition, portion - {partion}
+participate - {partipate}
+; paced, passed - {pased}
+passenger - {pasenger}
+passenger - {passanger}
+pastime - {passtime}
+; passed, pasted - {pasted}
+pastries - {pasteries}
+pastoral - {pastorial}
+pastime - {pasttime}
+pastoral - {pastural}
+pasteurize - {pasturize}
+patent - {pattent}
+patented - {pattented}
+pavilion - {pavillion}
+; paviour (variant of pavior)
+; paid, played - {payed}
+player - {payler}
+peaches - {peachs}
+peasant - {peasent}
+peculiar - {pecular}
+peculiarity - {pecularity}
+peculiarly - {pecularly}
+peculiarities - {peculiarites}
+peculiar - {peculure}
+; pedlar (variant of peddler)
+; pedler (variant of peddler)
+perform - {peform}
+performance - {peformance}
+piece - {peice}
+peloton - {peleton}
+; Peloponnese, Peloponnesus - {Peloponnes}
+; penalise (variant of penalize)
+penalty - {penatly}
+peninsula - {peninnsula}
+peninsula - {penisula}
+peninsular - {penisular}
+peninsula - {penninsula}
+peninsular - {penninsular}
+peninsula - {pennisula}
+Pennsylvania - {Pennsilvania}
+Pennsylvania - {Pennsylvaina}
+Pennsylvania - {Pennyslvania}
+peninsula - {pensinsula}
+Pennsylvania - {Pensylvania}
+poem - {peom}
+people - {peopel}
+poetry - {peotry}
+people - {pepole}
+; parameter, perimeter - {perameter}
+perceived - {percepted}
+perceive - {percieve}
+peculiar - {perculiar}
+perform - {perfom}
+performance - {perfomance}
+performing - {perfoming}
+performance - {performence}
+; performed, performs - {performes}
+perhaps - {perhasp}
+perhaps - {perheaps}
+perhaps - {perhpas}
+peripatetic - {peripathetic}
+perjury - {perjery}
+pejorative - {perjorative}
+permanent - {permanant}
+permanent - {permenant}
+permissible - {permissable}
+permitted - {permited}
+permitting - {permiting}
+permit - {permitt}
+prerogative - {perogative}
+prepare - {perpare}
+perpetrated - {perpertrated}
+perhaps - {perphas}
+perpendicular - {perpindicular}
+persuade - {persaude}
+per se - {persay}
+perseverance - {perserverance}
+persevere - {perservere}
+perseverance - {perserverence}
+perseverance - {perseverence}
+perseverant - {perseverent}
+persistence - {persistance}
+persistent - {persistant}
+; personalise (variant of personalize)
+personally - {personaly}
+; personal, personnel - {personel}
+personnel - {personell}
+; personal, personnel - {personnal}
+personnel - {personnell}
+pursue - {persue}
+pursuing - {persuing}
+pursuit - {persuit}
+perturbation - {pertubation}
+perturbations - {pertubations}
+purview - {perview}
+petition - {petetion}
+pessary - {pessiary}
+; typo to puerto rico then to caps Puerto Rico - {peurto rico}
+Pharaoh - {Pharoah}
+phenomenal - {phenomenonal}
+phenomenally - {phenomenonly}
+phenomenal - {phenominal}
+phenomenon - {phenomonenon}
+phenomena - {phenonmena}
+Phoenix - {Pheonix}
+; phial (variant of vial)
+Philadelphia - {Philadephia}
+philanthropist - {philantrophist}
+philanthropy - {philantrophy}
+philanthropist - {philantropist}
+philanthropy - {philantropy}
+Philadelphia - {Philedelphia}
+Philippines - {Philipines}
+Filipino - {Philipino}
+Filipino - {Philippino}
+philosopher - {philisopher}
+philosophical - {philisophical}
+philosophy - {philisophy}
+Philippine - {Phillipine}
+Philippines - {Phillipines}
+Filipino - {Phillipino}
+Philippine - {Phillippine}
+Philippines - {Phillippines}
+Filipino - {Phillippino}
+philosopher - {philospher}
+philosophy - {philosphy}
+Phoenician - {Phonecian}
+phonograph - {phongraph}
+photograph - {photgraph}
+physical - {phyiscal}
+physician - {physican}
+physical - {physicial}
+pitch - {pich}
+picture - {picure}
+pigeon - {pidgeon}
+piedfort - {piefort}
+pilgrim - {pilgram}
+pilgrimage - {pilgramage}
+pilgrimage - {pilgrimmage}
+pilgrim - {piligrim}
+pilgrimage - {piligrimage}
+pineapple - {pinapple}
+pineapple - {pinnaple}
+pioneering - {pionering}
+point - {piont}
+pitches - {pitchs}
+placing - {placeing}
+plagiarism - {plagarism}
+plagiarist - {plagarist}
+plagiarize - {plagarize}
+; plagiarise (variant of plagiarize)
+plaintiff - {plantiff}
+; Plane (tool)|planed, Plan|planned - {planed}
+platform - {platfrom}
+plague - {plauge}
+; play-offs (variant of playoffs)
+; players, plays - {playes}
+playwright - {playright}
+playwright - {playwrite}
+pleasant - {pleasnat}
+plebeian - {plebian}
+plebiscite - {plebicite}
+plenitude - {plentitude}
+pleasant - {plesant}
+plethora - {plethura}
+; plough (British variant of plow)
+; plow (American variant of plough)
+; played, plied - {plyed}
+poinsettia - {poinsetta}
+poison - {poisin}
+Pokémon - {pokemon}
+; polarisation (variant of polarization)
+; polarise (variant of polarize)
+pollinate - {polinate}
+pollination - {polination}
+pollinator - {polinator}
+politician - {politian}
+politician - {politican}
+politician - {politition}
+pollinate - {pollenate}
+pollination - {pollenation}
+pollute - {polute}
+pollution - {polution}
+polysaccharide - {polysaccharid}
+polysaccharide - {polysaccaride}
+pomegranate - {pomegranite}
+; poor, Poore - {poore}
+population - {populaion}
+popularity - {popularaty}
+; popularise (variant of popularize)
+proportion - {porportion}
+Portuguese - {Portugese}
+possess - {posess}
+possessed - {posessed}
+possesses - {posesses}
+possessing - {posessing}
+possession - {posession}
+possible - {posible}
+possibly - {posibly}
+position - {posistion}
+; position, positron - {positon}
+positive - {positve}
+; passable, possible - {possable}
+; passably, possibly - {possably}
+possesses - {posseses}
+possessing - {possesing}
+possession - {possesion}
+possibility - {possibilty}
+possibility - {possiblity}
+position - {possition}
+Potsdam - {Postdam}
+position - {postion}
+positive - {postitive}
+positive - {postive}
+positively - {postively}
+posthumous - {postumous}
+potatoes - {potatos}
+potential - {potentional}
+potentially - {potentialy}
+portray - {potray}
+purpose - {pourpose}
+powerful - {powerfull}
+practical - {practial}
+practically - {practially}
+practically - {practicaly}
+practitioner - {practicioner}
+practitioners - {practicioners}
+practically - {practicly}
+practitioner - {practioner}
+practitioners - {practioners}
+Prague - {Prauge}
+prairie - {prairy}
+prairie - {prarie}
+practice - {pratice}
+pre-Columbian - {pre-Colombian}
+precursor - {pre-cursor}
+; pre-empt (variant of preempt)
+preexistent - {pre-existant}
+preamble - {preample}
+predecessor - {precedessor}
+precede - {preceed}
+preceded - {preceeded}
+preceding - {preceeding}
+precedes - {preceeds}
+perceive - {preceive}
+perception - {preception}
+precedence - {precidence}
+; precedent, president - {precident}
+precinct - {precint}
+precursor - {precurser}
+prejudice - {predjudice}
+predominantly - {predominately}
+perfection - {prefection}
+preferred - {prefered}
+preferring - {prefering}
+prefer - {preferr}
+preferable - {preferrable}
+preferably - {preferrably}
+prefer - {preffer}
+preferred - {preffered}
+pregnancies - {pregancies}
+pregnancy - {pregancy}
+pregnancy - {pregnacy}
+priest - {preist}
+pejorative - {prejorative}
+permanent - {premanent}
+; premier, premiere - {premeir}
+; premier, premiere - {premeire}
+premiered - {premeired}
+; premier, premiere - {premere}
+premises - {premesis}
+premillennial - {premillenial}
+; premier, premiere - {premire}
+permission - {premission}
+Premonstratensians - {Premonasterians}
+promotion - {premotion}
+prepare - {prepair}
+preparation - {prepartion}
+preparatory - {prepatory}
+preparation - {preperation}
+preparatory - {preperatory}
+presence - {prescence}
+presence - {presense}
+presenter - {presentor}
+; precedence, presidency - {presidence}
+presidential - {presidental}
+; perspective, prospective - {prespective}
+; pressurisation (variant of pressurization)
+; pressurise (variant of pressurize)
+prestigious - {prestigeous}
+prestigious - {prestigous}
+presumably - {presumeably}
+presumably - {presumibly}
+pressure - {presure}
+pressurize - {presurize}
+; pretence (variant of pretense)
+prevalence - {prevailance}
+prevail - {prevale}
+prevalence - {prevelance}
+prevalent - {prevelant}
+prevention - {preventation}
+preventative (acceptable synonym for preventive)
+previous - {previus}
+previous - {previvous}
+previous - {prevous}
+Priscilla - {Pricilla}
+principal - {pricipal}
+principle - {priciple}
+primarily - {primarially}
+primarily - {primarly}
+primitive - {primative}
+primitively - {primatively}
+primitives - {primatives}
+Prime Minister - {Prime Minster}
+; premier, premiere - {primier}
+primordial - {primordal}
+primordial - {primordeal}
+; principality, principally - {principaly}
+principal - {principial}
+principally - {principly}
+principal - {prinicipal}
+Princeton - {Princton}
+; prioritise (variant of prioritize)
+prison - {prision}
+; privatisation (variant of privatization)
+; privatise (variant of privatize)
+privately - {privatley}
+privately - {privatly}
+privilege - {priveledge}
+privileges - {priveledges}
+privilege - {privelege}
+privileged - {priveleged}
+privileges - {priveleges}
+privilege - {privelidge}
+privilege - {privelige}
+privileged - {priveliged}
+privileges - {priveliges}
+privilege - {privilage}
+privilege - {priviledge}
+privileges - {priviledges}
+privilege - {privledge}
+probably - {probablly}
+probability - {probalibity}
+probably - {probaly}
+problem - {probelm}
+process - {proccess}
+; proceed, precede - {procede}
+; proceeds, precedes - {procedes}
+procedure - {procedger}
+; proceeding, preceding - {proceding}
+procedure - {proceedure}
+proclaim - {proclame}
+proclamation - {proclomation}
+production - {prodcution}
+; profusion, profession - {profesion}
+professor - {profesor}
+professionally - {professionaly}
+profession - {proffesion}
+professor - {proffesor}
+prolific - {profilic}
+prodigy - {progidy}
+programmable - {programable}
+; program, programme - {programe}
+programmer - {programer}
+; programme (variant of program)
+; pogrom, program, programme - {progrom}
+prohibition - {prohabition}
+prolegomena - {prologomena}
+prominence - {prominance}
+prominent - {prominant}
+prominent - {prominate}
+; prominently, predominantly - {prominately}
+promiscuous - {promiscous}
+proximity - {promixity}
+pronominal - {pronomial}
+pronunciation - {pronounciation}
+probably - {propably}
+propelled - {propeled}
+propelling - {propeling}
+propel - {propell}
+; prosperity, property, propriety - {properity}
+property - {propery}
+prophecy - {prophacy}
+prophesied - {prophecized}
+proprietary - {propietary}
+propaganda - {propoganda}
+propagate - {propogate}
+propagation - {propogation}
+propagator - {propogator}
+proportion - {propotion}
+proportional - {propotional}
+; proper, Propper - {propper}
+proprietary - {proprietory}
+proselytizing - {proseletyzing}
+protagonist - {protaganist}
+; pro tem, protein - {protem}
+protein - {protien}
+protocol - {protocal}
+portrait - {protrait}
+portray - {protray}
+portrayal - {protrayal}
+portrayed - {protrayed}
+protuberance - {protruberance}
+protuberances - {protruberances}
+pronounced - {prounounced}
+provided - {provded}
+provider - {providor}
+pseudonymous - {pseudononymous}
+pseudonym - {pseudonyn}
+pseudo - {psuedo}
+psychedelic - {psychidelic}
+psychedelic - {psychodelic}
+psychology - {psycology}
+psychic - {psyhic}
+; public, publish - {publich}
+; publicise (variant of publicize)
+purchase - {puchase}
+Puccini - {Pucini}
+Puerto Rican - {Puertorican}
+Puerto Rican - {Puertorrican}
+Puerto Ricans - {Puertorricans}
+pumpkin - {pumkin}
+punches - {punchs}
+purchase - {purchace}
+purposely - {purposedly}
+; pursing, pursuing - {pursing}
+persuade - {pursuade}
+; peruse, pursue - {puruse}
+puts - {put's}
+putting - {puting}
+own - {pwn}
+power - {pwoer}
+psychedelic - {pyschedelic}
+psychic - {pyschic}
+psycho - {pyscho}
+psychological - {pyschological}
+psychology - {pyschology}
+psychosomatic - {pyschosomatic}
+
+; === Q ===
+quotation - {qoutation}
+; quote - {qoute} <!-- also matches qouted, qoutes and qouting -->
+; quite, quiet - {qtuie}
+quadruped - {quadraped}
+quadrupedal - {quadrapedal}
+quadrupedalism - {quadrapedalism}
+quadrupole - {quadrapole}
+quadruped - {quadriped}
+quadrupedal - {quadripedal}
+quadrupedalism - {quadripedalism}
+quadrupedal - {quadropedal}
+qualification - {qualifaction}
+qualifier - {qualifer}
+qualifiers - {qualifers}
+qualifying - {qualifiing}
+qualifying - {qualifyng}
+; qualités, qualities - {qualites}
+quandary - {quandry}
+quantity - {quanity}
+quantitative - {quantative}
+quantity - {quantaty}
+; quantités, quantities - {quantites}
+; quantise (variant of quantize)
+; quarantaine, quarantine - {quarantaine}
+quarrel - {quarell}
+quaternary - {quarternary}
+quarter - {quater}
+; quarter-final, quarterfinal - {quater-final}
+quarterback - {quaterback}
+quarterfinals - {quaterfinals}
+quarterly - {quaterly}
+quartermaster - {quatermaster}
+queasy - {queazy}
+questionnaire - {questionaire}
+questioned - {questionned}
+quickly - {quicklyu}
+; quickie, quickly - {quicky}
+quickly - {quikly}
+quindecimvir - {quindecemvir}
+quindecimviri - {quindecemviri}
+quinquereme - {quinquireme}
+; quit, quite - {quited}
+; quietly, Quitely - {quitely}
+; quit - {quitted}
+quizzes - {quizes}
+; quite, quiet - {qutie}
+qv (q.v.)
+
+; === R ===
+; radicalise (variant of radicalize)
+radiant - {radient}
+; rancour (variant of rancor)
+; randomise (variant of randomize)
+racquet - {raquet}
+; rarified (variant of rarefied)
+rarely - {rarley}
+raised - {rasied}
+; rationalise (variant of rationalize)
+re-released - {re-realeased}
+reaches - {reachs}
+reactivated - {reactived}
+readily - {readly}
+wreak - {reak}
+release - {realease}
+; realisation (variant of realization)
+; realise (variant of realize)
+reality - {reallity}
+related - {realted}
+relating - {realting}
+relation - {realtion}
+relative - {realtive}
+relatively - {realtively}
+; really, relay - {realy}
+remain - {reamain}
+remain - {reamin}
+research - {reasearch}
+reassess - {reasses}
+rebroadcast - {rebroadcasted}
+rebuilt - {rebuilded}
+rebuttal - {rebuttle}
+recast - {recasted}
+recent - {reccent}
+recommend - {reccomend}
+recommended - {reccomended}
+recommend - {reccommend}
+recommended - {reccommended}
+recurring - {reccuring}
+receded - {receeded}
+receding - {receeding}
+recently - {recentley}
+recipient - {recepient}
+received - {recepted}
+received - {recevied}
+reside - {recide}
+receipt - {reciept}
+receive - {recieve}
+received - {recieved}
+receiver - {reciever}
+receives - {recieves}
+receiving - {recieving}
+recipient - {recipent}
+recipient - {recipiant}
+recipes - {recipies}
+recognise - {recogise}
+recognize - {recogize}
+; recognise (variant of recognize)
+recoilless - {recoiless}
+recommend - {recomend}
+recommendation - {recomendation}
+recommended - {recomended}
+recommending - {recomending}
+recommends - {recomends}
+reconnaissance - {reconaissance}
+reconciliation - {reconcilation}
+reconcile - {reconciliate}
+recognize - {recongize}
+recognize - {reconize}
+recorded - {recoreded}
+recuperate - {recouperate}
+; reacquire, require - {recquire}
+record - {recrod}
+recruited - {recruted}
+recurring - {recuring}
+recurrence - {recurrance}
+redevelopment - {redevelopement}
+ridiculous - {rediculous}
+redundant - {redundent}
+referral - {referal}
+reference - {referance}
+referred - {refered}
+refers - {referes}
+referring - {refering}
+reference - {refernece}
+refer - {referr}
+reference - {referrence}
+refers - {referrs}
+referred - {reffered}
+reference - {refference}
+refer - {refferr}
+reinforce - {reforce}
+reference - {refrence}
+refrigeration - {refridgeration}
+refrigerator - {refridgerator}
+reform - {refrom}
+registration - {registeration}
+registry - {registery}
+regard - {reguard}
+regularly - {reguarly}
+regularly - {regularily}
+; regularise (variant of regularize)
+regularly - {regulary}
+rehearsal - {rehersal}
+rehearse - {reherse}
+reenact - {reinact}
+rejuvenate - {rejuvinate}
+; renown, renowned - {reknown}
+renowned - {reknowned}
+real - {rela}
+relegate - {relagate}
+relegated - {relagated}
+relegation - {relagation}
+release - {relase}
+relatively - {relativley}
+relatively - {relativly}
+relevant - {relavent}
+relieve - {releave}
+relieve - {releive}
+relieved - {releived}
+relative - {reletive}
+relevant - {relevent}
+reliability - {reliablity}
+reliance - {relience}
+religious - {religeous}
+religion - {religon}
+religious - {religous}
+relatively - {relitively}
+realize - {relize}
+; realised, realized - {relized}
+realm - {relm}
+remaining - {remaing}
+remaining - {remainging}
+remnants - {remanants}
+; remained, renamed - {remaned}
+remaining - {remaning}
+remember - {rember}
+remember - {remeber}
+remembrance - {rememberance}
+remain - {remian}
+reminiscent - {reminescent}
+reminiscent - {reminicent}
+; remodelled (variant of remodeled)
+; remodelling (variant of remodeling)
+rendezvous - {rendevous}
+renovate - {rennovate}
+renovation - {rennovation}
+renowned - {renound}
+renowned - {renouned}
+renowned - {renowed}
+repaid - {repayed}
+repeatedly - {repeatly}
+respected - {repected}
+repelled - {repeled}
+repel - {repell}
+repentance - {repentence}
+repentant - {repentent}
+repertoire - {repertoir}
+repetitive - {repetetive}
+repetition - {repetion}
+repetitive - {repetive}
+repertoire - {repetoire}
+repetition - {repitition}
+replacing - {replaceing}
+response - {reponse}
+responsible - {reponsible}
+reportedly - {reportably}
+representative - {represenative}
+represent - {representate}
+representative - {representitive}
+representative - {representive}
+reprise - {reprize}
+republic - {repubic}
+rescue - {rescure}
+rescue - {rescuse}
+resemblance - {resemblence}
+research - {reserach}
+reservoir - {resevoir}
+residence - {residance}
+resident - {residant}
+resistible - {resistable}
+resistance - {resistence}
+resistant - {resistent}
+resource - {resourse}
+respectively - {respectivley}
+respectively - {respectivly}
+response - {responce}
+respondent - {respondant}
+responsibility - {responibility}
+responsibility - {responsability}
+responsible - {responsable}
+responded - {responsed}
+responsibilities - {responsibilites}
+responsibility - {responsibilty}
+responsibility - {resposibility}
+responsible - {resposible}
+resemblance - {ressemblance}
+resemble - {ressemble}
+resembled - {ressembled}
+resembling - {ressembling}
+resurrection - {ressurection}
+restaurant - {restarant}
+restaurant - {restaraunt}
+restaurants - {restaraunts}
+restoration - {restauration}
+restaurant - {restauraunt}
+restaurant - {resteraunt}
+restaurants - {resteraunts}
+restaurant - {restorant}
+; restraint, restaurant - {restraunt}
+restaurant - {restuarant}
+restaurant - {resturant}
+resurrect - {resurect}
+resurrecting - {resurecting}
+resurgence - {resurgance}
+retaliation - {retailation}
+retardant - {retardent}
+rhetoric - {rethoric}
+retrieved - {retireved}
+retrieve - {retreive}
+retrieved - {retreived}
+retrieve - {retrive}
+returning - {retruning}
+; returned; sometimes leave as retuned or re-tuned - {retuned}
+returned - {retured}
+returning - {returing}
+reevaluated - {revaluated}
+relevant - {revelant}
+reverence - {reverance}
+reverend - {reverand}
+reverse - {reverese}
+reversible - {reversable}
+; the; mostly false positives in acronyms and names - {rhe}
+rhythm - {rhythem}
+rhythm - {rhythym}
+rhythm - {rhytm}
+ricochet - {richochet}
+riches - {richs}
+ridden - {riden}
+; RIDGID, rigid - {ridgid}
+; rigor, rigour - {rigeur}
+righteous - {rightous}
+; rigour (variant of rigor)
+rigorous - {rigourous}
+right - {rigth}
+Rio de Janeiro - {Rio de Janerio}
+Rio de Janeiro - {Rio de Janero}
+Rio de Janeiro - {Rio de Janiero}
+ripped - {riped}
+; raised, risen, rose - {rised}
+; rivalled (variant of rivaled)
+rivalry - {rivarly}
+Rockefeller - {Rockerfeller}
+; roccoco (?), rococo - {rococco}
+; Uppercase "Roman" in many contexts; but see roman type and Nouveau roman - {roman}
+; romanticise (variant of romanticize)
+romantic - {romatic}
+roommate - {roomate}
+roughly - {rougly}
+royalties - {royalites}
+royalties - {royalities}
+royalty - {royality}
+rule - {rulle}
+ruler - {ruller}
+; rumor, rumour - {rummor}
+; rumour (variant of rumor)
+runner - {runer}
+running - {runing}
+; ran, run - {runned}
+rushes - {rushs}
+Russian - {Rusian}
+Russian - {Russain}
+Russian - {Russina}
+Russian - {Russion}
+rhythm - {rythem}
+rhythm - {rythm}
+rhythm - {rythum}
+rhythm - {rythym}
+
+; === S ===
+sabbatical - {sabatical}
+; sabre (variant of saber)
+sacrifice - {sacrafice}
+sacrilegious - {sacreligious}
+Sacramento - {Sacremento}
+safeguard - {safegaurd}
+; safely, safety - {safetly}
+safely - {safley}
+safety - {saftey}
+safety - {safty}
+salesman - {saleman}
+salaries - {saleries}
+salary - {salery}
+Sahasra - {Sahastra}
+Sahasraarjun - {Sahastraarjun}
+Sahasrabahu - {Sahastrabahu}
+Sahasradhara - {Sahastradhara}
+Sahasralinga - {Sahasralinga}
+; San Bernadino, San Bernardino, California|San Bernardino - {San Bernadino}
+San Diego - {San Deigo}
+San Francisco - {San Franciso}
+San Francisco - {San Fransico}
+San Francisco - {San Fransisco}
+sanctuary - {sancutary}
+sandwich - {sandwhich}
+Sanhedrin - {Sanhedrim}
+sanctuary - {santuary}
+sergeant - {sargant}
+sergeant - {sargent}
+sarsaparilla - {sasparilla}
+; says, sassy - {sasy}
+satellite - {satalite}
+satirize - {satarize}
+satellite - {satelite}
+Saturday - {Saterday}
+Saturdays - {Saterdays}
+; satirise (variant of satirize)
+satiric - {satric}
+satirical - {satrical}
+satirically - {satrically}
+satellite - {sattelite}
+sought - {saught}
+solder - {sauter}
+soldering - {sautering}
+saving - {saveing}
+; saviour (variant of savior)
+; savour (variant of savor)
+; savoury (variant of savory)
+savvy - {savy}
+saxophone - {saxaphone}
+saying - {sayig}
+says - {say's}
+said - {sayed}
+scalable - {scaleable}
+Scandinavia - {Scandanavia}
+Scandinavian - {Scandanavian}
+scanned - {scaned}
+scanner - {scaner}
+; scene, screen - {sceen}
+scenery - {scenary}
+scenario - {scenerio}
+; sceptre (variant of scepter)
+schedule - {schedual}
+schedule - {scheduel}
+; scholastic, scholarly - {scholarstic}
+; Schuyler, Shuyler - {Schyuler}
+scientific - {scientifical}
+script - {scirpt}
+scroll - {scoll}
+Scottish - {Scotish}
+Scotland - {Scottland}
+sculptor - {sculpter}
+sculpture - {scupture}
+search - {seach}
+searched - {seached}
+searches - {seaches}
+seemingly - {seamingly}
+season - {seaon}
+searches - {searchs}
+seasonally - {seasonaly}
+; seceded, succeeded - {secceeded}
+secession - {seccesion}
+; succeed, secede - {seceed}
+; succeeded, seceded - {seceeded}
+secondary - {secondry}
+second - {secound}
+secretary - {secratary}
+secret - {secrect}
+secretary - {secretery}
+September - {Sectember}
+secondary - {secundary}
+securities - {securites}
+sedentary - {sedantary}
+sedative - {sedatative}
+sidereal - {sedereal}
+; See's, sees - {see's}
+sought - {seeked}
+seems - {seem's}
+seamless - {seemless}
+segment - {segement}
+siege - {seige}
+senior - {seinor}
+series - {seires}
+selection - {selction}
+sold - {selled}
+semblance - {semblence}
+; sense, since - {sence}
+sent - {sended}
+senior - {seniour}
+senior - {senoir}
+sensible - {sensable}
+censure - {sensure}
+sentence - {sentance}
+September - {Seotember}
+separately - {separatley}
+September - {Sepember}
+separable - {seperable}
+separate - {seperate}
+separated - {seperated}
+separating - {seperating}
+separation - {seperation}
+separatist - {seperatist}
+separatism - {seperatism}
+subpoena - {sepina}
+September - {Septembrer}
+September - {Septemebr}
+September - {Septemer}
+September - {Septenber}
+September - {Septermber}
+September - {Septmber}
+September - {Septmeber}
+; sepulchre, sepulcher - {sepulchure}
+; sepulchre, sepulcher - {sepulcre}
+sequel - {sequal}
+sequential - {sequencial}
+search - {serach}
+; serialise (variant of serialize)
+; series, series', series's - {serie's}
+series - {serieses}
+service - {serivce}
+servant - {servent}
+; set's, sets, sets - {set's}
+September - {Setember}
+set list - {setlist}
+September - {Setpember}
+; set, settled, setted - {setted}
+settler - {setteler}
+settlement - {settelment}
+settlements - {settelments}
+several - {severall}
+several - {severeal}
+severely - {severley}
+severely - {severly}
+several - {sevral}
+shadow - {shaddow}
+; shaman, shamans - {shamen}
+Shandong - {Shangdong}
+; sheath, sheet, cheat - {sheat}
+schedule - {shedual}
+schedule - {shedule}
+; sheep, sheep's - {sheeps}
+shield - {sheild}
+sheriff - {sherif}
+shining - {shineing}
+shipped - {shiped}
+shipping - {shiping}
+shoo-in - {shoe-in}
+shot - {shooted}
+should - {shoud}
+should - {shoudl}
+; should, shouldn't - {shoudln}
+; should not, shouldn't - {should'nt}
+; should not, shouldn't - {shouldnt}
+shriek - {shreak}
+shrewd - {shrewed}
+since - {sicne}
+sidereal - {sideral}
+seismic - {siesmic}
+; seize, size - {sieze}
+; seized, sized - {siezed}
+; seizing, sizing - {siezing}
+seizure - {siezure}
+; signalled (variant of signaled)
+; signalling (variant of signaling)
+significantly - {signifantly}
+significantly - {significently}
+significance - {signifigance}
+significant - {signifigant}
+signatories - {signitories}
+signatory - {signitory}
+signature - {signiture}
+similar - {silimar}
+similar - {similair}
+similarly - {similarily}
+similar - {similiar}
+similarity - {similiarity}
+similar - {simillar}
+similar - {simmilar}
+similarly - {simmilarly}
+simply - {simpley}
+simpler - {simplier}
+similar - {simular}
+simultaneous - {simultanous}
+simultaneously - {simultanously}
+sincerely - {sincerley}
+; sang, signed, singed, singled - {singed}
+single-handedly - {single-handily}
+singsong - {singsog}
+; sank, sunk - {sinked}
+; sense, sines, since - {sinse}
+Zionist - {Sionist}
+Zionists - {Sionists}
+scissors - {sissors}
+Sistine - {Sixtin}
+; sizeable (variant of sizable)
+Skagerrak - {Skagerak}
+skied - {skiied}
+skier - {skiier}
+skilful - {skilfull}
+skillful - {skillfull}
+sleeve - {sleave}
+slid - {slided}
+slippery - {slippy}
+; slipt (variant of slipped)
+slit - {slitted}
+same - {smae}
+smaller - {smaler}
+; smelt (variant of smelled)
+smiley - {smily}
+some - {smoe}
+smooth - {smoothe}
+smooths - {smoothes}
+; smoulder (variant of smolder)
+sneeze - {snese}
+snorkel - {snorkle}
+sneaked - {snuck}
+; socialise (variant of socialize)
+; sodoku, sudoku - {soduko}
+some - {soem}
+software - {sofware}
+show - {sohw}
+solitary - {solatary}
+solely - {soley}
+soldier - {solider}
+soldier - {solidier}
+soliloquy - {soliliquy}
+solid - {sollid}
+solution - {sollution}
+soluble - {soluable}
+; sombre (variant of somber)
+someone - {somone}
+songwriter - {songwritter}
+soon after - {soonafter}
+soon - {soons}
+sophisticated - {sophicated}
+sophomore - {sophmore}
+sorcerer - {sorceror}
+story - {sotry}
+; satyr, story - {sotyr}
+sound - {soudn}
+sounds - {soudns}
+; could, should, sold - {sould}
+solely - {souly}
+soundtrack - {soundtack}
+south - {sourth}
+southern - {sourthern}
+southernmost - {southermost}
+Southampton - {Southhampton}
+southeast - {southheast}
+souvenir - {souvenier}
+souvenirs - {souveniers}
+sovereignty - {sovereignity}
+sovereign - {soverign}
+sovereignty - {soverignity}
+sovereignty - {soverignty}
+; special, variant of spatial - {spacial}
+spaghetti - {spagetti}
+Spaniard - {Spainard}
+Spaniard - {spainiard}
+Spanish - {spainish}
+; spare, sparse - {sparce}
+sparsely - {sparcely}
+sparsely - {sparsley}
+sparsely - {sparsly}
+speech - {speach}
+speechless - {speachless}
+special - {speacial}
+; spread, speed, Proper name Spead - {spead}
+; spoke, spoken - {speaked}
+spectator - {specator}
+; specialised, specialized - {specialied}
+; specialisation (variant of specialization)
+; specialise (variant of specialize)
+specialities - {specialites}
+; speciality, specialty - {speciality}
+; specialised, specialized - {speciallized}
+specialties - {specialtes}
+; specialty (variant of speciality)
+; speciality, specially, specialty - {specialy}
+specimen - {speciemen}
+; specific, specify - {specif}
+specific - {specifical}
+specifically - {specificaly}
+specificity - {specifity}
+specimen - {speciman}
+spectacular - {spectauclar}
+spectrometry - {spectometry}
+spectre (specter)
+; aspects, expects - {spects}
+speeches - {speechs}
+speaker - {speeker}
+special - {speical}
+spelled (spelt)
+spelt (spelled)
+spent - {spended}
+spermatozoa - {spermatazoa}
+spermatozoon - {spermatazoon}
+spilled (spilt)
+spilt (spilled)
+September - {Spetember}
+splits - {spilts}
+spring - {Sping}
+Springfield - {Spingfield}
+spun - {spinned}
+; spiralling (variant of spiraling)
+split - {splited}
+splitting - {spliting}
+split - {splitted}
+; spoilt (variant of spoiled)
+spokesman - {spokeman}
+spokesmen - {spokemen}
+spokesperson - {spokeperson}
+spokeswoman - {spokewoman}
+spoiler - {spolier}
+sponsor - {sponser}
+spontaneous - {spontanious}
+spontaneous - {spontanous}
+; spongeous, spontaneous - {sponteous}
+sponsored - {sponzored}
+sporadic - {sporadical}
+sporadic - {sporatic}
+sports car - {sportscar}
+spotted - {spoted}
+spouse - {spouce}
+spread - {spreaded}
+spiral - {sprial}
+spiritual - {spritual}
+September - {Sptember}
+spun off - {spunoff}
+; spurned, spurred - {spured}
+squad - {sqaud}
+square - {sqaure}
+stabilize - {stabalize}
+stabilizer - {stabalizer}
+stabbed - {stabed}
+; stabilise (variant of stabilize)
+stability - {stabilty}
+stability - {stablity}
+stabilize - {stablize}
+stagnant - {stagnet}
+stalwart - {stallwart}
+standard - {standart}
+; stood, stranded - {standed}
+strange - {stange}
+; staring, starring - {staring}
+strategic - {startegic}
+strategies - {startegies}
+strategy - {startegy}
+; static, statistic - {stastic}
+statistical - {stastical}
+; statics, statistics - {stastics}
+strategic - {stategic}
+statesman - {stateman}
+statement - {statment}
+statutory - {statuatory}
+stays - {stayes}
+; steadily, steady - {steadly}
+stole - {stealed}
+street - {steet}
+stellar - {steller}
+stemmed - {stemed}
+stepped - {steped}
+stepping - {steping}
+steroid - {steriod}
+stuck - {sticked}
+strike - {stike}
+stylus - {stilus}
+stringent - {stingent}
+stunk - {stinked}
+stole - {stoled}
+stomach - {stomache}
+stopped - {stoped}
+stopper - {stoper}
+stopping - {stoping}
+story - {stopry}
+stories - {storeis}
+storey (story)
+stories - {storise}
+strongest - {stornegst}
+strong - {storng}
+; storeys, stories - {storys}
+story - {stoyr}
+stop - {stpo}
+strategies - {stradegies}
+strategy - {stradegy}
+straitjacket - {straightjacket}
+strangely - {strangly}
+strapped - {straped}
+; start, strata - {strat}
+strategy - {stratedgy}
+stretch - {strech}
+strengthen - {strenghen}
+strengthened - {strenghened}
+strengthening - {strenghening}
+strength - {strenght}
+strengthen - {strenghten}
+strengthened - {strenghtened}
+strengthening - {strenghtening}
+strenuous - {strenous}
+strength - {strenth}
+strictly - {strickly}
+strictly - {stricly}
+strictest - {strictist}
+struck - {striked}
+stricken - {striken}
+strand - {strnad}
+; story, destroy - {stroy}
+struck out - {struckout}
+structure - {structer}
+structural - {structual}
+structure - {structue}
+structurally - {structuraly}
+state - {stste}
+stubbornness - {stubborness}
+stuck - {stucked}
+structure - {stucture}
+structured - {stuctured}
+stuttering - {studdering}
+study - {studdy}
+studying - {studing}
+struggle - {stuggle}
+subcategories - {subcatagories}
+subcategory - {subcatagory}
+susceptible - {subceptible}
+; suburb, superb - {suberb}
+subsequent - {subesquent}
+submission - {submision}
+submitted - {submited}
+submitting - {submiting}
+submit - {submitt}
+subpoena - {subpena}
+subsequent - {subquent}
+subsidiary - {subsdiary}
+subsequent - {subsequential}
+subsidiary - {subsidary}
+subsidiary - {subsiduary}
+substitute - {subsitute}
+subsequent - {subsquent}
+substance - {substace}
+sustain - {substain}
+substantial - {substanial}
+substantially - {substantually}
+substantial - {substatial}
+substitute - {substitue}
+subtract - {substract}
+subtracted - {substracted}
+subtraction - {substraction}
+subtracts - {substracts}
+subterranean - {subterranian}
+subtly - {subtlely}
+subtly - {subtley}
+succeed - {succede}
+succeeds - {succeedes}
+susceptibility - {succeptibility}
+susceptible - {succeptible}
+success - {succes}
+successful - {succesful}
+successful - {succesfull}
+successfully - {succesfully}
+successfully - {succesfuly}
+succession - {succesion}
+successive - {succesive}
+successor - {succesor}
+successor - {successer}
+successful - {successfull}
+successfully - {successfuly}
+succinct - {succint}
+; succour (variant of succor)
+succumb - {succum}
+succeed - {suceed}
+succeeded - {suceeded}
+succeeding - {suceeding}
+succeeds - {suceeds}
+susceptibility - {suceptibility}
+susceptible - {suceptible}
+successful - {sucesful}
+successfully - {sucesfully}
+successfully - {sucesfuly}
+succession - {sucesion}
+success - {sucess}
+successes - {sucesses}
+successful - {sucessful}
+successful - {sucessfull}
+successfully - {sucessfully}
+successfully - {sucessfuly}
+succession - {sucession}
+successive - {sucessive}
+successor - {sucessor}
+suicide - {sucide}
+successor - {sucsessor}
+suddenly - {suddendly}
+student - {sudent}
+students - {sudents}
+; sodoku, sudoku - {suduko}
+suing - {sueing}
+surface - {suface}
+sufficient - {suffcient}
+sufficiently - {suffciently}
+suffrage - {sufferage}
+sufficient - {sufficant}
+sufficient - {sufficent}
+sufficiently - {sufficently}
+sufficient - {sufficiant}
+suggest - {sugest}
+suggest - {sugget}
+subject - {suject}
+summary - {sumary}
+; summarise (variant of summarize)
+sumptuous - {sumptous}
+soup - {suop}
+surpass - {supass}
+supersede - {supercede}
+supersede - {superceed}
+superseded - {superceeded}
+supersession - {supercession}
+supersessionism - {supercessionism}
+superficial - {superfical}
+superintendent - {superintendant}
+supremacy - {supermacy}
+superscalar - {superscaler}
+supersede - {superseed}
+supervisor - {supervisior}
+sophisticated - {suphisticated}
+supplant - {suplant}
+supplement - {suplement}
+supplemental - {suplemental}
+supplied - {suplied}
+supply - {suply}
+suppose - {supose}
+supposed - {suposed}
+supposedly - {suposedly}
+supposes - {suposes}
+supposing - {suposing}
+superior - {supperior}
+supplement - {supplament}
+supplement - {suppliment}
+supplied - {supplyed}
+supposedly - {supposably}
+supposed - {suppossed}
+; support, supposed - {suppost}
+supposed - {supposted}
+suppression - {suppresion}
+surprise - {supprise}
+supremacist - {supremist}
+suppress - {supress}
+suppressed - {supressed}
+suppresses - {supresses}
+suppressing - {supressing}
+surprise - {suprise}
+surprised - {suprised}
+surprising - {suprising}
+surprisingly - {suprisingly}
+surprise - {suprize}
+surprised - {suprized}
+surprising - {suprizing}
+surprisingly - {suprizingly}
+surely - {surelly}
+surrender - {surender}
+; surely, surly - {surley}
+surround - {suround}
+surrounded - {surounded}
+surrounds - {surounds}
+surpassed - {surpased}
+superb - {surperb}
+supplant - {surplant}
+suppress - {surpress}
+surprise - {surprize}
+surprised - {surprized}
+surprising - {surprizing}
+surprisingly - {surprizingly}
+; surrounded, surrendered - {surrended}
+surreptitious - {surrepetitious}
+surreptitiously - {surrepetitiously}
+surreptitious - {surreptious}
+surreptitiously - {surreptiously}
+surrounded - {surronded}
+surround - {surroud}
+surrendering - {surrundering}
+surveil - {surveill}
+surveyor - {surveyer}
+; serving, surviving - {surving}
+survivor - {surviver}
+surviving - {survivng}
+surviving - {survivng}
+susceptibility - {susceptability}
+susceptible - {susceptable}
+subscribe - {suscribe}
+susceptible - {suseptible}
+subsequent - {susequent}
+substance - {sustance}
+suzerainty - {suzerainity}
+swear - {swaer}
+swears - {swaers}
+swapped - {swaped}
+swore - {sweared}
+Sweden - {Sweeden}
+Swedish - {Sweedish}
+swept - {sweeped}
+swept - {sweept}
+swimming - {swiming}
+swam - {swimmed}
+switches - {switchs}
+swordsman - {swordman}
+swordsmanship - {swordmanship}
+swore - {swored}
+says - {syas}
+; symbolise, symbolising (variant of symbolize, symbolizing)
+symmetric - {symetric}
+; symmetric, symmetrical - {symetrical}
+symmetrically - {symetrically}
+symmetry - {symetry}
+symmetric - {symmetral}
+symmetrically - {symmetricaly}
+sycophant - {synchophant}
+synchrotron - {synchotron}
+sycophant - {syncophant}
+synonymous - {synonomous}
+synthetic - {synthetical}
+syphilis - {syphillis}
+syphilis - {syphyllis}
+synopsis - {sypnosis}
+syrup - {syrap}
+system - {sytem}
+style - {sytle}
+
+; === T ===
+; tabacco, tobacco - {tabacco}
+tablecloths - {tableclothes}
+tableware - {tablewear}
+tablinum - {tablinium}
+tactically - {tacticaly}
+tactic - {tactict}
+tactician - {tactitian}
+than - {tahn}
+that - {taht}
+taillight - {tailight}
+; taken, took, talked - {taked}
+talked - {talekd}
+tambourine - {tamborine}
+tandem - {tandum}
+; tarred: treated with tar; false positive tared: adjusted for the weight of the packaging - {tared}
+; targetted (alternative spelling of targeted)
+; targetting (alternative spelling of targeting)
+; tariff; most are false positives for the Arab name Tarif or the French word tarif - {tarif}
+tariff - {tarrif}
+tariff - {tarriff}
+taste - {tast}
+that - {tath}
+tactics - {tatics}
+tattoo - {tatoo}
+tattoos - {tattooes}
+taxonomic - {taxanomic}
+taxonomy - {taxanomy}
+taught - {teached}
+teaches - {teachs}
+teammate - {teamate}
+; teared, tore, torn - {teared}
+technical - {techical}
+technician - {techician}
+technical - {techincal}
+technically - {technicaly}
+technician - {technican}
+technology - {technolgy}
+technology - {tecnology}
+the - {teh}
+they - {tehy}
+Telangana - {Telengana}
+television - {televison}
+televise - {televize}
+told - {telled}
+temperate - {temparate}
+temperament - {temperment}
+temperamental - {tempermental}
+temperature - {temperture}
+temporarily - {temporarely}
+temperature - {temprature}
+tentacle - {tenacle}
+tenement - {tenament}
+tendency - {tendancy}
+; tenderise (variant of tenderize)
+; tendonitis (variant of tendinitis)
+tenement - {tennament}
+tenant - {tennant}
+tenement - {tennement}
+tennis player - {tennisplayer}
+tenuous - {tenous}
+tentacle - {tenticle}
+tenure - {tenture}
+territory - {teritory}
+terminally - {terminaly}
+terrestrial - {terresterial}
+terrestrial - {terrestial}
+territories - {terriories}
+territory - {terriory}
+territories - {territores}
+terrorist - {territorist}
+territory - {territority}
+; terrorise (variant of terrorize)
+testimonial - {testamonial}
+testimony - {testamony}
+testicle - {testical}
+testament - {testiment}
+testament - {testimont}
+testimony - {testomony}
+Tuesday - {Teusday}
+texts - {textes}
+the - {tghe}
+thank - {thanbk}
+; that, that's - {thast}
+they - {thay}
+; theater, theatre - {theather}
+these - {theese}
+thief - {theif}
+their - {theit}
+thieves - {theives}
+; herself, himself, itself, themselves - {themself}
+themselves - {themselfs}
+themselves - {themsleves}
+theologian - {theologan}
+; theologist (acceptable variant of theologian)
+; theorise (variant of theorize)
+; the, their, there - {ther}
+thereafter - {therafter}
+therapy - {theraphy}
+therefore - {therfore}
+their - {theri}
+theoretical - {theroretical}
+that - {thgat}
+the - {thge}
+thickened - {thickend}
+thieves - {thiefs}
+their - {thier}
+; thief, thieve - {thieve}
+thing - {thign}
+things - {thigsn}
+think - {thikn}
+; thinking, thickening - {thikning}
+thinks - {thikns}
+thinking - {thingking}
+think - {thiunk}
+than - {thna}
+then - {thne}
+thing - {thnig}
+things - {thnigs}
+theory - {thoery}
+thorough - {thorogh}
+thoroughbred - {thoroghbred}
+thoroughbred - {thoroughbread}
+throughout - {thoughout}
+thorough - {thourough}
+thoroughly - {thouroughly}
+thousand - {thousnad}
+threatened - {threated}
+threat - {threath}
+threatening - {threatning}
+three - {threee}
+threshold - {threshhold}
+third - {thrid}
+thirdly - {thridly}
+thoroughly - {throughly}
+; thought, through, throughout - {throught}
+throughout - {throughtout}
+throughout - {througout}
+thrust - {thrusted}
+this - {thsi}
+those - {thsoe}
+that - {tht}
+that - {thta}
+the - {thte}
+that - {thyat}
+Tijuana - {Tiajuana}
+; Tim, time - {tiem}
+think - {tihkn}
+this - {tihs}
+time - {timne}
+; time, tome - {tiome}
+typical - {tipical}
+the - {tje}
+the - {tjhe}
+take - {tkae}
+takes - {tkaes}
+taking - {tkaing}
+talking - {tlaking}
+tobacco - {tobbaco}
+; today's, todays - {todays}
+today - {todya}
+together - {togather}
+together - {togeather}
+together - {togther}
+tolerance - {tolerence}
+tolerant - {tolerent}
+toilet - {toliet}
+Tolkien - {Tolkein}
+tomatoes - {tomatos}
+tomorrow - {tommorow}
+tomorrow - {tommorrow}
+tomorrow - {tomorow}
+tonight - {tongiht}
+; taken, took - {tooked}
+took over - {tookover}
+toolless - {tooless}
+toroid - {toriod}
+toroidal - {toriodal}
+; tornados (acceptable variant of tornadoes)
+tournament - {tornament}
+torpedoes - {torpedos}
+tortoise - {tortise}
+; totalled (variant of totaled)
+; totalling (variant of totaling)
+totally - {totaly}
+to the - {tothe}
+; taught, thought, tough - {tought}
+tongue - {tounge}
+; torch, touch - {tourch}
+tournament - {tourmanent}
+toward - {towrad}
+track listing - {tracklisting}
+tragedy - {tradgedy}
+traditional - {tradicional}
+traditionally - {traditionaly}
+tradition - {traditon}
+traditional - {traditonal}
+trafficked - {trafficed}
+; traffic, trafic - {trafic}
+training - {traing}
+triangle - {traingle}
+transcend - {trancend}
+transcended - {trancended}
+transcendent - {trancendent}
+transcendental - {trancendental}
+transcending - {trancending}
+transform - {tranform}
+training - {traning}
+transcendence - {transcendance}
+transcendent - {transcendant}
+transcendental - {transcendentational}
+transept - {transcept}
+; transcribing, transcription - {transcripting}
+transcend - {transend}
+transcending - {transending}
+transferred - {transfered}
+transferring - {transfering}
+transfer - {transferr}
+transistor - {transister}
+transition - {transistion}
+translator - {translater}
+translucent - {transluscent}
+transmission - {transmision}
+transmissible - {transmissable}
+transmitted - {transmited}
+transmitter - {transmiter}
+transmitting - {transmiting}
+transmit - {transmitt}
+transportation - {transporation}
+trait - {trate}
+; travelled (variant of traveled)
+; traveller (variant of traveler)
+; travelling (variant of traveling)
+; trod, trodden - {treaded}
+tremolo - {tremelo}
+threshold - {treshold}
+trestle - {tresle}
+trespass - {tresspass}
+triathlon - {triathalon}
+trilogy - {triology}
+triple - {tripple}
+; troupes, troops - {troups}
+truly - {truely}
+truly - {truley}
+trustworthiness - {trustworthyness}
+tried - {tryed}
+tries - {trys}
+; tuff (variant of tough)
+; tumour (variant of tumor)
+tumultuous - {tumultous}
+; tunnelled (variant of tunneled)
+; tunnelling (variant of tunneling)
+; turkey (bird)
+turkeys - {turkies}
+Turkey - {Turky}
+turns - {turnes}
+; turnkey, trunk - {turnk}
+turnstile - {turnstyle}
+; Tucson, Tuscan - {Tuscon}
+twelfth - {twelth}
+twelfth - {twelveth}
+twenties - {twentys}
+Twitter - {twitter}
+town - {twon}
+that - {tyhat}
+; the, they - {tyhe}
+typical - {typcial}
+type-cast - {type-casted}
+typically - {typicaly}
+tyranny - {tyrany}
+; tyre (variant of tire)
+tyranny - {tyrrany}
+
+; === U ===
+; u (you) (over 300k false positives)
+ubiquitous - {ubiquitious}
+use - {uise}
+Ukraine - {Ukrane}
+Ukrainian - {Ukranian}
+ultimate - {ulitmate}
+ultimatum - {ultimatim}
+ultimatum - {ultimatium}
+ultimately - {ultimatley}
+ultimately - {ultimatly}
+ultimately - {ultimitely}
+umbilical - {umbillical}
+unofficial - {un-official}
+unabashed - {unabased}
+unabated - {unabatted}
+inactive - {unactive}
+inactivity - {unactivity}
+inadvisable - {unadvisable}
+unanimous - {unaminous}
+unavailable - {unavalable}
+unavailable - {unavaliable}
+unavailable - {unavalible}
+uncertainty - {uncertainity}
+uncertain - {uncertian}
+incomplete - {uncomplete}
+unconscious - {unconcious}
+unconsciousness - {unconciousness}
+inconclusive - {unconclusive}
+unconscious - {unconscience}
+inconspicuous - {unconspicuous}
+unconventional - {unconvential}
+unconventionally - {unconventionaly}
+undecidable - {undecideable}
+indecisive - {undecisive}
+underrated - {underated}
+underground - {undergound}
+underlaid - {underlayed}
+underlying - {underlaying}
+underlay - {underlied}
+underlie - {underly}
+undermine - {undermind}
+undermining - {underming}
+underwear - {underware}
+indestructible - {undestructible}
+underdevelopment - {undevelopment}
+undoubtedly - {undoubtably}
+unnecessary - {unecessary}
+unneeded - {uneeded}
+unaffected - {uneffected}
+ineffective - {uneffective}
+unequally - {unequaly}
+unexpectedly - {unexpectantly}
+inexpensive - {unexpensive}
+inexplicable - {unexplicable}
+inexplicit - {unexplicit}
+unfamiliar - {unfamilar}
+unfinished - {unfinnished}
+unfortunately - {unforetunately}
+unforeseen - {unforseen}
+unfortunately - {unfortunatley}
+unfortunately - {unfortunatly}
+inhumane - {unhumane}
+unified - {unifed}
+uniform - {unifrom}
+unilateral - {unilatreal}
+unilaterally - {unilatreally}
+unidentified - {unindentified}
+United Kingdom - {United Kingdon}
+universities - {univeristies}
+university - {univeristy}
+universities - {univerities}
+university - {univerity}
+universally - {universaly}
+universities - {universitaries}
+university - {universitary}
+universities - {universites}
+universities - {universties}
+university - {universty}
+universities - {univesities}
+university - {univesity}
+unknown - {unknow}
+unknown - {unkown}
+unlikely - {unlikley}
+; unmaneuverable, unmanoeuvrable - {unmanouverable}
+unmistakably - {unmistakeably}
+unnecessarily - {unneccesarily}
+unnecessary - {unneccesary}
+unnecessarily - {unneccessarily}
+unnecessary - {unneccessary}
+unnecessarily - {unnecesarily}
+unnecessary - {unnecesary}
+unemployment - {unnemployment}
+unofficial - {unoffical}
+unofficially - {unofficialy}
+unorthodox - {unorthadox}
+unnoticeable - {unoticeable}
+aperiodic - {unperiodic}
+unfazed - {unphased}
+implausible - {unplausible}
+unpleasant - {unplesant}
+impolite - {unpolite}
+unprecedented - {unpresidented}
+improbable - {unprobable}
+irregular - {unregular}
+unrepentant - {unrepentent}
+insatiable - {unsatiable}
+; used, unused, unsaid - {unsed}
+; unsigned, unsinged - {unsinged}
+; unspoilt (variant of unspoiled)
+unusual - {unsual}
+unsubstantiated - {unsubstanciated}
+unsuccessful - {unsuccesful}
+unsuccessful - {unsuccessfull}
+unsuccessful - {unsucesful}
+unsuccessfully - {unsucesfuly}
+unsuccessful - {unsucessfull}
+unsuccessfully - {unsucessfully}
+; ensued, unused - {unsued}
+insufficient - {unsufficient}
+unsurprised - {unsuprised}
+unsurprising - {unsuprising}
+unsurprisingly - {unsuprisingly}
+unsurprised - {unsuprized}
+unsurprising - {unsuprizing}
+unsurprisingly - {unsuprizingly}
+unsurprised - {unsurprized}
+unsurprising - {unsurprizing}
+unsurprisingly - {unsurprizingly}
+; unit, until - {unti}
+; untied (united, untied) (huge number of false positives)
+until - {untill}
+untraceable - {untracable}
+untranslatable - {untranslateable}
+; unusable (variant of unuseable)
+; unuseable (variant of unusable)
+unusually - {unusualy}
+university - {unversity}
+unveil - {unviel}
+universities - {unviersities}
+university - {unviersity}
+invisible - {unvisible}
+unaware - {unware}
+unwieldy - {unweildly}
+; unwieldily, unwieldly, unwieldy - {unwieldly}
+upcoming - {upcomming}
+upgrade - {upgarde}
+; upgradable (variant of upgradeable)
+; upgradeable (variant of upgradable)
+upheld - {upholded}
+; utmost, acceptable variant of uppermost - {upmost}
+upset - {upsetted}
+up the - {upthe}
+; unto, up to, but see Pakistani English - {upto}
+; ur (your) (100% false positives)
+; urbanise (variant of urbanize)
+usually - {usally}
+; useable (acceptable variant of usable)
+usage - {useage}
+usually - {useally}
+useful - {usefull}
+usefulness - {usefullness}
+usefully - {usefuly}
+using - {useing}
+; usual, usually - {usuall}
+usually - {usualy}
+usually - {usully}
+usurp - {usurpate}
+usual - {ususal}
+usually - {ususally}
+; use, utilise - {utalise}
+; use, utilize - {utalize}
+; utilise (variant of utilize)
+; used, utilised, utilized - {utilisied}
+utilities - {utilites}
+; used, utilised, utilized - {utilizied}
+
+; === V ===
+vacuum - {vaccum}
+vacuum - {vaccume}
+vacancy - {vacency}
+vacant - {vacent}
+vicinity - {vacinity}
+vacuum - {vacume}
+various - {vairous}
+valiant - {valient}
+; valour (variant of valor)
+valuable - {valuble}
+valuable - {valueable}
+; vandalise (variant of vandalize)
+vanish - {vannish}
+; vaporise (variant of vaporize)
+; vapour (variant of vapor)
+variable - {varable}
+variety - {vareity}
+variety - {variaty}
+variable - {varible}
+variance - {varience}
+; variant, Varient - {varient}
+varieties - {varietes}
+verifiable - {varifiable}
+verify - {varify}
+various - {varios}
+variously - {variosly}
+varsity - {varisty}
+varieties - {varities}
+; variety, Varity - {varity}
+various - {varius}
+various - {varous}
+varies - {varys}
+; Vasall, vassal - {vasall}
+vassals - {vasalls}
+vasodilation - {vasodialation}
+vasodilator - {vasodialator}
+vehicle - {vechicle}
+vector-borne - {vector-born}
+vegetarian - {vegatarian}
+vegetarian - {vegeterian}
+vegetable - {vegitable}
+vegetarian - {vegitarian}
+vegetable - {vegtable}
+vehicle - {vehichle}
+vein - {veign}
+view - {veiw}
+vernacular - {venacular}
+venomous - {venemous}
+Venezuela - {Venezeula}
+Venezuela - {Venezuala}
+Venezuela - {Venezulea}
+vengeance - {vengance}
+vengeance - {vengence}
+verbiage - {verbage}
+; verbalise (variant of verbalize)
+verbally - {verbaly}
+verification - {verfication}
+verified - {verifed}
+verifying - {verifing}
+version - {verion}
+; version, Verizon - {verison}
+; vermillion (variant of vermilion)
+verisimilitude - {versimilitude}
+versatile - {versitile}
+vertebra - {vertabra}
+vertebrate - {vertabrate}
+vertical - {verticle}
+vetted - {veted}
+veteran - {veteren}
+veterinarian - {vetinarian}
+veterinary - {vetinary}
+veteran - {vetran}
+between - {vetween}
+very - {veyr}
+vice versa - {vice-versa}
+vice versa - {viceversa}
+vicinity - {vicintity}
+vicinity - {vicinty}
+; vigor, vigour, vigueur - {vigeur}
+vigilance - {vigilence}
+vigilant - {vigilent}
+; vigour (variant of vigor)
+vigorous - {vigourous}
+village - {vilage}
+villager - {vilager}
+villains - {villans}
+villainy - {villany}
+villain - {villian}
+villainous - {villianous}
+vilified - {villified}
+vilify - {villify}
+; villain, villein, villi - {villin}
+vicinity - {vincinity}
+vinaigrette - {vinegarette}
+vinaigrette - {vinegrette}
+voice - {vioce}
+violence - {violance}
+; Virgin, Virginia - {Virgina}
+; viri, viruses - {viri}
+viruses - {virii}
+virtually - {virtualy}
+virtual - {virtural}
+visibility - {visability}
+visible - {visable}
+visibly - {visably}
+visit - {visist}
+vision - {vison}
+visionary - {visonary}
+; visit, Vist, vista - {vist}
+visitation - {vistation}
+visiting - {visting}
+; visualise (variant of visualize)
+visually - {visualy}
+vittle - {vittel}
+; vocalise (variant of vocalize)
+; violation, volition - {voilation}
+violence - {voilence}
+violent - {voilent}
+; violation, volation, volition - {volation}
+volcano - {volcanoe}
+; volcanos (acceptable variant of volcanoes)
+Volkswagen - {Volkswagon}
+voluntary - {volontary}
+volunteer - {volonteer}
+volunteered - {volonteered}
+volunteering - {volonteering}
+volunteer - {volounteer}
+volunteered - {volounteered}
+volunteering - {volounteering}
+; very, Vrey - {vrey}
+volcanic - {vulcanic}
+very - {vyer}
+very - {vyre}
+
+; === W ===
+what - {waht}
+voilà - {walla}
+voilà - {wallah}
+want to - {wanna}
+wants - {want's}
+warrant - {warrent}
+; was not, wasn't - {was'nt}
+; was not, wasn't - {wasnt}
+was - {wass}
+watches - {watchs}
+want - {watn}
+weakened - {weakend}
+weaponry - {weaponary}
+; wore, worn - {weared}
+webcast - {webcasted}
+website - {webstie}
+wrecked - {wecked}
+; weakened, weekend - {weekened}
+; we're, were - {weere}
+when - {wehn}
+; wield, wild - {weild}
+wielded - {weilded}
+well - {wel}
+welcomed - {welcame}
+Wednesday - {wendsay}
+Wednesday - {wendsday}
+Wednesday - {wensday}
+; were not, weren't - {were'nt}
+; were not, weren't - {werent}
+website - {wesbite}
+; weather, wether, whether - {wether}
+want - {whant}
+wants - {whants}
+which - {whcih}
+; weather, whether - {wheather}
+wheelbarrow - {wheelbarrel}
+went - {whent}
+whereabouts - {wherabouts}
+whereas - {wheras}
+whereby - {wherby}
+wherever - {whereever}
+wherein - {wherin}
+which - {whic}
+which - {whihc}
+while - {whilest}
+; whining, winning - {whinning}
+; whisky (Acceptable UK/Canadian variant of whiskey)
+; which, witch - {whitch}
+wholly - {wholely}
+wholly - {wholey}
+wholly - {wholley}
+; holy, wholly - {wholy}
+whom - {whon}
+; who's, whose - {whos}
+what - {whta}
+; which, witch - {wich}
+wife - {wief}
+weird - {wierd}
+; wife's, wives - {wifes}
+wife's - {wifes'}
+with - {wiht}
+within - {wihtin}
+without - {wihtout}
+willingness - {willingess}
+writing - {wirting}
+Wisconsin - {Wisconson}
+whistle - {wistle}
+witches - {witchs}
+; withdraw, withdrawal - {withdrawl}
+within - {withing}
+withhold - {withold}
+without - {withought}
+with - {witht}
+with the - {withthe}
+without - {witout}
+witness - {wittness}
+will - {wiull}
+want - {wnat}
+wanted - {wnated}
+wants - {wnats}
+whole - {wohle}
+work - {wokr}
+working - {wokring}
+; women, women's; but see Apostrophe - {womens}
+women's - {womens'}
+; won't, wont - {wont}
+worldwide - {worlwide}
+; worshipper (variant of worshiper)
+worsen - {worsten}
+worsened - {worstened}
+worsening - {worstening}
+would - {woudl}
+; would not, wouldn't - {would'nt}
+; would not, wouldn't - {wouldnt}
+reckless - {wreckless}
+recklessness - {wrecklessness}
+write - {wriet}
+; writhed, written, wrote - {writed}
+written - {writen}
+writer - {writter}
+writing - {writting}
+wrote - {wroet}
+work - {wrok}
+working - {wroking}
+; written, wrote - {wroten}
+was - {ws}
+with - {wtih}
+support - {wupport}
+
+; === X ===
+
+; === Y ===
+y'all - {ya'll}
+year - {yaer}
+yacht - {yaht}
+yacht - {yatch}
+; years, yeast - {yeasr}
+yield - {yeild}
+yellow - {yelow}
+Yemenite - {Yementite}
+year - {yera}
+years - {yeras}
+years - {yersa}
+the - {yhe}
+younger - {yonger}
+Yorkshire - {Yorkhire}
+young - {younge}
+yourself - {youself}
+you - {ytou}
+you - {yuo}
+younger - {yuonger}
+you're - {youre}
+
+; === Z ===
+zebra - {zeebra}

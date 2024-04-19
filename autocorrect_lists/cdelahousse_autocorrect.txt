@@ -1,3 +1,9 @@
+;--------------------------------------------------------------------
+; SOURCE: https://github.com/cdelahousse/Autocorrect-AutoHotKey
+; DOWNLOADED: 2024-04-17
+; TEMPLATE: :modifiers:trigger::replacement
+;--------------------------------------------------------------------
+
 ;------------------------------------------------------------------------------
 ; Changes by CHRISTIAN and ALEX
 ; Original by biancolo.com found here http://www.autohotkey.com/download/OtherDownloads.htm
@@ -7,7 +13,7 @@
 ; July 8 2011 - Created Git repo
 ;             - Added misspellings from
 ;
-; April 2010	- Removed the Win+H functionality. Id rather added the correct spellings manually.
+; April 2010  - Removed the Win+H functionality. Id rather added the correct spellings manually.
 ;             - Added #NoTrayIcon
 ;
 ; CHANGELOG:
@@ -65,7 +71,7 @@
 ;------------------------------------------------------------------------------
 
 
-; Added by Christian April 2010
+;Added by Christian April 2010
 ; #NoTrayIcon
 
 
@@ -81,7 +87,7 @@
 ; To enable it, remove the /*..*/ symbols around it.
 ; From Laszlo's script at http://www.autohotkey.com/forum/topic9689.html
 ;------------------------------------------------------------------------------
-/*
+; /*
 ; The first line of code below is the set of letters, digits, and/or symbols
 ; that are eligible for this type of correction.  Customize if you wish:
 ; keys = abcdefghijklmnopqrstuvwxyz
@@ -94,7 +100,7 @@
 ;     else if CapCount = 3
 ;         SendInput % "{Left}{BS}+" . SubStr(A_PriorHotKey,3,1) . "{Right}"
 ; Return
-*/
+; */
 
 
 
@@ -155,13 +161,13 @@
 ; :?:blities::bilities
 ; :?:bilty::bility
 ; :?:blity::bility
-; :?:, btu::, but ; Not just replacing "btu", as that is a unit of heat.
+; :?:, btu::, but
 ; :?:; btu::; but
 ; :?:n;t::n't
 ; :?:;ll::'ll
 ; :?:;re::'re
 ; :?:;ve::'ve
-; ::sice::since  ; Must precede the following line!
+; ; ::sice::since  ; Must precede the following line!
 ; :?:sice::sive
 ; :?:t eh:: the
 ; :?:t hem:: them
@@ -273,8 +279,8 @@
 ::a bas::à bas
 ::a la::à la
 ::ancien regime::Ancien Régime
-::angstrom::Ångström
-::angstroms::Ångströms
+; ::angstrom::Ångström
+; ::angstroms::Ångströms
 ::anime::animé
 ::animes::animés
 ::ao dai::ào dái
@@ -561,11 +567,12 @@
 ;------------------------------------------------------------------------------
 ; Common Misspellings - the main list
 ;------------------------------------------------------------------------------
-::htp:::http:
-::http:\\::http://
-::httpL::http:
-::herf::href
+; ::htp:::http:
+; ::http:\\::http://
+; ::httpL::http:
+; ::herf::href
 
+; === A ===
 ::avengence::a vengeance
 ::adbandon::abandon
 ::abandonned::abandoned
@@ -863,7 +870,7 @@
 ::anotehr::another
 ::anothe::another
 ::anwsered::answered
-; ::antartic::antarctic
+::antartic::antarctic
 ::anthromorphisation::anthropomorphisation
 ::anthromorphization::anthropomorphization
 ::anti-semetic::anti-Semitic
@@ -1040,6 +1047,8 @@
 ::awya::away
 ::aywa::away
 ::abck::back
+
+; === B ===
 ::bakc::back
 ::bcak::back
 ::backgorund::background
@@ -1167,6 +1176,8 @@
 ::buisnessman::businessman
 ::butthe::but the
 ::byt he::by the
+
+; === C ===
 ::ceasar::Caesar
 ::casion::caisson
 ::caluclate::calculate
@@ -1650,6 +1661,8 @@
 ::cxan::cyan
 ::cilinder::cylinder
 ::cyclinder::cylinder
+
+; === D ===
 ::dakiri::daiquiri
 ::dalmation::dalmatian
 ::danceing::dancing
@@ -1927,7 +1940,7 @@
 ::documnets::documents
 ::doens::does
 ::doese::does
-; ::doe snot::does not ; *could* be legitimate... but very unlikely!
+::doe snot::does not
 ::doens't::doesn't
 ::doesnt::doesn't
 ::dosen't::doesn't
@@ -1963,6 +1976,8 @@
 ::durring::during
 ::duting::during
 ::dieing::dying
+
+; === E ===
 ::eahc::each
 ::eachotehr::eachother
 ::ealier::earlier
@@ -1985,7 +2000,7 @@
 ::efort::effort
 ::eforts::efforts
 ::aggregious::egregious
-; ::eight o::eight o
+::eight o::eight o
 ::eigth::eighth
 ::eiter::either
 ::ellected::elected
@@ -2213,6 +2228,8 @@
 ::extremly::extremely
 ::extermist::extremist
 ::extremeophile::extremophile
+
+; === F ===
 ::fascitious::facetious
 ::facillitate::facilitate
 ::facilites::facilities
@@ -2333,6 +2350,8 @@
 ::furuther::further
 ::futher::further
 ::futhermore::furthermore
+
+; === G ===
 ::galatic::galactic
 ::galations::Galatians
 ::gallaxies::galaxies
@@ -2428,6 +2447,8 @@
 ::guttaral::guttural
 ::gutteral::guttural
 ::gusy::guys
+
+; === H ===
 ::habaeus::habeas
 ::habeus::habeas
 ::habsbourg::Habsburg
@@ -2558,6 +2579,8 @@
 ::hypocricy::hypocrisy
 ::hypocrit::hypocrite
 ::hypocrits::hypocrites
+
+; === I ===
 ::i;d::I'd
 ::i"m::I'm
 ::iconclastic::iconoclastic
@@ -2800,6 +2823,8 @@
 ::iits the::it's the
 ::its the::it's the
 ::ihaca::Ithaca
+
+; === J ===
 ::jaques::jacques
 ::japanes::Japanese
 ::jeapardy::jeopardy
@@ -2822,6 +2847,8 @@
 ::juristictions::jurisdictions
 ::jstu::just
 ::jsut::just
+
+; === K ===
 ::kindergarden::kindergarten
 ::klenex::kleenex
 ::knive::knife
@@ -2835,6 +2862,8 @@
 ::knowlegeable::knowledgeable
 ::knwon::known
 ::konws::knows
+
+; === L ===
 ::labled::labelled
 ::labratory::laboratory
 ::labourious::laborious
@@ -2925,6 +2954,8 @@
 ::lveo::love
 ::lvoe::love
 ::lieing::lying
+
+; === M ===
 ::mackeral::mackerel
 ::amde::made
 ::magasine::magazine
@@ -3134,6 +3165,8 @@
 ::misteryous::mysterious
 ::mysterous::mysterious
 ::mistery::mystery
+
+; === N ===
 ::naieve::naive
 ::napoleonian::Napoleonic
 ::ansalisation::nasalisation
@@ -3173,7 +3206,7 @@
 ::neice::niece
 ::nightime::nighttime
 ::ninteenth::nineteenth
-; ::ninties::nineties ; fixed from "1990s": could refer to temperatures too.
+::ninties::nineties
 ::ninty::ninety
 ::nineth::ninth
 ::noone::no one
@@ -3214,6 +3247,8 @@
 ::nuturing::nurturing
 ::nutritent::nutrient
 ::nutritents::nutrients
+
+; === O ===
 ::obediance::obedience
 ::obediant::obedient
 ::obssessed::obsessed
@@ -3256,11 +3291,11 @@
 ::odourous::odorous
 ::ouevre::oeuvre
 ::fo::of
-; :C:fo::of
-; :C:od::of
+:C:fo::of
+:C:od::of
 ::ofits::of its
 ::ofthe::of the
-; ::oft he::of the ; Could be legitimate in poetry, but more usually a typo.
+::oft he::of the
 ::offereings::offerings
 ::offcers::officers
 ::offical::official
@@ -3351,6 +3386,8 @@
 ::oxident::oxidant
 ::oxigen::oxygen
 ::oximoron::oxymoron
+
+; === P ===
 ::peageant::pageant
 ::paide::paid
 ::payed::paid
@@ -3484,7 +3521,7 @@
 ::philisophy::philosophy
 ::philosphy::philosophy
 ::phonecian::Phoenecian
-; ::pheonix::phoenix ; Not forcing caps, as it could be the bird
+::pheonix::phoenix
 ::fonetic::phonetic
 ::phongraph::phonograph
 ::physicaly::physically
@@ -3750,6 +3787,8 @@
 ::persuit::pursuit
 ::persuits::pursuits
 ::puting::putting
+
+; === Q ===
 ::quantaty::quantity
 ::quantitiy::quantity
 ::quarantaine::quarantine
@@ -3768,6 +3807,8 @@
 ::quinessential::quintessential
 ::quitted::quit
 ::quizes::quizzes
+
+; === R ===
 ::rabinnical::rabbinical
 ::radiactive::radioactive
 ::rancourous::rancorous
@@ -3905,7 +3946,7 @@
 ::reprtoire::repertoire
 ::repetion::repetition
 ::reptition::repetition
-; ::relpacement::replacement
+::relpacement::replacement
 ::reportadly::reportedly
 ::represnt::represent
 ::represantative::representative
@@ -4001,6 +4042,8 @@
 ::runnung::running
 ::russina::Russian
 ::russion::Russian
+
+; === S ===
 ::sacrafice::sacrifice
 ::sacrifical::sacrificial
 ::sacreligious::sacrilegious
@@ -4180,7 +4223,6 @@
 ::soverignity::sovereignty
 ::soverignty::sovereignty
 ::soveits::soviets
-; ::soveits::soviets(x
 ::spoace::space
 ::spainish::Spanish
 ::speciallized::specialised
@@ -4416,6 +4458,8 @@
 ::syrap::syrup
 ::sytem::system
 ::sysmatically::systematically
+
+; === T ===
 ::tkae::take
 ::tkaes::takes
 ::tkaing::taking
@@ -4636,6 +4680,8 @@
 ::tyrranies::tyrannies
 ::tyrany::tyranny
 ::tyrrany::tyranny
+
+; === U ===
 ::ubiquitious::ubiquitous
 ::ukranian::Ukrainian
 ::ukelele::ukulele
@@ -4722,12 +4768,12 @@
 ::unsuprised::unsurprised
 ::unsuprized::unsurprised
 ::unsurprized::unsurprised
-; ::unsuprising::unsurprising
-; ::unsuprizing::unsurprising
-; ::unsurprizing::unsurprising
-; ::unsuprisingly::unsurprisingly
-; ::unsuprizingly::unsurprisingly
-; ::unsurprizingly::unsurprisingly
+::unsuprising::unsurprising
+::unsuprizing::unsurprising
+::unsurprizing::unsurprising
+::unsuprisingly::unsurprisingly
+::unsuprizingly::unsurprisingly
+::unsurprizingly::unsurprisingly
 ::untill::until
 ::untranslateable::untranslatable
 ::unuseable::unusable
@@ -4747,6 +4793,8 @@
 ::usualy::usually
 ::usualyl::usually
 ::ususally::usually
+
+; === V ===
 ::vaccum::vacuum
 ::vaccume::vacuum
 ::vaguaries::vagaries
@@ -4815,6 +4863,8 @@
 ::volounteers::volunteers
 ::vulnerablility::vulnerability
 ::vulnerible::vulnerable
+
+; === W ===
 ::watn::want
 ::whant::want
 ::wnat::want
@@ -4927,6 +4977,8 @@
 ::wroet::wrote
 ::x-Box::Xbox
 ::xenophoby::xenophobia
+
+; === Y ===
 ::yatch::yacht
 ::yaching::yachting
 ::eyar::year
@@ -4958,7 +5010,9 @@
 ::yuor::your
 ::you're own::your own
 ::youself::yourself
-::youseff::yousef
+::youseff::Yousef
+
+; === Z ===
 ::zeebra::zebra
 ::sionist::Zionist
 ::sionists::Zionists
@@ -4967,8 +5021,7 @@
 ; Ambiguous entries.  Where desired, pick the one that's best for you, edit,
 ; and move into the above list or, preferably, the autocorrect user file.
 ;------------------------------------------------------------------------------
-/*
-; :*:cooperat::coöperat
+; /*
 ; ::(c)::©
 ; ::(r)::®
 ; ::(tm)::
@@ -5010,10 +5063,12 @@
 ; ::belives::believes, beliefs
 ; ::boaut::bout, boat, about
 ; ::Bon::Bön
+;
 ; ::Bootes::Boötes
 ; ::bric-a-brac::bric-à-brac
 ; ::buring::burying, burning, burin, during
 ; ::busineses::business, businesses
+; :*:cooperat::coöperat
 ; ::cafe::café
 ; ::calaber::caliber, calibre
 ; ::calander::calendar, calender, colander
@@ -5103,7 +5158,7 @@
 ; ::indispensable::indispensible ; commonwealth vs US?
 ; ::indispensible::indispensable ; commonwealth vs US?
 ; ::inheritage::heritage, inheritance
-; ::inspite::in spite, inspire
+::inspite::inspire
 ; ::interbread::interbreed, interbred
 ; ::intered::interred, interned
 ; ::inumerable::enumerable, innumerable
@@ -5212,14 +5267,14 @@
 ; ::transcripting::transcribing, transcription
 ; ::travelling::traveling   ; commonwealth vs US
 ; ::troups::troupes, troops
-; ::turnk::turnkey, trunk
-; ::uber::über
+::turnk::trunk
+::uber::über
 ; ::unmanouverable::unmaneuverable, unmanoeuvrable
 ; ::unsed::used, unused, unsaid
 ; ::vigeur::vigueur, vigour, vigor
 ; ::villin::villi, villain, villein
 ; ::vistors::visitors, vistas
-; ::wanna::want to - often deliberate
+; ::wanna::want to
 ; ::weild::wield, wild
 ; ::wholy::wholly, holy
 ; ::wich::which, witch
@@ -5228,37 +5283,35 @@
 ; ::ws::was, www.example.ws
 ; ::Yementite::Yemenite, Yemeni
 ; :?:oology::oölogy
-; :?:t he:: the  ; Can't use this. Needs to be cleverer.
-*/
+; */
 
 ;-------------------------------------------------------------------------------
 ;  Capitalise dates
 ;-------------------------------------------------------------------------------
-::monday::Monday
-::tuesday::Tuesday
-::wednesday::Wednesday
-::thursday::Thursday
-::friday::Friday
-::saturday::Saturday
-::sunday::Sunday
+:C:monday::Monday
+:C:tuesday::Tuesday
+:C:wednesday::Wednesday
+:C:thursday::Thursday
+:C:friday::Friday
+:C:saturday::Saturday
+:C:sunday::Sunday
 
-::january::January
-::february::February
-; ::march::March  ; Commented out because it matches the common word "march".
-::april::April
-; ::may::May  ; Commented out because it matches the common word "may".
-::june::June
-::july::July
-::august::August
-::september::September
-::october::October
-::november::November
-::december::December
+:C:january::January
+:C:february::February
+; :C:march::March  ; Commented out because it matches the common word "march".
+:C:april::April
+; :C:may::May  ; Commented out because it matches the common word "may".
+:C:june::June
+:C:july::July
+:C:august::August
+:C:september::September
+:C:october::October
+:C:november::November
+:C:december::December
 
 ;-------------------------------------------------------------------------------
 ; New misspellings from https://gist.github.com/876629
 ;-------------------------------------------------------------------------------
-
 ::ansewr::answer
 ::at he::at the
 ::avialable::available
@@ -5311,7 +5364,3 @@
 ::writtten::written
 ::youll::you'll
 ::youre::you're
-
-;-------------------------------------------------------------------------------
-; Anything below this point was added to the script by the user via the Win+H hotkey.
-;-------------------------------------------------------------------------------

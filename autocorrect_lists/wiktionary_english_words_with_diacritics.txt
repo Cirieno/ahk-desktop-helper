@@ -1,0 +1,477 @@
+;--------------------------------------------------------------------
+; SOURCE: https://web.archive.org/web/20190310225422/https://en.wiktionary.org/wiki/Appendix:English_words_with_diacritics
+; DOWNLOADED: 2024-04-17
+;--------------------------------------------------------------------
+
+; === A ===
+à bas
+à la
+à la carte
+à la mode
+à propos
+açaí
+adiós
+aikidō
+André
+ångström
+apéritif
+appliqué
+après-ski
+arête
+art décoratif
+art décoratif
+attaché
+
+; === B ===
+béchamel
+béguin
+belle époque
+bête noire
+Beyoncé
+Bézier curves
+Bichon Frisé
+blasé
+bon appétit
+boutonnière
+brassière
+bric-à-brac
+Brontë
+
+; === C ===
+café
+cafetière
+canapé
+cap-à-pie
+cause célèbre
+Champs-Élysées
+chargé d'affaires
+château
+Chloë
+Citroën
+cliché
+clientèle
+comme ci comme ça
+communiqué
+compère
+consommé
+cortège
+coup d'état
+coup de grâce
+coupé
+crèche
+crème brûlée
+crème caramel
+crème de cacao
+crème de la crème
+crème de menthe
+crème fraîche
+crêpe paper
+crêpe Suzette
+croûton
+crudités
+
+; === D ===
+débâcle
+débris
+début
+décolletage
+décor
+découpage
+déjà vu
+dérailleur
+derrière
+déshabillé
+détente
+diamanté
+discothèque
+divorcée
+dōjō
+doppelgänger
+Dvořák
+
+; === E ===
+éclair
+Éire
+El Niño
+élan
+Élysée
+émigré
+entrée
+épaulette
+épée
+exposé
+
+; === F ===
+façade
+fête
+fiancé
+fiancée
+fin de siècle
+flambé
+folie à deux
+frappé
+Führer
+garçon
+gâteau
+glacé
+Götterdämmerung
+Gruyère
+
+; === G ===
+
+; === H ===
+Hawai'i
+hors d'œuvre
+hors d'œuvres
+
+; === I ===
+ingénue
+
+; === J ===
+jäger
+jalapeño
+
+; === K ===
+
+; === L ===
+La Niña
+
+; === M ===
+macramé
+maître d'hôtel
+mañana
+Māori
+mêlée
+ménage à trois
+ménagerie
+mise en scène
+moiré
+Montréal
+
+; === N ===
+naïve
+naïveté
+négligée
+
+; === O ===
+
+; === P ===
+papier-mâché
+pièce de résistance
+pied-à-terre
+piña colada
+piñata
+prêt-à-porter
+protégé
+Pūteketeke
+
+; === Q ===
+Québec
+Québécois
+
+; === R ===
+raison d'être
+recherché
+reconnoître
+résumé
+risqué
+roman à clef
+
+; === S ===
+señor
+señora
+señorita
+Sinn Féin
+Škoda
+smörgåsbord
+smörgåstårta
+soirée
+soufflé
+soupçon
+sūdoku
+
+; === T ===
+tête-à-tête
+touché
+toupée
+
+; === U ===
+über
+Übermensch
+
+; === V ===
+vis-à-vis
+voilà
+
+; === W ===
+
+; === X ===
+
+; === Y ===
+
+; === Z ===
+Zaïre
+Zoë
+Zürich
+
+
+
+
+; 'ukulele
+; à gogo
+; abacá
+; abaká
+; abbé
+; agèd
+; agrément
+; Åland
+; ampère
+; Ancien Régime
+; animé (the oleo-resin)
+; animēshon (usually anime)
+; áo dài
+; aperçu
+; auto-da-fé
+; bánh mì
+; barège
+; beau idéal
+; bentō
+; bêtise
+; biały
+; bíró
+; blessèd
+; bobèche
+; bodegón
+; boîte
+; Bokmål
+; bombé
+; Bön
+; Boötes
+; bún
+; cafetería
+; caffè
+; caïque [-jee]
+; calèche
+; cañón (usually canyon)
+; chacun à son goût
+; chaînés
+; chèvre
+; cinéma
+; cinéma vérité
+; cliché-verre
+; cloisonné
+; confrère
+; confronté
+; continuüm (rare)
+; coöperate
+; coöperation
+; coöperative
+; coöpt
+; coördinate
+; coördinateed
+; coördinating
+; coördination
+; coördinator
+; coördinators
+; coulée
+; Créole
+; crétin
+; crétinism
+; Creüsa
+; csárdás
+; Curaçao
+; cursèd (rare)
+; Daimyō
+; daïs
+; dấu hỏi
+; décal [-comania]
+; déclassé
+; décolleté
+; dégagé
+; dégustation
+; démarche
+; démodé
+; dénouement
+; dépôt
+; diddé
+; divorcé
+; dōmoic acid
+; Doña
+; éclat
+; élite
+; entrecôte
+; entrepôt
+; étouffée
+; étude
+; faïence
+; filmjölk
+; flèche
+; föhn
+; fouetté
+; Fräulein
+; frère
+; fricassée
+; garçonnière
+; Geiger–Müller counter
+; gemütlichkeit
+; genkō yōshi
+; genrō
+; Gewürztraminer
+; ginkyō (usually ginkgo)
+; glögg
+; gyōza
+; habitué
+; háček
+; hajdúk
+; halászlé
+; hāngi
+; hapū
+; hôtel
+; inrō
+; jardinière
+; jūdō
+; jūjutsu
+; kākā
+; kākāpō
+; kåldolmar
+; kama'āina
+; karōshi
+; kāwanatanga
+; kendō
+; kererū
+; kōan
+; kōhanga reo
+; kōji
+; kōkako
+; kōrero
+; króna (Icelandic with accent, Swedish without)
+; kroužek
+; kūmara
+; kümmel
+; kyūdō
+; lamé
+; lānai
+; ländler
+; langue d'oïl
+; Laocoön
+; légionnaire
+; littérateur
+; lū'au
+; lycée
+; macédoine
+; mahātmā
+; malagueña
+; Malmö
+; manège
+; manœuvre
+; manqué
+; maté
+; matériel
+; matinée
+; mélange
+; mésalliance
+; métier
+; Métis
+; México
+; minaudière
+; Monégasque
+; Montaño
+; naïf
+; né
+; née
+; Neufchâtel
+; Nez Percé
+; Nō (usually Noh)
+; Noël
+; noöne (rare)
+; número uno (Spanish with accent, Italian without)
+; objet trouvé
+; Öland
+; olé
+; ombré
+; omertà
+; oöcyte
+; oölogy (rare)
+; opéra bouffe
+; opéra comique
+; opïum (rare)
+; öre
+; øre
+; outré
+; pączki
+; pāhoehoe
+; páramo
+; passé
+; pâté
+; pāua
+; phở
+; piñón
+; piqué
+; piraña (usually piranha)
+; più
+; plié
+; plissé
+; pōhutukawa
+; pölsa
+; précis
+; preëminent
+; preëminently
+; preëmpt
+; preëmption
+; preëmptive
+; prélude
+; première
+; première danseuse
+; protégée
+; purée
+; quinceañera
+; ragoût
+; ragù
+; rāmen
+; rātā
+; réclame
+; rędzina (usually rendzina)
+; reëlect
+; reëlected
+; reëlecting
+; reënter
+; reëntered
+; reëntering
+; reëstablish
+; reëstablished
+; reëstablishing
+; régime
+; residuüm (rare)
+; retroussé
+; rincón
+; rivière
+; rôle
+; România
+; röntgen
+; rosé
+; roué
+; sauté
+; sayōnara
+; séance
+; senryū
+; Shintō
+; shōgun
+; shōyu
+; soigné
+; sumō
+; surströmming
+; table d'hôte
+; takahē
+; télécommunication
+; tennō
+; Thaïs
+; tōfu
+; Tōkyō
+; tōtara
+; tourtière
+; vicuña
+; Việt Nam
+; whekī
+; złoty
+; zoölogy
+; zōri
