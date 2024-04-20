@@ -138,6 +138,6 @@ doTests_ArrIncludes() {
 				throw message
 			}
 	}
-	MsgBox("Arrays.includes - All tests passed",, " T3")
+	MsgBox("Arrays.includes - All tests passed",, " T2")
 }
 doTests_ArrIncludes()

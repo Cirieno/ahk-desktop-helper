@@ -45,6 +45,6 @@ doTests_ArrShift() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.shift - All tests passed",, " T3")
+	MsgBox("Arrays.shift - All tests passed",, " T2")
 }
 doTests_ArrShift()

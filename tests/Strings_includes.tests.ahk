@@ -81,6 +81,6 @@ doTests_StrIncludes() {
 				throw message
 			}
 	}
-	MsgBox("Strings.includes - All tests passed",, " T3")
+	MsgBox("Strings.includes - All tests passed",, " T2")
 }
 doTests_StrIncludes()

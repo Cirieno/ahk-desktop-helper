@@ -58,6 +58,6 @@ doTests_StrPadRight() {
 			throw message
 		}
 	}
-	MsgBox("Strings.padRight - All tests passed",, " T3")
+	MsgBox("Strings.padRight - All tests passed",, " T2")
 }
 doTests_StrPadRight()

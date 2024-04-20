@@ -136,6 +136,6 @@ doTests_ArrIndexOf() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.indexOf - All tests passed",, " T3")
+	MsgBox("Arrays.indexOf - All tests passed",, " T2")
 }
 doTests_ArrIndexOf()

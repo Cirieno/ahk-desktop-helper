@@ -43,6 +43,6 @@ doTests_ArrConcat() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.concat - All tests passed",, " T3")
+	MsgBox("Arrays.concat - All tests passed",, " T2")
 }
 doTests_ArrConcat()

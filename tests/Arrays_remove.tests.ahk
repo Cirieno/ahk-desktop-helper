@@ -157,6 +157,6 @@ doTests_ArrRemove() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.remove - All tests passed",, " T3")
+	MsgBox("Arrays.remove - All tests passed",, " T2")
 }
 doTests_ArrRemove()

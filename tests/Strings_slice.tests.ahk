@@ -74,6 +74,6 @@ doTests_StrSlice() {
 			throw message
 		}
 	}
-	MsgBox("Strings.slice - All tests passed",, " T3")
+	MsgBox("Strings.slice - All tests passed",, " T2")
 }
 doTests_StrSlice()

@@ -60,6 +60,6 @@ doTests_NumBetween() {
 			throw message
 		}
 	}
-	MsgBox("Numbers.between - All tests passed",, " T3")
+	MsgBox("Numbers.between - All tests passed",, " T2")
 }
 doTests_NumBetween()

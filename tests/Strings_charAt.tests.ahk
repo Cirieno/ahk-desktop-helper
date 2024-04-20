@@ -53,6 +53,6 @@ doTests_StrCharAt() {
 			throw message
 		}
 	}
-	MsgBox("Strings.charAt - All tests passed",, " T3")
+	MsgBox("Strings.charAt - All tests passed",, " T2")
 }
 doTests_StrCharAt()

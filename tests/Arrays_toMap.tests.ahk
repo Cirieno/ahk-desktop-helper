@@ -59,6 +59,6 @@ doTests_ArrToMap() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.toMap - All tests passed",, " T3")
+	MsgBox("Arrays.toMap - All tests passed",, " T2")
 }
 doTests_ArrToMap()

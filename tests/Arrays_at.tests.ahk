@@ -108,6 +108,6 @@ doTests_ArrAt() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.at - All tests passed",, " T3")
+	MsgBox("Arrays.at - All tests passed",, " T2")
 }
 doTests_ArrAt()

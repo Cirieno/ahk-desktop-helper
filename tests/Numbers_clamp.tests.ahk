@@ -54,6 +54,6 @@ doTests_NumClamp() {
 			throw message
 		}
 	}
-	MsgBox("Numbers.clamp - All tests passed",, " T3")
+	MsgBox("Numbers.clamp - All tests passed",, " T2")
 }
 doTests_NumClamp()

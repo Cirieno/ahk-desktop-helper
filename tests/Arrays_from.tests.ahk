@@ -75,6 +75,6 @@ doTests_ArrFrom() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.from - All tests passed",, " T3")
+	MsgBox("Arrays.from - All tests passed",, " T2")
 }
 doTests_ArrFrom()

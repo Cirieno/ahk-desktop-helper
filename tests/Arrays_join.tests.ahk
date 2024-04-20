@@ -119,6 +119,6 @@ doTests_ArrJoin() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.join - All tests passed",, " T3")
+	MsgBox("Arrays.join - All tests passed",, " T2")
 }
 doTests_ArrJoin()

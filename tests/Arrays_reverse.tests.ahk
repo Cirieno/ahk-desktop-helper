@@ -43,6 +43,6 @@ doTests_ArrReverse() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.reverse - All tests passed",, " T3")
+	MsgBox("Arrays.reverse - All tests passed",, " T2")
 }
 doTests_ArrReverse()

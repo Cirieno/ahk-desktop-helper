@@ -54,6 +54,6 @@ doTests_StrWrap() {
 			throw message
 		}
 	}
-	MsgBox("Strings.wrap - All tests passed",, " T3")
+	MsgBox("Strings.wrap - All tests passed",, " T2")
 }
 doTests_StrWrap()

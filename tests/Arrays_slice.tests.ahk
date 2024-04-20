@@ -130,6 +130,6 @@ doTests_ArrSlice() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.slice - All tests passed",, " T3")
+	MsgBox("Arrays.slice - All tests passed",, " T2")
 }
 doTests_ArrSlice()
