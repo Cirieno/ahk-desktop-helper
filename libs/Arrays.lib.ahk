@@ -1,17 +1,17 @@
 global Arrays := prototype__Arrays()
 class prototype__Arrays extends Array {
-	at(val?, index?, clamp?) {
+	at(_array?, index?, clamp?) {
 		funcName := "Arrays.at"
 
-		if (isArray(this) && IsSet(val) && isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is redundant when called on an instance")
+		if (isArray(this) && IsSet(_array) && isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is redundant when called on an instance")
 		}
 
-		params := [[&val, &this], [&index, 1], [&clamp, false]]
+		params := [[&_array, &this], [&index, 1], [&clamp, false]]
 		Arrays.__fixParams(&params)
 
-		if (!isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is not an Array")
+		if (!isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is not an Array")
 		}
 		if (!isNumber(index)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <index> is not a Number")
@@ -19,39 +19,43 @@ class prototype__Arrays extends Array {
 		if (!isBoolean(clamp)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <clamp> is not a Boolean")
 		}
-		if (isEmpty(val)) {
+		if (isEmpty(_array)) {
 			return null
 		}
 
-		index := (index < 0 ? (val.length + index + 1) : index)
-		(clamp ? index := NumClamp(index, 1, val.length) : ignore)
+		index := (index < 0 ? (_array.length + index + 1) : index)
+		index := (clamp ? NumClamp(index, 1, _array.length) : index)
 
 		if (index < 1) {
 			throw Error(StrWrap(funcName, 2) . " — Target index cannot be less than 1")
 		}
-		if (index > val.length) {
+		if (index > _array.length) {
 			throw Error(StrWrap(funcName, 2) . " — Target index exceeds the length of the array")
 		}
 
-		return val.get(index, null)
+		return _array.get(index, null)
 	}
 
 
 
-	concat(vals*) {
+	concat(_arrays*) {
 		funcName := "Arrays.concat"
 
-		params := [[&val, &this], [&vals, vals]]
+		params := [[&_array, &this], [&_arrays, _arrays]]
 		Arrays.__fixParams(&params)
 
 		arr := (isArray(this) ? this : [])
 
-		for (i, val in vals) {
-			if (!isArray(val)) {
-				throw Error(StrWrap(funcName, 2) . " — Param <vals[" . i . "]> is not an Array")
+		for (i, el in _arrays) {
+			if (!isArray(el)) {
+				throw Error(StrWrap(funcName, 2) . " — Param <_arrays[" . i . "]> is not an Array")
 			}
-			arr.push(val*)
+			arr.push(el*)
 		}
+
+		; if (isArray(this)) {    ; update the instance
+		; 	this := arr
+		; }
 
 		return arr
 	}
@@ -79,6 +83,9 @@ class prototype__Arrays extends Array {
 		}
 		if (isEmpty(val)) {
 			return []
+		}
+		if isArray(val) {
+			return val
 		}
 
 		switch (mode) {
@@ -113,32 +120,31 @@ class prototype__Arrays extends Array {
 				return arr
 			case "String", "Integer", "Float":
 				val := String(val)
-				if (SubStr(val, 1, 1) == "[" && SubStr(val, -1, 1) == "]") {
+				if (SubStr(val, 1, 1) == "[" && SubStr(val, -1, 1) == "]") {    ; eg "[item, item, item]"
 					arr := StrSplit(SubStr(val, 2, -1), ",")
 					for (i, el in arr) {
 						arr[i] := Trim(el)
 					}
 					return arr
 				}
-			case "Array":
-				return val
+				return [val]
 		}
 	}
 
 
 
-	includes(val?, needle?, caseSense?, indexStart?, clamp?) {
+	includes(_array?, needle?, caseSense?, indexStart?, clamp?) {
 		funcName := "Arrays.includes"
 
-		if (isArray(this) && IsSet(val) && isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is redundant when called on an instance")
+		if (isArray(this) && IsSet(_array) && isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is redundant when called on an instance")
 		}
 
-		params := [[&val, &this], [&needle, null], [&caseSense, false], [&indexStart, 1], [&clamp, false]]
+		params := [[&_array, &this], [&needle, null], [&caseSense, false], [&indexStart, 1], [&clamp, false]]
 		Arrays.__fixParams(&params)
 
-		if (!isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is not an Array")
+		if (!isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is not an Array")
 		}
 		if !(isString(needle) || isNumber(needle)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <needle> is not a String or Number")
@@ -152,27 +158,23 @@ class prototype__Arrays extends Array {
 		if (!isBoolean(clamp)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <clamp> is not a Boolean")
 		}
-		if (isEmpty(val)) {
-			return false
-		}
-		if (isEmpty(needle)) {
-			; throw Error(StrWrap(funcName, 2) . " — Param <needle> cannot be empty")
+		if (isEmpty(_array) || isEmpty(needle)) {
 			return false
 		}
 
-		indexStart := (indexStart < 0 ? (val.length + indexStart + 1) : indexStart)
-		indexStart := (clamp ? NumClamp(indexStart, 1, val.length) : indexStart)
+		indexStart := (indexStart < 0 ? (_array.length + indexStart + 1) : indexStart)
+		indexStart := (clamp ? NumClamp(indexStart, 1, _array.length) : indexStart)
 
 		if (indexStart < 1) {
 			throw Error(StrWrap(funcName, 2) . " — Target index cannot be less than 1")
 		}
-		if (indexStart > val.length) {
+		if (indexStart > _array.length) {
 			throw Error(StrWrap(funcName, 2) . " — Target index exceeds the length of the array")
 		}
 
 		i := indexStart
-		while (i <= val.length) {
-			if (val.has(i) && typeCompare(val.get(i, null), needle, caseSense)) {
+		while (i <= _array.length) {
+			if (_array.has(i) && typeCompare(_array.get(i, null), needle, caseSense)) {
 				return true
 			}
 			i++
@@ -184,18 +186,18 @@ class prototype__Arrays extends Array {
 
 
 
-	indexOf(val?, needle?, caseSense?, indexStart?, clamp?) {
+	indexOf(_array?, needle?, caseSense?, indexStart?, clamp?) {
 		funcName := "Arrays.indexOf"
 
-		if (isArray(this) && IsSet(val) && isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is redundant when called on an instance")
+		if (isArray(this) && IsSet(_array) && isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is redundant when called on an instance")
 		}
 
-		params := [[&val, &this], [&needle, null], [&caseSense, false], [&indexStart, 1], [&clamp, false]]
+		params := [[&_array, &this], [&needle, null], [&caseSense, false], [&indexStart, 1], [&clamp, false]]
 		Arrays.__fixParams(&params)
 
-		if (!isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is not an Array")
+		if (!isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is not an Array")
 		}
 		if !(isString(needle) || isNumber(needle)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <needle> is not a String or Number")
@@ -209,27 +211,23 @@ class prototype__Arrays extends Array {
 		if (!isBoolean(clamp)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <clamp> is not a Boolean")
 		}
-		if (isEmpty(val)) {
-			return null
-		}
-		if (isEmpty(needle)) {
-			; throw Error(StrWrap(funcName, 2) . " — Param <needle> cannot be empty")
+		if (isEmpty(_array) || isEmpty(needle)) {
 			return null
 		}
 
-		indexStart := (indexStart < 0 ? (val.length + indexStart + 1) : indexStart)
-		indexStart := (clamp ? NumClamp(indexStart, 1, val.length) : indexStart)
+		indexStart := (indexStart < 0 ? (_array.length + indexStart + 1) : indexStart)
+		indexStart := (clamp ? NumClamp(indexStart, 1, _array.length) : indexStart)
 
 		if (indexStart < 1) {
 			throw Error(StrWrap(funcName, 2) . " — Target index cannot be less than 1")
 		}
-		if (indexStart > val.length) {
+		if (indexStart > _array.length) {
 			throw Error(StrWrap(funcName, 2) . " — Target index exceeds the length of the array")
 		}
 
 		i := indexStart
-		while (i <= val.length) {
-			if (val.has(i) && typeCompare(val.get(i, null), needle, caseSense)) {
+		while (i <= _array.length) {
+			if (_array.has(i) && typeCompare(_array.get(i, null), needle, caseSense)) {
 				return i
 			}
 			i++
@@ -241,18 +239,18 @@ class prototype__Arrays extends Array {
 
 
 
-	join(val?, separator?, clean?, debugMode?) {
+	join(_array?, separator?, clean?, debugMode?) {
 		funcName := "Arrays.join"
 
-		if (isArray(this) && IsSet(val) && isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is redundant when called on an instance")
+		if (isArray(this) && IsSet(_array) && isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is redundant when called on an instance")
 		}
 
-		params := [[&val, &this], [&separator, ""], [&clean, false], [&debugMode, 0]]
+		params := [[&_array, &this], [&separator, ""], [&clean, false], [&debugMode, 0]]
 		Arrays.__fixParams(&params)
 
-		if (!isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is not an Array")
+		if (!isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is not an Array")
 		}
 		if (!isString(separator)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <separator> is not a String")
@@ -266,7 +264,7 @@ class prototype__Arrays extends Array {
 		if (!NumBetween(debugMode, 0, 2)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <debugMode> is not in range 0-2")
 		}
-		if (isEmpty(val)) {
+		if (isEmpty(_array)) {
 			return ""
 		}
 
@@ -274,7 +272,7 @@ class prototype__Arrays extends Array {
 		forceBools := (debugMode == 2)
 
 		arr := []
-		for (i, el in val) {
+		for (i, el in _array) {
 			if (!IsSet(el)) {
 				arr.push(debug ? "<Unset>" : "")
 				continue
@@ -321,18 +319,18 @@ class prototype__Arrays extends Array {
 
 
 
-	remove(val?, needle?, caseSense?, indexStart?, clamp?) {
+	remove(_array?, needle?, caseSense?, indexStart?, clamp?) {
 		funcName := "Arrays.remove"
 
-		if (isArray(this) && IsSet(val) && isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is redundant when called on an instance")
+		if (isArray(this) && IsSet(_array) && isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is redundant when called on an instance")
 		}
 
-		params := [[&val, &this], [&needle, null], [&caseSense, false], [&indexStart, 1], [&clamp, false]]
+		params := [[&_array, &this], [&needle, null], [&caseSense, false], [&indexStart, 1], [&clamp, false]]
 		Arrays.__fixParams(&params)
 
-		if (!isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is not an Array")
+		if (!isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is not an Array")
 		}
 		if !(isString(needle) || isNumber(needle)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <needle> is not a String or Number")
@@ -346,63 +344,60 @@ class prototype__Arrays extends Array {
 		if (!isBoolean(clamp)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <clamp> is not a Boolean")
 		}
-		if (isEmpty(val)) {
-			return val
-		}
-		if (isEmpty(needle)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <needle> cannot be empty")
+		if (isEmpty(_array) || isEmpty(needle)) {
+			return _array
 		}
 
-		indexStart := (indexStart < 0 ? (val.length + indexStart + 1) : indexStart)
-		indexStart := (clamp ? NumClamp(indexStart, 1, val.length) : indexStart)
+		indexStart := (indexStart < 0 ? (_array.length + indexStart + 1) : indexStart)
+		indexStart := (clamp ? NumClamp(indexStart, 1, _array.length) : indexStart)
 
 		if (indexStart < 1) {
 			throw Error(StrWrap(funcName, 2) . " — Target index cannot be less than 1")
 		}
-		if (indexStart > val.length) {
+		if (indexStart > _array.length) {
 			throw Error(StrWrap(funcName, 2) . " — Target index exceeds the length of the array")
 		}
 
 		i := indexStart
-		while (i <= val.length) {
-			if (val.has(i) && typeCompare(val.get(i, null), needle, caseSense)) {
-				val.removeAt(i)
+		while (i <= _array.length) {
+			if (_array.has(i) && typeCompare(_array.get(i, null), needle, caseSense)) {
+				_array.removeAt(i)
 				i--
 			}
 			i++
 		}
 
-		if (isArray(this)) {
-			this := val
+		if (isArray(this)) {    ; update the instance
+			this := _array
 		}
 
-		return val
+		return _array
 	}
 	; TODO: add Count parameter to limit occurrences?
 	; TODO: add support for any type of value
 
 
 
-	reverse(val?) {
+	reverse(_array?) {
 		funcName := "Arrays.reverse"
 
-		if (isArray(this) && IsSet(val) && isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is redundant when called on an instance")
+		if (isArray(this) && IsSet(_array) && isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is redundant when called on an instance")
 		}
 
-		params := [[&val, &this]]
+		params := [[&_array, &this]]
 		Arrays.__fixParams(&params)
 
-		if (!isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is not an Array")
+		if (!isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is not an Array")
 		}
 
 		arr := []
-		while (val.length > 0) {
-			arr.push(val.pop())
+		while (_array.length > 0) {
+			arr.push(_array.pop())
 		}
 
-		if (isArray(this)) {
+		if (isArray(this)) {    ; update the instance
 			this := arr
 		}
 
@@ -411,24 +406,24 @@ class prototype__Arrays extends Array {
 
 
 
-	shift(val?) {
+	shift(_array?) {
 		funcName := "Arrays.shift"
 
-		if (isArray(this) && IsSet(val) && isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is redundant when called on an instance")
+		if (isArray(this) && IsSet(_array) && isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is redundant when called on an instance")
 		}
 
-		params := [[&val, &this]]
+		params := [[&_array, &this]]
 		Arrays.__fixParams(&params)
 
-		if (!isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is not an Array")
+		if (!isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is not an Array")
 		}
 
-		el := val.removeAt(1)
+		el := _array.removeAt(1)
 
-		if (isArray(this)) {
-			this := val
+		if (isArray(this)) {    ; update the instance
+			this := _array
 		}
 
 		return el
@@ -436,20 +431,20 @@ class prototype__Arrays extends Array {
 
 
 
-	slice(val?, indexStart?, indexEnd?, clamp?) {
+	slice(_array?, indexStart?, indexEnd?, clamp?) {
 		funcName := "Arrays.slice"
 
-		if (isArray(this) && IsSet(val) && isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is redundant when called on an instance")
+		if (isArray(this) && IsSet(_array) && isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is redundant when called on an instance")
 		}
 
-		params := [[&val, &this], [&indexStart, 1], [&indexEnd, null], [&clamp, false]]
+		params := [[&_array, &this], [&indexStart, 1], [&indexEnd, null], [&clamp, false]]
 		Arrays.__fixParams(&params)
 
-		indexEnd := (isNull(indexEnd) ? val.length : indexEnd)
+		indexEnd := (isNull(indexEnd) ? _array.length : indexEnd)
 
-		if (!isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is not an Array")
+		if (!isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is not an Array")
 		}
 		if (!isNumber(indexStart)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <indexStart> is not a Number")
@@ -461,22 +456,22 @@ class prototype__Arrays extends Array {
 			throw Error(StrWrap(funcName, 2) . " — Param <clamp> is not a Boolean")
 		}
 
-		indexStart := (indexStart < 0 ? (val.length + indexStart + 1) : indexStart)
-		indexStart := (clamp ? NumClamp(indexStart, 1, val.length) : indexStart)
+		indexStart := (indexStart < 0 ? (_array.length + indexStart + 1) : indexStart)
+		indexStart := (clamp ? NumClamp(indexStart, 1, _array.length) : indexStart)
 
-		indexEnd := (indexEnd < 0 ? (val.length + indexEnd) : indexEnd)
-		indexEnd := (clamp ? NumClamp(indexEnd, 1, val.length) : indexEnd)
+		indexEnd := (indexEnd < 0 ? (_array.length + indexEnd) : indexEnd)
+		indexEnd := (clamp ? NumClamp(indexEnd, 1, _array.length) : indexEnd)
 
 		if (indexStart < 1) {
 			throw Error(StrWrap(funcName, 2) . " — Target index <start> cannot be less than 1")
 		}
-		if (indexStart > val.length) {
+		if (indexStart > _array.length) {
 			throw Error(StrWrap(funcName, 2) . " — Target index <start> exceeds the length of the array")
 		}
 		if (indexEnd < 1) {
 			throw Error(StrWrap(funcName, 2) . " — Target index <end> cannot be less than 1")
 		}
-		if (indexEnd > val.length) {
+		if (indexEnd > _array.length) {
 			throw Error(StrWrap(funcName, 2) . " — Target index <end> exceeds the length of the array")
 		}
 		if (indexStart > indexEnd) {
@@ -485,77 +480,81 @@ class prototype__Arrays extends Array {
 
 		arr := [], i := indexStart
 		while (i <= indexEnd) {
-			if (val.has(i)) {
-				arr.push(val.get(i))
+			if (_array.has(i)) {
+				arr.push(_array.get(i))
 			}
 			i++
 		}
+
+		; if (isArray(this)) {    ; update the instance
+		; 	this := arr
+		; }
 
 		return arr
 	}
 
 
 
-	toMap(val?) {
+	toMap(_array?) {
 		funcName := "Arrays.toMap"
 
-		if (isArray(this) && IsSet(val) && isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is redundant when called on an instance")
+		if (isArray(this) && IsSet(_array) && isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is redundant when called on an instance")
 		}
 
-		params := [[&val, &this]]
+		params := [[&_array, &this]]
 		Arrays.__fixParams(&params)
 
-		if (!isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is not an Array")
+		if (!isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is not an Array")
 		}
 
-		local map_ := Map()
-		for (i, el in val) {
+		local _map := Map()
+		for (i, el in _array) {
 			if (!IsSet(el) || isEmpty(el)) {
 				continue
 			}
 
 			if (isStringable(el)) {
-				map_.set(String(el), null)
+				_map.set(String(el), null)
 				continue
 			}
 
 			if (isArray(el) && (el.length > 0)) {
 				if (isStringable(el[1])) {
 					if (el.length == 1) {
-						map_.set(String(el[1]), null)
+						_map.set(String(el[1]), null)
 					} else {
-						map_.set(String(el[1]), el[2])
+						_map.set(String(el[1]), el[2])
 					}
 				}
 			}
 		}
 
-		return map_
+		return _map
 	}
 	; TODO: add optional start and end indexes?
 
 
 
-	unique(arr?) {
+	unique(_array?) {
 		funcName := "Arrays.unique"
 
-		if (isArray(this) && IsSet(arr) && isArray(arr)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <arr> is redundant when called on an instance")
+		if (isArray(this) && IsSet(_array) && isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is redundant when called on an instance")
 		}
 
-		params := [[&arr, &this]]
+		params := [[&_array, &this]]
 		Arrays.__fixParams(&params)
 
-		if (!isArray(arr)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <arr> is not an Array")
+		if (!isArray(_array)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_array> is not an Array")
 		}
 
 		obj := Object()
-		for (i, val in arr) {
-			if (arr.has(i) && isStringable(val)) {
-				obj[String(val)] := null
+		for (i, el in _array) {
+			if (_array.has(i) && isStringable(el)) {
+				obj[String(el)] := null
 			}
 		}
 		arrCleaned := []
@@ -588,10 +587,10 @@ class prototype__Arrays extends Array {
 
 
 /**
- * Returns the item at the specified index
+ * Returns the element at the specified index of an array
  *
  * @function Arrays.at | ArrAt
- * @param {array} val - (not required if called on an instance)
+ * @param {array} _array - (not required if called on an instance)
  * @param {number} [index=1] - positive numbers from left, negative numbers from right
  * @param {boolean} [clamp=false] - fix index to between 1 and val.length
  * @returns {(any|null)}
@@ -603,6 +602,7 @@ Array.Prototype.DefineProp("at", { Call: Arrays.at })
 
 /**
  * Merges (n) arrays and returns a new array
+ *
  * @function Arrays.concat | ArrConcat
  * @param {...array} vals
  * @returns {array}
@@ -613,13 +613,16 @@ Array.Prototype.DefineProp("concat", { Call: Arrays.concat })
 
 
 /**
- * creates a new array from an iterable or array-like object
+ * Creates a new array from an iterable or array-like object
+ *
  * @function Arrays.from | ArrFrom
  * @param {any} val
  * @param {string} [mode=3] - 1 = values, 2 = keys, 3 = both
  * @returns {string}
- * @note param <mode>=both returns an array of [key, value] items from a Map or Object
- * @note param <mode> has no effect on Strings or Arrays
+ *
+ * Param "mode=3" returns an array of [key, value] items from a Map or Object
+ *
+ * Param "mode" has no effect on Strings or Arrays
  */
 ArrFrom := ObjBindMethod(Arrays, "from")
 
@@ -629,7 +632,7 @@ ArrFrom := ObjBindMethod(Arrays, "from")
  * Checks if an array contains a given value
  *
  * @function Arrays.includes | ArrIncludes
- * @param {array} val - (not required if called on an instance)
+ * @param {array} _array - (not required if called on an instance)
  * @param {(string|number)} needle
  * @param {boolean} [caseSense=false]
  * @param {number} [indexStart=1] - positive numbers from left, negative numbers from right
@@ -647,7 +650,7 @@ Array.Prototype.DefineProp("includes", { Call: Arrays.includes })
  * Returns the index of the first occurrence of a given value in an array
  *
  * @function Arrays.indexOf | ArrIndexOf
- * @param {array} val - (not required if called on an instance)
+ * @param {array} _array - (not required if called on an instance)
  * @param {(string|number)} needle
  * @param {boolean} [caseSense=false]
  * @param {number} [indexStart=1] - positive numbers from left, negative numbers from right
@@ -665,7 +668,7 @@ Array.Prototype.DefineProp("indexOf", { Call: Arrays.indexOf })
  * Concatenates all elements of an array into a string
  *
  * @function Arrays.join | ArrJoin
- * @param {array} val - (not required if called on an instance)
+ * @param {array} _array - (not required if called on an instance)
  * @param {string} [separator=""]
  * @param {boolean} [clean=false] - remove empty elements from the output (ignored if debugMode > 0)
  * @param {number} [debugMode=0] - 0 = off, 1 = tokenize non-stringable elements, 2 = also force values [1 | 0 | -1] to be represented by "<True>" | "<False>" | "<Ignore>"
@@ -680,11 +683,14 @@ Array.Prototype.DefineProp("join", { Call: Arrays.join })
  * Removes occurrences of a specified value from an array
  *
  * @function Arrays.remove | ArrRemove
- * @param {array} val
+ * @param {array} _array
  * @param {(string|number)} needle
  * @param {boolean} [caseSense=false]
  * @param {number} [indexStart=1] - positive numbers from left, negative numbers from right
  * @param {boolean} [clamp=false] - fix index to between 1 and val.length
+ * @returns {array}
+ *
+ * When used on an instance the array will be updated in place
  */
 ArrRemove := ObjBindMethod(Arrays, "remove")
 Array.Prototype.DefineProp("remove", { Call: Arrays.remove })
@@ -695,7 +701,10 @@ Array.Prototype.DefineProp("remove", { Call: Arrays.remove })
  * Reverses the order of the elements in an array
  *
  * @function Arrays.reverse | ArrReverse
- * @param {array} val
+ * @param {array} _array
+ * @returns {array}
+ *
+ * When used on an instance the array will be updated in place
  */
 ArrReverse := ObjBindMethod(Arrays, "reverse")
 Array.Prototype.DefineProp("reverse", { Call: Arrays.reverse })
@@ -703,10 +712,13 @@ Array.Prototype.DefineProp("reverse", { Call: Arrays.reverse })
 
 
 /**
- * removes the first element from an array and returns the element
+ * Removes the first element from an array and returns the element
+ *
  * @function Arrays.shift | ArrShift
- * @param {array} val
+ * @param {array} _array
  * @returns {any} - original first element
+ *
+ * When used on an instance the array will be updated in place
  */
 ArrShift := ObjBindMethod(Arrays, "shift")
 Array.Prototype.DefineProp("shift", { Call: Arrays.shift })
@@ -714,7 +726,8 @@ Array.Prototype.DefineProp("shift", { Call: Arrays.shift })
 
 
 /**
- * returns a shallow copy of a portion of an array into a new array
+ * Returns a shallow copy of a portion of an array into a new array
+ *
  * @function Arrays.slice | ArrSlice
  * @param {number} [indexStart=1] - positive numbers from left, negative numbers from right
  * @param {number} [indexEnd=val.length] - positive numbers from left, negative numbers from right
@@ -727,8 +740,9 @@ Array.Prototype.DefineProp("slice", { Call: Arrays.slice })
 
 
 /**
- * turns an array into a map object using el as key;
- * unless el contains an array, in which case we use key and value from el[1,2]
+ * Turns an array into a map object using el as key
+ * (unless el contains an array, in which case we use key and value from el[1,2])
+ *
  * @function Arrays.toMap | ArrToMap
  * @returns {map}
  */
@@ -739,6 +753,7 @@ Array.Prototype.DefineProp("toMap", { Call: Arrays.toMap })
 
 /**
  * Returns an array of unique values from the input array
+ *
  * @function Arrays.unique | ArrUnique
  * @param {array} arr
  * @returns {array}

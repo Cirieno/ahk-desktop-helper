@@ -280,8 +280,15 @@ typeCompare(val1, val2, caseSense := false) {
 ; Constants
 ;------------------------------------------------
 U_ellipsis := "…"
-ignore := U_ignore := -1    ; a trinary counterpart to true(1) and false(0)
 
+
+/**
+ * @type {integer}
+ * @default - -1
+ *
+ * A trinary counterpart to true(1) and false(0)
+ */
+U_ignore := ignore := -1
 
 
 U_msSecond := 1000
