@@ -23,7 +23,7 @@ class prototype__Booleans {
 		this.trueValues := []
 		this.falseValues := []
 
-		for ii, val in values {
+		for (i, val in values) {
 			this.trueValues.Push(val[1])
 			this.falseValues.Push(val[2])
 		}

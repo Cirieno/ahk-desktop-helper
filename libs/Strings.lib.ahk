@@ -191,12 +191,12 @@ class prototype__Strings {
 			throw Error(StrWrap(funcName, 2) . " — Target index <start> cannot be greater than target index <end>")
 		}
 
-		arr := [], ii := indexStart
-		while (ii <= indexEnd) {
-			if (val.has(ii)) {
-				arr.push(val.get(ii))
+		arr := [], i := indexStart
+		while (i <= indexEnd) {
+			if (val.has(i)) {
+				arr.push(val.get(i))
 			}
-			ii++
+			i++
 		}
 
 		return ArrJoin(arr)

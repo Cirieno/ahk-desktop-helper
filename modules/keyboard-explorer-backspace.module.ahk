@@ -61,7 +61,7 @@ class module__KeyboardExplorerBackspace {
 			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
 		}
 		local doMenuItem := ObjBindMethod(this, "doMenuItem")
-		for item in this.settings.menu.items {
+		for (i, item in this.settings.menu.items) {
 			switch (item.type) {
 				case "item":
 					menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
@@ -99,7 +99,7 @@ class module__KeyboardExplorerBackspace {
 	doBackspace(*) {
 		renaming := false
 
-		for classNN in WinGetControls("A") {
+		for (i, classNN in WinGetControls("A")) {
 			if (classNN == "Edit1") {
 				renaming := true
 				break

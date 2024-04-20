@@ -61,7 +61,7 @@ class module__KeyboardTextManipulation {
 			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
 		}
 		local doMenuItem := ObjBindMethod(this, "doMenuItem")
-		for item in this.settings.menu.items {
+		for (i, item in this.settings.menu.items) {
 			switch (item.type) {
 				case "item":
 					menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
@@ -180,8 +180,8 @@ class module__KeyboardTextManipulation {
 				copied := StrTitle(copied)
 			case "sarcasm":
 				arr := StrSplit(copied)
-				for ii, el in arr {
-					arr[ii] := (Random(1) ? StrUpper(el) : StrLower(el))
+				for (i, el in arr) {
+					arr[i] := (Random(1) ? StrUpper(el) : StrLower(el))
 				}
 				copied := ArrJoin(arr, "")
 			case "join":

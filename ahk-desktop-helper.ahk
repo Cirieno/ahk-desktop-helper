@@ -223,7 +223,7 @@ loadModules() {
 
 doExit(reason, code) {
 	if (IsSet(__Modules) && isMap(__Modules)) {
-		for key, module in __Modules {
+		for (key, module in __Modules) {
 			if (module.hasMethod("__Delete")) {
 				module.__Delete()
 			}
@@ -251,7 +251,7 @@ doSettingsFileUpdate() {
 	IniWrite("[`"notepad.exe`",`"vlc.exe`"]", SFP, moduleName, "apps")
 	FileAppend("`n", SFP)
 
-	for key, module in __Modules {
+	for (key, module in __Modules) {
 		if (module.hasMethod("updateSettingsFile")) {
 			try {
 				module.updateSettingsFile()
@@ -293,7 +293,7 @@ checkCloseAppsWithCtrlW() {
 	if (closeAppsWithCtrlW_enabled) {
 		if (doCloseAppsWithCtrlWGroupAdd := true) {
 			appsList := getIniVal("closeAppsWithCtrlW", "apps", [])
-			for ii, app in appsList {
+			for (i, app in appsList) {
 				app := Trim(StrReplace(app, "`"", ""))
 				app := Trim(StrReplace(app, "'", ""))
 				GroupAdd("closeAppsWithCtrlW", "ahk_exe " . app)

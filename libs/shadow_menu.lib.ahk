@@ -119,7 +119,7 @@ setMenuItem(label?, menuRef?, CallbackOrSubmenu?, props?) {
 	}
 
 	if (thisMenuVals := {}) {
-		for key, vals in __ShadowMenu.menus {
+		for (key, vals in __ShadowMenu.menus) {
 			if (vals.handle == thisMenu.handle) {
 				thisMenuVals := vals
 				break
@@ -258,7 +258,7 @@ isMenuRef(val) {
 alertMenuPaths() {
 	str := ""
 
-	for key, vals in __ShadowMenu.menus {
+	for (key, vals in __ShadowMenu.menus) {
 		if (vals.type == "menu") {
 			str .= StrWrap(key, 2) . "`n"
 			if (vals.HasOwnProp("items") && isArray(vals.items) && !isEmpty(vals.items)) {

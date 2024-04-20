@@ -46,9 +46,9 @@ class prototype__Arrays extends Array {
 
 		arr := (isArray(this) ? this : [])
 
-		for ii, val in vals {
+		for (i, val in vals) {
 			if (!isArray(val)) {
-				throw Error(StrWrap(funcName, 2) . " — Param <vals[" . ii . "]> is not an Array")
+				throw Error(StrWrap(funcName, 2) . " — Param <vals[" . i . "]> is not an Array")
 			}
 			arr.push(val*)
 		}
@@ -95,7 +95,7 @@ class prototype__Arrays extends Array {
 			case "Map", "Object":
 				(Type(val) == "Map" ? scanVal(val) : scanVal(val.OwnProps()))
 				scanVal(props) {
-					for key, val in props {
+					for (key, val in props) {
 						try {
 							switch (mode) {
 								case "values":
@@ -115,8 +115,8 @@ class prototype__Arrays extends Array {
 				val := String(val)
 				if (SubStr(val, 1, 1) == "[" && SubStr(val, -1, 1) == "]") {
 					arr := StrSplit(SubStr(val, 2, -1), ",")
-					for ii, el in arr {
-						arr[ii] := Trim(el)
+					for (i, el in arr) {
+						arr[i] := Trim(el)
 					}
 					return arr
 				}
@@ -170,12 +170,12 @@ class prototype__Arrays extends Array {
 			throw Error(StrWrap(funcName, 2) . " — Target index exceeds the length of the array")
 		}
 
-		ii := indexStart
-		while (ii <= val.length) {
-			if (val.has(ii) && typeCompare(val.get(ii, null), needle, caseSense)) {
+		i := indexStart
+		while (i <= val.length) {
+			if (val.has(i) && typeCompare(val.get(i, null), needle, caseSense)) {
 				return true
 			}
-			ii++
+			i++
 		}
 
 		return false
@@ -227,12 +227,12 @@ class prototype__Arrays extends Array {
 			throw Error(StrWrap(funcName, 2) . " — Target index exceeds the length of the array")
 		}
 
-		ii := indexStart
-		while (ii <= val.length) {
-			if (val.has(ii) && typeCompare(val.get(ii, null), needle, caseSense)) {
-				return ii
+		i := indexStart
+		while (i <= val.length) {
+			if (val.has(i) && typeCompare(val.get(i, null), needle, caseSense)) {
+				return i
 			}
-			ii++
+			i++
 		}
 
 		return null
@@ -274,7 +274,7 @@ class prototype__Arrays extends Array {
 		forceBools := (debugMode == 2)
 
 		arr := []
-		for ii, el in val {
+		for (i, el in val) {
 			if (!IsSet(el)) {
 				arr.push(debug ? "<Unset>" : "")
 				continue
@@ -300,12 +300,12 @@ class prototype__Arrays extends Array {
 		}
 
 		str := ""
-		for ii, el in arr {
+		for (i, el in arr) {
 			if (clean && !debug && isEmpty(el)) {
 				continue
 			}
 			str .= el
-			if (ii < arr.length) {
+			if (i < arr.length) {
 				str .= separator
 			}
 		}
@@ -363,13 +363,13 @@ class prototype__Arrays extends Array {
 			throw Error(StrWrap(funcName, 2) . " — Target index exceeds the length of the array")
 		}
 
-		ii := indexStart
-		while (ii <= val.length) {
-			if (val.has(ii) && typeCompare(val.get(ii, null), needle, caseSense)) {
-				val.removeAt(ii)
-				ii--
+		i := indexStart
+		while (i <= val.length) {
+			if (val.has(i) && typeCompare(val.get(i, null), needle, caseSense)) {
+				val.removeAt(i)
+				i--
 			}
-			ii++
+			i++
 		}
 
 		if (isArray(this)) {
@@ -483,12 +483,12 @@ class prototype__Arrays extends Array {
 			throw Error(StrWrap(funcName, 2) . " — Target index <start> cannot be greater than target index <end>")
 		}
 
-		arr := [], ii := indexStart
-		while (ii <= indexEnd) {
-			if (val.has(ii)) {
-				arr.push(val.get(ii))
+		arr := [], i := indexStart
+		while (i <= indexEnd) {
+			if (val.has(i)) {
+				arr.push(val.get(i))
 			}
-			ii++
+			i++
 		}
 
 		return arr
@@ -511,7 +511,7 @@ class prototype__Arrays extends Array {
 		}
 
 		local map_ := Map()
-		for ii, el in val {
+		for (i, el in val) {
 			if (!IsSet(el) || isEmpty(el)) {
 				continue
 			}
@@ -553,13 +553,13 @@ class prototype__Arrays extends Array {
 		}
 
 		obj := Object()
-		for ii, val in arr {
-			if (arr.has(ii) && isStringable(val)) {
+		for (i, val in arr) {
+			if (arr.has(i) && isStringable(val)) {
 				obj[String(val)] := null
 			}
 		}
 		arrCleaned := []
-		for key, val in obj {
+		for (key, val in obj) {
 			arrCleaned.Push(key)
 		}
 
@@ -575,11 +575,11 @@ class prototype__Arrays extends Array {
 	__fixParams(&params) {
 		this_ := %params[1][2]%
 		params.insertAt(1, [&this_, null])
-		ii := params.length
-		while (ii > 1) {
-			defaultVal := params[ii][2]
-			%params[ii][1]% := (isArray(this_) ? (%params[ii - 1][1]% ?? defaultVal) : (%params[ii][1]% ?? defaultVal))
-			ii--
+		i := params.length
+		while (i > 1) {
+			defaultVal := params[i][2]
+			%params[i][1]% := (isArray(this_) ? (%params[i - 1][1]% ?? defaultVal) : (%params[i][1]% ?? defaultVal))
+			i--
 		}
 		params := null
 	}

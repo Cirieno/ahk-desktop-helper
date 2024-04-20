@@ -51,7 +51,7 @@ class module__AutoCorrect {
 		thisMenu := this.drawMenu()
 
 		lists := ["default", "user"]
-		for ii, listName in lists {
+		for (i, listName in lists) {
 			listIsActive := this.settings.activateOnLoad.includes(listName)
 			(listIsActive ? this.states.active.push(listName) : this.states.active.remove(listName))
 
@@ -87,7 +87,7 @@ class module__AutoCorrect {
 			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
 		}
 		local doMenuItem := ObjBindMethod(this, "doMenuItem")
-		for ii, item in this.settings.menu.items {
+		for (i, item in this.settings.menu.items) {
 			switch (item.type) {
 				case "item":
 					setMenuItem(item.label, thisMenu, doMenuItem)
@@ -134,7 +134,7 @@ class module__AutoCorrect {
 
 	setHotstrings(listName, state) {
 		; key = trigger, val = [replacement, modifiers, listName, state]
-		for key, val in this.settings.hotstrings {
+		for (key, val in this.settings.hotstrings) {
 			trigger := key
 			replacement := val[1]
 			modifiers := val[2]
@@ -173,7 +173,7 @@ class module__AutoCorrect {
 			modifiers := ((arr.length >= 3) ? arr[3] : "")
 
 			triggers := this.makeTriggers(trigger, replacement)
-			for trigger in triggers {
+			for (i, trigger in triggers) {
 				if (trigger == replacement) {
 					continue
 				}
@@ -181,7 +181,7 @@ class module__AutoCorrect {
 			}
 		}
 
-		for key, val in this.settings.hotstrings {
+		for (key, val in this.settings.hotstrings) {
 			trigger := key
 			modifiers := val[2]
 			if (InStr(modifiers, "X")) {
@@ -229,7 +229,7 @@ class module__AutoCorrect {
 
 
 		do(combos) {
-			for combo in combos {
+			for (i, combo in combos) {
 				triggerNew := StrReplace(trigger, match[1], combo)
 				if (triggerNew !== replacement) && !RegExMatch(triggerNew, pattern) && !triggers.includes(triggerNew) {
 					triggers.push(triggerNew)
@@ -279,7 +279,7 @@ class module__AutoCorrect {
 		counts["default"] := 0
 		counts["user"] := 0
 
-		for key, val in this.settings.hotstrings {
+		for (key, val in this.settings.hotstrings) {
 			listName := val[3]
 			counts[listName]++
 		}
@@ -316,7 +316,7 @@ class module__AutoCorrect {
 		this.import_CdelaHousseAutoCorrect(&lines)
 		this.import_AdditionalsAndOverrides(&lines)
 
-		for key, val in lines {
+		for (key, val in lines) {
 			if (StrCharAt(key, 1) == ";") {
 				comments.Push(key)
 			} else {
@@ -513,8 +513,8 @@ class module__AutoCorrect {
 		RegExMatch(replacement, regex, &match)
 		if (match) {
 			triggerNew := replacement
-			for arr in chars {
-				for accent in StrSplit(arr[2]) {
+			for (i, arr in chars) {
+				for (j, accent in StrSplit(arr[2])) {
 					if (StrLen(arr[1]) == 1) {
 						triggerNew := StrReplace(triggerNew, accent, StrWrap(arr[1] . accent, 2) . "?", true)
 					} else {
@@ -551,7 +551,10 @@ class module__AutoCorrect {
 				"; " . this.moduleName . " — User list",
 				this.listBoilerplateText(),
 				"; EXAMPLES:",
-				";    {U+02DC}\_({U+30C4})_/{U+02DC}|//shrug|*   -->   ˜\_(ツ)_/˜",
+				";    AutoHotkey|autohotkey|C1",
+				";    autocorrect|autocorect",
+				";    hotstring|ho[ts]+[t]*ring|?",
+				";    {U+02DC}\_({U+30C4})_/{U+02DC}|//shrug   -->   ˜\_(ツ)_/˜",
 			], "`n")
 			FileAppend(str . "`n`n`n", filePath)
 		}
@@ -579,7 +582,7 @@ class module__AutoCorrect {
 			";    C1 = always send the replacement as typed",
 			";    O  = remove the trigger character",
 			";    R  = send raw output",
-			";    X  = ignore this trigger entirely",
+			";    X  = delete any instance of this trigger",
 			";" . StrRepeat("-", 69),
 		], "`n")
 	}

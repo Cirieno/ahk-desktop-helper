@@ -61,7 +61,7 @@ class module__DesktopGatherWindows {
 			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
 		}
 		local doMenuItem := ObjBindMethod(this, "doMenuItem")
-		for item in this.settings.menu.items {
+		for (i, item in this.settings.menu.items) {
 			switch (item.type) {
 				case "item":
 					menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
@@ -107,7 +107,7 @@ class module__DesktopGatherWindows {
 		handles := WinGetList()
 		DetectHiddenWindows(true)
 
-		for hWnd in handles {
+		for (i, hWnd in handles) {
 			if (win := {}) {
 				WinGetPos(&X, &Y, &win, &H, hWnd)
 				win := { posX: X, posY: Y, width: win, height: H }

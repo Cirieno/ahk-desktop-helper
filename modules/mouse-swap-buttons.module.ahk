@@ -67,7 +67,7 @@ class module__MouseSwapButtons {
 			setMenuItem(arrMenuPath.pop(), parentMenu, thisMenu)
 		}
 		local doMenuItem := ObjBindMethod(this, "doMenuItem")
-		for item in this.settings.menu.items {
+		for (i, item in this.settings.menu.items) {
 			switch (item.type) {
 				case "item":
 					menuItemKey := setMenuItem(item.label, thisMenu, doMenuItem)
