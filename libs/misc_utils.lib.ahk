@@ -1,5 +1,29 @@
 /**
  * @param {string} section
+ * @returns {boolean}
+ */
+iniSectionExists(section) {
+	funcName := "iniSectionExists"
+
+	if (!isString(section)) {
+		throw Error(StrWrap(funcName, 2) . " — Param <section> is not a String")
+	}
+
+	SFP := __Settings.settingsFilePath
+
+	try {
+		IniRead(SFP, section, "")
+	} catch Error as e {
+		return false
+	}
+
+	return true
+}
+
+
+
+/**
+ * @param {string} section
  * @param {string} key
  * @param {any} [defaultVal]
  * @returns {any}
@@ -8,13 +32,13 @@ getIniVal(section, key, defaultVal?) {
 	funcName := "getIniVal"
 
 	if (!isString(section)) {
-		throw Error(StrWrap(funcName, 2) . " param <section> is not a String")
+		throw Error(StrWrap(funcName, 2) . " — Param <section> is not a String")
 	}
 	if (!isString(key)) {
-		throw Error(StrWrap(funcName, 2) . " param <key> is not a String")
+		throw Error(StrWrap(funcName, 2) . " — Param <key> is not a String")
 	}
-	if (!isSet(defaultVal)) {
-		throw Error(StrWrap(funcName, 2) . " param <defaultVal> does not have a value")
+	if (!IsSet(defaultVal)) {
+		throw Error(StrWrap(funcName, 2) . " — Param <defaultVal> does not have a value")
 	}
 
 	SFP := __Settings.settingsFilePath
@@ -43,12 +67,12 @@ getIniVal(section, key, defaultVal?) {
 		return defaultVal
 	}
 
-	if (isFloat(val)) {
+	if (IsFloat(val)) {
 		return Float(val)
 	}
 
-	if (isInteger(val)) {
-		return integer(val)
+	if (IsInteger(val)) {
+		return Integer(val)
 	}
 
 	return String(val)
@@ -56,7 +80,7 @@ getIniVal(section, key, defaultVal?) {
 
 
 
-MsgboxJoin(msg){
+MsgboxJoin(msg) {
 	if (isArray(msg)) {
 		return msg.join("`n")
 	}

@@ -239,20 +239,16 @@ doSettingsFileUpdate() {
 	SAE := __Settings.app.environment
 	SFP := __Settings.settingsFilePath
 
-	moduleName := "App", moduleExists := false
-	try {
-		moduleExists := IniRead(SFP, moduleName)
-	}
+	moduleName := "App"
+	moduleExists := iniSectionExists(moduleName)
 	IniWrite(SA.name, SFP, moduleName, "name")
 	IniWrite(SAB.version, SFP, moduleName, "version")
 	if (!moduleExists) {
 		FileAppend("`n", SFP)
 	}
 
-	moduleName := "Environment", moduleExists := false
-	try {
-		moduleExists := IniRead(SFP, moduleName)
-	}
+	moduleName := "Environment"
+	moduleExists := iniSectionExists(moduleName)
 	IniWrite(toString(SAE.startWithWindows), SFP, moduleName, "startWithWindows")
 	IniWrite(toString(false), SFP, moduleName, "enableExtendedRightMouseClick")
 	if (!moduleExists) {
@@ -260,10 +256,8 @@ doSettingsFileUpdate() {
 	}
 
 	; TODO: move this to a module
-	moduleName := "CloseAppsWithCtrlW", moduleExists := false
-	try {
-		moduleExists := IniRead(SFP, moduleName)
-	}
+	moduleName := "CloseAppsWithCtrlW"
+	moduleExists := iniSectionExists(moduleName)
 	IniWrite(toString(false), SFP, moduleName, "enabled")
 	IniWrite("[`"notepad.exe`",`"vlc.exe`"]", SFP, moduleName, "apps")
 	if (!moduleExists) {
@@ -272,18 +266,12 @@ doSettingsFileUpdate() {
 
 	for (key, module in __Modules) {
 		if (module.hasMethod("updateSettingsFile")) {
-			; try {
-			moduleName := module.moduleName, moduleExists := false
-			try {
-				moduleExists := IniRead(SFP, moduleName)
-			}
+			moduleName := module.moduleName
+			moduleExists := iniSectionExists(moduleName)
 			module.updateSettingsFile()
 			if (!moduleExists) {
 				FileAppend("`n", SFP)
 			}
-			; } catch Error as e {
-			; throw Error("Error updating settings file: " . e.Message)
-			; }
 		}
 	}
 }

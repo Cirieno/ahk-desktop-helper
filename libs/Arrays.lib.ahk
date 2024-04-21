@@ -72,8 +72,8 @@ class prototype__Arrays extends Array {
 		params := [[&val, &this], [&mode, 3]]
 		Arrays.__fixParams(&params)
 
-		if !(isString(val) || isNumber(val) || isMap(val) || IsObject(val) || isArray(val)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <val> is not a String, Number, Map, Object, or Array")
+		if !(isString(val) || isMap(val) || IsObject(val) || isArray(val)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <val> is not a String, Map, Object, or Array")
 		}
 		if (!isNumber(mode)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <mode> is not a Number")
@@ -81,12 +81,12 @@ class prototype__Arrays extends Array {
 		if (!NumBetween(mode, 1, 3)) {
 			throw Error(StrWrap(funcName, 2) . " — Param <mode> is not in range 1-3")
 		}
-		if (isEmpty(val)) {
-			return []
-		}
-		if isArray(val) {
+		if (isArray(val)) {
 			return val
 		}
+		; if (isEmpty(val)) {
+		; 	return []
+		; }
 
 		switch (mode) {
 			case 1:
@@ -118,17 +118,17 @@ class prototype__Arrays extends Array {
 					}
 				}
 				return arr
-			case "String", "Integer", "Float":
-				val := String(val)
-				if (SubStr(val, 1, 1) == "[" && SubStr(val, -1, 1) == "]") {    ; eg "[item, item, item]"
+			case "String":
+				if (SubStr(val, 1, 1) == "[" && SubStr(val, -1, 1) == "]") {    ; eg "[X, Y, Z]"
 					arr := StrSplit(SubStr(val, 2, -1), ",")
 					for (i, el in arr) {
 						arr[i] := Trim(el)
 					}
 					return arr
 				}
-				return [val]
 		}
+
+		return null
 	}
 
 
