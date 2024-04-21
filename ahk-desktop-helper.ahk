@@ -85,13 +85,12 @@ if (__Settings := {}) {
 
 
 
-checkStartWithWindows()
 drawMenu("before")
 loadModules()
 drawMenu("after")
+checkStartWithWindows()
 checkMemoryUsage()
 SetTimer(checkMemoryUsage, (30 * U_msMinute))
-doSettingsFileUpdate()
 
 
 
@@ -235,30 +234,56 @@ doExit(reason, code) {
 
 
 doSettingsFileUpdate() {
+	SA := __Settings.app
 	SAB := __Settings.app.build
 	SAE := __Settings.app.environment
 	SFP := __Settings.settingsFilePath
 
-	moduleName := "Environment"
+	moduleName := "App", moduleExists := false
+	try {
+		moduleExists := IniRead(SFP, moduleName)
+	}
+	IniWrite(SA.name, SFP, moduleName, "name")
 	IniWrite(SAB.version, SFP, moduleName, "version")
+	if (!moduleExists) {
+		FileAppend("`n", SFP)
+	}
+
+	moduleName := "Environment", moduleExists := false
+	try {
+		moduleExists := IniRead(SFP, moduleName)
+	}
 	IniWrite(toString(SAE.startWithWindows), SFP, moduleName, "startWithWindows")
 	IniWrite(toString(false), SFP, moduleName, "enableExtendedRightMouseClick")
-	FileAppend("`n", SFP)
+	if (!moduleExists) {
+		FileAppend("`n", SFP)
+	}
 
-	; TODO: move to module
-	moduleName := "CloseAppsWithCtrlW"
+	; TODO: move this to a module
+	moduleName := "CloseAppsWithCtrlW", moduleExists := false
+	try {
+		moduleExists := IniRead(SFP, moduleName)
+	}
 	IniWrite(toString(false), SFP, moduleName, "enabled")
 	IniWrite("[`"notepad.exe`",`"vlc.exe`"]", SFP, moduleName, "apps")
-	FileAppend("`n", SFP)
+	if (!moduleExists) {
+		FileAppend("`n", SFP)
+	}
 
 	for (key, module in __Modules) {
 		if (module.hasMethod("updateSettingsFile")) {
+			; try {
+			moduleName := module.moduleName, moduleExists := false
 			try {
-				module.updateSettingsFile()
-				FileAppend("`n", SFP)
-			} catch Error as e {
-				throw Error("Error updating settings file: " . e.Message)
+				moduleExists := IniRead(SFP, moduleName)
 			}
+			module.updateSettingsFile()
+			if (!moduleExists) {
+				FileAppend("`n", SFP)
+			}
+			; } catch Error as e {
+			; throw Error("Error updating settings file: " . e.Message)
+			; }
 		}
 	}
 }
