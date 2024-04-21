@@ -292,8 +292,9 @@ checkCloseAppsWithCtrlW() {
 	global closeAppsWithCtrlW_enabled := getIniVal("CloseAppsWithCtrlW", "enabled", false)
 	if (closeAppsWithCtrlW_enabled) {
 		if (doCloseAppsWithCtrlWGroupAdd := true) {
-			appsList := getIniVal("closeAppsWithCtrlW", "apps", [])
-			for (i, app in appsList) {
+			apps := getIniVal("closeAppsWithCtrlW", "apps", [])
+			for (i, app in apps) {
+				; TODO: use StrUnwrap()
 				app := Trim(StrReplace(app, "`"", ""))
 				app := Trim(StrReplace(app, "'", ""))
 				GroupAdd("closeAppsWithCtrlW", "ahk_exe " . app)
