@@ -22,6 +22,8 @@
 
 ; === A ===
 additional|additioal
+AutoHotkey|autohotkey|C1
+autocorrect|autocorect
 
 ; === B ===
 boards|baords
@@ -41,18 +43,18 @@ end if|en dif
 executable|exeutable
 
 ; === F ===
-false|f[asl]+e
+false|f[als]+e
 function|fuction
 
 ; === G ===
-GDPR|GDRP|C1
+GDPR|G[DPR]+|C1
 general|geberal
 
 ; === H ===
 handy|hnady
 helpdesk|helpdeks
 helper|herlper
-hotstring|ho[ts]+ring|*
+hotstring|ho[ts]+[t]*ring|?
 
 ; === I ===
 install|in stall
@@ -77,6 +79,7 @@ margin|maring
 o'clock|oclock
 obviously|obvisouly
 of the|oft he
+other|[op][ht]+er
 
 ; === P ===
 phoenix|pheonix
