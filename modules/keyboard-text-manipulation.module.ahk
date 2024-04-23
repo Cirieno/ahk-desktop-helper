@@ -151,23 +151,21 @@ class module__KeyboardTextManipulation {
 
 
 
-	doPaste(mode, reselect := true) {
+	doPaste(mode, reselect := false) {
 		clipSavedAll := ClipboardAll()
 		A_Clipboard := ""
+
 		Send("^c")
+
 		if (!ClipWait(2)) {
+			A_Clipboard := clipSavedAll
 			return
 		}
+
 		copied := A_Clipboard
 
-		; remove final CR or NL from copied text (will put it back on later)
-		linebreak := ""
-		if ((SubStr(copied, -1) == "`r") || (SubStr(copied, -1) == "`n")) {
-			linebreak := SubStr(copied, -1)
-			copied := SubStr(copied, 1, -2)
-		}
-
 		if (!StrLen(copied)) {
+			A_Clipboard := clipSavedAll
 			return
 		}
 
@@ -185,32 +183,33 @@ class module__KeyboardTextManipulation {
 				}
 				copied := ArrJoin(arr, "")
 			case "join":
-				copied := RegExReplace(copied, "\s*[\r\n]\s*", "")
+				copied := RegExReplace(copied, "[\r\n]", "")
 			case "single-quotes":
-				copied := StrWrap(copied, 6)
+				copied := "'" . copied . "'"
 			case "double-quotes":
-				copied := StrWrap(copied, 5)
+				copied := "`"" . copied . "`""
 			case "backticks":
-				copied := StrWrap(copied, 7)
+				copied := "``" . copied . "``"
 			case "parentheses":
-				copied := StrWrap(copied, 1)
+				copied := "(" . copied . ")"
 			case "square-brackets":
-				copied := StrWrap(copied, 2)
+				copied := "[" . copied . "]"
 			case "braces":
-				copied := StrWrap(copied, 3)
+				copied := "{" . copied . "}"
 			case "angle-brackets":
-				copied := StrWrap(copied, 4)
+				copied := "<" . copied . ">"
 		}
 
-		A_Clipboard := copied := (copied . linebreak)
-		Send("^v")
+		A_Clipboard := copied
+		Send("^v")    ; in tests any Send(copied) variant is visibly slow
+
+		if (reselect) {
+			Send("+{left " . StrLen(copied) . "}")    ; this is also visibly slow
+		}
+
 		; Sleep(Max(StrLen(copied), 250))
 		Sleep(200)
 		A_Clipboard := clipSavedAll
-
-		if (reselect) {
-			Send("+{left " . StrLen(copied) . "}")
-		}
 	}
 
 

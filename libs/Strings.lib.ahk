@@ -33,6 +33,36 @@ class prototype__Strings {
 
 
 
+	getCharFirst(_string) {
+		funcName := "Strings.getCharFirst"
+
+		if !(isString(_string) || isNumber(_string)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_string> is not a String or Number")
+		}
+		if (isEmpty(_string)) {
+			return null
+		}
+
+		return SubStr(_string, 1, 1)
+	}
+
+
+
+	getCharLast(_string) {
+		funcName := "Strings.getCharLast"
+
+		if !(isString(_string) || isNumber(_string)) {
+			throw Error(StrWrap(funcName, 2) . " — Param <_string> is not a String or Number")
+		}
+		if (isEmpty(_string)) {
+			return null
+		}
+
+		return SubStr(_string, -1, 1)
+	}
+
+
+
 	includes(_string, needle, caseSense := false, indexStart := 1, clamp := false) {
 		funcName := "Strings.includes"
 
@@ -278,6 +308,28 @@ class prototype__Strings {
  * @returns {(string|null)}
  */
 StrCharAt := ObjBindMethod(Strings, "charAt")
+
+
+
+/**
+ * Returns the first character in a string
+ *
+ * @function Strings.getCharFirst | StrCharFirst
+ * @param {(string|number)} _string
+ * @returns {(string|null)}
+ */
+StrCharFirst := ObjBindMethod(Strings, "getCharFirst")
+
+
+
+/**
+ * Returns the last character in a string
+ *
+ * @function Strings.getCharLast | StrCharLast
+ * @param {(string|number)} _string
+ * @returns {(string|null)}
+ */
+StrCharLast := ObjBindMethod(Strings, "getCharLast")
 
 
 
