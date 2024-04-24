@@ -48,7 +48,7 @@ global __ShadowMenu := { menus: Map(), items: Map() }
 if (__Settings := {}) {
 	__Settings.app := {
 		name: "AHK Desktop Helper",
-		author: { name: "Rob McInnes", email: "rob.mcinnes@cirieno.co.uk", company: "Cirieno Ltd" },
+		author: { name: "Rob McInnes", email: "rob.mcinnes" . chr(64) . "cirieno.co.uk", company: "Cirieno Ltd" },
 		build: { version: "2.5.1.0", date: "2024-04", repo: "github.com/cirieno/ahk-desktop-helper" }
 	}
 	__Settings.settingsFilePath := A_WorkingDir . "\settings.ini"

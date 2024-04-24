@@ -296,9 +296,10 @@ class module__AutoCorrect {
 
 	buildDefaultList() {
 		fileDir := A_WorkingDir
-		if (!DirExist(fileDir)) {
-			DirCreate(fileDir)
-		}
+		; if (!DirExist(fileDir)) {
+		; 	DirCreate(fileDir)
+		; }
+		; TODO: write extended dir builder function
 
 		filePath := fileDir . "\default.autocorrect.txt"
 		if (FileExist(filePath)) {
@@ -334,6 +335,17 @@ class module__AutoCorrect {
 		FileAppend(str . "`n`n`n", filePath)
 
 		FileAppend(ArrJoin([hotkeys.join("`n"), comments.join("`n")], "`n`n`n"), filePath)
+
+		; TODO: write extended dir builder function
+		releaseDir := A_WorkingDir . "\releases\" . __Settings.app.build.version
+		if (!DirExist(A_WorkingDir . "\releases")) {
+			DirCreate(A_WorkingDir . "\releases")
+		}
+		if (!DirExist(releaseDir)) {
+			DirCreate(releaseDir)
+		}
+		releasePath := releaseDir . "\default.autocorrect.txt"
+		FileCopy(filePath, releasePath, true)
 
 		MsgBox("Default list built", (__Settings.app.name . " - AutoCorrect"), (0 + 64 + 4096) . " T3")
 	}
