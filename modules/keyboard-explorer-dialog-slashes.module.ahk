@@ -90,7 +90,7 @@ class module__KeyboardExplorerDialogSlashes {
 		doPaste := ObjBindMethod(this, "doPaste")
 
 		HotIf(this.checkCtrl)
-		Hotstring(":?*:/", "\", (state ? "on" : "off"))
+		Hotstring(":*?:/", "\", (state ? "on" : "off"))
 		Hotkey("^v", doPaste, (state ? "on" : "off"))
 		; OnMessage(0x0302, doPaste)    ; 0x0302 is WM_PASTE
 		; TODO: capture mouse paste events to exisiting windows?
