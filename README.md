@@ -99,7 +99,7 @@ Use the backspace key to drill upwards in File Explorer windows and dialogs.
 
 ### KeyboardExplorerDialogSlashes
 
-Converts forward-slashes in a path into back-slashes. Handy if you're working with any Unix-y environments on your Windows machine.
+Converts forward-slashes and multiple backslashes to a single back-slash when entered into a File Explorer dialog. Handy if you're working with any Unix-y environments on your Windows machine. Doesn't currently capture paste via mouse.
 
 ---
 
@@ -122,7 +122,7 @@ Enables these global hotkeys to change selected text:
 | Ctrl + Alt + Shift + { | enclose in curly braces |
 | Ctrl + Alt + Shift + < | enclose in angled brackets |
 | Ctrl + Alt + - | insert an n-dash |
-| Ctrl + Alt + Shift + - | insert an m-dash |
+| Ctrl + Alt + Shift + _ | insert an m-dash |
 
 ---
 

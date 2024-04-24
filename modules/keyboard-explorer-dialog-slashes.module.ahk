@@ -90,8 +90,10 @@ class module__KeyboardExplorerDialogSlashes {
 		doPaste := ObjBindMethod(this, "doPaste")
 
 		HotIf(this.checkCtrl)
-		Hotstring(":*:/", "\", (state ? "on" : "off"))
+		Hotstring(":?*:/", "\", (state ? "on" : "off"))
 		Hotkey("^v", doPaste, (state ? "on" : "off"))
+		; OnMessage(0x0302, doPaste)    ; 0x0302 is WM_PASTE
+		; TODO: capture mouse paste events to exisiting windows?
 		HotIf()
 	}
 
@@ -100,8 +102,8 @@ class module__KeyboardExplorerDialogSlashes {
 	checkCtrl() {
 		try {
 			controls := ["Edit1", "Edit2"]
-			ctrl := ControlGetClassNN(ControlGetFocus("A"))
-			return (WinActive("ahk_group explorerWindows") && controls.includes(ctrl))
+			control := ControlGetClassNN(ControlGetFocus("A"))
+			return (WinActive("ahk_group explorerWindows") && controls.includes(control))
 		} catch Error as e {
 			return false
 		}
@@ -111,7 +113,7 @@ class module__KeyboardExplorerDialogSlashes {
 
 	doPaste(*) {
 		try {
-			clipboardSaved := StrReplace(A_Clipboard, "/", "\")
+			clipboardSaved := RegExReplace(A_Clipboard, "S)[\\/]+", "\")
 			EditPaste(clipboardSaved, ControlGetFocus("A"))
 		} catch Error as e {
 			throw Error("Couldn't paste content to control")
