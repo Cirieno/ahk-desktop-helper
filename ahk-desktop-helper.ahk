@@ -16,7 +16,7 @@
 
 
 
-#Requires AutoHotkey v2+
+#Requires AutoHotkey v2.0.13 64-bit
 ; Run *RunAs.
 #ClipboardTimeout 2000
 #SingleInstance force
