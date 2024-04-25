@@ -22,7 +22,7 @@ Common module options:
 
 ---
 
-### Environment
+#### Environment
 
 `startWithWindows=false` Creates a shortcut in the user's startup folder
 
@@ -30,7 +30,7 @@ Common module options:
 
 ---
 
-### AutoCorrect
+#### AutoCorrect
 
 There are many AHK autocorrect scripts out there, but this one has a different approach. It allows you to add a single entry (or accented words) that can expand to multiple correction strings.
 
@@ -63,7 +63,7 @@ NB: I keep tinkering with `default.autocorrect.txt` so don't make changes to thi
 
 ---
 
-### CloseAppsWithCtrlW
+#### CloseAppsWithCtrlW
 
 A list of apps that you want to close with the Ctrl+W shortcut.
 
@@ -71,7 +71,7 @@ A list of apps that you want to close with the Ctrl+W shortcut.
 
 ---
 
-### DesktopGatherWindows
+#### DesktopGatherWindows
 
 Bring all windows to the main monitor and resize them if possible. Handy for when a window opens outside the monitor workspace.
 
@@ -79,31 +79,31 @@ Bring all windows to the main monitor and resize them if possible. Handy for whe
 
 ---
 
-### DesktopHideMediaPopup
+#### DesktopHideMediaPopup
 
 Hide the OSD volume popup. NB: this also hides the brightness popup.
 
 ---
 
-### DesktopHidePeekButton
+#### DesktopHidePeekButton
 
 Hide the small Desktop Peek button found at the end of the taskbar.
 
 ---
 
-### KeyboardExplorerBackspace
+#### KeyboardExplorerBackspace
 
 Use the backspace key to drill upwards in File Explorer windows and dialogs.
 
 ---
 
-### KeyboardExplorerDialogSlashes
+#### KeyboardExplorerDialogSlashes
 
 Converts forward-slashes and multiple backslashes to a single back-slash when entered into a File Explorer dialog. Handy if you're working with any Unix-y environments on your Windows machine. Doesn't currently capture paste via mouse.
 
 ---
 
-### KeyboardTextManipulation
+#### KeyboardTextManipulation
 
 Enables these global hotkeys to change selected text:
 
@@ -143,3 +143,25 @@ Swap left and right mouse buttons. Handy for left-handed people, or those like m
 Use the mousewheel to change volume anywhere over the system icons and date/time part of the taskbar.
 
 `step=3` The increment by which the volume will change.
+
+---
+
+## Refs
+
+#### Extensions
+
+https://marketplace.visualstudio.com/items?itemName=thqby.vscode-autohotkey2-lsp
+
+https://marketplace.visualstudio.com/items?itemName=zero-plusplus.vscode-autohotkey-debug
+
+#### Word lists sources
+
+https://en.wikipedia.org/wiki/Wikipedia:Lists_of_common_misspellings
+
+https://en.wikipedia.org/wiki/Wikipedia:Lists_of_common_misspellings/Grammar_and_miscellaneous
+
+https://en.wikipedia.org/wiki/Commonly_misspelled_English_words
+
+https://web.archive.org/web/20190310225422/https://en.wiktionary.org/wiki/Appendix:English_words_with_diacritics
+
+https://github.com/cdelahousse/Autocorrect-AutoHotKey
