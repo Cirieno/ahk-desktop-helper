@@ -318,7 +318,7 @@ class module__AutoCorrect {
 			"; " . FormatTime(A_Now, "yyyy-MM-dd HH:mm"),
 			this.listBoilerplateText(),
 		], "`n")
-		FileAppend(str . "`n`n", filePath)
+		FileAppend(str . "`n`n`n", filePath)
 
 		FileAppend(ArrJoin([hotkeys.join("`n"), comments.join("`n")], "`n`n"), filePath)
 
@@ -545,7 +545,7 @@ class module__AutoCorrect {
 				";    autocorrect|autocorect",
 				";    hotstring|ho[ts]+[t]*ring|?",
 				";    {U+02DC}\_({U+30C4})_/{U+02DC}|//shrug   -->   ˜\_(ツ)_/˜",
-			], "`n")
+			], "`n`n")
 			FileAppend(str . "`n`n", filePath)
 		}
 	}
@@ -581,7 +581,3 @@ class module__AutoCorrect {
 ;--------------------------------------------------------------------
 ; NOTES:
 ; makeCharCombos() from https://www.autohotkey.com/boards/viewtopic.php?p=158444#p158444
-;
-; SOURCES:
-;    https://en.wikipedia.org/wiki/Wikipedia:AutoWikiBrowser/Typos
-;    https://en.wikipedia.org/wiki/Commonly_misspelled_English_words
