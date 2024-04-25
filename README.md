@@ -107,22 +107,27 @@ Converts forward-slashes and multiple backslashes to a single back-slash when en
 
 Enables these global hotkeys to change selected text:
 
-| Syntax | Description |
-| ------ | ----------- |
-| Ctrl + Alt + U | uppercase |
-| Ctrl + Alt + L | lowercase |
-| Ctrl + Alt + T | title case |
-| Ctrl + Alt + S | sarcasm case |
-| Ctrl + Alt + J | join lines |
-| Ctrl + Alt + ' | enclose in single quotes |
-| Ctrl + Alt + 2 | enclose in double quotes |
-| Ctrl + Alt + ` | enclose in backticks |
-| Ctrl + Alt + 9 | enclose in parentheses |
-| Ctrl + Alt + [ | enclose in square brackets |
-| Ctrl + Alt + Shift + { | enclose in curly braces |
-| Ctrl + Alt + Shift + < | enclose in angled brackets |
-| Ctrl + Alt + - | insert an n-dash |
-| Ctrl + Alt + Shift + _ | insert an m-dash |
+| Syntax | Description | Example |
+| ------ | ----------- | --------|
+| `Ctrl` + `Alt` + `U` | uppercase |
+| `Ctrl` + `Alt` + `L` | lowercase |
+| `Ctrl` + `Alt` + `T` | title case | This Is An Example |
+| `Ctrl` + `Alt` + `K` | kebab case | this-is-an-example |
+| `Ctrl` + `Alt` + `S` | snake case | this_is_an_example |
+| `Ctrl` + `Alt` + `&` | sarcasm case | tHIS is aN ExampLE |
+| `Ctrl` + `Alt` + `'` | enclose in single quotes | ' ' |
+| `Ctrl` + `Alt` + `"` | enclose in double quotes | " " |
+| `Ctrl` + `Alt` + `Shift` + `'` | enclose in single curly quotes | ‘ ’ |
+| `Ctrl` + `Alt` + `Shift` + `"` | enclose in double curly quotes | “ ” |
+| `Ctrl` + `Alt` + `` ` `` | enclose in backticks | `` |
+| `Ctrl` + `Alt` + `(` or `)` | enclose in parentheses | ( ) |
+| `Ctrl` + `Alt` + `[` or `]` | enclose in square brackets | [ ] |
+| `Ctrl` + `Alt` + `{` or `}` | enclose in curly braces | { } |
+| `Ctrl` + `Alt` + `<` or `>` | enclose in angled brackets | < > |
+| `Ctrl` + `Alt` + `-` | insert an n-dash | – |
+| `Ctrl` + `Alt` + `_` | insert an m-dash | — |
+| `Ctrl` + `Alt` + `J` | join lines | |
+<!-- | `Ctrl` + `Alt` + `C` | camel case | ThisIsAnExample -->
 
 ---
 

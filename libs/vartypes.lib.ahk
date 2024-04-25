@@ -279,7 +279,8 @@ typeCompare(val1, val2, caseSense := false) {
 ;------------------------------------------------
 ; Constants
 ;------------------------------------------------
-U_ellipsis := "…"
+U_ellipsis := ellipsis := Chr(8230)
+U_newline := NL := "`n"
 
 
 /**

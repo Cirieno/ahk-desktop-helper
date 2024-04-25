@@ -87,64 +87,78 @@ class module__KeyboardTextManipulation {
 
 
 	setHotkeys(state) {
-		Hotkey("$^!U", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!L", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!T", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!S", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!U", whichHotkey, (state ? "on" : "off"))    ; upper-case
+		Hotkey("$^!L", whichHotkey, (state ? "on" : "off"))    ; lower-case
+		Hotkey("$^!T", whichHotkey, (state ? "on" : "off"))    ; title-case
+		; Hotkey("$#!C", whichHotkey, (state ? "on" : "off"))    ; camel-case
+		Hotkey("$^!K", whichHotkey, (state ? "on" : "off"))    ; kebab-case
+		Hotkey("$^!S", whichHotkey, (state ? "on" : "off"))    ; snake-case
+		Hotkey("$^!&", whichHotkey, (state ? "on" : "off"))    ; sarcasm-case
 
-		Hotkey("$^!'", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!2", whichHotkey, (state ? "on" : "off"))
-		Hotkey("~$^!``", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!'", whichHotkey, (state ? "on" : "off"))    ; single-quotes
+		Hotkey("$^!2", whichHotkey, (state ? "on" : "off"))    ; double-quotes
+		Hotkey("$^!+'", whichHotkey, (state ? "on" : "off"))    ; single-curly-quotes
+		Hotkey("$^!+2", whichHotkey, (state ? "on" : "off"))    ; double-curly-quotes
+		Hotkey("$^!``", whichHotkey, (state ? "on" : "off"))    ; backticks
 
-		Hotkey("$^!9", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!0", whichHotkey, (state ? "on" : "off"))
-
+		Hotkey("$^!(", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!)", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^![", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^!]", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!{", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!}", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!<", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!>", whichHotkey, (state ? "on" : "off"))
 
-		Hotkey("$^!+{", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!+}", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!-", whichHotkey, (state ? "on" : "off"))    ; en-dash
+		Hotkey("$^!_", whichHotkey, (state ? "on" : "off"))    ; em-dash
 
-		Hotkey("$^!,", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!.", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!J", whichHotkey, (state ? "on" : "off"))    ; join lines
 
-		Hotkey("$^!J", whichHotkey, (state ? "on" : "off"))
 
-		Hotkey("$^!-", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!_", whichHotkey, (state ? "on" : "off"))
-
-		whichHotkey(*) {
-			key := SubStr(A_ThisHotkey, -1, 1)
+		whichHotkey(key) {
+			key := RegExReplace(key, "S)[\$\#\!\^]", "")
+			; MsgBox(key)
 
 			switch (key) {
 				case "U":
-					this.doPaste("upper")
+					this.doPaste("upper-case")
 				case "L":
-					this.doPaste("lower")
+					this.doPaste("lower-case")
 				case "T":
-					this.doPaste("title")
+					this.doPaste("title-case")
+				; case "C":
+				; 	this.doPaste("camel-case")
+				case "K":
+					this.doPaste("kebab-case")
 				case "S":
-					this.doPaste("sarcasm")
-				case "J":
-					this.doPaste("join", false)
+					this.doPaste("snake-case")
+				case "&":
+					this.doPaste("sarcasm-case")
 				case "'":
 					this.doPaste("single-quotes")
 				case "2":
 					this.doPaste("double-quotes")
+				case "+'":
+					this.doPaste("single-curly-quotes")
+				case "+2":
+					this.doPaste("double-curly-quotes")
 				case "``":
 					this.doPaste("backticks")
-				case "9", "0":
+				case "(", ")":
 					this.doPaste("parentheses")
 				case "[", "]":
 					this.doPaste("square-brackets")
 				case "{", "}":
-					this.doPaste("braces")
-				case ",", ".":
+					this.doPaste("curly-braces")
+				case "<", ">":
 					this.doPaste("angle-brackets")
 				case "-":
-					SendText("–")
+					SendText(Chr(8211))
 				case "_":
-					SendText("—")
+					SendText(Chr(8212))
+				case "J":
+					this.doPaste("join", false)
 			}
 		}
 	}
@@ -170,41 +184,53 @@ class module__KeyboardTextManipulation {
 		}
 
 		switch (mode) {
-			case "upper":
+			case "upper-case":
 				copied := StrUpper(copied)
-			case "lower":
+			case "lower-case":
 				copied := StrLower(copied)
-			case "title":
+			case "title-case":
 				copied := StrTitle(copied)
-			case "sarcasm":
+				; TODO: should titlecase regard hyphens as spaces?
+			; case "camel-case":
+			; 	regex := "S)[\s\-]+([^A-Z])"
+			; 	copied := RegExReplace(copied, regex, "$U1")
+			case "kebab-case":
+				copied := RegExReplace(copied, "[ _]", "-")
+			case "snake-case":
+				copied := RegExReplace(copied, "[ -]", "_")
+			case "sarcasm-case":
 				arr := StrSplit(copied)
 				for (i, el in arr) {
 					arr[i] := (Random(1) ? StrUpper(el) : StrLower(el))
 				}
-				copied := ArrJoin(arr, "")
-			case "join":
-				copied := RegExReplace(copied, "[\r\n]", "")
+				copied := ArrJoin(arr)
 			case "single-quotes":
-				copied := "'" . copied . "'"
+				copied := Chr(39) . copied . Chr(39)
 			case "double-quotes":
-				copied := "`"" . copied . "`""
+				copied := Chr(34) . copied . Chr(34)
+			case "single-curly-quotes":
+				copied := Chr(8216) . copied . Chr(8217)
+			case "double-curly-quotes":
+				copied := Chr(8220) . copied . Chr(8221)
 			case "backticks":
-				copied := "``" . copied . "``"
+				copied := Chr(96) . copied . Chr(96)
 			case "parentheses":
 				copied := "(" . copied . ")"
 			case "square-brackets":
 				copied := "[" . copied . "]"
-			case "braces":
+			case "curly-braces":
 				copied := "{" . copied . "}"
 			case "angle-brackets":
 				copied := "<" . copied . ">"
+			case "join":
+				copied := RegExReplace(copied, "[\r\n]", " ")
 		}
 
 		A_Clipboard := copied
 		Send("^v")    ; in tests any Send(copied) variant is visibly slow
 
 		if (reselect) {
-			Send("+{left " . StrLen(copied) . "}")    ; this is also visibly slow
+			Send("+{left " . StrLen(copied) . "}")    ; this is visibly slow
 		}
 
 		; Sleep(Max(StrLen(copied), 250))

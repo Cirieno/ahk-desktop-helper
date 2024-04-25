@@ -260,8 +260,8 @@ class prototype__Strings {
 		if (!isNumber(mode)) {
 			throw Error("[" . funcName . "] — Param <mode> is not a Number")
 		}
-		if (!NumBetween(mode, 0, 7)) {
-			throw Error("[" . funcName . "] — Param <mode> is not in range 0-7")
+		if (!NumBetween(mode, 0, 9)) {
+			throw Error("[" . funcName . "] — Param <mode> is not in range 0-9")
 		}
 		if !(isString(_string) || isNumber(_string)) {
 			throw Error("[" . funcName . "] — Param <strStart> is not a String or Number")
@@ -284,11 +284,15 @@ class prototype__Strings {
 				case 4:
 					strStart := "<", strEnd := ">"
 				case 5:
-					strStart := "`"", strEnd := "`""
+					strStart := Chr(34), strEnd := Chr(34)
 				case 6:
-					strStart := "'", strEnd := "'"
+					strStart := Chr(39), strEnd := Chr(39)
 				case 7:
-					strStart := "``", strEnd := "``"
+					strStart := Chr(96), strEnd := Chr(96)
+				case 8:
+					strStart := Chr(8216), strEnd := Chr(8217)
+				case 9:
+					strStart := Chr(8220), strEnd := Chr(8221)
 			}
 		}
 
@@ -412,6 +416,6 @@ StrSlice := ObjBindMethod(Strings, "slice")
  *
  * modes: 1 = parentheses, 2 = square-brackets, 3 = braces,
  * 4 = angle-brackets, 5 = double-quotes, 6 = single-quotes,
- * 7 = backticks
+ * 7 = backticks, 8 = single-curly-quotes, 9 = double-curly-quotes
  */
 StrWrap := ObjBindMethod(Strings, "wrap")
