@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Wraps a string in the specified characters
  *
@@ -14,10 +13,8 @@
  */
 
 
-
 doTests_StrWrap() {
 	str1 := "ABC123"
-
 
 
 	;#region Function calls
@@ -46,7 +43,6 @@ doTests_StrWrap() {
 		"StrWrap(str1, , 'x', 'y') failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

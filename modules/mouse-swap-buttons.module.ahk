@@ -7,7 +7,6 @@
 ; Checks for external changes every 5 seconds
 
 
-
 class module__MouseSwapButtons {
 	__Init() {
 		this.moduleName := moduleName := "MouseSwapButtons"
@@ -33,7 +32,6 @@ class module__MouseSwapButtons {
 	}
 
 
-
 	__New() {
 		if (!this.enabled) {
 			return
@@ -46,13 +44,11 @@ class module__MouseSwapButtons {
 	}
 
 
-
 	__Delete() {
 		if (this.settings.resetOnExit) {
 			; this.setButtonsState(this.states.buttonsSwappedOnLoad)
 		}
 	}
-
 
 
 	drawMenu() {
@@ -80,7 +76,6 @@ class module__MouseSwapButtons {
 	}
 
 
-
 	doMenuItem(name, position, menu) {
 		switch (name) {
 			case this.settings.menu.items[1].label:
@@ -95,7 +90,6 @@ class module__MouseSwapButtons {
 	}
 
 
-
 	getButtonsState() {
 		try {
 			return toBoolean(RegRead("HKEY_CURRENT_USER\Control Panel\Mouse", "SwapMouseButtons", 0))
@@ -103,7 +97,6 @@ class module__MouseSwapButtons {
 			throw Error("Error reading registry key")
 		}
 	}
-
 
 
 	setButtonsState(state) {
@@ -115,7 +108,6 @@ class module__MouseSwapButtons {
 			throw Error("Error writing registry key")
 		}
 	}
-
 
 
 	runObserver(state := this.states.active, forced := false) {
@@ -149,7 +141,6 @@ class module__MouseSwapButtons {
 			}
 		}
 	}
-
 
 
 	updateSettingsFile() {

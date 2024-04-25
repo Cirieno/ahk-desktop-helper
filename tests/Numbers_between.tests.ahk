@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Checks if number is within a range
  *
@@ -12,7 +11,6 @@
  * @param {boolean} [inclusive=true]
  * @return {boolean}
  */
-
 
 
 doTests_NumBetween() {
@@ -52,7 +50,6 @@ doTests_NumBetween() {
 		assert(false, "NumClamp(null, 1, 10) failed")
 	}
 	;#endregion
-
 
 
 	assert(condition, message := "") {

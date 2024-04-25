@@ -7,7 +7,6 @@
 ;     and File dialogs, useful when working with LAMP paths in VSCode
 
 
-
 class module__KeyboardExplorerDialogSlashes {
 	__Init() {
 		this.moduleName := moduleName := "KeyboardExplorerDialogSlashes"
@@ -28,7 +27,6 @@ class module__KeyboardExplorerDialogSlashes {
 	}
 
 
-
 	__New() {
 		if (!this.enabled) {
 			return
@@ -43,10 +41,8 @@ class module__KeyboardExplorerDialogSlashes {
 	}
 
 
-
 	__Delete() {
 	}
-
 
 
 	drawMenu() {
@@ -74,7 +70,6 @@ class module__KeyboardExplorerDialogSlashes {
 	}
 
 
-
 	doMenuItem(name, position, menu) {
 		switch (name) {
 			case this.settings.menu.items[1].label:
@@ -83,7 +78,6 @@ class module__KeyboardExplorerDialogSlashes {
 				this.setHotkeys(this.states.active)
 		}
 	}
-
 
 
 	setHotkeys(state) {
@@ -98,7 +92,6 @@ class module__KeyboardExplorerDialogSlashes {
 	}
 
 
-
 	checkCtrl() {
 		try {
 			controls := ["Edit1", "Edit2"]
@@ -110,7 +103,6 @@ class module__KeyboardExplorerDialogSlashes {
 	}
 
 
-
 	doPaste(*) {
 		try {
 			clipboardSaved := RegExReplace(A_Clipboard, "S)[\\/]+", "\")
@@ -119,7 +111,6 @@ class module__KeyboardExplorerDialogSlashes {
 			throw Error("Couldn't paste content to control")
 		}
 	}
-
 
 
 	updateSettingsFile() {

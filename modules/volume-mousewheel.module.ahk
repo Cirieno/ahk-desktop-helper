@@ -5,7 +5,6 @@
  *********************************************************/
 
 
-
 class module__VolumeMouseWheel {
 	__Init() {
 		this.moduleName := moduleName := "VolumeMouseWheel"
@@ -28,7 +27,6 @@ class module__VolumeMouseWheel {
 	}
 
 
-
 	__New() {
 		if (!this.enabled) {
 			return
@@ -47,10 +45,8 @@ class module__VolumeMouseWheel {
 	}
 
 
-
 	__Delete() {
 	}
-
 
 
 	drawMenu() {
@@ -78,7 +74,6 @@ class module__VolumeMouseWheel {
 	}
 
 
-
 	doMenuItem(name, position, menu) {
 		switch (name) {
 			case this.settings.menu.items[1].label:
@@ -93,14 +88,12 @@ class module__VolumeMouseWheel {
 	}
 
 
-
 	setWheelState(state) {
 		doWheelChange := ObjBindMethod(this, "doWheelChange")
 
 		Hotkey("~WheelUp", doWheelChange, (state ? "on" : "off"))
 		Hotkey("~WheelDown", doWheelChange, (state ? "on" : "off"))
 	}
-
 
 
 	doWheelChange(name) {
@@ -118,7 +111,6 @@ class module__VolumeMouseWheel {
 			SoundSetVolume(newVol)
 		}
 	}
-
 
 
 	updateSettingsFile() {

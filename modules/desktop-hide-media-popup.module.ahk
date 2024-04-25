@@ -8,7 +8,6 @@
 ; NOTE: this also hides the brightness popup...
 
 
-
 class module__DesktopHideMediaPopup {
 	__Init() {
 		this.moduleName := moduleName := "DesktopHideMediaPopup"
@@ -35,7 +34,6 @@ class module__DesktopHideMediaPopup {
 	}
 
 
-
 	__New() {
 		if (!this.enabled) {
 			return
@@ -48,13 +46,11 @@ class module__DesktopHideMediaPopup {
 	}
 
 
-
 	__Delete() {
 		if (this.settings.resetOnExit) {
 			this.setPopupState(this.settings.hWnd, this.states.popupVisibleOnLoad)
 		}
 	}
-
 
 
 	drawMenu() {
@@ -82,7 +78,6 @@ class module__DesktopHideMediaPopup {
 	}
 
 
-
 	doMenuItem(name, position, menu) {
 		switch (name) {
 			case this.settings.menu.items[1].label:
@@ -91,7 +86,6 @@ class module__DesktopHideMediaPopup {
 				this.runObserver(this.states.active, true)
 		}
 	}
-
 
 
 	getPopupHwnd() {
@@ -111,7 +105,6 @@ class module__DesktopHideMediaPopup {
 	}
 
 
-
 	getPopupState(hWnd) {
 		if (isEmpty(hWnd)) {
 			return null
@@ -123,7 +116,6 @@ class module__DesktopHideMediaPopup {
 			throw Error("Couldn't get popup state")
 		}
 	}
-
 
 
 	setPopupState(hWnd, state) {
@@ -145,7 +137,6 @@ class module__DesktopHideMediaPopup {
 			throw Error("Couldn't set popup state")
 		}
 	}
-
 
 
 	runObserver(state := this.states.active, forced := false) {
@@ -179,7 +170,6 @@ class module__DesktopHideMediaPopup {
 			}
 		}
 	}
-
 
 
 	updateSettingsFile() {

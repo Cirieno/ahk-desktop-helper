@@ -7,7 +7,6 @@
 ; TODO: turn this into an object with methods and recursive-ivity
 
 
-
 /**
  * @param {(menu|number|string)} [menuRef] - menu object | handle | path
  * @returns {(menu|null)} - menu object | null
@@ -27,7 +26,6 @@ getMenu(menuRef?) {
 
 	return (isMenu(thisMenu) ? thisMenu : null)
 }
-
 
 
 /**
@@ -58,7 +56,6 @@ setMenu(menuPath?, parentMenuRef?) {
 
 	return thisMenu
 }
-
 
 
 /**
@@ -97,7 +94,6 @@ getMenuItem(labelRef?, menuRef?) {
 
 	return null
 }
-
 
 
 /**
@@ -160,7 +156,6 @@ setMenuItem(label?, menuRef?, CallbackOrSubmenu?, props?) {
 }
 
 
-
 /**
  * @param {string} [labelRef] - menuItem label or path
  * @param {(menu|number|string)} [menuRef] - menu object | handle | path
@@ -208,7 +203,6 @@ setMenuItemProps(labelRef?, menuRef?, props?) {
 }
 
 
-
 /**
  * @param {string} [labelRef] - menuItem label or path
  * @param {(menu|number|string)} [menuRef] - menu object | handle | path
@@ -245,11 +239,9 @@ getMenuItemProp(labelRef?, menuRef?, prop?) {
 }
 
 
-
 isMenuRef(val) {
 	return (!isNull(val) && (isMenu(val) || isNumber(val) || isString(val)))
 }
-
 
 
 /**

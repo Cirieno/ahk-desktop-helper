@@ -7,7 +7,6 @@
 ; Works like VSCode's text manipulation shortcuts
 
 
-
 class module__KeyboardTextManipulation {
 	__Init() {
 		this.moduleName := moduleName := "KeyboardTextManipulation"
@@ -28,7 +27,6 @@ class module__KeyboardTextManipulation {
 	}
 
 
-
 	__New() {
 		if (!this.enabled) {
 			return
@@ -43,10 +41,8 @@ class module__KeyboardTextManipulation {
 	}
 
 
-
 	__Delete() {
 	}
-
 
 
 	drawMenu() {
@@ -74,7 +70,6 @@ class module__KeyboardTextManipulation {
 	}
 
 
-
 	doMenuItem(name, position, menu) {
 		switch (name) {
 			case this.settings.menu.items[1].label:
@@ -85,7 +80,6 @@ class module__KeyboardTextManipulation {
 	}
 
 
-
 	setHotkeys(state) {
 		Hotkey("$^!U", whichHotkey, (state ? "on" : "off"))    ; upper-case
 		Hotkey("$^!L", whichHotkey, (state ? "on" : "off"))    ; lower-case
@@ -94,13 +88,11 @@ class module__KeyboardTextManipulation {
 		Hotkey("$^!K", whichHotkey, (state ? "on" : "off"))    ; kebab-case
 		Hotkey("$^!S", whichHotkey, (state ? "on" : "off"))    ; snake-case
 		Hotkey("$^!&", whichHotkey, (state ? "on" : "off"))    ; sarcasm-case
-
 		Hotkey("$^!'", whichHotkey, (state ? "on" : "off"))    ; single-quotes
 		Hotkey("$^!2", whichHotkey, (state ? "on" : "off"))    ; double-quotes
 		Hotkey("$^!+'", whichHotkey, (state ? "on" : "off"))    ; single-curly-quotes
 		Hotkey("$^!+2", whichHotkey, (state ? "on" : "off"))    ; double-curly-quotes
 		Hotkey("$^!``", whichHotkey, (state ? "on" : "off"))    ; backticks
-
 		Hotkey("$^!(", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^!)", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^![", whichHotkey, (state ? "on" : "off"))
@@ -109,12 +101,9 @@ class module__KeyboardTextManipulation {
 		Hotkey("$^!}", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^!<", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^!>", whichHotkey, (state ? "on" : "off"))
-
 		Hotkey("$^!-", whichHotkey, (state ? "on" : "off"))    ; en-dash
 		Hotkey("$^!_", whichHotkey, (state ? "on" : "off"))    ; em-dash
-
 		Hotkey("$^!J", whichHotkey, (state ? "on" : "off"))    ; join lines
-
 
 		whichHotkey(key) {
 			key := RegExReplace(key, "S)[\$\#\!\^]", "")
@@ -162,7 +151,6 @@ class module__KeyboardTextManipulation {
 			}
 		}
 	}
-
 
 
 	doPaste(mode, reselect := false) {
@@ -237,7 +225,6 @@ class module__KeyboardTextManipulation {
 		Sleep(200)
 		A_Clipboard := clipSavedAll
 	}
-
 
 
 	updateSettingsFile() {

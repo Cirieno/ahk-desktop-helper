@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Creates a new array from an iterable or array-like object
  *
@@ -16,12 +15,10 @@
  */
 
 
-
 doTests_ArrFrom() {
 	map1 := Map("A", 1, "B", 2, "C", 3)
 	str1 := "[A,B,C,D,E]"
 	obj1 := { A: 1, B: 2, C: 3 }
-
 
 
 	;#region Function calls
@@ -67,7 +64,6 @@ doTests_ArrFrom() {
 		"Arrays.from(obj1, 2) failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

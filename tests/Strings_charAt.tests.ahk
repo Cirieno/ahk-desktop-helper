@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Returns the character at the specified position in a string
  *
@@ -13,10 +12,8 @@
  */
 
 
-
 doTests_StrCharAt() {
 	str1 := "ABCDE12345"
-
 
 
 	;#region Function calls
@@ -45,7 +42,6 @@ doTests_StrCharAt() {
 		"StrCharAt(str1, 30, true) failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

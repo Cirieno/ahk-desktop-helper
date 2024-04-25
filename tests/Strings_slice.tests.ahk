@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Returns a section of a string
  *
@@ -14,10 +13,8 @@
  */
 
 
-
 doTests_StrSlice() {
 	str1 := "ABCE123"
-
 
 
 	;#region Function calls
@@ -66,7 +63,6 @@ doTests_StrSlice() {
 		"Strings.slice(str1, , 30, true) failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

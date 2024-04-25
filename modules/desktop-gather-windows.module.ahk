@@ -12,7 +12,6 @@
 ; TODO: this module struggles with browser windows that are F11'd
 
 
-
 class module__DesktopGatherWindows {
 	__Init() {
 		this.moduleName := moduleName := "DesktopGatherWindows"
@@ -31,7 +30,6 @@ class module__DesktopGatherWindows {
 	}
 
 
-
 	__New() {
 		if (!this.enabled) {
 			return
@@ -43,10 +41,8 @@ class module__DesktopGatherWindows {
 	}
 
 
-
 	__Delete() {
 	}
-
 
 
 	drawMenu() {
@@ -74,7 +70,6 @@ class module__DesktopGatherWindows {
 	}
 
 
-
 	doMenuItem(name, position, menu) {
 		switch (name) {
 			case this.settings.menu.items[1].label:
@@ -82,7 +77,6 @@ class module__DesktopGatherWindows {
 				this.doGatherWindows()
 		}
 	}
-
 
 
 	doGatherWindows(doResize := this.settings.resizeOnMove) {
@@ -204,7 +198,6 @@ class module__DesktopGatherWindows {
 			}
 		}
 	}
-
 
 
 	updateSettingsFile() {

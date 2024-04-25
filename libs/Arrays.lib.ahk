@@ -37,7 +37,6 @@ class prototype__Arrays extends Array {
 	}
 
 
-
 	concat(_arrays*) {
 		funcName := "Arrays.concat"
 
@@ -59,7 +58,6 @@ class prototype__Arrays extends Array {
 
 		return arr
 	}
-
 
 
 	from(val?, mode?) {
@@ -132,7 +130,6 @@ class prototype__Arrays extends Array {
 	}
 
 
-
 	includes(_array?, needle?, caseSense?, indexStart?, clamp?) {
 		funcName := "Arrays.includes"
 
@@ -185,7 +182,6 @@ class prototype__Arrays extends Array {
 	; TODO: add support for any type of value
 
 
-
 	indexOf(_array?, needle?, caseSense?, indexStart?, clamp?) {
 		funcName := "Arrays.indexOf"
 
@@ -236,7 +232,6 @@ class prototype__Arrays extends Array {
 		return null
 	}
 	; TODO: add support for any type of value
-
 
 
 	join(_array?, separator?, clean?, debugMode?) {
@@ -318,7 +313,6 @@ class prototype__Arrays extends Array {
 	; TODO: add optional start and end indexes?
 
 
-
 	remove(_array?, needle?, caseSense?, indexStart?, clamp?) {
 		funcName := "Arrays.remove"
 
@@ -377,7 +371,6 @@ class prototype__Arrays extends Array {
 	; TODO: add support for any type of value
 
 
-
 	reverse(_array?) {
 		funcName := "Arrays.reverse"
 
@@ -405,7 +398,6 @@ class prototype__Arrays extends Array {
 	}
 
 
-
 	shift(_array?) {
 		funcName := "Arrays.shift"
 
@@ -428,7 +420,6 @@ class prototype__Arrays extends Array {
 
 		return el
 	}
-
 
 
 	slice(_array?, indexStart?, indexEnd?, clamp?) {
@@ -494,7 +485,6 @@ class prototype__Arrays extends Array {
 	}
 
 
-
 	toMap(_array?) {
 		funcName := "Arrays.toMap"
 
@@ -536,7 +526,6 @@ class prototype__Arrays extends Array {
 	; TODO: add optional start and end indexes?
 
 
-
 	unique(_array?) {
 		funcName := "Arrays.unique"
 
@@ -566,7 +555,6 @@ class prototype__Arrays extends Array {
 	}
 
 
-
 	/**
 	 * internal function to shift parameters for parity between <Array> instance and function calls
 	 * and set default values where necessary
@@ -585,7 +573,6 @@ class prototype__Arrays extends Array {
 }
 
 
-
 /**
  * Returns the element at the specified index of an array
  *
@@ -599,7 +586,6 @@ ArrAt := ObjBindMethod(Arrays, "at")
 Array.Prototype.DefineProp("at", { Call: Arrays.at })
 
 
-
 /**
  * Merges (n) arrays and returns a new array
  *
@@ -609,7 +595,6 @@ Array.Prototype.DefineProp("at", { Call: Arrays.at })
  */
 ArrConcat := ObjBindMethod(Arrays, "concat")
 Array.Prototype.DefineProp("concat", { Call: Arrays.concat })
-
 
 
 /**
@@ -625,7 +610,6 @@ Array.Prototype.DefineProp("concat", { Call: Arrays.concat })
  * Param "mode" has no effect on Strings or Arrays
  */
 ArrFrom := ObjBindMethod(Arrays, "from")
-
 
 
 /**
@@ -645,7 +629,6 @@ ArrIncludes := ObjBindMethod(Arrays, "includes")
 Array.Prototype.DefineProp("includes", { Call: Arrays.includes })
 
 
-
 /**
  * Returns the index of the first occurrence of a given value in an array
  *
@@ -663,7 +646,6 @@ ArrIndexOf := ObjBindMethod(Arrays, "indexOf")
 Array.Prototype.DefineProp("indexOf", { Call: Arrays.indexOf })
 
 
-
 /**
  * Concatenates all elements of an array into a string
  *
@@ -676,7 +658,6 @@ Array.Prototype.DefineProp("indexOf", { Call: Arrays.indexOf })
  */
 ArrJoin := ObjBindMethod(Arrays, "join")
 Array.Prototype.DefineProp("join", { Call: Arrays.join })
-
 
 
 /**
@@ -696,7 +677,6 @@ ArrRemove := ObjBindMethod(Arrays, "remove")
 Array.Prototype.DefineProp("remove", { Call: Arrays.remove })
 
 
-
 /**
  * Reverses the order of the elements in an array
  *
@@ -708,7 +688,6 @@ Array.Prototype.DefineProp("remove", { Call: Arrays.remove })
  */
 ArrReverse := ObjBindMethod(Arrays, "reverse")
 Array.Prototype.DefineProp("reverse", { Call: Arrays.reverse })
-
 
 
 /**
@@ -724,7 +703,6 @@ ArrShift := ObjBindMethod(Arrays, "shift")
 Array.Prototype.DefineProp("shift", { Call: Arrays.shift })
 
 
-
 /**
  * Returns a shallow copy of a portion of an array into a new array
  *
@@ -738,7 +716,6 @@ ArrSlice := ObjBindMethod(Arrays, "slice")
 Array.Prototype.DefineProp("slice", { Call: Arrays.slice })
 
 
-
 /**
  * Turns an array into a map object using el as key
  * (unless el contains an array, in which case we use key and value from el[1,2])
@@ -748,7 +725,6 @@ Array.Prototype.DefineProp("slice", { Call: Arrays.slice })
  */
 ArrToMap := ObjBindMethod(Arrays, "toMap")
 Array.Prototype.DefineProp("toMap", { Call: Arrays.toMap })
-
 
 
 /**

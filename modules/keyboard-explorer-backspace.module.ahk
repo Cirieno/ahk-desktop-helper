@@ -7,7 +7,6 @@
 ; TODO: triple click to select all in any file open edit control (e.g. notepad, wordpad, etc.)
 
 
-
 class module__KeyboardExplorerBackspace {
 	__Init() {
 		this.moduleName := moduleName := "KeyboardExplorerBackspace"
@@ -28,7 +27,6 @@ class module__KeyboardExplorerBackspace {
 	}
 
 
-
 	__New() {
 		if (!this.enabled) {
 			return
@@ -43,10 +41,8 @@ class module__KeyboardExplorerBackspace {
 	}
 
 
-
 	__Delete() {
 	}
-
 
 
 	drawMenu() {
@@ -74,7 +70,6 @@ class module__KeyboardExplorerBackspace {
 	}
 
 
-
 	doMenuItem(name, position, menu) {
 		switch (name) {
 			case this.settings.menu.items[1].label:
@@ -85,7 +80,6 @@ class module__KeyboardExplorerBackspace {
 	}
 
 
-
 	setHotkeys(state) {
 		doBackspace := ObjBindMethod(this, "doBackspace")
 
@@ -93,7 +87,6 @@ class module__KeyboardExplorerBackspace {
 		Hotkey("BackSpace", doBackspace, (state ? "on" : "off"))
 		HotIfWinActive()
 	}
-
 
 
 	doBackspace(*) {
@@ -112,7 +105,6 @@ class module__KeyboardExplorerBackspace {
 			Send("!{Up}")
 		}
 	}
-
 
 
 	updateSettingsFile() {

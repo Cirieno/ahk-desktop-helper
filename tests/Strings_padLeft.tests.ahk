@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Pads a string on the left side
  *
@@ -13,10 +12,8 @@
  */
 
 
-
 doTests_StrPadLeft() {
 	str1 := "ABC123"
-
 
 
 	;#region Function calls
@@ -50,7 +47,6 @@ doTests_StrPadLeft() {
 		"StrPadLeft(str1, 10, 'xyz') failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

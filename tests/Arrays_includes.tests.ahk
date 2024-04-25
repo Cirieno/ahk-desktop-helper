@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Checks if an array contains a given value
  *
@@ -17,11 +16,9 @@
  */
 
 
-
 doTests_ArrIncludes() {
 	arr1 := ["A", "B", "C", , "E", 1, 2, 3]
 	arr2 := [true, false, ignore, null, [], Map(), {}]
-
 
 
 	;#region Instance calls
@@ -77,7 +74,6 @@ doTests_ArrIncludes() {
 	;#endregion
 
 
-
 	;#region Function calls
 	try {
 		Arrays.includes()
@@ -129,7 +125,6 @@ doTests_ArrIncludes() {
 		"Arrays.includes(arr1, 'B', , -30, true) failed"
 	)
 	;#endregion
-
 
 
 	assert(
