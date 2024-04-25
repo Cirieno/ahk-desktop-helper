@@ -8,7 +8,6 @@
 ; Can be forced to override external changes
 
 
-
 class module__DesktopHidePeekButton {
 	__Init() {
 		this.moduleName := moduleName := "DesktopHidePeekButton"
@@ -35,7 +34,6 @@ class module__DesktopHidePeekButton {
 	}
 
 
-
 	__New() {
 		if (!this.enabled) {
 			return
@@ -48,13 +46,11 @@ class module__DesktopHidePeekButton {
 	}
 
 
-
 	__Delete() {
 		if (this.settings.resetOnExit) {
 			this.setButtonState(this.settings.hWnd, this.states.buttonVisibleOnLoad)
 		}
 	}
-
 
 
 	drawMenu() {
@@ -82,7 +78,6 @@ class module__DesktopHidePeekButton {
 	}
 
 
-
 	doMenuItem(name, position, menu) {
 		switch (name) {
 			case this.settings.menu.items[1].label:
@@ -91,7 +86,6 @@ class module__DesktopHidePeekButton {
 				this.runObserver(this.states.active, true)
 		}
 	}
-
 
 
 	getButtonHwnd() {
@@ -105,7 +99,6 @@ class module__DesktopHidePeekButton {
 	}
 
 
-
 	getButtonState(hWnd) {
 		if (isEmpty(hWnd)) {
 			return null
@@ -117,7 +110,6 @@ class module__DesktopHidePeekButton {
 			throw Error("Couldn't get button state")
 		}
 	}
-
 
 
 	setButtonState(hWnd, state) {
@@ -136,7 +128,6 @@ class module__DesktopHidePeekButton {
 			throw Error("Couldn't set button state")
 		}
 	}
-
 
 
 	runObserver(state := this.states.active, forced := false) {
@@ -170,7 +161,6 @@ class module__DesktopHidePeekButton {
 			}
 		}
 	}
-
 
 
 	updateSettingsFile() {

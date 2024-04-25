@@ -4,7 +4,6 @@
 #Include ".\Strings.lib.ahk"
 
 
-
 /**
  * @param {any} val
  * @returns {boolean}
@@ -12,7 +11,6 @@
 isArray(val) {
 	return (IsSet(val) && (Type(val) == "Array"))
 }
-
 
 
 /**
@@ -25,7 +23,6 @@ isArray(val) {
 isBoolean(val) {
 	return (IsSet(val) && (val is Number) && (val == 0 || val == 1))
 }
-
 
 
 /**
@@ -70,7 +67,6 @@ isEmpty(val) {
 }
 
 
-
 /**
  * @param {any} val
  * @returns {boolean}
@@ -83,7 +79,6 @@ isFunction(val) {
 }
 
 
-
 /**
  * @param {any} val
  * @returns {boolean}
@@ -91,7 +86,6 @@ isFunction(val) {
 isIgnore(val) {
 	return (IsSet(val) && ((val == ignore) || val == "ignore"))
 }
-
 
 
 /**
@@ -103,7 +97,6 @@ isMap(val) {
 }
 
 
-
 /**
  * @param {any} val
  * @returns {boolean}
@@ -111,7 +104,6 @@ isMap(val) {
 isMenu(val) {
 	return (IsSet(val) && (Type(val) == "Menu"))
 }
-
 
 
 /**
@@ -125,7 +117,6 @@ isNull(val) {
 }
 
 
-
 /**
  * @param {any} val
  * @returns {boolean}
@@ -135,7 +126,6 @@ isNull(val) {
 isNumber(val) {
 	return (IsSet(val) && (val is Number))
 }
-
 
 
 /**
@@ -149,7 +139,6 @@ isString(val) {
 }
 
 
-
 /**
  * @param {any} val
  * @returns {boolean}
@@ -157,7 +146,6 @@ isString(val) {
 isStringable(val) {
 	return (IsSet(val) && (val is String || val is Number) && !isNull(val))
 }
-
 
 
 /**
@@ -196,7 +184,6 @@ toBoolean(val, force := false) {
 }
 
 
-
 /**
  * @param {any} val
  * @param {boolean} [debug=false] - tokenize non-stringable elements
@@ -232,7 +219,6 @@ toString(val, debug := false) {
 
 	return ""
 }
-
 
 
 /**
@@ -275,7 +261,6 @@ typeCompare(val1, val2, caseSense := false) {
 }
 
 
-
 ;------------------------------------------------
 ; Constants
 ;------------------------------------------------
@@ -298,7 +283,6 @@ U_msHour := 3600000
 U_msDay := 86400000
 
 
-
 ; in the style of VBScript constants
 ; https://ss64.com/vb/syntax-constants.html
 U_null := null := Chr(0)
@@ -318,14 +302,12 @@ U_hex := 18
 U_array := 8192
 
 
-
 GroupAdd("explorerWindows", "ahk_exe explorer.exe")
 GroupAdd("explorerWindows", "ahk_class CabinetWClass")
 GroupAdd("explorerWindows", "ahk_class ExploreWClass")
 GroupAdd("explorerWindows", "ahk_class Progman")
 GroupAdd("explorerWindows", "ahk_class WorkerW")
 GroupAdd("explorerWindows", "ahk_class #32770")
-
 
 
 ; windows decoration styles
@@ -380,7 +362,6 @@ WS_EX_TRANSPARENT := 0x00000020
 WS_EX_WINDOWEDGE := 0x00000100
 
 
-
 SM_CXSCREEN := 0
 SM_CYSCREEN := 1
 SM_CYCAPTION := 4
@@ -395,9 +376,7 @@ SM_NETWORK := 63
 SM_MOUSEWHEELPRESENT := 75
 
 
-
 GA_PARENT := 1
-
 
 
 ; Strings.wrap modes

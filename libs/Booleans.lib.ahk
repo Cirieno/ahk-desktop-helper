@@ -31,7 +31,6 @@ class prototype__Booleans {
 	}
 
 
-
 	toString(_bool, mode := 1) {
 		funcName := "Booleans.toString"
 
@@ -51,7 +50,6 @@ class prototype__Booleans {
 		return (_bool ? T[mode] : F[mode])
 	}
 }
-
 
 
 /**

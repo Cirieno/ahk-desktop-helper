@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Returns the index of the first occurrence of a given value in an array
  *
@@ -17,11 +16,9 @@
  */
 
 
-
 doTests_ArrIndexOf() {
 	arr1 := ["A", "B", "C", , "E", 1, 2, 3]
 	arr2 := [true, false, ignore, null, [], Map(), {}]
-
 
 
 	;#region Instance calls
@@ -76,7 +73,6 @@ doTests_ArrIndexOf() {
 	;#endregion
 
 
-
 	;#region Function calls
 	try {
 		Arrays.indexOf()
@@ -128,7 +124,6 @@ doTests_ArrIndexOf() {
 		"Arrays.indexOf(arr1, 'B', , -30, true) failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

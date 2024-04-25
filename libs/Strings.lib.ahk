@@ -32,7 +32,6 @@ class prototype__Strings {
 	}
 
 
-
 	getCharFirst(_string) {
 		funcName := "Strings.getCharFirst"
 
@@ -47,7 +46,6 @@ class prototype__Strings {
 	}
 
 
-
 	getCharLast(_string) {
 		funcName := "Strings.getCharLast"
 
@@ -60,7 +58,6 @@ class prototype__Strings {
 
 		return SubStr(_string, -1, 1)
 	}
-
 
 
 	includes(_string, needle, caseSense := false, indexStart := 1, clamp := false) {
@@ -99,7 +96,6 @@ class prototype__Strings {
 	}
 
 
-
 	padLeft(_string, length := 1, strStart := " ") {
 		funcName := "Strings.padLeft"
 
@@ -123,7 +119,6 @@ class prototype__Strings {
 
 		return pad . _string
 	}
-
 
 
 	padRight(_string, length := 1, strEnd := " ") {
@@ -151,7 +146,6 @@ class prototype__Strings {
 	}
 
 
-
 	repeat(_string, count := 1) {
 		funcName := "Strings.repeat"
 
@@ -171,7 +165,6 @@ class prototype__Strings {
 
 		return str
 	}
-
 
 
 	slice(_string, indexStart := 1, indexEnd?, clamp := false) {
@@ -228,7 +221,6 @@ class prototype__Strings {
 	}
 
 
-
 	; unwrap(val, strStart := "", strEnd?) {
 	; 	funcName := "Strings.unwrap"
 
@@ -248,7 +240,6 @@ class prototype__Strings {
 	; 	; return StrSlice(val, StrLen(strStart) + 1, -StrLen(strEnd))
 	; }
 	;// TODO
-
 
 
 	wrap(_string, mode := 0, strStart := "", strEnd?) {
@@ -301,7 +292,6 @@ class prototype__Strings {
 }
 
 
-
 /**
  * Returns the character at the specified position in a string
  *
@@ -314,7 +304,6 @@ class prototype__Strings {
 StrCharAt := ObjBindMethod(Strings, "charAt")
 
 
-
 /**
  * Returns the first character in a string
  *
@@ -325,7 +314,6 @@ StrCharAt := ObjBindMethod(Strings, "charAt")
 StrCharFirst := ObjBindMethod(Strings, "getCharFirst")
 
 
-
 /**
  * Returns the last character in a string
  *
@@ -334,7 +322,6 @@ StrCharFirst := ObjBindMethod(Strings, "getCharFirst")
  * @returns {(string|null)}
  */
 StrCharLast := ObjBindMethod(Strings, "getCharLast")
-
 
 
 /**
@@ -351,7 +338,6 @@ StrCharLast := ObjBindMethod(Strings, "getCharLast")
 StrIncludes := ObjBindMethod(Strings, "includes")
 
 
-
 /**
  * Pads a string on the left side with the specified character(s)
  *
@@ -362,7 +348,6 @@ StrIncludes := ObjBindMethod(Strings, "includes")
  * @returns {string}
  */
 StrPadLeft := ObjBindMethod(Strings, "padLeft")
-
 
 
 /**
@@ -377,7 +362,6 @@ StrPadLeft := ObjBindMethod(Strings, "padLeft")
 StrPadRight := ObjBindMethod(Strings, "padRight")
 
 
-
 /**
  * Repeats a string a specified number of times
  *
@@ -387,7 +371,6 @@ StrPadRight := ObjBindMethod(Strings, "padRight")
  * @returns {string}
  */
 StrRepeat := ObjBindMethod(Strings, "repeat")
-
 
 
 /**
@@ -401,7 +384,6 @@ StrRepeat := ObjBindMethod(Strings, "repeat")
  * @returns {string}
  */
 StrSlice := ObjBindMethod(Strings, "slice")
-
 
 
 /**

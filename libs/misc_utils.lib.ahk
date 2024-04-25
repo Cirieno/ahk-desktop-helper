@@ -21,7 +21,6 @@ iniSectionExists(section) {
 }
 
 
-
 /**
  * @param {string} section
  * @param {string} key
@@ -79,14 +78,12 @@ getIniVal(section, key, defaultVal?) {
 }
 
 
-
 MsgboxJoin(msg) {
 	if (isArray(msg)) {
 		return msg.join("`n")
 	}
 	return msg
 }
-
 
 
 checkMemoryUsage() {
@@ -96,7 +93,6 @@ checkMemoryUsage() {
 	DllCall("CloseHandle", "Int", h)
 	return
 }
-
 
 
 ; reload this script/app on save

@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Reverses the order of the elements in an array
  *
@@ -11,11 +10,9 @@
  */
 
 
-
 doTests_ArrReverse() {
 	arr1 := ["A", "B", "C", , "E", 1, 2, 3]
 	arr2 := [true, false, ignore, null, [], Map(), {}]
-
 
 
 	;#region Instance calls
@@ -27,7 +24,6 @@ doTests_ArrReverse() {
 	;#endregion
 
 
-
 	;#region Function calls
 	arr3 := arr1.clone()
 	assert(
@@ -35,7 +31,6 @@ doTests_ArrReverse() {
 		"Arrays.reverse(arr3) failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

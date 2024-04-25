@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Turns an array into a map object
  *
@@ -14,12 +13,10 @@
  */
 
 
-
 doTests_ArrToMap() {
 	arr1 := ["A", "B", "C", , "E", 1, 2, 3]
 	arr2 := [true, false, ignore, null, [], Map(), {}]
 	arr3 := [["A", 1], ["B", 2], ["C", 3], , ["E", 5], [1, 1], [2, 2], [3, 3]]
-
 
 
 	;#region Instance calls
@@ -37,7 +34,6 @@ doTests_ArrToMap() {
 	;#endregion
 
 
-
 	;#region Function calls
 	map1 := Arrays.toMap(arr1)
 	assert(
@@ -51,7 +47,6 @@ doTests_ArrToMap() {
 		"Arrays.toMap(arr3) failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

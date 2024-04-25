@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Returns a shallow copy of a portion of an array
  *
@@ -14,11 +13,9 @@
  */
 
 
-
 doTests_ArrSlice() {
 	arr1 := ["A", "B", "C", , "E", 1, 2, 3]
 	arr2 := [true, false, ignore, null, [], Map(), {}]
-
 
 
 	;#region Instance calls
@@ -72,7 +69,6 @@ doTests_ArrSlice() {
 	;#endregion
 
 
-
 	;#region Function calls
 	arr3 := arr1.clone()
 	assert(
@@ -122,7 +118,6 @@ doTests_ArrSlice() {
 		"Arrays.slice(arr3, , 30, true) failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

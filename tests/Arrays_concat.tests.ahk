@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Joins (n) arrays and returns a new array
  *
@@ -11,11 +10,9 @@
  */
 
 
-
 doTests_ArrConcat() {
 	arr1 := ["A", "B", "C", , "E", 1, 2, 3]
 	arr2 := [true, false, ignore, null, [], Map(), {}]
-
 
 
 	;#region Instance calls
@@ -27,7 +24,6 @@ doTests_ArrConcat() {
 	;#endregion
 
 
-
 	;#region Function calls
 	arr3 := Arrays.concat(arr1, arr2)
 	assert(
@@ -35,7 +31,6 @@ doTests_ArrConcat() {
 		"Arrays.concat(arr1, arr2) failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

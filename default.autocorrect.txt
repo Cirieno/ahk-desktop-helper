@@ -1,7 +1,7 @@
 ;---------------------------------------------------------------------
 ; AHK Desktop Helper v2.5.2.0
 ; AutoCorrect — Default list
-; 2024-04-25 06:10
+; 2024-04-25 20:25
 ;---------------------------------------------------------------------
 ; USAGE:
 ;    replacement|trigger|modifiers
@@ -9522,7 +9522,6 @@ Zürich|Z[uü]?rich
 étouffée|[eé]?touff[eé]?e
 über|[uü]?ber
 Škoda|[SŠ]?koda
-
 
 ;  not ; Replaced with case sensitive for NTO acronym.|nto
 ;  them|t hem|?

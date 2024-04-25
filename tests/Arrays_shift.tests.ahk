@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Removes the first element from an array and returns the element
  *
@@ -11,11 +10,9 @@
  */
 
 
-
 doTests_ArrShift() {
 	arr1 := ["A", "B", "C", , "E", 1, 2, 3]
 	arr2 := [true, false, ignore, null, [], Map(), {}]
-
 
 
 	;#region Instance calls
@@ -28,7 +25,6 @@ doTests_ArrShift() {
 	;#endregion
 
 
-
 	;#region Function calls
 	arr3 := arr1.clone()
 	el3 := ArrShift(arr3)
@@ -37,7 +33,6 @@ doTests_ArrShift() {
 		"ArrShift(arr3) failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

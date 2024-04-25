@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Returns the index of the first occurrence of a given value in an array
  *
@@ -17,11 +16,9 @@
  */
 
 
-
 doTests_ArrRemove() {
 	arr1 := ["A", "B", "C", , "E", 1, 2, 3]
 	arr2 := [true, false, ignore, null, [], Map(), {}]
-
 
 
 	;#region Instance calls
@@ -87,7 +84,6 @@ doTests_ArrRemove() {
 	;#endregion
 
 
-
 	;#region Function calls
 	arr3 := arr1.clone()
 	try {
@@ -149,7 +145,6 @@ doTests_ArrRemove() {
 		"Arrays.remove(arr3, 'B', , -30, true) failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {
