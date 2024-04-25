@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Concatenates all elements of an array into a string
  *
@@ -14,11 +13,9 @@
  */
 
 
-
 doTests_ArrJoin() {
 	arr1 := ["A", "B", "C", , "E", 1, 2, 3]
 	arr2 := [true, false, ignore, null, [], Map(), {}]
-
 
 
 	;#region Instance calls
@@ -62,7 +59,6 @@ doTests_ArrJoin() {
 		"arr2.join(':', , 2) failed"
 	)
 	;#endregion
-
 
 
 	;#region Function calls
@@ -111,7 +107,6 @@ doTests_ArrJoin() {
 		"Arrays.join(arr2, ':', , 2) failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

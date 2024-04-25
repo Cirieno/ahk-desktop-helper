@@ -26,7 +26,6 @@ class prototype__Numbers {
 	}
 
 
-
 	clamp(_number, min, max) {
 		funcName := "Numbers.clamp"
 
@@ -48,7 +47,6 @@ class prototype__Numbers {
 }
 
 
-
 /**
  * Checks if number is within a range
  *
@@ -60,7 +58,6 @@ class prototype__Numbers {
  * @return {boolean}
  */
 NumBetween := ObjBindMethod(Numbers, "between")
-
 
 
 /**

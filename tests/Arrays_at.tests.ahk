@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Returns the item at the specified index
  *
@@ -13,11 +12,9 @@
  */
 
 
-
 doTests_ArrAt() {
 	arr1 := ["A", "B", "C", , "E", 1, 2, 3]
 	arr2 := [true, false, ignore, null, [], Map(), {}]
-
 
 
 	;#region Instance calls
@@ -56,7 +53,6 @@ doTests_ArrAt() {
 		"arr1.at(-30, true) failed"
 	)
 	;#endregion
-
 
 
 	;#region Function calls
@@ -100,7 +96,6 @@ doTests_ArrAt() {
 		"Arrays.at(arr1, -30, true) failed"
 	)
 	;#endregion
-
 
 
 	assert(condition, message := "") {

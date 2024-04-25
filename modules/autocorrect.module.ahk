@@ -5,7 +5,6 @@
  *********************************************************/
 
 
-
 class module__AutoCorrect {
 	__Init() {
 		this.moduleName := moduleName := "AutoCorrect"
@@ -42,7 +41,6 @@ class module__AutoCorrect {
 	}
 
 
-
 	__New() {
 		if (!this.enabled) {
 			return
@@ -69,10 +67,8 @@ class module__AutoCorrect {
 	}
 
 
-
 	__Delete() {
 	}
-
 
 
 	drawMenu() {
@@ -104,7 +100,6 @@ class module__AutoCorrect {
 	}
 
 
-
 	doMenuItem(name, position, menu) {
 		switch (name) {
 			case this.settings.menu.items[1].label:
@@ -131,7 +126,6 @@ class module__AutoCorrect {
 	}
 
 
-
 	setHotstrings(listName, state) {
 		; key = trigger, val = [replacement, modifiers, listName, state]
 		for (key, val in this.settings.hotstrings) {
@@ -149,7 +143,6 @@ class module__AutoCorrect {
 			}
 		}
 	}
-
 
 
 	readHotstrings(listName, state) {
@@ -189,10 +182,8 @@ class module__AutoCorrect {
 			}
 		}
 
-
 		this.setHotstrings(listName, state)
 	}
-
 
 
 	makeTriggers(trigger, replacement, triggers := []) {
@@ -227,7 +218,6 @@ class module__AutoCorrect {
 
 		return triggers
 
-
 		do(combos) {
 			for (i, combo in combos) {
 				triggerNew := StrReplace(trigger, match[1], combo)
@@ -239,7 +229,6 @@ class module__AutoCorrect {
 			}
 		}
 	}
-
 
 
 	makeCharCombos(str) {
@@ -259,7 +248,6 @@ class module__AutoCorrect {
 	}
 
 
-
 	editFile(listName) {
 		filePath := A_WorkingDir . "\" . listName . ".autocorrect.txt"
 		if (!FileExist(filePath)) {
@@ -271,7 +259,6 @@ class module__AutoCorrect {
 			Reload()
 		}
 	}
-
 
 
 	showHotstringsInfo() {
@@ -291,7 +278,6 @@ class module__AutoCorrect {
 		])
 		MsgBox(msg, title, (0 + 64 + 4096))
 	}
-
 
 
 	buildDefaultList() {
@@ -332,9 +318,9 @@ class module__AutoCorrect {
 			"; " . FormatTime(A_Now, "yyyy-MM-dd HH:mm"),
 			this.listBoilerplateText(),
 		], "`n")
-		FileAppend(str . "`n`n`n", filePath)
+		FileAppend(str . "`n`n", filePath)
 
-		FileAppend(ArrJoin([hotkeys.join("`n"), comments.join("`n")], "`n`n`n"), filePath)
+		FileAppend(ArrJoin([hotkeys.join("`n"), comments.join("`n")], "`n`n"), filePath)
 
 		; TODO: write extended dir builder function
 		releaseDir := A_WorkingDir . "\releases\" . __Settings.app.build.version
@@ -349,7 +335,6 @@ class module__AutoCorrect {
 
 		MsgBox("Default list built", (__Settings.app.name . " - AutoCorrect"), (0 + 64 + 4096) . " T3")
 	}
-
 
 
 	import_WikipediaCommonMisspellings(&lines) {
@@ -381,7 +366,6 @@ class module__AutoCorrect {
 	}
 
 
-
 	import_WikipediaCommonGrammar(&lines) {
 		filePath := A_WorkingDir . "\autocorrect_lists\wikipedia_common_grammar_and_miscellaneous.txt"
 		fileContent := (FileExist(filePath) ? FileRead(filePath) : null)
@@ -411,7 +395,6 @@ class module__AutoCorrect {
 	}
 
 
-
 	import_WiktionaryDiacritics(&lines) {
 		filePath := A_WorkingDir . "\autocorrect_lists\wiktionary_english_words_with_diacritics.txt"
 		fileContent := (FileExist(filePath) ? FileRead(filePath) : null)
@@ -435,7 +418,6 @@ class module__AutoCorrect {
 			}
 		}
 	}
-
 
 
 	import_CdelaHousseAutoCorrect(&lines) {
@@ -468,7 +450,6 @@ class module__AutoCorrect {
 	}
 
 
-
 	import_AdditionalsAndOverrides(&lines) {
 		filePath := A_WorkingDir . "\autocorrect_lists\additionals_and_overrides.txt"
 		fileContent := (FileExist(filePath) ? FileRead(filePath) : null)
@@ -497,7 +478,6 @@ class module__AutoCorrect {
 			}
 		}
 	}
-
 
 
 	replaceAccents(&trigger, replacement) {
@@ -539,7 +519,6 @@ class module__AutoCorrect {
 	}
 
 
-
 	updateSettingsFile() {
 		SFP := __Settings.settingsFilePath
 
@@ -550,7 +529,6 @@ class module__AutoCorrect {
 			throw Error("Error updating settings file: " . e.Message)
 		}
 	}
-
 
 
 	checkUserAutocorrectFile() {
@@ -568,10 +546,9 @@ class module__AutoCorrect {
 				";    hotstring|ho[ts]+[t]*ring|?",
 				";    {U+02DC}\_({U+30C4})_/{U+02DC}|//shrug   -->   ˜\_(ツ)_/˜",
 			], "`n")
-			FileAppend(str . "`n`n`n", filePath)
+			FileAppend(str . "`n`n", filePath)
 		}
 	}
-
 
 
 	listBoilerplateText() {
@@ -599,7 +576,6 @@ class module__AutoCorrect {
 		], "`n")
 	}
 }
-
 
 
 ;--------------------------------------------------------------------

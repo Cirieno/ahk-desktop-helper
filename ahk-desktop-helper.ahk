@@ -15,7 +15,6 @@
 ;@Ahk2Exe-PostExec "MPRESS.exe" "%A_WorkFileName%" -q -x, 0,, 1
 
 
-
 #Requires AutoHotkey v2.0.13 64-bit
 ; Run *RunAs.
 #ClipboardTimeout 2000
@@ -35,11 +34,9 @@ SetTitleMatchMode("slow")
 SetWorkingDir(A_ScriptDir)
 
 
-
 #Include ".\libs\misc_utils.lib.ahk"
 #Include ".\libs\shadow_menu.lib.ahk"
 #Include ".\libs\vartypes.lib.ahk"
-
 
 
 global __DEBUGGING := (A_IsCompiled ? false : true)    ; use true to override compiled setting
@@ -73,7 +70,6 @@ if (__Settings := {}) {
 }
 
 
-
 #Include "*i .\modules\autocorrect.module.ahk"
 #Include "*i .\modules\desktop-gather-windows.module.ahk"
 #Include "*i .\modules\desktop-hide-media-popup.module.ahk"
@@ -85,14 +81,12 @@ if (__Settings := {}) {
 #Include "*i .\modules\volume-mousewheel.module.ahk"
 
 
-
 drawMenu("before")
 loadModules()
 drawMenu("after")
 checkStartWithWindows()
 checkMemoryUsage()
 SetTimer(checkMemoryUsage, (30 * U_msMinute))
-
 
 
 drawMenu(section) {
@@ -149,7 +143,6 @@ drawMenu(section) {
 }
 
 
-
 doMenuItem(name, position, menu) {
 	SA := __Settings.app
 	SAP := __Settings.apps
@@ -187,7 +180,6 @@ doMenuItem(name, position, menu) {
 }
 
 
-
 showAboutDialog() {
 	SA := __Settings.app
 
@@ -200,7 +192,6 @@ showAboutDialog() {
 	])
 	MsgBox(msg, title, (0 + 64 + 4096))
 }
-
 
 
 loadModules() {
@@ -220,7 +211,6 @@ loadModules() {
 }
 
 
-
 doExit(reason, code) {
 	if (IsSet(__Modules) && isMap(__Modules)) {
 		for (key, module in __Modules) {
@@ -231,7 +221,6 @@ doExit(reason, code) {
 		}
 	}
 }
-
 
 
 doSettingsFileUpdate() {
@@ -278,7 +267,6 @@ doSettingsFileUpdate() {
 }
 
 
-
 checkStartWithWindows() {
 	SAE := __Settings.app.environment
 
@@ -301,7 +289,6 @@ checkStartWithWindows() {
 }
 
 
-
 checkCloseAppsWithCtrlW() {
 	global closeAppsWithCtrlW_enabled := getIniVal("CloseAppsWithCtrlW", "enabled", false)
 	if (closeAppsWithCtrlW_enabled) {
@@ -320,7 +307,6 @@ checkCloseAppsWithCtrlW()
 #HotIf (WinActive("ahk_group closeAppsWithCtrlW") && closeAppsWithCtrlW_enabled)
 $^w:: WinClose("A")
 #HotIf
-
 
 
 checkExtendedRightMouseClick() {

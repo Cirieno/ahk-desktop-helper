@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Checks if string contains a given value
  *
@@ -15,10 +14,8 @@
  */
 
 
-
 doTests_StrIncludes() {
 	str1 := "ABC123"
-
 
 
 	;#region Function calls
@@ -72,7 +69,6 @@ doTests_StrIncludes() {
 		"Strings.includes(str1, 'B', , -30, true) failed"
 	)
 	;#endregion
-
 
 
 	assert(

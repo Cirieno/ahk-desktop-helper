@@ -1,7 +1,6 @@
 #Include "..\libs\vartypes.lib.ahk"
 
 
-
 /**
  * Forces a number to be within a range
  *
@@ -11,7 +10,6 @@
  * @param {number} max
  * @return {number}
  */
-
 
 
 doTests_NumClamp() {
@@ -46,7 +44,6 @@ doTests_NumClamp() {
 		assert(false, "NumClamp('5', 1, 10) failed")
 	}
 	;#endregion
-
 
 
 	assert(condition, message := "") {
