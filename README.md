@@ -131,15 +131,37 @@ Enables these global hotkeys to change selected text:
 
 ---
 
-#### MouseSwapButtons
+### MouseSwapButtons
 
 Swap left and right mouse buttons. Handy for left-handed people, or those like me with intermittent RSI.
 
 
 ---
 
-#### VolumeMouseWheel
+### VolumeMouseWheel
 
 Use the mousewheel to change volume anywhere over the system icons and date/time part of the taskbar.
 
 `step=3` The increment by which the volume will change.
+
+---
+
+## Refs
+
+### Extensions
+
+https://marketplace.visualstudio.com/items?itemName=thqby.vscode-autohotkey2-lsp
+
+https://marketplace.visualstudio.com/items?itemName=zero-plusplus.vscode-autohotkey-debug
+
+### Word lists sources
+
+https://en.wikipedia.org/wiki/Wikipedia:Lists_of_common_misspellings
+
+https://en.wikipedia.org/wiki/Wikipedia:Lists_of_common_misspellings/Grammar_and_miscellaneous
+
+https://en.wikipedia.org/wiki/Commonly_misspelled_English_words
+
+https://web.archive.org/web/20190310225422/https://en.wiktionary.org/wiki/Appendix:English_words_with_diacritics
+
+https://github.com/cdelahousse/Autocorrect-AutoHotKey
