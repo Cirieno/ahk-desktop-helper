@@ -1,7 +1,7 @@
 ;---------------------------------------------------------------------
-; AHK Desktop Helper v2.5.2.0
+; AHK Desktop Helper v2.5.2.1
 ; AutoCorrect — Default list
-; 2024-04-25 20:25
+; 2024-04-27 00:37
 ;---------------------------------------------------------------------
 ; USAGE:
 ;    replacement|trigger|modifiers
@@ -9078,7 +9078,6 @@ volunteer|volounteer
 vulnerability|vulnerablility
 vulnerable|vulnerible
 want it|wan tit
-want to|wanna
 wanted|wnated
 wants|is wants
 wants|want's

@@ -12,7 +12,8 @@ class module__KeyboardTextManipulation {
 		this.moduleName := moduleName := "KeyboardTextManipulation"
 		this.enabled := getIniVal(moduleName, "enabled", true)
 		this.settings := {
-			activateOnLoad: getIniVal(moduleName, "active", false)
+			activateOnLoad: getIniVal(moduleName, "active", false),
+			sarcasmCase: getIniVal(moduleName, "sarcasmCase", "random")  ; "alternating"
 		}
 		this.states := {
 			active: null
@@ -116,8 +117,8 @@ class module__KeyboardTextManipulation {
 					this.doPaste("lower-case")
 				case "T":
 					this.doPaste("title-case")
-				; case "C":
-				; 	this.doPaste("camel-case")
+					; case "C":
+					; 	this.doPaste("camel-case")
 				case "K":
 					this.doPaste("kebab-case")
 				case "S":
@@ -179,17 +180,27 @@ class module__KeyboardTextManipulation {
 			case "title-case":
 				copied := StrTitle(copied)
 				; TODO: should titlecase regard hyphens as spaces?
-			; case "camel-case":
-			; 	regex := "S)[\s\-]+([^A-Z])"
-			; 	copied := RegExReplace(copied, regex, "$U1")
+				; case "camel-case":
+				; 	regex := "S)[\s\-]+([^A-Z])"
+				; 	copied := RegExReplace(copied, regex, "$U1")
 			case "kebab-case":
 				copied := RegExReplace(copied, "[ _]", "-")
 			case "snake-case":
 				copied := RegExReplace(copied, "[ -]", "_")
 			case "sarcasm-case":
 				arr := StrSplit(copied)
-				for (i, el in arr) {
-					arr[i] := (Random(1) ? StrUpper(el) : StrLower(el))
+				if (this.settings.sarcasmCase == "random") {
+					for (i, el in arr) {
+						arr[i] := (Random(1) ? StrUpper(el) : StrLower(el))
+					}
+				} else {
+					bias := (StrCharFirst(copied) == StrUpper(StrCharFirst(copied)) ? 1 : 0)
+					for (i, el in arr) {
+						if (i == 1) {
+							continue
+						}
+						arr[i] := (bias && Mod(i, 2) ? StrUpper(el) : StrLower(el))
+					}
 				}
 				copied := ArrJoin(arr)
 			case "single-quotes":
@@ -233,6 +244,7 @@ class module__KeyboardTextManipulation {
 		try {
 			IniWrite(toString(this.enabled), SFP, this.moduleName, "enabled")
 			IniWrite(toString(this.states.active), SFP, this.moduleName, "active")
+			IniWrite(toString(this.settings.sarcasmCase), SFP, this.moduleName, "sarcasmCase")
 		} catch Error as e {
 			throw Error("Error updating settings file: " . e.Message)
 		}

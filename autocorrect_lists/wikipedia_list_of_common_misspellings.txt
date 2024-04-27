@@ -6047,7 +6047,7 @@ very - {vyre}
 what - {waht}
 voilà - {walla}
 voilà - {wallah}
-want to - {wanna}
+; want to - {wanna}
 wants - {want's}
 warrant - {warrent}
 ; was not, wasn't - {was'nt}

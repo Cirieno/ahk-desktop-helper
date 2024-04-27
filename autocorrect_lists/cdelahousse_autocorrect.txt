@@ -4868,7 +4868,7 @@
 ::whant::want
 ::wnat::want
 ::wan tit::want it
-::wanna::want to
+; ::wanna::want to
 ::wnated::wanted
 ::whants::wants
 ::wnats::wants

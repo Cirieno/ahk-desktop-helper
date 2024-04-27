@@ -1,4 +1,4 @@
-# AHK Desktop Helper v2.5.2.0
+# AHK Desktop Helper v2.5.2.1
 
 A collection of small enhancements for Windows.
 
@@ -129,6 +129,8 @@ Enables these global hotkeys to change selected text:
 | `Ctrl` + `Alt` + `J` | join lines | |
 <!-- | `Ctrl` + `Alt` + `C` | camel case | ThisIsAnExample -->
 
+`sarcasmCase=random` or `alternating`
+
 ---
 
 ### MouseSwapButtons
@@ -153,6 +155,8 @@ Use the mousewheel to change volume anywhere over the system icons and date/time
 https://marketplace.visualstudio.com/items?itemName=thqby.vscode-autohotkey2-lsp
 
 https://marketplace.visualstudio.com/items?itemName=zero-plusplus.vscode-autohotkey-debug
+
+https://marketplace.visualstudio.com/items?itemName=GitHub.copilot
 
 ### Word lists sources
 
