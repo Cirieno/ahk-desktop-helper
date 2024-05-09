@@ -104,6 +104,7 @@ class module__KeyboardTextManipulation {
 		Hotkey("$^!>", whichHotkey, (state ? "on" : "off"))
 		Hotkey("$^!-", whichHotkey, (state ? "on" : "off"))    ; en-dash
 		Hotkey("$^!_", whichHotkey, (state ? "on" : "off"))    ; em-dash
+		Hotkey("$^!O", whichHotkey, (state ? "on" : "off"))    ; degree symbol
 		Hotkey("$^!J", whichHotkey, (state ? "on" : "off"))    ; join lines
 
 		whichHotkey(key) {
@@ -147,6 +148,8 @@ class module__KeyboardTextManipulation {
 					SendText(Chr(8211))
 				case "_":
 					SendText(Chr(8212))
+				case "O":
+					SendText(Chr(176))
 				case "J":
 					this.doPaste("join", false)
 			}

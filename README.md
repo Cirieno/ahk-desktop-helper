@@ -109,8 +109,8 @@ Enables these global hotkeys to change selected text:
 
 | Syntax | Description | Example |
 | ------ | ----------- | --------|
-| `Ctrl` + `Alt` + `U` | uppercase |
-| `Ctrl` + `Alt` + `L` | lowercase |
+| `Ctrl` + `Alt` + `U` | uppercase |   |
+| `Ctrl` + `Alt` + `L` | lowercase |   |
 | `Ctrl` + `Alt` + `T` | title case | This Is An Example |
 | `Ctrl` + `Alt` + `K` | kebab case | this-is-an-example |
 | `Ctrl` + `Alt` + `S` | snake case | this_is_an_example |
@@ -126,7 +126,8 @@ Enables these global hotkeys to change selected text:
 | `Ctrl` + `Alt` + `<` or `>` | enclose in angled brackets | < > |
 | `Ctrl` + `Alt` + `-` | insert an n-dash | – |
 | `Ctrl` + `Alt` + `_` | insert an m-dash | — |
-| `Ctrl` + `Alt` + `J` | join lines | |
+| `Ctrl` + `Alt` + `O` | insert the degrees symbol | ° |
+| `Ctrl` + `Alt` + `J` | join lines |   |
 <!-- | `Ctrl` + `Alt` + `C` | camel case | ThisIsAnExample -->
 
 `sarcasmCase=random` or `alternating`
