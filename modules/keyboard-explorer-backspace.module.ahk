@@ -90,17 +90,12 @@ class module__KeyboardExplorerBackspace {
 
 
 	doBackspace(*) {
-		renaming := false
+		winHwnd := WinActive("A")
+		controlHwnd := ControlGetFocus("A")
+		classNN := ControlGetClassNN(controlHwnd)
 
-		for (i, classNN in WinGetControls("A")) {
-			if (classNN == "Edit1") {
-				renaming := true
-				break
-			}
-		}
-
-		if (renaming) {
-			ControlSend("{Backspace}", "Edit1", "A")
+		if ["Edit1", "Edit2"].includes(classNN) {
+			ControlSend("{Backspace}", controlHwnd)
 		} else {
 			Send("!{Up}")
 		}

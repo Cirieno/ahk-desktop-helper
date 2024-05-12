@@ -1,5 +1,5 @@
 ;// Compile-time settings for "File Properties > Details" panel
-;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.5.2.1, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
+;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.5.2.2, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
 ;@ Ahk2Exe-ExeName C:\Program Files (portable)\%U_PName%\%U_PName%.exe
 ;@Ahk2Exe-ExeName %A_ScriptDir%\releases\%U_PVersion%\%U_PName% x64.exe
 ;@Ahk2Exe-SetCompanyName %U_PCompany%
@@ -46,7 +46,7 @@ if (__Settings := {}) {
 	__Settings.app := {
 		name: "AHK Desktop Helper",
 		author: { name: "Rob McInnes", email: "rob.mcinnes" . Chr(64) . "cirieno.co.uk", company: "Cirieno Ltd" },
-		build: { version: "2.5.2.1", date: "2024-04", repo: "github.com/cirieno/ahk-desktop-helper" }
+		build: { version: "2.5.2.2", date: "2024-04", repo: "github.com/cirieno/ahk-desktop-helper" }
 	}
 	__Settings.settingsFilePath := A_WorkingDir . "\settings.ini"
 	__Settings.app.tray := {
