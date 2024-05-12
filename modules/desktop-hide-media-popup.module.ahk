@@ -160,7 +160,7 @@ class module__DesktopHideMediaPopup {
 			setMenuItemProps(this.settings.menu.items[1].label, this.settings.menu.path, { checked: this.states.active })
 		} else {
 			if ((state !== activeNow) || (hWndNow !== hWndThen) || (foundNow !== foundThen) || (visibleNow !== visibleThen)) {
-				if (forced || !this.settings.allowExternalChange){
+				if (forced || !this.settings.allowExternalChange) {
 					this.states.active := state
 					this.setPopupState(hWndNow, !state)
 				} else {

@@ -137,7 +137,7 @@ class module__MouseSwapButtons {
 				setMenuItemProps(this.settings.menu.items[1].label, this.settings.menu.path, {
 					checked: this.states.active,
 					enabled: this.states.mouseFound
-				 })
+				})
 			}
 		}
 	}
