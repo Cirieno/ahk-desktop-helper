@@ -97,7 +97,10 @@ class module__VolumeMouseWheel {
 
 
 	doWheelChange(name) {
-		trayControls := ["Button2", "ToolbarWindow323", "TrayButton1", "TrayClockWClass1", "TrayNotifyWnd1", "TrayShowDesktopButtonWClass1"]
+		Win10 := ["Button2", "ToolbarWindow323", "TrayButton1", "TrayClockWClass1", "TrayNotifyWnd1", "TrayShowDesktopButtonWClass1"]
+		Win11 := ["SIBTrayButton1", "SIBTrayButton2", "SIBTrayButton3", "ToolbarWindow325", "TrayClockWClass2", "TrayShowDesktopButtonWClass2"]
+		trayControls := Array.concat(Win10, Win11)
+
 		MouseGetPos(, , , &control)
 
 		if (trayControls.includes(control)) {
