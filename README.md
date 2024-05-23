@@ -105,7 +105,9 @@ Converts forward-slashes and multiple backslashes to a single back-slash when en
 
 ### KeyboardTextManipulation
 
-Enables these global hotkeys to change selected text:
+Enables these global hotkeys to change selected text.
+
+Note: works in Win11 except in Notepad as the Alt key forces the menu quick-keys to be revealed. 
 
 | Syntax | Description | Example |
 | ------ | ----------- | --------|
