@@ -113,14 +113,14 @@ class module__KeyboardTextManipulation {
 
 		whichHotkey(key) {
 			key := RegExReplace(key, "S)[\$\#\!\^]", "")
-			switch (strUpper(key)) {
+			switch (StrUpper(key)) {
 				case "U":
 					this.doPaste("upper-case")
 				case "L":
 					this.doPaste("lower-case")
 				case "T":
 					this.doPaste("title-case")
-				; case "C":
+					; case "C":
 					; this.doPaste("camel-case")
 				case "K":
 					this.doPaste("kebab-case")
@@ -235,9 +235,9 @@ class module__KeyboardTextManipulation {
 		A_Clipboard := copied
 		Send("^v")    ; in tests any Send(copied) variant is visibly slow
 
-		; if (reselect) {
-		; 	Send("+{left " . StrLen(copied) . "}")    ; this is visibly slow
-		; }
+		if (reselect) {
+			Send("+{left " . StrLen(copied) . "}")    ; this is visibly slow
+		}
 
 		; Sleep(Max(StrLen(copied), 250))
 		Sleep(200)
@@ -246,28 +246,28 @@ class module__KeyboardTextManipulation {
 
 
 	openGui() {
-		; DllCall("SetThreadDpiAwarenessContext", "ptr", -3, "ptr")
-
-		; MouseGetPos(&x, &y, &hWnd)
 		hWnd := WinExist("A")
-		winTitle := WinGetTitle(hWnd)
+
+		gui_ := Gui("+AlwaysOnTop -MaximizeBox -MinimizeBox", this.moduleName)
+
+		; DllCall("SetThreadDpiAwarenessContext", "ptr", -3, "ptr")
+		; dpi := (A_ScreenDPI / 96)
 		buttonMultiplier := 1.6
-
-		gui_ := Gui("+AlwaysOnTop +SysMenu -MaximizeBox -MinimizeBox", this.moduleName)
-		; MyGui.opt("+AlwaysOnTop -Disabled +SysMenu +Owner")
-
 		gui_.SetFont("s10")
+
 		gui_.Add("Text", "", "Target window: " . StrWrap(WinGetTitle(hWnd), 5))
 
-		groupbox1 := gui_.Add("GroupBox", "x10 y35 Section w150 r" . (6 * buttonMultiplier), "Formatting")
+		; #region groupbox1
+		groupbox1 := gui_.Add("GroupBox", "x10 y35 Section w150 r" . (6 * buttonMultiplier), "Format")
 		gui_.Add("button", "xs+10 ys+25", "Upper case").OnEvent("click", whichButton)
 		gui_.Add("button", "", "Lower case").OnEvent("click", whichButton)
 		gui_.Add("button", "", "Title case").OnEvent("click", whichButton)
 		gui_.Add("button", "", "Kebab case").OnEvent("click", whichButton)
 		gui_.Add("button", "", "Snake case").OnEvent("click", whichButton)
 		gui_.Add("button", "", "Sarcasm case").OnEvent("click", whichButton)
-
-		groupbox2 := gui_.Add("GroupBox", "x180 y35 Section w150 r" . (9 * buttonMultiplier), "Encapsulating")
+		; #endregion
+		; #region groupbox2
+		groupbox2 := gui_.Add("GroupBox", "x180 y35 Section w150 r" . (9 * buttonMultiplier), "Wrap")
 		gui_.Add("button", "xs+10 ys+25", "Single quotes").OnEvent("click", whichButton)
 		gui_.Add("button", "", "Double quotes").OnEvent("click", whichButton)
 		gui_.Add("button", "", "Single curly quotes").OnEvent("click", whichButton)
@@ -277,39 +277,48 @@ class module__KeyboardTextManipulation {
 		gui_.Add("button", "", "Square brackets").OnEvent("click", whichButton)
 		gui_.Add("button", "", "Curly braces").OnEvent("click", whichButton)
 		gui_.Add("button", "", "Angle brackets").OnEvent("click", whichButton)
-
-		groupbox3 := gui_.Add("GroupBox", "x350 y35 Section w150 r" . (4 * buttonMultiplier), "Inserting")
+		; #endregion
+		; #region groupbox3
+		groupbox3 := gui_.Add("GroupBox", "x350 y35 Section w150 r" . (4 * buttonMultiplier), "Insert")
 		gui_.Add("button", "xs+10 ys+25", "En-dash").OnEvent("click", whichButton)
 		gui_.Add("button", "", "Em-dash").OnEvent("click", whichButton)
 		gui_.Add("button", "", "Degree symbol").OnEvent("click", whichButton)
 		gui_.Add("button", "", "Ellipsis").OnEvent("click", whichButton)
-
+		; #endregion
+		; #region groupbox4
 		groupbox4 := gui_.Add("GroupBox", "x350 y220 Section w150 r" . (1 * buttonMultiplier), "Functions")
 		gui_.Add("button", "xs+10 ys+25", "Join lines").OnEvent("click", whichButton)
+		; #endregion
 
-		; gui_.Add("Button", "default", "Close").OnEvent("click", closeGui)
-		gui_.Show("NoActivate")  ; NoActivate avoids deactivating the currently active window.
+		keepSelection := gui_.Add("Checkbox", "x350 y300 checked", "Keep selection")
+
+		gui_.Show()
+
+		gui_.OnEvent("Escape", (*) => closeGui())
 
 		whichButton(button, *) {
-			winActivate(hWnd)
-			buttonText := strReplace(strLower(button.text), " ", "-")
+			WinActivate(hWnd)
+
+			reselect := keepSelection.value
+
+			buttonText := StrReplace(StrLower(button.text), " ", "-")
 			switch (buttonText) {
 				case "upper-case",
-				"lower-case",
-				"title-case",
-				"kebab-case",
-				"snake-case",
-				"sarcasm-case",
-				"single-quotes",
-				"double-quotes",
-				"single-curly-quotes",
-				"double-curly-quotes",
-				"backticks",
-				"parentheses",
-				"square-brackets",
-				"curly-braces",
-				"angle-brackets":
-					this.doPaste(buttonText)
+					"lower-case",
+					"title-case",
+					"kebab-case",
+					"snake-case",
+					"sarcasm-case",
+					"single-quotes",
+					"double-quotes",
+					"single-curly-quotes",
+					"double-curly-quotes",
+					"backticks",
+					"parentheses",
+					"square-brackets",
+					"curly-braces",
+					"angle-brackets":
+					this.doPaste(buttonText, reselect)
 				case "en-dash":
 					SendText(Chr(8211))
 				case "em-dash":
@@ -324,7 +333,7 @@ class module__KeyboardTextManipulation {
 		}
 
 		closeGui(*) {
-			gui_.hide()
+			gui_.destroy()
 		}
 	}
 

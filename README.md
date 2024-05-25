@@ -1,4 +1,4 @@
-# AHK Desktop Helper v2.5.2.3
+# AHK Desktop Helper v2.5.3.0
 
 A collection of small enhancements for Windows.
 
