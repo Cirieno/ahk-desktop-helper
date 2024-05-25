@@ -105,3 +105,15 @@ checkMemoryUsage() {
 	}
 }
 #HotIf
+
+
+regexCount(haystack, pattern) {
+	count := 0
+	posStart := 1
+	while (RegExMatch(haystack, pattern, &match, posStart)) {
+		posStart := (match.pos + 1)
+		; matchFound := (matchFound || true)
+		count++
+	}
+	return count
+}

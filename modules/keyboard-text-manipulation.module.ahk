@@ -120,8 +120,8 @@ class module__KeyboardTextManipulation {
 					this.doPaste("lower-case")
 				case "T":
 					this.doPaste("title-case")
-					; case "C":
-					; this.doPaste("camel-case")
+				; case "C":
+				; 	this.doPaste("camel-case")
 				case "K":
 					this.doPaste("kebab-case")
 				case "S":
@@ -153,7 +153,7 @@ class module__KeyboardTextManipulation {
 				case "O":
 					SendText(Chr(176))
 				case "J":
-					this.doPaste("join", false)
+					this.doPaste("join")
 				case "F":
 					this.openGui()
 			}
@@ -161,7 +161,7 @@ class module__KeyboardTextManipulation {
 	}
 
 
-	doPaste(mode, reselect := false) {
+	doPaste(mode, reselect := true) {
 		clipSavedAll := ClipboardAll()
 		A_Clipboard := ""
 
@@ -187,9 +187,9 @@ class module__KeyboardTextManipulation {
 			case "title-case":
 				copied := StrTitle(copied)
 				; TODO: should titlecase regard hyphens as spaces?
-				; case "camel-case":
-				; 	regex := "S)[\s\-]+([^A-Z])"
-				; 	copied := RegExReplace(copied, regex, "$U1")
+			; case "camel-case":
+			; 		regex := "S)[\s\-]+([^A-Z])"
+			; 		copied := RegExReplace(copied, regex, "$U1")
 			case "kebab-case":
 				copied := RegExReplace(copied, "[ _]", "-")
 			case "snake-case":
@@ -229,18 +229,19 @@ class module__KeyboardTextManipulation {
 			case "angle-brackets":
 				copied := "<" . copied . ">"
 			case "join":
-				copied := RegExReplace(copied, "[\r\n]", " ")
+				copied := RegExReplace(copied, "(\r\n|[\r\n])", " ")
 		}
 
 		A_Clipboard := copied
-		Send("^v")    ; in tests any Send(copied) variant is visibly slow
+		Send("^v")    ; in tests any Send<variant>(copied) is visibly slow
 
 		if (reselect) {
-			Send("+{left " . StrLen(copied) . "}")    ; this is visibly slow
+			; NOTE: strLen() counts crlf as 2 chars, but Send() operates on crlf as if it's only 1 char
+			crlfCount := regexCount(copied, "\r\n")
+			Send("+{left " . (StrLen(copied) - crlfCount) . "}")
 		}
 
-		; Sleep(Max(StrLen(copied), 250))
-		Sleep(200)
+		Sleep(500)
 		A_Clipboard := clipSavedAll
 	}
 
@@ -327,8 +328,8 @@ class module__KeyboardTextManipulation {
 					SendText(Chr(176))
 				case "ellipsis":
 					SendText(Chr(8230))
-				case "join lines":
-					this.doPaste("join", false)
+				case "join-lines":
+					this.doPaste("join", reselect)
 			}
 		}
 
