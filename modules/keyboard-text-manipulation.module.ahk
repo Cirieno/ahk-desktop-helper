@@ -13,7 +13,7 @@ class module__KeyboardTextManipulation {
 		this.enabled := getIniVal(moduleName, "enabled", true)
 		this.settings := {
 			activateOnLoad: getIniVal(moduleName, "active", false),
-			sarcasmCase: getIniVal(moduleName, "sarcasmCase", "random")  ; "alternating"
+			sarcasmCase: getIniVal(moduleName, "sarcasmCase", "random")    ; or "alternating"
 		}
 		this.states := {
 			active: null
@@ -37,6 +37,8 @@ class module__KeyboardTextManipulation {
 
 		thisMenu := this.drawMenu()
 		setMenuItemProps(this.settings.menu.items[1].label, thisMenu, { checked: this.states.active })
+
+		; thisGui := this.openGui()
 
 		this.setHotkeys(this.states.active)
 	}
@@ -94,32 +96,32 @@ class module__KeyboardTextManipulation {
 		Hotkey("$^!+'", whichHotkey, (state ? "on" : "off"))    ; single-curly-quotes
 		Hotkey("$^!+2", whichHotkey, (state ? "on" : "off"))    ; double-curly-quotes
 		Hotkey("$^!``", whichHotkey, (state ? "on" : "off"))    ; backticks
-		Hotkey("$^!(", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!)", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^![", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!]", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!{", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!}", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!<", whichHotkey, (state ? "on" : "off"))
-		Hotkey("$^!>", whichHotkey, (state ? "on" : "off"))
+		Hotkey("$^!(", whichHotkey, (state ? "on" : "off"))    ; parentheses
+		Hotkey("$^!)", whichHotkey, (state ? "on" : "off"))    ; parentheses
+		Hotkey("$^![", whichHotkey, (state ? "on" : "off"))    ; square-brackets
+		Hotkey("$^!]", whichHotkey, (state ? "on" : "off"))    ; square-brackets
+		Hotkey("$^!{", whichHotkey, (state ? "on" : "off"))    ; curly-braces
+		Hotkey("$^!}", whichHotkey, (state ? "on" : "off"))    ; curly-braces
+		Hotkey("$^!<", whichHotkey, (state ? "on" : "off"))    ; angle-brackets
+		Hotkey("$^!>", whichHotkey, (state ? "on" : "off"))    ; angle-brackets
 		Hotkey("$^!-", whichHotkey, (state ? "on" : "off"))    ; en-dash
 		Hotkey("$^!_", whichHotkey, (state ? "on" : "off"))    ; em-dash
 		Hotkey("$^!O", whichHotkey, (state ? "on" : "off"))    ; degree symbol
 		Hotkey("$^!J", whichHotkey, (state ? "on" : "off"))    ; join lines
 
+		Hotkey("$^!F", whichHotkey, (state ? "on" : "off"))    ; open gui
+
 		whichHotkey(key) {
 			key := RegExReplace(key, "S)[\$\#\!\^]", "")
-			; MsgBox(key)
-
-			switch (key) {
+			switch (strUpper(key)) {
 				case "U":
 					this.doPaste("upper-case")
 				case "L":
 					this.doPaste("lower-case")
 				case "T":
 					this.doPaste("title-case")
-					; case "C":
-					; 	this.doPaste("camel-case")
+				; case "C":
+					; this.doPaste("camel-case")
 				case "K":
 					this.doPaste("kebab-case")
 				case "S":
@@ -152,6 +154,8 @@ class module__KeyboardTextManipulation {
 					SendText(Chr(176))
 				case "J":
 					this.doPaste("join", false)
+				case "F":
+					this.openGui()
 			}
 		}
 	}
@@ -231,13 +235,97 @@ class module__KeyboardTextManipulation {
 		A_Clipboard := copied
 		Send("^v")    ; in tests any Send(copied) variant is visibly slow
 
-		if (reselect) {
-			Send("+{left " . StrLen(copied) . "}")    ; this is visibly slow
-		}
+		; if (reselect) {
+		; 	Send("+{left " . StrLen(copied) . "}")    ; this is visibly slow
+		; }
 
 		; Sleep(Max(StrLen(copied), 250))
 		Sleep(200)
 		A_Clipboard := clipSavedAll
+	}
+
+
+	openGui() {
+		; DllCall("SetThreadDpiAwarenessContext", "ptr", -3, "ptr")
+
+		; MouseGetPos(&x, &y, &hWnd)
+		hWnd := WinExist("A")
+		winTitle := WinGetTitle(hWnd)
+		buttonMultiplier := 1.6
+
+		gui_ := Gui("+AlwaysOnTop +SysMenu -MaximizeBox -MinimizeBox", this.moduleName)
+		; MyGui.opt("+AlwaysOnTop -Disabled +SysMenu +Owner")
+
+		gui_.SetFont("s10")
+		gui_.Add("Text", "", "Target window: " . StrWrap(WinGetTitle(hWnd), 5))
+
+		groupbox1 := gui_.Add("GroupBox", "x10 y35 Section w150 r" . (6 * buttonMultiplier), "Formatting")
+		gui_.Add("button", "xs+10 ys+25", "Upper case").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Lower case").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Title case").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Kebab case").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Snake case").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Sarcasm case").OnEvent("click", whichButton)
+
+		groupbox2 := gui_.Add("GroupBox", "x180 y35 Section w150 r" . (9 * buttonMultiplier), "Encapsulating")
+		gui_.Add("button", "xs+10 ys+25", "Single quotes").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Double quotes").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Single curly quotes").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Double curly quotes").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Backticks").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Parentheses").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Square brackets").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Curly braces").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Angle brackets").OnEvent("click", whichButton)
+
+		groupbox3 := gui_.Add("GroupBox", "x350 y35 Section w150 r" . (4 * buttonMultiplier), "Inserting")
+		gui_.Add("button", "xs+10 ys+25", "En-dash").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Em-dash").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Degree symbol").OnEvent("click", whichButton)
+		gui_.Add("button", "", "Ellipsis").OnEvent("click", whichButton)
+
+		groupbox4 := gui_.Add("GroupBox", "x350 y220 Section w150 r" . (1 * buttonMultiplier), "Functions")
+		gui_.Add("button", "xs+10 ys+25", "Join lines").OnEvent("click", whichButton)
+
+		; gui_.Add("Button", "default", "Close").OnEvent("click", closeGui)
+		gui_.Show("NoActivate")  ; NoActivate avoids deactivating the currently active window.
+
+		whichButton(button, *) {
+			winActivate(hWnd)
+			buttonText := strReplace(strLower(button.text), " ", "-")
+			switch (buttonText) {
+				case "upper-case",
+				"lower-case",
+				"title-case",
+				"kebab-case",
+				"snake-case",
+				"sarcasm-case",
+				"single-quotes",
+				"double-quotes",
+				"single-curly-quotes",
+				"double-curly-quotes",
+				"backticks",
+				"parentheses",
+				"square-brackets",
+				"curly-braces",
+				"angle-brackets":
+					this.doPaste(buttonText)
+				case "en-dash":
+					SendText(Chr(8211))
+				case "em-dash":
+					SendText(Chr(8212))
+				case "degree-symbol":
+					SendText(Chr(176))
+				case "ellipsis":
+					SendText(Chr(8230))
+				case "join lines":
+					this.doPaste("join", false)
+			}
+		}
+
+		closeGui(*) {
+			gui_.hide()
+		}
 	}
 
 
