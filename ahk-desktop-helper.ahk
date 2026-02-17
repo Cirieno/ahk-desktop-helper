@@ -1,5 +1,5 @@
 ;// Compile-time settings for "File Properties > Details" panel
-;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.5.2.3, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
+;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.5.3, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
 ;@ Ahk2Exe-ExeName C:\Program Files (portable)\%U_PName%\%U_PName%.exe
 ;@Ahk2Exe-ExeName %A_ScriptDir%\releases\%U_PVersion%\%U_PName% x64.exe
 ;@Ahk2Exe-SetCompanyName %U_PCompany%
@@ -15,7 +15,7 @@
 ;@Ahk2Exe-PostExec "MPRESS.exe" "%A_WorkFileName%" -q -x, 0,, 1
 
 
-#Requires AutoHotkey v2.0.13 64-bit
+#Requires AutoHotkey v2+ 64-bit
 ; Run *RunAs.
 #ClipboardTimeout 2000
 #SingleInstance force
@@ -46,7 +46,7 @@ if (__Settings := {}) {
 	__Settings.app := {
 		name: "AHK Desktop Helper",
 		author: { name: "Rob McInnes", email: "rob.mcinnes" . Chr(64) . "cirieno.co.uk", company: "Cirieno Ltd" },
-		build: { version: "2.5.2.3", date: "2024-04", repo: "github.com/cirieno/ahk-desktop-helper" }
+		build: { version: "2.5.3", date: "2026-02", repo: "github.com/cirieno/ahk-desktop-helper" }
 	}
 	__Settings.settingsFilePath := A_WorkingDir . "\settings.ini"
 	__Settings.app.tray := {

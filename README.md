@@ -107,7 +107,7 @@ Converts forward-slashes and multiple backslashes to a single back-slash when en
 
 Enables these global hotkeys to change selected text.
 
-Note: works in Win11 except in Notepad as the Alt key forces the menu quick-keys to be revealed. 
+Note: works in Win11 except in Notepad as the Alt key forces the menu quick-keys to be revealed.
 
 | Syntax | Description | Example |
 | ------ | ----------- | --------|
@@ -130,6 +130,7 @@ Note: works in Win11 except in Notepad as the Alt key forces the menu quick-keys
 | `Ctrl` + `Alt` + `_` | insert an m-dash | — |
 | `Ctrl` + `Alt` + `O` | insert the degrees symbol | ° |
 | `Ctrl` + `Alt` + `J` | join lines |   |
+| `Ctrl` + `Alt` + `Q` | paste clipboard text with quotes | "text" |
 <!-- | `Ctrl` + `Alt` + `C` | camel case | ThisIsAnExample -->
 
 `sarcasmCase=random` or `alternating`
