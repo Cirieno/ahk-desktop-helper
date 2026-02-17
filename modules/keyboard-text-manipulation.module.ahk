@@ -106,6 +106,7 @@ class module__KeyboardTextManipulation {
 		Hotkey("$^!_", whichHotkey, (state ? "on" : "off"))    ; em-dash
 		Hotkey("$^!O", whichHotkey, (state ? "on" : "off"))    ; degree symbol
 		Hotkey("$^!J", whichHotkey, (state ? "on" : "off"))    ; join lines
+		Hotkey("$^!Q", whichHotkey, (state ? "on" : "off"))    ; quote clipboard text
 
 		whichHotkey(key) {
 			key := RegExReplace(key, "S)[\$\#\!\^]", "")
@@ -118,7 +119,7 @@ class module__KeyboardTextManipulation {
 					this.doPaste("lower-case")
 				case "T":
 					this.doPaste("title-case")
-					; case "C":
+				; case "C":
 					; 	this.doPaste("camel-case")
 				case "K":
 					this.doPaste("kebab-case")
@@ -152,8 +153,25 @@ class module__KeyboardTextManipulation {
 					SendText(Chr(176))
 				case "J":
 					this.doPaste("join", false)
+				case "Q":
+					this.pasteQuotedClipboard()
 			}
 		}
+	}
+
+
+	pasteQuotedClipboard() {
+		if (!A_Clipboard || !StrLen(A_Clipboard)) {
+			return
+		}
+
+		clipSavedAll := ClipboardAll()
+		quotedText := Chr(34) . A_Clipboard . Chr(34)
+		A_Clipboard := quotedText
+		Send("^v")
+
+		Sleep(200)
+		A_Clipboard := clipSavedAll
 	}
 
 
