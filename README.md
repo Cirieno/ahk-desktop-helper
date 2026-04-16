@@ -1,16 +1,15 @@
-# AHK Desktop Helper v2.5.2.3
+# AHK Desktop Helper v2.6.0
 
 A collection of small enhancements for Windows.
 
 Written in AutoHotkey v2, the script can either be run as-is or compiled into an executable using AHK2Exe w/ MPRESS from the Autohotkey site.
 
- These are things I wrote for myself and use on a daily(ish) basis. Only tested on Win10 so far.
 
 ## Modules
 
-Each enhancement is presented via its own module which can be enabled via `settings.ini`. Some modules can be auto-actived when loading the app. Click `Settings > Save current config` to save the current states which will be active on load in the future.
+Each enhancement is presented via its own module which can be enabled via `settings.ini`. Some modules can be auto-activated when loading the app. Click `Settings > Save current config` to save the current states which will be active on load in the future.
 
-Common module options:
+Some common module options:
 
 `enabled=true` Make the module available to the app.
 
@@ -103,37 +102,46 @@ Converts forward-slashes and multiple backslashes to a single back-slash when en
 
 ---
 
+### KeyboardMediaKeys
+
+Because I don't have these keys on my keyboard.
+
+| Keys | Mapped to | Function |
+| --- | --- | --- |
+| `Ctrl` + `Alt` + `Left` | `{Media_Prev}` | previous track |
+| `Ctrl` + `Alt` + `Right` | `{Media_Next}` | next track |
+
+---
+
 ### KeyboardTextManipulation
 
 Enables these global hotkeys to change selected text.
 
-Note: works in Win11 except in Notepad as the Alt key forces the menu quick-keys to be revealed.
-
-| Syntax | Description | Example |
-| ------ | ----------- | --------|
+| Keys | Function | Example |
+| --- | --- | --- |
 | `Ctrl` + `Alt` + `U` | uppercase |   |
 | `Ctrl` + `Alt` + `L` | lowercase |   |
 | `Ctrl` + `Alt` + `T` | title case | This Is An Example |
 | `Ctrl` + `Alt` + `K` | kebab case | this-is-an-example |
 | `Ctrl` + `Alt` + `S` | snake case | this_is_an_example |
 | `Ctrl` + `Alt` + `&` | sarcasm case | tHIS is aN ExampLE |
-| `Ctrl` + `Alt` + `'` | enclose in single quotes | ' ' |
-| `Ctrl` + `Alt` + `"` | enclose in double quotes | " " |
-| `Ctrl` + `Alt` + `Shift` + `'` | enclose in single curly quotes | ‘ ’ |
-| `Ctrl` + `Alt` + `Shift` + `"` | enclose in double curly quotes | “ ” |
-| `Ctrl` + `Alt` + `` ` `` | enclose in backticks | `` |
-| `Ctrl` + `Alt` + `(` or `)` | enclose in parentheses | ( ) |
-| `Ctrl` + `Alt` + `[` or `]` | enclose in square brackets | [ ] |
-| `Ctrl` + `Alt` + `{` or `}` | enclose in curly braces | { } |
-| `Ctrl` + `Alt` + `<` or `>` | enclose in angled brackets | < > |
-| `Ctrl` + `Alt` + `-` | insert an n-dash | – |
-| `Ctrl` + `Alt` + `_` | insert an m-dash | — |
-| `Ctrl` + `Alt` + `O` | insert the degrees symbol | ° |
 | `Ctrl` + `Alt` + `J` | join lines |   |
-| `Ctrl` + `Alt` + `Q` | paste clipboard text with quotes | "text" |
+| `Ctrl` + `Alt` + `'` | enclose in single quotes | ' ⋯ ' |
+| `Ctrl` + `Alt` + `"` | enclose in double quotes | " ⋯ " |
+| `Ctrl` + `Alt` + `Shift` + `'` | enclose in single curly quotes | ‘ ⋯ ’ |
+| `Ctrl` + `Alt` + `Shift` + `"` | enclose in double curly quotes | “ ⋯ ” |
+| `Ctrl` + `Alt` + `` ` `` | enclose in backticks |  `` ` ⋯ ` ``  |
+| `Ctrl` + `Alt` + `(` or `)` | enclose in parentheses | ( ⋯ ) |
+| `Ctrl` + `Alt` + `[` or `]` | enclose in square brackets | [ ⋯ ] |
+| `Ctrl` + `Alt` + `{` or `}` | enclose in curly braces | { ⋯ } |
+| `Ctrl` + `Alt` + `<` or `>` | enclose in angled brackets | < ⋯ > |
+| `Ctrl` + `Alt` + `-` | insert an n-dash | – |
+| `Ctrl` + `Alt` + `Shift` + `-` | insert an m-dash | — |
+| `Ctrl` + `Alt` + `O` | insert the degrees symbol | ° |
+| `Ctrl` + `Alt` + `Q` | paste clipboard text with straight quotes | " ⋯ " |
 <!-- | `Ctrl` + `Alt` + `C` | camel case | ThisIsAnExample -->
 
-`sarcasmCase=random` or `alternating`
+Note: works in Win11 except in Notepad as the Alt key forces the menu quick-keys to be revealed.
 
 ---
 
@@ -157,10 +165,6 @@ Use the mousewheel to change volume anywhere over the system icons and date/time
 ### Extensions
 
 https://marketplace.visualstudio.com/items?itemName=thqby.vscode-autohotkey2-lsp
-
-https://marketplace.visualstudio.com/items?itemName=zero-plusplus.vscode-autohotkey-debug
-
-https://marketplace.visualstudio.com/items?itemName=GitHub.copilot
 
 ### Word lists sources
 
