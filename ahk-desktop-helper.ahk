@@ -1,5 +1,5 @@
 ;// Compile-time settings for "File Properties > Details" panel
-;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.5.3, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
+;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.6.0, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
 ;@ Ahk2Exe-ExeName C:\Program Files (portable)\%U_PName%\%U_PName%.exe
 ;@Ahk2Exe-ExeName %A_ScriptDir%\releases\%U_PVersion%\%U_PName% x64.exe
 ;@Ahk2Exe-SetCompanyName %U_PCompany%
@@ -41,12 +41,13 @@ SetWorkingDir(A_ScriptDir)
 
 global __DEBUGGING := (A_IsCompiled ? false : true)    ; use true to override compiled setting
 global __Modules := Map()
+global __NativeMenus := Map()
 global __ShadowMenu := { menus: Map(), items: Map() }
 if (__Settings := {}) {
 	__Settings.app := {
 		name: "AHK Desktop Helper",
 		author: { name: "Rob McInnes", email: "rob.mcinnes" . Chr(64) . "cirieno.co.uk", company: "Cirieno Ltd" },
-		build: { version: "2.5.3", date: "2026-02", repo: "github.com/cirieno/ahk-desktop-helper" }
+		build: { version: "2.6.0", date: "2026-04", repo: "github.com/cirieno/ahk-desktop-helper" }
 	}
 	__Settings.settingsFilePath := A_WorkingDir . "\settings.ini"
 	__Settings.app.tray := {
@@ -76,6 +77,7 @@ if (__Settings := {}) {
 #Include "*i .\modules\desktop-hide-peek-button.module.ahk"
 #Include "*i .\modules\keyboard-explorer-backspace.module.ahk"
 #Include "*i .\modules\keyboard-explorer-dialog-slashes.module.ahk"
+#Include "*i .\modules\keyboard-media-keys.module.ahk"
 #Include "*i .\modules\keyboard-text-manipulation.module.ahk"
 #Include "*i .\modules\mouse-swap-buttons.module.ahk"
 #Include "*i .\modules\volume-mousewheel.module.ahk"
@@ -83,10 +85,102 @@ if (__Settings := {}) {
 
 drawMenu("before")
 loadModules()
+redrawNativeTrayMenus()
+ensureSettingsFileExists()
 drawMenu("after")
 checkStartWithWindows()
 checkMemoryUsage()
 SetTimer(checkMemoryUsage, (30 * U_msMinute))
+
+
+ensureSettingsFileExists() {
+	SFP := __Settings.settingsFilePath
+	if (!FileExist(SFP)) {
+		doSettingsFileUpdate()
+	}
+}
+
+
+ensureNativeMenuPath(menuPath) {
+	parts := StrSplit(menuPath, "\")
+	if ((parts.Length < 2) || (parts[1] != "TRAY")) {
+		throw Error("Unsupported menu path: " . menuPath)
+	}
+
+	if (!__NativeMenus.Has("TRAY")) {
+		__NativeMenus["TRAY"] := A_TrayMenu
+	}
+
+	currentPath := "TRAY"
+	loop (parts.Length - 1) {
+		label := parts[A_Index + 1]
+		nextPath := currentPath . "\" . label
+		if (!__NativeMenus.Has(nextPath)) {
+			childMenu := Menu()
+			__NativeMenus[nextPath] := childMenu
+
+			if (currentPath != "TRAY") {
+				parentMenu := __NativeMenus[currentPath]
+				try {
+					parentMenu.Delete(label)
+				}
+				parentMenu.Add(label, childMenu)
+			}
+		}
+		currentPath := nextPath
+	}
+
+	return __NativeMenus[currentPath]
+}
+
+
+redrawNativeTrayMenus() {
+	if (!__NativeMenus.Has("TRAY")) {
+		__NativeMenus["TRAY"] := A_TrayMenu
+	}
+
+	trayParents := []
+	seenLabels := Map()
+	for (path, vals in __ShadowMenu.menus) {
+		if RegExMatch(path, "^TRAY\\[^\\]+$") {
+			parts := StrSplit(path, "\")
+			label := parts[2]
+			if (!seenLabels.Has(label)) {
+				trayParents.Push({ label: label, menu: MenuFromHandle(vals.handle) })
+				seenLabels[label] := true
+			}
+		}
+	}
+	for (path, menuObj in __NativeMenus) {
+		if RegExMatch(path, "^TRAY\\[^\\]+$") {
+			parts := StrSplit(path, "\")
+			label := parts[2]
+			if (!seenLabels.Has(label)) {
+				trayParents.Push({ label: label, menu: menuObj })
+				seenLabels[label] := true
+			}
+		}
+	}
+
+	loop trayParents.Length {
+		indexA := A_Index
+		loop (trayParents.Length - indexA) {
+			indexB := (indexA + A_Index)
+			if (StrCompare(trayParents[indexA].label, trayParents[indexB].label, false) > 0) {
+				temp := trayParents[indexA]
+				trayParents[indexA] := trayParents[indexB]
+				trayParents[indexB] := temp
+			}
+		}
+	}
+
+	for (i, entry in trayParents) {
+		try {
+			A_TrayMenu.Delete(entry.label)
+		}
+		A_TrayMenu.Add(entry.label, entry.menu)
+	}
+}
 
 
 drawMenu(section) {
@@ -109,6 +203,8 @@ drawMenu(section) {
 			A_IconTip := SAT.traytip
 			TraySetIcon(SAT.icon.location)
 			A_TrayMenu.delete()
+			__NativeMenus.Clear()
+			__NativeMenus["TRAY"] := A_TrayMenu
 			A_TrayMenu.add(SAT.title, doMenuItem)
 			A_TrayMenu.default := SAT.title
 			A_TrayMenu.add()
@@ -204,6 +300,7 @@ loadModules() {
 
 	__Modules["KeyboardExplorerBackspace"] := module__KeyboardExplorerBackspace()
 	__Modules["KeyboardExplorerDialogSlashes"] := module__KeyboardExplorerDialogSlashes()
+	__Modules["KeyboardMediaKeys"] := module__KeyboardMediaKeys()
 	__Modules["KeyboardTextManipulation"] := module__KeyboardTextManipulation()
 
 	__Modules["MouseSwapButtons"] := module__MouseSwapButtons()
