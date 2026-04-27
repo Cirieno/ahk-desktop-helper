@@ -1,4 +1,4 @@
-# AHK Desktop Helper v2.6.0
+# AHK Desktop Helper v2.7.0
 
 A collection of small enhancements for Windows.
 
@@ -84,21 +84,17 @@ Hide the OSD volume popup. NB: this also hides the brightness popup.
 
 ---
 
-### DesktopHidePeekButton
+<!-- ### DesktopHidePeekButton -->
+<!-- Hide the small Desktop Peek button found at the end of the taskbar. -->
+<!-- --- -->
 
-Hide the small Desktop Peek button found at the end of the taskbar.
+<!-- ### KeyboardExplorerBackspace -->
+<!-- Use the backspace key to drill upwards in File Explorer windows and dialogs. -->
+<!-- --- -->
 
----
+### KeyboardFileDialogSlashes
 
-### KeyboardExplorerBackspace
-
-Use the backspace key to drill upwards in File Explorer windows and dialogs.
-
----
-
-### KeyboardExplorerDialogSlashes
-
-Converts forward-slashes and multiple backslashes to a single back-slash when entered into a File Explorer dialog. Handy if you're working with any Unix-y environments on your Windows machine. Doesn't currently capture paste via mouse.
+Converts forward-slashes and multiple backslashes to a single back-slash when entered into a File dialog. Handy if you're working with any Unix-y environments on your Windows machine. Doesn't currently capture paste via mouse.
 
 ---
 
@@ -111,6 +107,8 @@ Because I don't have these keys on my keyboard.
 | `Ctrl` + `Alt` + `Left` | `{Media_Prev}` | previous track |
 | `Ctrl` + `Alt` + `Right` | `{Media_Next}` | next track |
 
+Keys are editable in `settings.ini`
+
 ---
 
 ### KeyboardTextManipulation
@@ -122,6 +120,8 @@ Enables these global hotkeys to change selected text.
 | `Ctrl` + `Alt` + `U` | uppercase |   |
 | `Ctrl` + `Alt` + `L` | lowercase |   |
 | `Ctrl` + `Alt` + `T` | title case | This Is An Example |
+| `Ctrl` + `Alt` + `C` | camel case | thisIsAnExample |
+| `Ctrl` + `Alt` + `P` | Pascal case | ThisIsAnExample |
 | `Ctrl` + `Alt` + `K` | kebab case | this-is-an-example |
 | `Ctrl` + `Alt` + `S` | snake case | this_is_an_example |
 | `Ctrl` + `Alt` + `&` | sarcasm case | tHIS is aN ExampLE |
@@ -139,7 +139,8 @@ Enables these global hotkeys to change selected text.
 | `Ctrl` + `Alt` + `Shift` + `-` | insert an m-dash | — |
 | `Ctrl` + `Alt` + `O` | insert the degrees symbol | ° |
 | `Ctrl` + `Alt` + `Q` | paste clipboard text with straight quotes | " ⋯ " |
-<!-- | `Ctrl` + `Alt` + `C` | camel case | ThisIsAnExample -->
+
+Keys are editable in `settings.ini`
 
 Note: works in Win11 except in Notepad as the Alt key forces the menu quick-keys to be revealed.
 
@@ -149,12 +150,16 @@ Note: works in Win11 except in Notepad as the Alt key forces the menu quick-keys
 
 Swap left and right mouse buttons. Handy for left-handed people, or those like me with intermittent RSI.
 
+`swapButtonsOnLoad=true` Apply swapped mouse buttons when the app loads.
+
 
 ---
 
 ### VolumeMouseWheel
 
 Use the mousewheel to change volume anywhere over the system icons and date/time part of the taskbar.
+
+`activateOnLoad=true` Enable the feature when the app loads.
 
 `step=3` The increment by which the volume will change.
 

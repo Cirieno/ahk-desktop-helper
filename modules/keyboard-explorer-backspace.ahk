@@ -1,18 +1,20 @@
 /**********************************************************
- * @name KeyboardExplorerDialogSlashes
- * @author RM
- * @file keyboard-explorer-dialog-slashes.module.ahk
+ * @type {AHKModule}
+ * @name Keyboard Explorer Backspace
+ * @author Rob McInnes (Cirieno)
+ * @file keyboard-explorer-backspace.ahk
  *********************************************************/
-; Replaces forward-slashes with back-slashes in Explorer-based windows
-;     and File dialogs, useful when working with LAMP paths in VSCode
+;
+; TODO: triple click to select all in any file open edit control (e.g. notepad, wordpad, etc.)
+; again, probably not useful in Win11, needs testing, so I've disabled it for now.
 
 
-class module__KeyboardExplorerDialogSlashes {
+class module__KeyboardExplorerBackspace {
 	__Init() {
-		this.moduleName := moduleName := "KeyboardExplorerDialogSlashes"
-		this.enabled := getIniVal(moduleName, "enabled", true)
+		this.moduleName := moduleName := "KeyboardExplorerBackspace"
+		this.enabled := IniUtils.getVal(moduleName, "enabled", true)
 		this.settings := {
-			activateOnLoad: getIniVal(moduleName, "active", false)
+			activateOnLoad: IniUtils.getVal(moduleName, "active", false)
 		}
 		this.states := {
 			active: null
@@ -21,7 +23,7 @@ class module__KeyboardExplorerDialogSlashes {
 			path: "TRAY\Keyboard",
 			items: [{
 				type: "item",
-				label: "Replace fwd slashes in File Explorer"
+				label: "Enable backspace in File Explorer"
 			}]
 		}
 	}
@@ -81,34 +83,23 @@ class module__KeyboardExplorerDialogSlashes {
 
 
 	setHotkeys(state) {
-		doPaste := ObjBindMethod(this, "doPaste")
+		doBackspace := ObjBindMethod(this, "doBackspace")
 
-		HotIf(this.checkCtrl)
-		Hotstring(":*?:/", "\", (state ? "on" : "off"))
-		Hotkey("^v", doPaste, (state ? "on" : "off"))
-		; OnMessage(0x0302, doPaste)    ; 0x0302 is WM_PASTE
-		; TODO: capture mouse paste events to exisiting windows?
-		HotIf()
+		HotIfWinActive("ahk_group explorerWindows")
+		Hotkey("BackSpace", doBackspace, (state ? "on" : "off"))
+		HotIfWinActive()
 	}
 
 
-	checkCtrl() {
-		try {
-			controls := ["Edit1", "Edit2"]
-			control := ControlGetClassNN(ControlGetFocus("A"))
-			return (WinActive("ahk_group explorerWindows") && controls.includes(control))
-		} catch Error as e {
-			return false
-		}
-	}
+	doBackspace(*) {
+		winHwnd := WinActive("A")
+		controlHwnd := ControlGetFocus("A")
+		classNN := ControlGetClassNN(controlHwnd)
 
-
-	doPaste(*) {
-		try {
-			clipboardSaved := RegExReplace(A_Clipboard, "S)[\\/]+", "\")
-			EditPaste(clipboardSaved, ControlGetFocus("A"))
-		} catch Error as e {
-			throw Error("Couldn't paste content to control")
+		if ["Edit1", "Edit2"].includes(classNN) {
+			ControlSend("{Backspace}", controlHwnd)
+		} else {
+			Send("!{Up}")
 		}
 	}
 

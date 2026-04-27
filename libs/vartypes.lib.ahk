@@ -1,3 +1,12 @@
+/**********************************************************
+ * @type {AHKLibrary}
+ * @name VarTypes Utils
+ * @author Rob McInnes (Cirieno)
+ * @file vartypes.lib.ahk
+ *********************************************************/
+
+
+#Include ".\constants.lib.ahk"
 #Include ".\Arrays.lib.ahk"
 #Include ".\Booleans.lib.ahk"
 #Include ".\Numbers.lib.ahk"
@@ -187,6 +196,7 @@ toBoolean(val, force := false) {
 /**
  * @param {any} val
  * @param {boolean} [debug=false] - tokenize non-stringable elements
+ * @returns {string}
  */
 toString(val, debug := false) {
 	funcName := "toString"
@@ -259,151 +269,3 @@ typeCompare(val1, val2, caseSense := false) {
 		return (!caseSense ? val1 = val2 : val1 == val2)
 	}
 }
-
-
-;------------------------------------------------
-; Constants
-;------------------------------------------------
-U_ellipsis := ellipsis := Chr(8230)
-U_newline := NL := "`n"
-
-
-/**
- * @type {integer}
- * @default - -1
- *
- * A trinary counterpart to true(1) and false(0)
- */
-U_ignore := ignore := -1
-
-
-U_msSecond := 1000
-U_msMinute := 60000
-U_msHour := 3600000
-U_msDay := 86400000
-
-
-; in the style of VBScript constants
-; https://ss64.com/vb/syntax-constants.html
-U_null := null := Chr(0)
-U_empty := ""
-U_integer := 2
-U_long := 3
-U_single := 4
-U_double := 5
-U_date := 7
-U_string := 8
-U_object := 9
-U_error := 10
-U_boolean := 11
-U_decimal := 14
-U_byte := 17
-U_hex := 18
-U_array := 8192
-
-
-GroupAdd("explorerWindows", "ahk_exe explorer.exe")
-GroupAdd("explorerWindows", "ahk_class CabinetWClass")
-GroupAdd("explorerWindows", "ahk_class ExploreWClass")
-GroupAdd("explorerWindows", "ahk_class Progman")
-GroupAdd("explorerWindows", "ahk_class WorkerW")
-GroupAdd("explorerWindows", "ahk_class #32770")
-
-
-; windows decoration styles
-WS_BORDER := 0x00800000
-WS_CAPTION := 0x00C00000
-WS_CHILD := 0x40000000
-WS_CHILDWINDOW := 0x40000000
-WS_CLIPCHILDREN := 0x02000000
-WS_CLIPSIBLINGS := 0x04000000
-WS_DISABLED := 0x08000000
-WS_DLGFRAME := 0x00400000
-WS_GROUP := 0x00020000
-WS_HSCROLL := 0x00100000
-WS_ICONIC := 0x20000000
-WS_MAXIMIZE := 0x01000000
-WS_MAXIMIZEBOX := 0x00010000
-WS_MINIMIZE := 0x20000000
-WS_MINIMIZEBOX := 0x00020000
-WS_OVERLAPPED := 0x00000000
-WS_POPUP := 0x80000000
-WS_SIZEBOX := 0x00040000
-WS_SYSMENU := 0x00080000
-WS_TABSTOP := 0x00010000
-WS_THICKFRAME := 0x00040000
-WS_TILED := 0x00000000
-WS_VISIBLE := 0x10000000
-WS_VSCROLL := 0x00200000
-WS_EX_ACCEPTFILES := 0x00000010
-WS_EX_APPWINDOW := 0x00040000
-WS_EX_CLIENTEDGE := 0x00000200
-WS_EX_COMPOSITED := 0x02000000
-WS_EX_CONTEXTHELP := 0x00000400
-WS_EX_CONTROLPARENT := 0x00010000
-WS_EX_DLGMODALFRAME := 0x00000001
-WS_EX_LAYERED := 0x00080000
-WS_EX_LAYOUTRTL := 0x00400000
-WS_EX_LEFT := 0x00000000
-WS_EX_LEFTSCROLLBAR := 0x00004000
-WS_EX_LTRREADING := 0x00000000
-WS_EX_MDICHILD := 0x00000040
-WS_EX_NOACTIVATE := 0x08000000
-WS_EX_NOINHERITLAYOUT := 0x00100000
-WS_EX_NOPARENTNOTIFY := 0x00000004
-WS_EX_NOREDIRECTIONBITMAP := 0x00200000
-WS_EX_RIGHT := 0x00001000
-WS_EX_RIGHTSCROLLBAR := 0x00000000
-WS_EX_RTLREADING := 0x00002000
-WS_EX_STATICEDGE := 0x00020000
-WS_EX_TOOLWINDOW := 0x00000080
-WS_EX_TOPMOST := 0x00000008
-WS_EX_TRANSPARENT := 0x00000020
-WS_EX_WINDOWEDGE := 0x00000100
-
-
-SM_CXSCREEN := 0
-SM_CYSCREEN := 1
-SM_CYCAPTION := 4
-SM_CXFULLSCREEN := 16
-SM_CYFULLSCREEN := 17
-SM_MOUSEPRESENT := 19
-SM_SWAPBUTTON := 23
-SM_CXSIZEFRAME := 32
-SM_CXMAXIMIZED := 61
-SM_CYMAXIMIZED := 62
-SM_NETWORK := 63
-SM_MOUSEWHEELPRESENT := 75
-
-
-GA_PARENT := 1
-
-
-; Strings.wrap modes
-SW_PARENTHESES := 1
-SW_SQUARE_BRACKETS := 2
-SW_BRACES := 3
-SW_ANGLE_BRACKETS := 4
-SW_DOUBLE_QUOTES := 5
-SW_SINGLE_QUOTES := 6
-SW_BACKTICKS := 7
-
-
-; Boolean.toString modes
-BTS_TRUE_FALSE := 2
-BTS_ON_OFF := 3
-BTS_YES_NO := 4
-BTS_ENABLED_DISABLED := 5
-BTS_ACTIVE_DEACTIVE := 6
-BTS_OPEN_CLOSED := 7
-BTS_UP_DOWN := 8
-BTS_IN_OUT := 9
-BTS_HIGH_LOW := 10
-BTS_POSITIVE_NEGATIVE := 11
-BTS_SUCCESS_FAILURE := 12
-BTS_PASS_FAIL := 13
-BTS_START_STOP := 14
-BTS_GOOD_BAD := 15
-
-
-WM_USER := 0x0400

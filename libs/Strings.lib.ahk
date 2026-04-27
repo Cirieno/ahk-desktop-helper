@@ -1,3 +1,11 @@
+/**********************************************************
+ * @type {AHKLibrary}
+ * @name Strings Utils
+ * @author Rob McInnes (Cirieno)
+ * @file Strings.lib.ahk
+ *********************************************************/
+
+
 global Strings := prototype__Strings()
 class prototype__Strings {
 	charAt(_string, index := 1, clamp := false) {

@@ -9,7 +9,7 @@
  * @param {number} min
  * @param {number} max
  * @param {boolean} [inclusive=true]
- * @return {boolean}
+ * @returns {boolean}
  */
 
 

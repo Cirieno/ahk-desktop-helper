@@ -8,7 +8,7 @@
  * @param {number} val
  * @param {number} min
  * @param {number} max
- * @return {number}
+ * @returns {number}
  */
 
 

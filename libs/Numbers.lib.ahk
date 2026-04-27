@@ -1,3 +1,11 @@
+/**********************************************************
+ * @type {AHKLibrary}
+ * @name Numbers Utils
+ * @author Rob McInnes (Cirieno)
+ * @file Numbers.lib.ahk
+ *********************************************************/
+
+
 global Numbers := prototype__Numbers()
 class prototype__Numbers {
 	between(_number, min, max, inclusive := true, clamp := false) {
@@ -55,7 +63,7 @@ class prototype__Numbers {
  * @param {number} min
  * @param {number} max
  * @param {boolean} [inclusive=true]
- * @return {boolean}
+ * @returns {boolean}
  */
 NumBetween := ObjBindMethod(Numbers, "between")
 
@@ -67,6 +75,6 @@ NumBetween := ObjBindMethod(Numbers, "between")
  * @param {number} _number
  * @param {number} min
  * @param {number} max
- * @return {number}
+ * @returns {number}
  */
 NumClamp := ObjBindMethod(Numbers, "clamp")

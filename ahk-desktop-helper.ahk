@@ -1,5 +1,5 @@
 ;// Compile-time settings for "File Properties > Details" panel
-;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.6.0, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
+;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.7.0, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
 ;@ Ahk2Exe-ExeName C:\Program Files (portable)\%U_PName%\%U_PName%.exe
 ;@Ahk2Exe-ExeName %A_ScriptDir%\releases\%U_PVersion%\%U_PName% x64.exe
 ;@Ahk2Exe-SetCompanyName %U_PCompany%
@@ -34,20 +34,24 @@ SetTitleMatchMode("slow")
 SetWorkingDir(A_ScriptDir)
 
 
+#Include ".\libs\vartypes.lib.ahk"
+#Include ".\libs\hotkey_utils.lib.ahk"
+#Include ".\libs\ini_utils.lib.ahk"
 #Include ".\libs\misc_utils.lib.ahk"
 #Include ".\libs\shadow_menu.lib.ahk"
-#Include ".\libs\vartypes.lib.ahk"
 
 
 global __DEBUGGING := (A_IsCompiled ? false : true)    ; use true to override compiled setting
 global __Modules := Map()
 global __NativeMenus := Map()
 global __ShadowMenu := { menus: Map(), items: Map() }
+
+
 if (__Settings := {}) {
 	__Settings.app := {
 		name: "AHK Desktop Helper",
-		author: { name: "Rob McInnes", email: "rob.mcinnes" . Chr(64) . "cirieno.co.uk", company: "Cirieno Ltd" },
-		build: { version: "2.6.0", date: "2026-04", repo: "github.com/cirieno/ahk-desktop-helper" }
+		author: { name: "Rob McInnes", email: "rob.mcinnes" . U_atSign . "cirieno.co.uk", company: "Cirieno Ltd" },
+		build: { version: "2.7.0", date: "2026-04", repo: "github.com/cirieno/ahk-desktop-helper" }
 	}
 	__Settings.settingsFilePath := A_WorkingDir . "\settings.ini"
 	__Settings.app.tray := {
@@ -57,12 +61,12 @@ if (__Settings := {}) {
 		includeSubmenuIcons: false
 	}
 	__Settings.app.environment := {
-		company: getIniVal("Environment", "company", ""),
-		user: getIniVal("Environment", "user", A_UserName),
+		company: IniUtils.getVal("Environment", "company", ""),
+		user: IniUtils.getVal("Environment", "user", A_UserName),
 		computerName: A_ComputerName,
 		domain: EnvGet("USERDOMAIN"),
 		architecture: (A_Is64bitOS ? "x64" : "x86"),
-		startWithWindows: getIniVal("Environment", "startWithWindows", false),
+		startWithWindows: IniUtils.getVal("Environment", "startWithWindows", false),
 		debugging: __DEBUGGING
 	}
 	__Settings.apps := {
@@ -71,16 +75,16 @@ if (__Settings := {}) {
 }
 
 
-#Include "*i .\modules\autocorrect.module.ahk"
-#Include "*i .\modules\desktop-gather-windows.module.ahk"
-#Include "*i .\modules\desktop-hide-media-popup.module.ahk"
-#Include "*i .\modules\desktop-hide-peek-button.module.ahk"
-#Include "*i .\modules\keyboard-explorer-backspace.module.ahk"
-#Include "*i .\modules\keyboard-explorer-dialog-slashes.module.ahk"
-#Include "*i .\modules\keyboard-media-keys.module.ahk"
-#Include "*i .\modules\keyboard-text-manipulation.module.ahk"
-#Include "*i .\modules\mouse-swap-buttons.module.ahk"
-#Include "*i .\modules\volume-mousewheel.module.ahk"
+#Include "*i .\modules\autocorrect.ahk"
+#Include "*i .\modules\desktop-gather-windows.ahk"
+#Include "*i .\modules\desktop-hide-media-popup.ahk"
+#Include "*i .\modules\desktop-hide-peek-button.ahk"
+#Include "*i .\modules\keyboard-explorer-backspace.ahk"
+#Include "*i .\modules\keyboard-file-dialog-slashes.ahk"
+#Include "*i .\modules\keyboard-media-keys.ahk"
+#Include "*i .\modules\keyboard-text-manipulation.ahk"
+#Include "*i .\modules\mouse-swap-buttons.ahk"
+#Include "*i .\modules\volume-mousewheel.ahk"
 
 
 drawMenu("before")
@@ -299,7 +303,7 @@ loadModules() {
 	__Modules["DesktopGatherWindows"] := module__DesktopGatherWindows()
 
 	__Modules["KeyboardExplorerBackspace"] := module__KeyboardExplorerBackspace()
-	__Modules["KeyboardExplorerDialogSlashes"] := module__KeyboardExplorerDialogSlashes()
+	__Modules["KeyboardFileDialogSlashes"] := module__KeyboardFileDialogSlashes()
 	__Modules["KeyboardMediaKeys"] := module__KeyboardMediaKeys()
 	__Modules["KeyboardTextManipulation"] := module__KeyboardTextManipulation()
 
@@ -327,7 +331,7 @@ doSettingsFileUpdate() {
 	SFP := __Settings.settingsFilePath
 
 	moduleName := "App"
-	moduleExists := iniSectionExists(moduleName)
+	moduleExists := IniUtils.sectionExists(moduleName)
 	IniWrite(SA.name, SFP, moduleName, "name")
 	IniWrite(SAB.version, SFP, moduleName, "version")
 	if (!moduleExists) {
@@ -335,7 +339,7 @@ doSettingsFileUpdate() {
 	}
 
 	moduleName := "Environment"
-	moduleExists := iniSectionExists(moduleName)
+	moduleExists := IniUtils.sectionExists(moduleName)
 	IniWrite(toString(SAE.startWithWindows), SFP, moduleName, "startWithWindows")
 	IniWrite(toString(false), SFP, moduleName, "enableExtendedRightMouseClick")
 	if (!moduleExists) {
@@ -344,7 +348,7 @@ doSettingsFileUpdate() {
 
 	; TODO: move this to a module
 	moduleName := "CloseAppsWithCtrlW"
-	moduleExists := iniSectionExists(moduleName)
+	moduleExists := IniUtils.sectionExists(moduleName)
 	IniWrite(toString(false), SFP, moduleName, "enabled")
 	IniWrite("[`"notepad.exe`",`"vlc.exe`"]", SFP, moduleName, "apps")
 	if (!moduleExists) {
@@ -354,7 +358,7 @@ doSettingsFileUpdate() {
 	for (key, module in __Modules) {
 		if (module.hasMethod("updateSettingsFile")) {
 			moduleName := module.moduleName
-			moduleExists := iniSectionExists(moduleName)
+			moduleExists := IniUtils.sectionExists(moduleName)
 			module.updateSettingsFile()
 			if (!moduleExists) {
 				FileAppend("`n", SFP)
@@ -387,10 +391,10 @@ checkStartWithWindows() {
 
 
 checkCloseAppsWithCtrlW() {
-	global closeAppsWithCtrlW_enabled := getIniVal("CloseAppsWithCtrlW", "enabled", false)
+	global closeAppsWithCtrlW_enabled := IniUtils.getVal("CloseAppsWithCtrlW", "enabled", false)
 	if (closeAppsWithCtrlW_enabled) {
 		if (doCloseAppsWithCtrlWGroupAdd := true) {
-			apps := getIniVal("closeAppsWithCtrlW", "apps", [])
+			apps := IniUtils.getVal("closeAppsWithCtrlW", "apps", [])
 			for (i, app in apps) {
 				; TODO: use StrUnwrap()
 				app := Trim(StrReplace(app, "`"", ""))
@@ -407,7 +411,7 @@ $^w:: WinClose("A")
 
 
 checkExtendedRightMouseClick() {
-	global extendedRightMouseClick_enabled := getIniVal("Environment", "enableExtendedRightMouseClick", false)
+	global extendedRightMouseClick_enabled := IniUtils.getVal("Environment", "enableExtendedRightMouseClick", false)
 }
 checkExtendedRightMouseClick()
 #HotIf (WinActive("ahk_group explorerWindows") && extendedRightMouseClick_enabled)

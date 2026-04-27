@@ -1,10 +1,11 @@
 /**********************************************************
- * @name DesktopGatherWindows
- * @author RM
- * @file desktop-gather-windows.module.ahk
+ * @type {AHKModule}
+ * @name Desktop Gather Windows
+ * @author Rob McInnes (Cirieno)
+ * @file desktop-gather-windows.ahk
  *********************************************************/
-; Because sometimes windows get stuck offscreen and you can't get them back,
-;     or the window size goes a bit wonky
+;
+; Because sometimes windows get stuck offscreen and you can't get them back, or the window size goes a bit wonky
 ; This script will bring windows back to the main monitor
 ; It also resizes them if they are resizable
 ; It ignores minimized windows and certain processes and titles
@@ -15,9 +16,9 @@
 class module__DesktopGatherWindows {
 	__Init() {
 		this.moduleName := moduleName := "DesktopGatherWindows"
-		this.enabled := getIniVal(moduleName, "enabled", true)
+		this.enabled := IniUtils.getVal(moduleName, "enabled", true)
 		this.settings := {
-			resizeOnMove: getIniVal(moduleName, "resizeOnMove", true)
+			resizeOnMove: IniUtils.getVal(moduleName, "resizeOnMove", true)
 		}
 		this.states := {}
 		this.settings.menu := {

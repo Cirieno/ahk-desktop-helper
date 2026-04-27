@@ -1,16 +1,16 @@
 /**********************************************************
  * @name AutoCorrect
- * @author RM
- * @file autocorrect.module.ahk
+ * @author Rob McInnes (Cirieno)
+ * @file autocorrect.ahk
  *********************************************************/
 
 
 class module__AutoCorrect {
 	__Init() {
 		this.moduleName := moduleName := "AutoCorrect"
-		this.enabled := getIniVal(moduleName, "enabled", true)
+		this.enabled := IniUtils.getVal(moduleName, "enabled", true)
 		this.settings := {
-			activateOnLoad: getIniVal(moduleName, "active", ["user"]),
+			activateOnLoad: IniUtils.getVal(moduleName, "active", ["user"]),
 			hotstrings: Map()
 		}
 		this.states := {

@@ -1,8 +1,10 @@
 /**********************************************************
- * @name DesktopHideMediaPopup
- * @author RM
- * @file desktop-hide-media-popup.module.ahk
+ * @type {AHKModule}
+ * @name Desktop Hide Media Popup
+ * @author Rob McInnes (Cirieno)
+ * @file desktop-hide-media-popup.ahk
  *********************************************************/
+;
 ; Checks for external changes every 5 seconds
 ; Can be forced to override external changes
 ; NOTE: this also hides the brightness popup...
@@ -11,11 +13,11 @@
 class module__DesktopHideMediaPopup {
 	__Init() {
 		this.moduleName := moduleName := "DesktopHideMediaPopup"
-		this.enabled := getIniVal(moduleName, "enabled", true)
+		this.enabled := IniUtils.getVal(moduleName, "enabled", true)
 		this.settings := {
-			activateOnLoad: getIniVal(moduleName, "active", ignore),
-			resetOnExit: getIniVal(moduleName, "resetOnExit", true),
-			allowExternalChange: getIniVal(moduleName, "allowExternalChange", true),
+			activateOnLoad: IniUtils.getVal(moduleName, "active", ignore),
+			resetOnExit: IniUtils.getVal(moduleName, "resetOnExit", true),
+			allowExternalChange: IniUtils.getVal(moduleName, "allowExternalChange", true),
 			hWnd: null
 		}
 		this.states := {

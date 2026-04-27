@@ -1,3 +1,11 @@
+/**********************************************************
+ * @type {AHKLibrary}
+ * @name Arrays Utils
+ * @author Rob McInnes (Cirieno)
+ * @file Arrays.lib.ahk
+ *********************************************************/
+
+
 global Arrays := prototype__Arrays()
 class prototype__Arrays extends Array {
 	at(_array?, index?, clamp?) {

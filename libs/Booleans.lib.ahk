@@ -1,3 +1,11 @@
+/**********************************************************
+ * @type {AHKLibrary}
+ * @name Booleans Utils
+ * @author Rob McInnes (Cirieno)
+ * @file Booleans.lib.ahk
+ *********************************************************/
+
+
 global Booleans := prototype__Booleans()
 class prototype__Booleans {
 	__New() {

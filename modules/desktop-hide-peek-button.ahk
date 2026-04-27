@@ -1,21 +1,24 @@
 /**********************************************************
- * @name DesktopHidePeekButton
- * @author RM
- * @file desktop-hide-peek-button.module.ahk
+ * @type {AHKModule}
+ * @name Desktop Hide Peek Button
+ * @author Rob McInnes (Cirieno)
+ * @file desktop-hide-peek-button.ahk
  *********************************************************/
+;
 ; Removes the annoying little button at the end of the taskbar
 ; Checks for external changes every 5 seconds
 ; Can be forced to override external changes
+; Currently removed as not useful in Win11
 
 
 class module__DesktopHidePeekButton {
 	__Init() {
 		this.moduleName := moduleName := "DesktopHidePeekButton"
-		this.enabled := getIniVal(moduleName, "enabled", true)
+		this.enabled := IniUtils.getVal(moduleName, "enabled", true)
 		this.settings := {
-			activateOnLoad: getIniVal(moduleName, "active", ignore),
-			resetOnExit: getIniVal(moduleName, "resetOnExit", true),
-			allowExternalChange: getIniVal(moduleName, "allowExternalChange", true),
+			activateOnLoad: IniUtils.getVal(moduleName, "active", ignore),
+			resetOnExit: IniUtils.getVal(moduleName, "resetOnExit", true),
+			allowExternalChange: IniUtils.getVal(moduleName, "allowExternalChange", true),
 			hWnd: null
 		}
 		this.states := {
