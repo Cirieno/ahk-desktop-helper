@@ -14,7 +14,7 @@
 class module__DesktopHidePeekButton {
 	__Init() {
 		this.moduleName := moduleName := "DesktopHidePeekButton"
-		this.enabled := IniUtils.getVal(moduleName, "enabled", true)
+		this.enabled := IniUtils.getVal(moduleName, "enabled", false)
 		this.settings := {
 			activateOnLoad: IniUtils.getVal(moduleName, "active", ignore),
 			resetOnExit: IniUtils.getVal(moduleName, "resetOnExit", true),

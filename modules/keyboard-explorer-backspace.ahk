@@ -12,7 +12,7 @@
 class module__KeyboardExplorerBackspace {
 	__Init() {
 		this.moduleName := moduleName := "KeyboardExplorerBackspace"
-		this.enabled := IniUtils.getVal(moduleName, "enabled", true)
+		this.enabled := IniUtils.getVal(moduleName, "enabled", false)
 		this.settings := {
 			activateOnLoad: IniUtils.getVal(moduleName, "active", false)
 		}

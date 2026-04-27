@@ -37,4 +37,40 @@ class HotkeyUtils {
 			return fallbackHotkey
 		}
 	}
+
+
+	/**
+	 * @param {string} hotkeyName
+	 * @returns {string}
+	 */
+	static formatHotkeyForDisplay(hotkeyName) {
+		parts := []
+		display := StrReplace(hotkeyName, "$", "")
+
+		if (InStr(display, "^")) {
+			parts.Push("Ctrl")
+			display := StrReplace(display, "^", "")
+		}
+
+		if (InStr(display, "!")) {
+			parts.Push("Alt")
+			display := StrReplace(display, "!", "")
+		}
+
+		if (InStr(display, "+")) {
+			parts.Push("Shift")
+			display := StrReplace(display, "+", "")
+		}
+
+		if (InStr(display, "#")) {
+			parts.Push("Win")
+			display := StrReplace(display, "#", "")
+		}
+
+		if (!isEmpty(display)) {
+			parts.Push(display)
+		}
+
+		return parts.Join("+")
+	}
 }

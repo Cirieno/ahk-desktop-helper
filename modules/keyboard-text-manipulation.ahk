@@ -17,9 +17,11 @@ class module__KeyboardTextManipulation {
 		this.moduleName := moduleName := "KeyboardTextManipulation"
 		this.settings := {
 			isEnabled: IniUtils.getVal(moduleName, "enabled", true),
-			activateOnLoad: IniUtils.getVal(moduleName, "activateOnLoad", false),
+			enableKeyboardShortcutsOnLoad: IniUtils.getVal(moduleName, "enableKeyboardShortcutsOnLoad", false),
+			enableTextMenuOnLoad: IniUtils.getVal(moduleName, "enableTextMenuOnLoad", true),
 			sarcasmCase: IniUtils.getVal(moduleName, "sarcasmCase", "random"),
 			defaultHotkeys: {
+				textManipulationMenu: "$^!M",
 				upperCase: "$^!U",
 				lowerCase: "$^!L",
 				titleCase: "$^!T",
@@ -57,17 +59,91 @@ class module__KeyboardTextManipulation {
 		}
 		this.state := {
 			isActive: null,
+			isPopupMenuHotkeyActive: null,
 			onTextManipulationChangeCallback: null,
-			hotkeys: Map()
+			hotkeys: Map(),
+			popupMenu: null
 		}
 		this.ui := {
 			menu: {
-				parentPath: "TRAY\Keyboard-2",
+				parentPath: "TRAY\Keyboard-2\Text Manipulation",
 				entries: [{
 					type: "item",
-					label: "Text manipulation shortcuts"
+					label: "Enable keyboard shortcuts"
+				}, {
+					type: "item",
+					labelBase: "Enable popup menu",
+					label: "Enable popup menu"
 				}]
-			}
+			},
+			popupMenuItems: [{
+				type: "header",
+				label: "Text Manipulation"
+			}, {
+				type: "separator"
+			}, {
+				type: "submenu",
+				label: "Formatting",
+				entries: [{
+					bindingName: "upperCase",
+					label: "UPPER CASE"
+				}, {
+					bindingName: "lowerCase",
+					label: "lower case"
+				}, {
+					bindingName: "titleCase",
+					label: "Title Case"
+				}, {
+					bindingName: "camelCase",
+					label: "camelCase"
+				}, {
+					bindingName: "pascalCase",
+					label: "PascalCase"
+				}, {
+					bindingName: "kebabCase",
+					label: "kebab-case"
+				}, {
+					bindingName: "snakeCase",
+					label: "snake_case"
+				}, {
+					bindingName: "sarcasmCase",
+					label: "SaRcAsM cAsE"
+				}, {
+					bindingName: "joinLines",
+					label: "Join Lines"
+				}]
+			}, {
+				type: "submenu",
+				label: "Wrapping",
+				entries: [{
+					bindingName: "singleQuotes",
+					label: "Single Quotes"
+				}, {
+					bindingName: "doubleQuotes",
+					label: "Double Quotes"
+				}, {
+					bindingName: "singleCurlyQuotes",
+					label: "Single Curly Quotes"
+				}, {
+					bindingName: "doubleCurlyQuotes",
+					label: "Double Curly Quotes"
+				}, {
+					bindingName: "backticks",
+					label: "Backticks"
+				}, {
+					bindingName: "parenthesesOpen",
+					label: "Parentheses"
+				}, {
+					bindingName: "squareBracketsOpen",
+					label: "Square Brackets"
+				}, {
+					bindingName: "curlyBracesOpen",
+					label: "Curly Braces"
+				}, {
+					bindingName: "angleBracketsOpen",
+					label: "Angle Brackets"
+				}]
+			}]
 		}
 	}
 
@@ -80,14 +156,18 @@ class module__KeyboardTextManipulation {
 			return
 		}
 
-		this.state.isActive := this.settings.activateOnLoad
+		this.state.isActive := this.settings.enableKeyboardShortcutsOnLoad
+		this.state.isPopupMenuHotkeyActive := this.settings.enableTextMenuOnLoad
 		this.state.onTextManipulationChangeCallback := ObjBindMethod(this, "onTextManipulationChange")
 		this.state.hotkeys := this.getResolvedHotkeys()
+		this.ui.menu.entries[2].label := this.getPopupLauncherMenuLabel()
+		this.state.popupMenu := this.buildPopupMenu()
 
 		thisMenu := this.drawMenu()
 		this.syncMenuItem(thisMenu)
 
-		this.setHotkeysEnabled(this.state.isActive)
+		this.setTextManipulationHotkeysEnabled(this.state.isActive)
+		this.setPopupMenuHotkeyEnabled(this.state.isPopupMenuHotkeyActive)
 	}
 
 
@@ -96,11 +176,13 @@ class module__KeyboardTextManipulation {
 	 */
 	__Delete() {
 		if (IsObject(this.state.onTextManipulationChangeCallback)) {
-			this.setHotkeysEnabled(false)
+			this.setTextManipulationHotkeysEnabled(false)
+			this.setPopupMenuHotkeyEnabled(false)
 			this.state.onTextManipulationChangeCallback := null
 		}
 
 		this.state.hotkeys := Map()
+		this.state.popupMenu := null
 	}
 
 
@@ -149,7 +231,13 @@ class module__KeyboardTextManipulation {
 			case this.ui.menu.entries[1].label:
 				this.state.isActive := !this.state.isActive
 				this.syncMenuItem(menu)
-				this.setHotkeysEnabled(this.state.isActive)
+				this.setTextManipulationHotkeysEnabled(this.state.isActive)
+				this.refreshPopupMenu()
+				this.updateSettingsFile()
+			case this.ui.menu.entries[2].label:
+				this.state.isPopupMenuHotkeyActive := !this.state.isPopupMenuHotkeyActive
+				this.syncMenuItem(menu)
+				this.setPopupMenuHotkeyEnabled(this.state.isPopupMenuHotkeyActive)
 				this.updateSettingsFile()
 		}
 	}
@@ -160,9 +248,12 @@ class module__KeyboardTextManipulation {
 	 * @returns {void}
 	 */
 	syncMenuItem(menu) {
-		label := this.ui.menu.entries[1].label
-		(this.state.isActive ? menu.Check(label) : menu.Uncheck(label))
-		menu.Enable(label)
+		toggleLabel := this.ui.menu.entries[1].label
+		popupLabel := this.ui.menu.entries[2].label
+		(this.state.isActive ? menu.Check(toggleLabel) : menu.Uncheck(toggleLabel))
+		(this.state.isPopupMenuHotkeyActive ? menu.Check(popupLabel) : menu.Uncheck(popupLabel))
+		menu.Enable(toggleLabel)
+		menu.Enable(popupLabel)
 	}
 
 
@@ -170,10 +261,28 @@ class module__KeyboardTextManipulation {
 	 * @param {boolean} state
 	 * @returns {void}
 	 */
-	setHotkeysEnabled(state) {
+	setTextManipulationHotkeysEnabled(state) {
 		for (bindingName, hotkeyName in this.state.hotkeys) {
+			if (bindingName == "textManipulationMenu") {
+				continue
+			}
+
 			Hotkey(hotkeyName, this.state.onTextManipulationChangeCallback, (state ? "on" : "off"))
 		}
+	}
+
+
+	/**
+	 * @param {boolean} state
+	 * @returns {void}
+	 */
+	setPopupMenuHotkeyEnabled(state) {
+		hotkeyName := this.state.hotkeys["textManipulationMenu"]
+		if (isEmpty(hotkeyName)) {
+			return
+		}
+
+		Hotkey(hotkeyName, this.state.onTextManipulationChangeCallback, (state ? "on" : "off"))
 	}
 
 
@@ -186,6 +295,21 @@ class module__KeyboardTextManipulation {
 		if (isEmpty(bindingName)) {
 			return
 		}
+
+		if (bindingName == "textManipulationMenu") {
+			this.showPopupMenu()
+			return
+		}
+
+		this.runBindingAction(bindingName)
+	}
+
+
+	/**
+	 * @param {string} bindingName
+	 * @returns {void}
+	 */
+	runBindingAction(bindingName) {
 
 		switch (bindingName) {
 			case "upperCase":
@@ -233,6 +357,108 @@ class module__KeyboardTextManipulation {
 			case "quoteClipboardText":
 				this.pasteQuotedClipboard()
 		}
+	}
+
+
+	/**
+	 * @returns {Menu}
+	 */
+	buildPopupMenu() {
+		popupMenu := Menu()
+		this.addPopupMenuEntries(popupMenu, this.ui.popupMenuItems)
+
+		return popupMenu
+	}
+
+
+	/**
+	 * @returns {void}
+	 */
+	refreshPopupMenu() {
+		this.state.popupMenu := this.buildPopupMenu()
+	}
+
+
+	/**
+	 * @param {Menu} menuObj
+	 * @param {Array} entries
+	 * @returns {void}
+	 */
+	addPopupMenuEntries(menuObj, entries) {
+		headerHandler := ObjBindMethod(this, "onPopupMenuHeadingClick")
+
+		for (i, item in entries) {
+			if (item.HasOwnProp("type") && ((item.type == "separator") || (item.type == "---"))) {
+				menuObj.Add()
+				continue
+			}
+
+			if (item.HasOwnProp("type") && (item.type == "header")) {
+				menuObj.Add(item.label, headerHandler)
+				menuObj.Default := item.label
+				continue
+			}
+
+			if (item.HasOwnProp("type") && (item.type == "submenu")) {
+				childMenu := Menu()
+				this.addPopupMenuEntries(childMenu, item.entries)
+				menuObj.Add(item.label, childMenu)
+				continue
+			}
+
+			label := this.formatPopupMenuLabel(item.label, item.bindingName)
+			menuObj.Add(label, ObjBindMethod(this, "onPopupMenuItemClick", item.bindingName))
+		}
+	}
+
+
+	/**
+	 * @returns {void}
+	 */
+	showPopupMenu() {
+		if (!isMenu(this.state.popupMenu)) {
+			return
+		}
+
+		this.state.popupMenu.Show()
+	}
+
+
+	/**
+	 * @param {string} bindingName
+	 * @returns {void}
+	 */
+	onPopupMenuItemClick(bindingName, *) {
+		this.runBindingAction(bindingName)
+	}
+
+
+	/**
+	 * @returns {void}
+	 */
+	onPopupMenuHeadingClick(*) {
+	}
+
+
+	/**
+	 * @param {string} englishLabel
+	 * @param {string} bindingName
+	 * @returns {string}
+	 */
+	formatPopupMenuLabel(englishLabel, bindingName) {
+		if (!this.state.isActive) {
+			return englishLabel
+		}
+
+		return englishLabel . " (" . HotkeyUtils.formatHotkeyForDisplay(this.state.hotkeys[bindingName]) . ")"
+	}
+
+
+	/**
+	 * @returns {string}
+	 */
+	getPopupLauncherMenuLabel() {
+		return this.ui.menu.entries[2].labelBase . " (" . HotkeyUtils.formatHotkeyForDisplay(this.state.hotkeys["textManipulationMenu"]) . ")"
 	}
 
 
@@ -556,7 +782,8 @@ class module__KeyboardTextManipulation {
 
 		try {
 			IniWrite(toString(this.settings.isEnabled), _S, this.moduleName, "enabled")
-			IniWrite(toString(this.state.isActive), _S, this.moduleName, "activateOnLoad")
+			IniWrite(toString(this.state.isActive), _S, this.moduleName, "enableKeyboardShortcutsOnLoad")
+			IniWrite(toString(this.state.isPopupMenuHotkeyActive), _S, this.moduleName, "enableTextMenuOnLoad")
 			IniWrite(toString(this.settings.sarcasmCase), _S, this.moduleName, "sarcasmCase")
 			for (bindingName, hotkeyName in this.settings.hotkeys.OwnProps()) {
 				IniWrite(hotkeyName, _S, this.moduleName, this.settings.hotkeySettingKeys.%bindingName%)

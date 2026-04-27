@@ -13,7 +13,7 @@
 class module__DesktopHideMediaPopup {
 	__Init() {
 		this.moduleName := moduleName := "DesktopHideMediaPopup"
-		this.enabled := IniUtils.getVal(moduleName, "enabled", true)
+		this.enabled := IniUtils.getVal(moduleName, "enabled", false)
 		this.settings := {
 			activateOnLoad: IniUtils.getVal(moduleName, "active", ignore),
 			resetOnExit: IniUtils.getVal(moduleName, "resetOnExit", true),

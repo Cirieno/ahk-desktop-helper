@@ -77,9 +77,9 @@ if (__Settings := {}) {
 
 #Include "*i .\modules\autocorrect.ahk"
 #Include "*i .\modules\desktop-gather-windows.ahk"
-#Include "*i .\modules\desktop-hide-media-popup.ahk"
-#Include "*i .\modules\desktop-hide-peek-button.ahk"
-#Include "*i .\modules\keyboard-explorer-backspace.ahk"
+; #Include "*i .\modules\desktop-hide-media-popup.ahk"
+; #Include "*i .\modules\desktop-hide-peek-button.ahk"
+; #Include "*i .\modules\keyboard-explorer-backspace.ahk"
 #Include "*i .\modules\keyboard-file-dialog-slashes.ahk"
 #Include "*i .\modules\keyboard-media-keys.ahk"
 #Include "*i .\modules\keyboard-text-manipulation.ahk"
@@ -297,12 +297,12 @@ showAboutDialog() {
 loadModules() {
 	__Modules["AutoCorrect"] := module__AutoCorrect()
 
-	__Modules["DesktopHideMediaPopup"] := module__DesktopHideMediaPopup()
-	__Modules["DesktopHidePeekButton"] := module__DesktopHidePeekButton()
-	setMenuItem("---", "TRAY\Desktop")
+	; __Modules["DesktopHideMediaPopup"] := module__DesktopHideMediaPopup()
+	; __Modules["DesktopHidePeekButton"] := module__DesktopHidePeekButton()
+	; setMenuItem("---", "TRAY\Desktop")
 	__Modules["DesktopGatherWindows"] := module__DesktopGatherWindows()
 
-	__Modules["KeyboardExplorerBackspace"] := module__KeyboardExplorerBackspace()
+	; __Modules["KeyboardExplorerBackspace"] := module__KeyboardExplorerBackspace()
 	__Modules["KeyboardFileDialogSlashes"] := module__KeyboardFileDialogSlashes()
 	__Modules["KeyboardMediaKeys"] := module__KeyboardMediaKeys()
 	__Modules["KeyboardTextManipulation"] := module__KeyboardTextManipulation()

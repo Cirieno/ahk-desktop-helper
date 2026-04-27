@@ -9,15 +9,15 @@ Written in AutoHotkey v2, the script can either be run as-is or compiled into an
 
 Each enhancement is presented via its own module which can be enabled via `settings.ini`. Some modules can be auto-activated when loading the app. Click `Settings > Save current config` to save the current states which will be active on load in the future.
 
-Some common module options:
+<!-- Some common module options: -->
 
 `enabled=true` Make the module available to the app.
 
-`active=true` or `active=[x,y]` The module or module items will be automatically activated on load.
+<!-- `active=true` or `active=[x,y]` The module or module items will be automatically activated on load. -->
 
-`allowExternalChange=true` Allow changes to this setting via other apps or the Control Panel.
+<!-- `allowExternalChange=true` Allow changes to this setting via other apps or the Control Panel. -->
 
-`resetOnExit=true` Reset to the state that was active when AHK-DH was loaded.
+<!-- `resetOnExit=true` Reset to the state that was active when AHK-DH was loaded. -->
 
 ---
 
@@ -25,7 +25,7 @@ Some common module options:
 
 `startWithWindows=false` Creates a shortcut in the user's startup folder
 
-`enableExtendedRightMouseClick=false` Always send a Shift + right-click in Explorer-based windows, which reveals extra options in Explorer's right-click context menu.
+<!-- `enableExtendedRightMouseClick=false` Always send a Shift + right-click in Explorer-based windows, which reveals extra options in Explorer's right-click context menu. -->
 
 ---
 
@@ -62,27 +62,27 @@ NB: I keep tinkering with `default.autocorrect.txt` so don't make changes to thi
 
 ---
 
-### CloseAppsWithCtrlW
+<!-- ### CloseAppsWithCtrlW -->
 
-A list of apps that you want to close with the Ctrl+W shortcut.
+<!-- A list of apps that you want to close with the Ctrl+W shortcut. -->
 
-`apps=["notepad.exe","vlc.exe"]` Add your own apps to this list. Path not required.
+<!-- `apps=["notepad.exe","vlc.exe"]` Add your own apps to this list. Path not required. -->
 
----
+<!-- --- -->
 
-### DesktopGatherWindows
+<!-- ### DesktopGatherWindows -->
 
-Bring all windows to the main monitor and resize them if possible. Handy for when a window opens outside the monitor workspace.
+<!-- Bring all windows to the main monitor and resize them if possible. Handy for when a window opens outside the monitor workspace. -->
 
-`resizeOnMove=true` Resize the window if possible.
+<!-- `resizeOnMove=true` Resize the window if possible. -->
 
----
+<!-- --- -->
 
-### DesktopHideMediaPopup
+<!-- ### DesktopHideMediaPopup -->
 
-Hide the OSD volume popup. NB: this also hides the brightness popup.
+<!-- Hide the OSD volume popup. NB: this also hides the brightness popup. -->
 
----
+<!-- --- -->
 
 <!-- ### DesktopHidePeekButton -->
 <!-- Hide the small Desktop Peek button found at the end of the taskbar. -->
@@ -102,18 +102,21 @@ Converts forward-slashes and multiple backslashes to a single back-slash when en
 
 Because I don't have these keys on my keyboard.
 
+Keys are editable in `settings.ini`
+
 | Keys | Mapped to | Function |
 | --- | --- | --- |
 | `Ctrl` + `Alt` + `Left` | `{Media_Prev}` | previous track |
 | `Ctrl` + `Alt` + `Right` | `{Media_Next}` | next track |
 
-Keys are editable in `settings.ini`
 
 ---
 
 ### KeyboardTextManipulation
 
 Enables these global hotkeys to change selected text.
+
+Keys are editable in `settings.ini`
 
 | Keys | Function | Example |
 | --- | --- | --- |
@@ -140,9 +143,7 @@ Enables these global hotkeys to change selected text.
 | `Ctrl` + `Alt` + `O` | insert the degrees symbol | ° |
 | `Ctrl` + `Alt` + `Q` | paste clipboard text with straight quotes | " ⋯ " |
 
-Keys are editable in `settings.ini`
-
-Note: works in Win11 except in Notepad as the Alt key forces the menu quick-keys to be revealed.
+There is also a menu option to enable hotkeys `Ctrl` + `Alt` + `M` to show a pop-up menu with options for formatting selected text.
 
 ---
 
@@ -182,3 +183,9 @@ https://en.wikipedia.org/wiki/Commonly_misspelled_English_words
 https://web.archive.org/web/20190310225422/https://en.wiktionary.org/wiki/Appendix:English_words_with_diacritics
 
 https://github.com/cdelahousse/Autocorrect-AutoHotKey
+
+---
+
+## Copilot
+
+The original code up to v2.5-ish was written by hand, but I've used Copilot (GPT-5.4) to do a lot of heavy lifting since then.
