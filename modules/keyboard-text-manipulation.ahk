@@ -24,6 +24,7 @@ class module__KeyboardTextManipulation {
 				textManipulationMenu: "$^!M",
 				upperCase: "$^!U",
 				lowerCase: "$^!L",
+				l33tSpeak: "$^!3",
 				titleCase: "$^!T",
 				camelCase: "$^!C",
 				pascalCase: "$^!P",
@@ -90,6 +91,9 @@ class module__KeyboardTextManipulation {
 				}, {
 					bindingName: "lowerCase",
 					label: "lower case"
+				}, {
+					bindingName: "l33tSpeak",
+					label: "L33tSpeak"
 				}, {
 					bindingName: "titleCase",
 					label: "Title Case"
@@ -316,6 +320,8 @@ class module__KeyboardTextManipulation {
 				this.doPaste("upper-case")
 			case "lowerCase":
 				this.doPaste("lower-case")
+			case "l33tSpeak":
+				this.doPaste("l33t-speak")
 			case "titleCase":
 				this.doPaste("title-case")
 			case "camelCase":
@@ -523,6 +529,8 @@ class module__KeyboardTextManipulation {
 				copied := StrUpper(copied)
 			case "lower-case":
 				copied := StrLower(copied)
+			case "l33t-speak":
+				copied := this.toL33tSpeak(copied)
 			case "title-case":
 				copied := this.toTitleCase(copied)
 			case "camel-case":
@@ -771,6 +779,35 @@ class module__KeyboardTextManipulation {
 		}
 
 		return ArrJoin(segments, "-")
+	}
+
+
+	/**
+	 * @param {string} text
+	 * @returns {string}
+	 */
+	toL33tSpeak(text) {
+		static replacements := Map(
+			"a", "4",
+			"b", "8",
+			"e", "3",
+			"g", "6",
+			"i", "1",
+			"o", "0",
+			"s", "5",
+			"t", "7",
+			"z", "2"
+		)
+
+		characters := StrSplit(text)
+		for (index, character in characters) {
+			lookup := StrLower(character)
+			if (replacements.Has(lookup)) {
+				characters[index] := replacements[lookup]
+			}
+		}
+
+		return ArrJoin(characters)
 	}
 
 

@@ -128,6 +128,7 @@ Keys are editable in `settings.ini`
 | `Ctrl` + `Alt` + `K` | kebab case | this-is-an-example |
 | `Ctrl` + `Alt` + `S` | snake case | this_is_an_example |
 | `Ctrl` + `Alt` + `&` | sarcasm case | tHIS is aN ExampLE |
+| `Ctrl` + `Alt` + `3` | l33t-speak | 3x4mpl3 73x7 |
 | `Ctrl` + `Alt` + `J` | join lines |   |
 | `Ctrl` + `Alt` + `'` | enclose in single quotes | ' ⋯ ' |
 | `Ctrl` + `Alt` + `"` | enclose in double quotes | " ⋯ " |
