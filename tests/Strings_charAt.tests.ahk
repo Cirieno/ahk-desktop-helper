@@ -41,7 +41,7 @@ doTests_StrCharAt() {
 		StrCharAt(str1, 30, true) == "5",
 		"StrCharAt(str1, 30, true) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -49,6 +49,6 @@ doTests_StrCharAt() {
 			throw message
 		}
 	}
-	MsgBox("Strings.charAt - All tests passed",, " T2")
+	FileAppend("Strings.charAt: All tests passed`n", "*")
 }
 doTests_StrCharAt()

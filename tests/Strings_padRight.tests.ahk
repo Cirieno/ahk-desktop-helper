@@ -46,7 +46,7 @@ doTests_StrPadRight() {
 		StrPadRight(str1, 10, "xyz") == "ABC123xyzx",
 		"StrPadRight(str1, 10, 'xyz') failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -54,6 +54,6 @@ doTests_StrPadRight() {
 			throw message
 		}
 	}
-	MsgBox("Strings.padRight - All tests passed",, " T2")
+	FileAppend("Strings.padRight: All tests passed`n", "*")
 }
 doTests_StrPadRight()

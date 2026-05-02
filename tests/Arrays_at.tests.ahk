@@ -52,7 +52,7 @@ doTests_ArrAt() {
 		typeCompare(arr1.at(-30, true), "A"),
 		"arr1.at(-30, true) failed"
 	)
-	;#endregion
+	;#endregion Instance calls
 
 
 	;#region Function calls
@@ -95,7 +95,7 @@ doTests_ArrAt() {
 		typeCompare(Arrays.at(arr1, -30, true), "A"),
 		"Arrays.at(arr1, -30, true) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -103,6 +103,6 @@ doTests_ArrAt() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.at - All tests passed",, " T2")
+	FileAppend("Arrays.at: All tests passed`n", "*")
 }
 doTests_ArrAt()

@@ -22,7 +22,7 @@ doTests_ArrShift() {
 		el3 == "A" && arr3.get(1) == "B",
 		"arr3.shift() failed"
 	)
-	;#endregion
+	;#endregion Instance calls
 
 
 	;#region Function calls
@@ -32,7 +32,7 @@ doTests_ArrShift() {
 		el3 == "A" && arr3.get(1) == "B",
 		"ArrShift(arr3) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -40,6 +40,6 @@ doTests_ArrShift() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.shift - All tests passed",, " T2")
+	FileAppend("Arrays.shift: All tests passed`n", "*")
 }
 doTests_ArrShift()

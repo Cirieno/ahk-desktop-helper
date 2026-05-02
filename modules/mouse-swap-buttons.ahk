@@ -10,14 +10,11 @@
 
 
 class module__MouseSwapButtons {
-	/**
-	 * @returns {void}
-	 */
 	__Init() {
 		this.moduleName := moduleName := "MouseSwapButtons"
 		this.settings := {
-			isEnabled: IniUtils.getVal(moduleName, "enabled", true),
-			swapButtonsOnLoad: IniUtils.getVal(moduleName, "swapButtonsOnLoad", ignore)
+			useModule: IniUtils.getVal(moduleName, "useModule", true),
+			enabledOnLoad: IniUtils.getVal(moduleName, "enabledOnLoad", "inherit")
 		}
 		this.state := {
 			hasMouse: null,
@@ -36,13 +33,11 @@ class module__MouseSwapButtons {
 	}
 
 
-	/**
-	 * @returns {void}
-	 */
 	__New() {
-		if (!this.settings.isEnabled) {
+		if (!this.settings.useModule) {
 			return
 		}
+		this.settings.enabledOnLoad := this.normaliseEnabledOnLoad(this.settings.enabledOnLoad)
 
 		this.refreshState()
 		this.state.onSettingsChangeCallback := ObjBindMethod(this, "onSettingsChange")
@@ -50,14 +45,11 @@ class module__MouseSwapButtons {
 		thisMenu := this.drawMenu()
 		this.syncMenuItem(thisMenu)
 
-		this.reconcileState(this.settings.swapButtonsOnLoad, true)
+		this.reconcileState(this.settings.enabledOnLoad, true)
 		this.setObserverEnabled(true)
 	}
 
 
-	/**
-	 * @returns {void}
-	 */
 	__Delete() {
 		if (IsObject(this.state.onSettingsChangeCallback)) {
 			this.setObserverEnabled(false)
@@ -245,8 +237,8 @@ class module__MouseSwapButtons {
 		_S := __Settings.settingsFilePath
 
 		try {
-			IniWrite(toString(this.settings.isEnabled), _S, this.moduleName, "enabled")
-			IniWrite(toString(this.state.areButtonsSwapped), _S, this.moduleName, "swapButtonsOnLoad")
+			IniWrite(toString(this.settings.useModule), _S, this.moduleName, "useModule")
+			IniWrite(toString(this.state.areButtonsSwapped), _S, this.moduleName, "enabledOnLoad")
 		} catch Error as e {
 			throw Error("Error updating settings file: " . e.Message)
 		}
@@ -271,5 +263,21 @@ class module__MouseSwapButtons {
 			"Module state updated to match Windows."
 		])
 		MsgBox(msg, title, (0 + 64 + 4096) . " T5")
+	}
+
+
+	/**
+	 * @param {boolean|string} enabledOnLoad
+	 * @returns {boolean|string}
+	 */
+	normaliseEnabledOnLoad(enabledOnLoad) {
+		if (isString(enabledOnLoad)) {
+			enabledOnLoad := StrLower(Trim(enabledOnLoad))
+			if ((enabledOnLoad = "inherit") || (enabledOnLoad = "ignore")) {
+				return ignore
+			}
+		}
+
+		return enabledOnLoad
 	}
 }

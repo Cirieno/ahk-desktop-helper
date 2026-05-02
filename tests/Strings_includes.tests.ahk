@@ -68,7 +68,7 @@ doTests_StrIncludes() {
 		typeCompare(Strings.includes(str1, "B", , -30, true), true),
 		"Strings.includes(str1, 'B', , -30, true) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(
@@ -77,6 +77,6 @@ doTests_StrIncludes() {
 				throw message
 			}
 	}
-	MsgBox("Strings.includes - All tests passed",, " T2")
+	FileAppend("Strings.includes: All tests passed`n", "*")
 }
 doTests_StrIncludes()

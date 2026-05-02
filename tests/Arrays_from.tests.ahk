@@ -63,7 +63,7 @@ doTests_ArrFrom() {
 		arr1[3] == "C",
 		"Arrays.from(obj1, 2) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -71,6 +71,6 @@ doTests_ArrFrom() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.from - All tests passed",, " T2")
+	FileAppend("Arrays.from: All tests passed`n", "*")
 }
 doTests_ArrFrom()

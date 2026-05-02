@@ -12,7 +12,7 @@
 class module__KeyboardExplorerBackspace {
 	__Init() {
 		this.moduleName := moduleName := "KeyboardExplorerBackspace"
-		this.enabled := IniUtils.getVal(moduleName, "enabled", false)
+		this.useModule := IniUtils.getVal(moduleName, "useModule", false)
 		this.settings := {
 			activateOnLoad: IniUtils.getVal(moduleName, "active", false)
 		}
@@ -30,7 +30,7 @@ class module__KeyboardExplorerBackspace {
 
 
 	__New() {
-		if (!this.enabled) {
+		if (!this.useModule) {
 			return
 		}
 
@@ -108,7 +108,7 @@ class module__KeyboardExplorerBackspace {
 		SFP := __Settings.settingsFilePath
 
 		try {
-			IniWrite(toString(this.enabled), SFP, this.moduleName, "enabled")
+			IniWrite(toString(this.useModule), SFP, this.moduleName, "useModule")
 			IniWrite(toString(this.states.active), SFP, this.moduleName, "active")
 		} catch Error as e {
 			throw Error("Error updating settings file: " . e.Message)

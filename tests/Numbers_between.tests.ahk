@@ -42,14 +42,25 @@ doTests_NumBetween() {
 
 	try {
 		NumBetween("5", 1, 10)
-		assert(false, "NumClamp(null, 1, 10) failed")
+		assert(false, "NumBetween('5', 1, 10) should have thrown a TypeError")
+	} catch TypeError {
+		assert(true)
 	}
 
 	try {
 		NumBetween(null, 1, 10)
-		assert(false, "NumClamp(null, 1, 10) failed")
+		assert(false, "NumBetween(null, 1, 10) should have thrown a TypeError")
+	} catch TypeError {
+		assert(true)
 	}
-	;#endregion
+
+	try {
+		NumBetween(5, 10, 1)
+		assert(false, "NumBetween(5, 10, 1) should have thrown a ValueError")
+	} catch ValueError {
+		assert(true)
+	}
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -57,6 +68,6 @@ doTests_NumBetween() {
 			throw message
 		}
 	}
-	MsgBox("Numbers.between - All tests passed",, " T2")
+	FileAppend("Numbers.between: All tests passed`n", "*")
 }
 doTests_NumBetween()

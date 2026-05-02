@@ -10,15 +10,12 @@
 
 
 class module__KeyboardTextManipulation {
-	/**
-	 * @returns {void}
-	 */
 	__Init() {
 		this.moduleName := moduleName := "KeyboardTextManipulation"
 		this.settings := {
-			isEnabled: IniUtils.getVal(moduleName, "enabled", true),
+			useModule: IniUtils.getVal(moduleName, "useModule", true),
 			enableKeyboardShortcutsOnLoad: IniUtils.getVal(moduleName, "enableKeyboardShortcutsOnLoad", false),
-			enableTextMenuOnLoad: IniUtils.getVal(moduleName, "enableTextMenuOnLoad", true),
+			enableTextMenuOnLoad: IniUtils.getVal(moduleName, "enableTextMenuOnLoad", false),
 			sarcasmCase: IniUtils.getVal(moduleName, "sarcasmCase", "random"),
 			defaultHotkeys: {
 				textManipulationMenu: "$^!M",
@@ -152,11 +149,8 @@ class module__KeyboardTextManipulation {
 	}
 
 
-	/**
-	 * @returns {void}
-	 */
 	__New() {
-		if (!this.settings.isEnabled) {
+		if (!this.settings.useModule) {
 			return
 		}
 
@@ -175,9 +169,6 @@ class module__KeyboardTextManipulation {
 	}
 
 
-	/**
-	 * @returns {void}
-	 */
 	__Delete() {
 		if (IsObject(this.state.onTextManipulationChangeCallback)) {
 			this.setTextManipulationHotkeysEnabled(false)
@@ -548,7 +539,7 @@ class module__KeyboardTextManipulation {
 						arr[i] := (Random(1) ? StrUpper(el) : StrLower(el))
 					}
 				} else {
-					bias := (StrCharFirst(copied) == StrUpper(StrCharFirst(copied)) ? 1 : 0)
+					bias := (StrFirstChar(copied) == StrUpper(StrFirstChar(copied)) ? 1 : 0)
 					for (i, el in arr) {
 						if (i == 1) {
 							continue
@@ -818,7 +809,7 @@ class module__KeyboardTextManipulation {
 		_S := __Settings.settingsFilePath
 
 		try {
-			IniWrite(toString(this.settings.isEnabled), _S, this.moduleName, "enabled")
+			IniWrite(toString(this.settings.useModule), _S, this.moduleName, "useModule")
 			IniWrite(toString(this.state.isActive), _S, this.moduleName, "enableKeyboardShortcutsOnLoad")
 			IniWrite(toString(this.state.isPopupMenuHotkeyActive), _S, this.moduleName, "enableTextMenuOnLoad")
 			IniWrite(toString(this.settings.sarcasmCase), _S, this.moduleName, "sarcasmCase")

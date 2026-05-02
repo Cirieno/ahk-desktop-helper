@@ -8,49 +8,46 @@
 
 global Numbers := prototype__Numbers()
 class prototype__Numbers {
-	between(_number, min, max, inclusive := true, clamp := false) {
+	between(_number, minValue, maxValue, inclusive := true) {
 		funcName := "Numbers.between"
 
 		if (!isNumber(_number)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <_number> is not a Number")
+			throw TypeError(StrWrap(funcName, 2) . " — Param <_number> is not a Number")
 		}
-		if (!isNumber(min)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <min> is not a Number")
+		if (!isNumber(minValue)) {
+			throw TypeError(StrWrap(funcName, 2) . " — Param <min> is not a Number")
 		}
-		if (!isNumber(max)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <max> is not a Number")
+		if (!isNumber(maxValue)) {
+			throw TypeError(StrWrap(funcName, 2) . " — Param <max> is not a Number")
 		}
 		if (!isBoolean(inclusive)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <inclusive> is not a Boolean")
+			throw TypeError(StrWrap(funcName, 2) . " — Param <inclusive> is not a Boolean")
 		}
-		if (!isBoolean(clamp)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <clamp> is not a Boolean")
-		}
-		if (min > max) {
-			throw Error(StrWrap(funcName, 2) . " — Param <min> is greater than Param <max>")
+		if (minValue > maxValue) {
+			throw ValueError(StrWrap(funcName, 2) . " — Param <min> is greater than Param <max>")
 		}
 
-		return (inclusive ? (_number >= min && _number <= max) : (_number > min && _number < max))
+		return (inclusive ? (_number >= minValue && _number <= maxValue) : (_number > minValue && _number < maxValue))
 	}
 
 
-	clamp(_number, min, max) {
+	clamp(_number, minValue, maxValue) {
 		funcName := "Numbers.clamp"
 
 		if (!isNumber(_number)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <_number> is not a Number")
+			throw TypeError(StrWrap(funcName, 2) . " — Param <_number> is not a Number")
 		}
-		if (!isNumber(min)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <min> is not a Number")
+		if (!isNumber(minValue)) {
+			throw TypeError(StrWrap(funcName, 2) . " — Param <min> is not a Number")
 		}
-		if (!isNumber(max)) {
-			throw Error(StrWrap(funcName, 2) . " — Param <max> is not a Number")
+		if (!isNumber(maxValue)) {
+			throw TypeError(StrWrap(funcName, 2) . " — Param <max> is not a Number")
 		}
-		if (min > max) {
-			throw Error(StrWrap(funcName, 2) . " — Param <min> is greater than Param <max>")
+		if (minValue > maxValue) {
+			throw ValueError(StrWrap(funcName, 2) . " — Param <min> is greater than Param <max>")
 		}
 
-		return (_number < min ? min : (_number > max ? max : _number))
+		return Min(Max(_number, minValue), maxValue)
 	}
 }
 
@@ -60,8 +57,8 @@ class prototype__Numbers {
  *
  * @function Numbers.between | NumBetween
  * @param {number} _number
- * @param {number} min
- * @param {number} max
+ * @param {number} minValue
+ * @param {number} maxValue
  * @param {boolean} [inclusive=true]
  * @returns {boolean}
  */
@@ -73,8 +70,8 @@ NumBetween := ObjBindMethod(Numbers, "between")
  *
  * @function Numbers.clamp | NumClamp
  * @param {number} _number
- * @param {number} min
- * @param {number} max
+ * @param {number} minValue
+ * @param {number} maxValue
  * @returns {number}
  */
 NumClamp := ObjBindMethod(Numbers, "clamp")

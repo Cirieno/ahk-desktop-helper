@@ -21,7 +21,7 @@ doTests_ArrReverse() {
 		typeCompare(arr3.reverse().join(), "321ECBA"),
 		"arr3.reverse() failed"
 	)
-	;#endregion
+	;#endregion Instance calls
 
 
 	;#region Function calls
@@ -30,7 +30,7 @@ doTests_ArrReverse() {
 		typeCompare(Arrays.reverse(arr3).join(), "321ECBA"),
 		"Arrays.reverse(arr3) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -38,6 +38,6 @@ doTests_ArrReverse() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.reverse - All tests passed",, " T2")
+	FileAppend("Arrays.reverse: All tests passed`n", "*")
 }
 doTests_ArrReverse()

@@ -81,7 +81,7 @@ doTests_ArrRemove() {
 		typeCompare(arr3.remove("B", , -30, true).join(), "ACE123"),
 		"arr3.remove('B', , -30, true) failed"
 	)
-	;#endregion
+	;#endregion Instance calls
 
 
 	;#region Function calls
@@ -144,7 +144,7 @@ doTests_ArrRemove() {
 		typeCompare(Arrays.remove(arr3, "B", , -30, true).join(), "ACE123"),
 		"Arrays.remove(arr3, 'B', , -30, true) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -152,6 +152,6 @@ doTests_ArrRemove() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.remove - All tests passed",, " T2")
+	FileAppend("Arrays.remove: All tests passed`n", "*")
 }
 doTests_ArrRemove()

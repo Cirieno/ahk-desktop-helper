@@ -1,5 +1,5 @@
 ;// Compile-time settings for "File Properties > Details" panel
-;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.7.0, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
+;@Ahk2Exe-Let PName = AHK Desktop Helper, PVersion = 2.7.5, PAuthor = Rob McInnes, PCompany = Cirieno Ltd
 ;@ Ahk2Exe-ExeName C:\Program Files (portable)\%U_PName%\%U_PName%.exe
 ;@Ahk2Exe-ExeName %A_ScriptDir%\releases\%U_PVersion%\%U_PName% x64.exe
 ;@Ahk2Exe-SetCompanyName %U_PCompany%
@@ -51,7 +51,7 @@ if (__Settings := {}) {
 	__Settings.app := {
 		name: "AHK Desktop Helper",
 		author: { name: "Rob McInnes", email: "rob.mcinnes" . U_atSign . "cirieno.co.uk", company: "Cirieno Ltd" },
-		build: { version: "2.7.0", date: "2026-04", repo: "github.com/cirieno/ahk-desktop-helper" }
+		build: { version: "2.7.5", date: "2026-04", repo: "github.com/cirieno/ahk-desktop-helper" }
 	}
 	__Settings.settingsFilePath := A_WorkingDir . "\settings.ini"
 	__Settings.app.tray := {
@@ -76,7 +76,7 @@ if (__Settings := {}) {
 
 
 #Include "*i .\modules\autocorrect.ahk"
-#Include "*i .\modules\desktop-gather-windows.ahk"
+#Include "*i .\modules\desktop-find-lost-windows.ahk"
 ; #Include "*i .\modules\desktop-hide-media-popup.ahk"
 ; #Include "*i .\modules\desktop-hide-peek-button.ahk"
 ; #Include "*i .\modules\keyboard-explorer-backspace.ahk"
@@ -300,7 +300,7 @@ loadModules() {
 	; __Modules["DesktopHideMediaPopup"] := module__DesktopHideMediaPopup()
 	; __Modules["DesktopHidePeekButton"] := module__DesktopHidePeekButton()
 	; setMenuItem("---", "TRAY\Desktop")
-	__Modules["DesktopGatherWindows"] := module__DesktopGatherWindows()
+	__Modules["DesktopFindLostWindows"] := module__DesktopFindLostWindows()
 
 	; __Modules["KeyboardExplorerBackspace"] := module__KeyboardExplorerBackspace()
 	__Modules["KeyboardFileDialogSlashes"] := module__KeyboardFileDialogSlashes()

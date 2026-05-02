@@ -62,7 +62,7 @@ doTests_StrSlice() {
 		typeCompare(Strings.slice(str1, , 30, true), "ABCE123"),
 		"Strings.slice(str1, , 30, true) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -70,6 +70,6 @@ doTests_StrSlice() {
 			throw message
 		}
 	}
-	MsgBox("Strings.slice - All tests passed",, " T2")
+	FileAppend("Strings.slice: All tests passed`n", "*")
 }
 doTests_StrSlice()

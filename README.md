@@ -1,9 +1,8 @@
-# AHK Desktop Helper v2.7.0
+# AHK Desktop Helper v2.7.5
 
 A collection of small enhancements for Windows.
 
 Written in AutoHotkey v2, the script can either be run as-is or compiled into an executable using AHK2Exe w/ MPRESS from the Autohotkey site.
-
 
 ## Modules
 
@@ -11,7 +10,8 @@ Each enhancement is presented via its own module which can be enabled via `setti
 
 <!-- Some common module options: -->
 
-`enabled=true` Make the module available to the app.
+`useModule (value: true|false)`
+Make the module available to the app.
 
 <!-- `active=true` or `active=[x,y]` The module or module items will be automatically activated on load. -->
 
@@ -23,7 +23,8 @@ Each enhancement is presented via its own module which can be enabled via `setti
 
 ### Environment
 
-`startWithWindows=false` Creates a shortcut in the user's startup folder
+`startWithWindows (value: true|false) (default: false)`
+Creates a shortcut in the user's startup folder
 
 <!-- `enableExtendedRightMouseClick=false` Always send a Shift + right-click in Explorer-based windows, which reveals extra options in Explorer's right-click context menu. -->
 
@@ -70,13 +71,11 @@ NB: I keep tinkering with `default.autocorrect.txt` so don't make changes to thi
 
 <!-- --- -->
 
-<!-- ### DesktopGatherWindows -->
+### DesktopFindLostWindows
 
-<!-- Bring all windows to the main monitor and resize them if possible. Handy for when a window opens outside the monitor workspace. -->
+Shows a picker listing windows that are not fully within the primary screen bounds, excluding minimised windows and a few obvious shell surfaces such as the taskbar and desktop. Checked windows can be moved back to the main screen, and resizable ones are restored to a centred quarter-screen size.
 
-<!-- `resizeOnMove=true` Resize the window if possible. -->
-
-<!-- --- -->
+---
 
 <!-- ### DesktopHideMediaPopup -->
 
@@ -86,15 +85,20 @@ NB: I keep tinkering with `default.autocorrect.txt` so don't make changes to thi
 
 <!-- ### DesktopHidePeekButton -->
 <!-- Hide the small Desktop Peek button found at the end of the taskbar. -->
+
 <!-- --- -->
 
 <!-- ### KeyboardExplorerBackspace -->
 <!-- Use the backspace key to drill upwards in File Explorer windows and dialogs. -->
+
 <!-- --- -->
 
 ### KeyboardFileDialogSlashes
 
 Converts forward-slashes and multiple backslashes to a single back-slash when entered into a File dialog. Handy if you're working with any Unix-y environments on your Windows machine. Doesn't currently capture paste via mouse.
+
+`enabledOnLoad (value: true|false) (default: false)`
+Enable the feature when the app loads.
 
 ---
 
@@ -109,6 +113,8 @@ Keys are editable in `settings.ini`
 | `Ctrl` + `Alt` + `Left` | `{Media_Prev}` | previous track |
 | `Ctrl` + `Alt` + `Right` | `{Media_Next}` | next track |
 
+`enabledOnLoad (value: true|false) (default: false)`
+Enable the feature when the app loads.
 
 ---
 
@@ -120,31 +126,37 @@ Keys are editable in `settings.ini`
 
 | Keys | Function | Example |
 | --- | --- | --- |
-| `Ctrl` + `Alt` + `U` | uppercase |   |
-| `Ctrl` + `Alt` + `L` | lowercase |   |
-| `Ctrl` + `Alt` + `T` | title case | This Is An Example |
-| `Ctrl` + `Alt` + `C` | camel case | thisIsAnExample |
-| `Ctrl` + `Alt` + `P` | Pascal case | ThisIsAnExample |
-| `Ctrl` + `Alt` + `K` | kebab case | this-is-an-example |
-| `Ctrl` + `Alt` + `S` | snake case | this_is_an_example |
-| `Ctrl` + `Alt` + `&` | sarcasm case | tHIS is aN ExampLE |
-| `Ctrl` + `Alt` + `3` | l33t-speak | 3x4mpl3 73x7 |
-| `Ctrl` + `Alt` + `J` | join lines |   |
-| `Ctrl` + `Alt` + `'` | enclose in single quotes | ' ⋯ ' |
-| `Ctrl` + `Alt` + `"` | enclose in double quotes | " ⋯ " |
-| `Ctrl` + `Alt` + `Shift` + `'` | enclose in single curly quotes | ‘ ⋯ ’ |
-| `Ctrl` + `Alt` + `Shift` + `"` | enclose in double curly quotes | “ ⋯ ” |
-| `Ctrl` + `Alt` + `` ` `` | enclose in backticks |  `` ` ⋯ ` ``  |
-| `Ctrl` + `Alt` + `(` or `)` | enclose in parentheses | ( ⋯ ) |
-| `Ctrl` + `Alt` + `[` or `]` | enclose in square brackets | [ ⋯ ] |
-| `Ctrl` + `Alt` + `{` or `}` | enclose in curly braces | { ⋯ } |
-| `Ctrl` + `Alt` + `<` or `>` | enclose in angled brackets | < ⋯ > |
-| `Ctrl` + `Alt` + `-` | insert an n-dash | – |
-| `Ctrl` + `Alt` + `Shift` + `-` | insert an m-dash | — |
-| `Ctrl` + `Alt` + `O` | insert the degrees symbol | ° |
-| `Ctrl` + `Alt` + `Q` | paste clipboard text with straight quotes | " ⋯ " |
+| `Ctrl + Alt + U` | uppercase |   |
+| `Ctrl + Alt + L` | lowercase |   |
+| `Ctrl + Alt + T` | title case | This Is An Example |
+| `Ctrl + Alt + C` | camel case | thisIsAnExample |
+| `Ctrl + Alt + P` | Pascal case | ThisIsAnExample |
+| `Ctrl + Alt + K` | kebab case | this-is-an-example |
+| `Ctrl + Alt + S` | snake case | this_is_an_example |
+| `Ctrl + Alt + &` | sarcasm case | tHIS is aN ExampLE |
+| `Ctrl + Alt + 3` | l33t-speak | 7h15 15 4n 3x4mpl3 |
+| `Ctrl + Alt + J` | join lines |   |
+| `Ctrl + Alt + '` | enclose in single quotes | ' ⋯ ' |
+| `Ctrl + Alt + "` | enclose in double quotes | " ⋯ " |
+| `Ctrl + Alt + Shift + '` | enclose in single curly quotes | ‘ ⋯ ’ |
+| `Ctrl + Alt + Shift + "` | enclose in double curly quotes | “ ⋯ ” |
+| `Ctrl + Alt + ` | enclose in backticks |  `  ⋯  `  |
+| `Ctrl + Alt + (` or `)` | enclose in parentheses | ( ⋯ ) |
+| `Ctrl + Alt + [` or `]` | enclose in square brackets | [ ⋯ ] |
+| `Ctrl + Alt + {` or `}` | enclose in curly braces | { ⋯ } |
+| `Ctrl + Alt + <` or `>` | enclose in angled brackets | < ⋯ > |
+| `Ctrl + Alt + -` | insert an n-dash | – |
+| `Ctrl + Alt + Shift + -` | insert an m-dash | — |
+| `Ctrl + Alt + O` | insert the degrees symbol | ° |
+| `Ctrl + Alt + Q` | paste clipboard text with straight quotes | " ⋯ " |
 
-There is also a menu option to enable hotkeys `Ctrl` + `Alt` + `M` to show a pop-up menu with options for formatting selected text.
+There is also a menu option to enable hotkeys `Ctrl + Alt + M` to show a pop-up menu with options for formatting selected text, which is useful if you don't want to memorise all the hotkeys.
+
+`enableKeyboardShortcutsOnLoad (value: true|false) (default: false)`
+Enable the hotkeys when the app loads.
+
+`enableTextMenuOnLoad (value: true|false) (default: false)`
+Enable the pop-up menu when the app loads.
 
 ---
 
@@ -152,8 +164,8 @@ There is also a menu option to enable hotkeys `Ctrl` + `Alt` + `M` to show a pop
 
 Swap left and right mouse buttons. Handy for left-handed people, or those like me with intermittent RSI.
 
-`swapButtonsOnLoad=true` Apply swapped mouse buttons when the app loads.
-
+`enabledOnLoad (value: inherit|true|false) (default: inherit)`
+Swap mouse buttons on load, or use `inherit` to keep the current mouse-button state.
 
 ---
 
@@ -161,9 +173,16 @@ Swap left and right mouse buttons. Handy for left-handed people, or those like m
 
 Use the mousewheel to change volume anywhere over the system icons and date/time part of the taskbar.
 
-`activateOnLoad=true` Enable the feature when the app loads.
+`enabledOnLoad (value: true|false) (default: false)`
+Enable the feature when the app loads.
 
-`step=3` The increment by which the volume will change.
+`displayStyle (value: tooltip|flyout) (default: tooltip)`
+Choose `tooltip` for a small yellow indicator or `flyout` for a Win11-style custom volume flyout.
+
+`flyoutSize (value: large|medium|small) (default: large)`
+
+`step (value: 1-10) (default: 3)`
+The increment by which the volume will change.
 
 ---
 

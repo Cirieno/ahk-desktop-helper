@@ -31,7 +31,7 @@ doTests_ArrToMap() {
 		map3.has("B") && map3.get("B") == 2,
 		"arr3.toMap() failed"
 	)
-	;#endregion
+	;#endregion Instance calls
 
 
 	;#region Function calls
@@ -46,7 +46,7 @@ doTests_ArrToMap() {
 		map3.has("B") && map3.get("B") == 2,
 		"Arrays.toMap(arr3) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -54,6 +54,6 @@ doTests_ArrToMap() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.toMap - All tests passed",, " T2")
+	FileAppend("Arrays.toMap: All tests passed`n", "*")
 }
 doTests_ArrToMap()

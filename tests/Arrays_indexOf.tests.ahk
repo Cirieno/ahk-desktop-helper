@@ -70,7 +70,7 @@ doTests_ArrIndexOf() {
 		typeCompare(arr1.indexOf("B", , -30, true), 2),
 		"arr1.indexOf('B', , -30, true) failed"
 	)
-	;#endregion
+	;#endregion Instance calls
 
 
 	;#region Function calls
@@ -123,7 +123,7 @@ doTests_ArrIndexOf() {
 		typeCompare(Arrays.indexOf(arr1, "B", , -30, true), 2),
 		"Arrays.indexOf(arr1, 'B', , -30, true) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -131,6 +131,6 @@ doTests_ArrIndexOf() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.indexOf - All tests passed",, " T2")
+	FileAppend("Arrays.indexOf: All tests passed`n", "*")
 }
 doTests_ArrIndexOf()

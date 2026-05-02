@@ -8,7 +8,7 @@
 class module__AutoCorrect {
 	__Init() {
 		this.moduleName := moduleName := "AutoCorrect"
-		this.enabled := IniUtils.getVal(moduleName, "enabled", true)
+		this.useModule := IniUtils.getVal(moduleName, "useModule", true)
 		this.settings := {
 			activateOnLoad: IniUtils.getVal(moduleName, "active", ["user"]),
 			hotstrings: Map()
@@ -42,7 +42,7 @@ class module__AutoCorrect {
 
 
 	__New() {
-		if (!this.enabled) {
+		if (!this.useModule) {
 			return
 		}
 
@@ -523,7 +523,7 @@ class module__AutoCorrect {
 		SFP := __Settings.settingsFilePath
 
 		try {
-			IniWrite(toString(this.enabled), SFP, this.moduleName, "enabled")
+			IniWrite(toString(this.useModule), SFP, this.moduleName, "useModule")
 			IniWrite(StrWrap(toString(this.states.active), 2), SFP, this.moduleName, "active")
 		} catch Error as e {
 			throw Error("Error updating settings file: " . e.Message)

@@ -71,7 +71,7 @@ doTests_ArrIncludes() {
 		typeCompare(arr1.includes("B", , -30, true), true),
 		"arr1.includes('B', , -30, true) failed"
 	)
-	;#endregion
+	;#endregion Instance calls
 
 
 	;#region Function calls
@@ -124,7 +124,7 @@ doTests_ArrIncludes() {
 		typeCompare(Arrays.includes(arr1, "B", , -30, true), true),
 		"Arrays.includes(arr1, 'B', , -30, true) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(
@@ -133,6 +133,6 @@ doTests_ArrIncludes() {
 				throw message
 			}
 	}
-	MsgBox("Arrays.includes - All tests passed",, " T2")
+	FileAppend("Arrays.includes: All tests passed`n", "*")
 }
 doTests_ArrIncludes()

@@ -14,7 +14,7 @@
 class module__DesktopHidePeekButton {
 	__Init() {
 		this.moduleName := moduleName := "DesktopHidePeekButton"
-		this.enabled := IniUtils.getVal(moduleName, "enabled", false)
+		this.useModule := IniUtils.getVal(moduleName, "useModule", false)
 		this.settings := {
 			activateOnLoad: IniUtils.getVal(moduleName, "active", ignore),
 			resetOnExit: IniUtils.getVal(moduleName, "resetOnExit", true),
@@ -38,7 +38,7 @@ class module__DesktopHidePeekButton {
 
 
 	__New() {
-		if (!this.enabled) {
+		if (!this.useModule) {
 			return
 		}
 
@@ -170,7 +170,7 @@ class module__DesktopHidePeekButton {
 		SFP := __Settings.settingsFilePath
 
 		try {
-			IniWrite(toString(this.enabled), SFP, this.moduleName, "enabled")
+			IniWrite(toString(this.useModule), SFP, this.moduleName, "useModule")
 			IniWrite(toString(this.states.active), SFP, this.moduleName, "active")
 			IniWrite(toString(this.settings.allowExternalChange), SFP, this.moduleName, "allowExternalChange")
 			IniWrite(toString(this.settings.resetOnExit), SFP, this.moduleName, "resetOnExit")

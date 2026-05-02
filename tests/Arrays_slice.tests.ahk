@@ -66,7 +66,7 @@ doTests_ArrSlice() {
 		typeCompare(arr3.slice(, 30, true).join(), "ABCE123"),
 		"arr3.slice(, 30, true) failed"
 	)
-	;#endregion
+	;#endregion Instance calls
 
 
 	;#region Function calls
@@ -117,7 +117,7 @@ doTests_ArrSlice() {
 		typeCompare(Arrays.slice(arr3, , 30, true).join(), "ABCE123"),
 		"Arrays.slice(arr3, , 30, true) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -125,6 +125,6 @@ doTests_ArrSlice() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.slice - All tests passed",, " T2")
+	FileAppend("Arrays.slice: All tests passed`n", "*")
 }
 doTests_ArrSlice()

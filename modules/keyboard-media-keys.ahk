@@ -9,14 +9,11 @@
 
 
 class module__KeyboardMediaKeys {
-	/**
-	 * @returns {void}
-	 */
 	__Init() {
 		this.moduleName := moduleName := "KeyboardMediaKeys"
 		this.settings := {
-			isEnabled: IniUtils.getVal(moduleName, "enabled", true),
-			activateOnLoad: IniUtils.getVal(moduleName, "activateOnLoad", true),
+			useModule: IniUtils.getVal(moduleName, "useModule", true),
+			enabledOnLoad: IniUtils.getVal(moduleName, "enabledOnLoad", false),
 			defaultHotkeys: {
 				mediaPrev: "^!Left",
 				mediaNext: "^!Right"
@@ -46,15 +43,12 @@ class module__KeyboardMediaKeys {
 	}
 
 
-	/**
-	 * @returns {void}
-	 */
 	__New() {
-		if (!this.settings.isEnabled) {
+		if (!this.settings.useModule) {
 			return
 		}
 
-		this.state.isActive := this.settings.activateOnLoad
+		this.state.isActive := this.settings.enabledOnLoad
 		this.state.onMediaKeyChangeCallback := ObjBindMethod(this, "onMediaKeyChange")
 		this.state.hotkeys := this.getResolvedHotkeys()
 
@@ -65,9 +59,6 @@ class module__KeyboardMediaKeys {
 	}
 
 
-	/**
-	 * @returns {void}
-	 */
 	__Delete() {
 		if (IsObject(this.state.onMediaKeyChangeCallback)) {
 			this.setHotkeysEnabled(false)
@@ -188,8 +179,8 @@ class module__KeyboardMediaKeys {
 		_S := __Settings.settingsFilePath
 
 		try {
-			IniWrite(toString(this.settings.isEnabled), _S, this.moduleName, "enabled")
-			IniWrite(toString(this.state.isActive), _S, this.moduleName, "activateOnLoad")
+			IniWrite(toString(this.settings.useModule), _S, this.moduleName, "useModule")
+			IniWrite(toString(this.state.isActive), _S, this.moduleName, "enabledOnLoad")
 			for (bindingName, hotkeyName in this.settings.hotkeys.OwnProps()) {
 				IniWrite(hotkeyName, _S, this.moduleName, this.settings.hotkeySettingKeys.%bindingName%)
 			}

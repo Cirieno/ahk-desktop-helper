@@ -58,7 +58,7 @@ doTests_ArrJoin() {
 		typeCompare(arr2.join(":", , 2), "<True>:<False>:<Ignore>:<Null>:<Array>:<Map>:<Object>"),
 		"arr2.join(':', , 2) failed"
 	)
-	;#endregion
+	;#endregion Instance calls
 
 
 	;#region Function calls
@@ -106,7 +106,7 @@ doTests_ArrJoin() {
 		typeCompare(Arrays.join(arr2, ":", , 2), "<True>:<False>:<Ignore>:<Null>:<Array>:<Map>:<Object>"),
 		"Arrays.join(arr2, ':', , 2) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -114,6 +114,6 @@ doTests_ArrJoin() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.join - All tests passed",, " T2")
+	FileAppend("Arrays.join: All tests passed`n", "*")
 }
 doTests_ArrJoin()

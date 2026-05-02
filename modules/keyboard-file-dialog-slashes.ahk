@@ -10,14 +10,11 @@
 
 
 class module__KeyboardFileDialogSlashes {
-	/**
-	 * @returns {void}
-	 */
 	__Init() {
 		this.moduleName := moduleName := "KeyboardFileDialogSlashes"
 		this.settings := {
-			isEnabled: IniUtils.getVal(moduleName, "enabled", true),
-			activateOnLoad: IniUtils.getVal(moduleName, "activateOnLoad", false)
+			useModule: IniUtils.getVal(moduleName, "useModule", true),
+			enabledOnLoad: IniUtils.getVal(moduleName, "enabledOnLoad", false)
 		}
 		this.state := {
 			isActive: null,
@@ -36,15 +33,12 @@ class module__KeyboardFileDialogSlashes {
 	}
 
 
-	/**
-	 * @returns {void}
-	 */
 	__New() {
-		if (!this.settings.isEnabled) {
+		if (!this.settings.useModule) {
 			return
 		}
 
-		this.state.isActive := this.settings.activateOnLoad
+		this.state.isActive := this.settings.enabledOnLoad
 		this.state.onPasteCallback := ObjBindMethod(this, "onPaste")
 		this.state.onContextCheckCallback := ObjBindMethod(this, "isTargetControlActive")
 
@@ -55,9 +49,6 @@ class module__KeyboardFileDialogSlashes {
 	}
 
 
-	/**
-	 * @returns {void}
-	 */
 	__Delete() {
 		if (IsObject(this.state.onPasteCallback)) {
 			this.setHotkeysEnabled(false)
@@ -180,8 +171,8 @@ class module__KeyboardFileDialogSlashes {
 		_S := __Settings.settingsFilePath
 
 		try {
-			IniWrite(toString(this.settings.isEnabled), _S, this.moduleName, "enabled")
-			IniWrite(toString(this.state.isActive), _S, this.moduleName, "activateOnLoad")
+			IniWrite(toString(this.settings.useModule), _S, this.moduleName, "useModule")
+			IniWrite(toString(this.state.isActive), _S, this.moduleName, "enabledOnLoad")
 		} catch Error as e {
 			throw Error("Error updating settings file: " . e.Message)
 		}

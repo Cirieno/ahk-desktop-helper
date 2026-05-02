@@ -42,7 +42,7 @@ doTests_StrWrap() {
 		StrWrap(str1, , "x", "y") == "xABC123y",
 		"StrWrap(str1, , 'x', 'y') failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -50,6 +50,6 @@ doTests_StrWrap() {
 			throw message
 		}
 	}
-	MsgBox("Strings.wrap - All tests passed",, " T2")
+	FileAppend("Strings.wrap: All tests passed`n", "*")
 }
 doTests_StrWrap()

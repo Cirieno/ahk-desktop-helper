@@ -21,7 +21,7 @@ class IniUtils {
 		_S := __Settings.settingsFilePath
 
 		try {
-			IniRead(_S, section, "")
+			IniRead(_S, section)
 		} catch Error {
 			return false
 		}

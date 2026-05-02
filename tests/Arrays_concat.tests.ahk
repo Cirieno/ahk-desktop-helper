@@ -21,7 +21,7 @@ doTests_ArrConcat() {
 		typeCompare(arr3.get(11), -1),
 		"arr1.concat(arr2) failed"
 	)
-	;#endregion
+	;#endregion Instance calls
 
 
 	;#region Function calls
@@ -30,7 +30,7 @@ doTests_ArrConcat() {
 		typeCompare(arr3.get(10), false),
 		"Arrays.concat(arr1, arr2) failed"
 	)
-	;#endregion
+	;#endregion Function calls
 
 
 	assert(condition, message := "") {
@@ -38,6 +38,6 @@ doTests_ArrConcat() {
 			throw message
 		}
 	}
-	MsgBox("Arrays.concat - All tests passed",, " T2")
+	FileAppend("Arrays.concat: All tests passed`n", "*")
 }
 doTests_ArrConcat()
